@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologia Silvio - Estudo de Vicinais SP</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">
+                <span class="icon icon-map"></span>
+                Estudo de Malha Viária Vicinal - Estado de São Paulo
+            </h1>
+            <p class="header-subtitle">Análise comparativa da malha rodoviária vicinal: OpenStreetMap vs. DER/SP</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
+                <li class="nav-item"><a href="processamento.html" class="nav-link">Processamento</a></li>
+                <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link active">Metodologia Silvio</a></li>
+                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1 class="page-title">Metodologia Alternativa (Silvio)</h1>
+        <p class="page-subtitle">Abordagem com Faces de Logradouro e Agregação Municipal</p>
+
+        <section class="section">
+            <h2 class="section-title">Visão Geral</h2>
+            
+            <div class="section-content">
+                <p>Esta metodologia alternativa foi desenvolvida para validar os resultados da abordagem principal, utilizando datasets complementares e agregação por município.</p>
+                
+                <div class="alert alert-info">
+                    <strong>Diferencial Principal:</strong> Uso de Faces de Logradouro IBGE 2022 (censo) para exclusão mais precisa de vias urbanas e buffer DER maior (60-100m).
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">Pipeline em 3 Etapas:</h3>
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">1. Extração e Tratamento OSM</h4>
+                    <div class="card-content">
+                        - Clip para SP<br>
+                        - Intersect com municípios SEADE<br>
+                        - Intersect com áreas urbanas IBGE<br>
+                        - Adiciona atributos regionais
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">2. Logradouro IBGE</h4>
+                    <div class="card-content">
+                        - Buffer 10m em faces logradouro<br>
+                        - Dissolve para limpar<br>
+                        - Buffer 60-100m malha DER<br>
+                        - Intersect dos buffers
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">3. Intersect Final</h4>
+                    <div class="card-content">
+                        - Combina todos os layers<br>
+                        - Aplica critérios de seleção<br>
+                        - Agrega por município<br>
+                        - Exporta Excel comparativo
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Critérios de Classificação</h2>
+            
+            <div class="section-content">
+                <p>Para que uma via seja considerada <strong>vicinal</strong>:</p>
+                
+                <div class="table-container mt-2">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Critério</th>
+                                <th>Condição</th>
+                                <th>Significado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Área Urbana</strong></td>
+                                <td><code>area_urb = 0</code></td>
+                                <td>Fora de aglomerados urbanos IBGE 2019</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Logradouro</strong></td>
+                                <td><code>path = NULL</code></td>
+                                <td>Não sobrepõe buffer 10m de faces logradouro</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Malha DER</strong></td>
+                                <td><code>malha_der = 0</code></td>
+                                <td>Não sobrepõe buffer 60-100m da malha DER</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <pre class="mt-2"><code># Filtro SQL aplicado no R
+OSM_vicinais <- subset(SHPOSM, area_urb == 0 & malha_der == 0)
+
+# Agregação por município
+DER_agg <- aggregate(SHPDER$metros, by=list(Cod_ibge), FUN=sum)
+OSM_agg <- aggregate(OSM_vicinais$metros, by=list(Cod_ibge), FUN=sum)</code></pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Bases de Dados Utilizadas</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dataset</th>
+                            <th>Fonte</th>
+                            <th>Features</th>
+                            <th>Uso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>OSM Sudeste</strong></td>
+                            <td>Geofabrik (Nov/2025)</td>
+                            <td>1.358.788 ways (SP)</td>
+                            <td>Base de vias</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Áreas Urbanas</strong></td>
+                            <td>IBGE 2019</td>
+                            <td>16.042 polígonos</td>
+                            <td>Exclusão urbana</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Faces Logradouro</strong></td>
+                            <td>IBGE Censo 2022</td>
+                            <td>~2,4 milhões (SP)</td>
+                            <td>Exclusão ruas censitárias</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Malha DER</strong></td>
+                            <td>DER/SP (Mai/2025)</td>
+                            <td>7.417 segmentos</td>
+                            <td>Subtração rodovias municipais</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Municípios SEADE</strong></td>
+                            <td>Fundação SEADE</td>
+                            <td>645 polígonos</td>
+                            <td>Agregação e atributos regionais</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Processo Sequencial</h2>
+            
+            <h3 class="section-subtitle">Arquivos de Execução (QGIS + R):</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Arquivo</th>
+                            <th>Descrição</th>
+                            <th>Features</th>
+                            <th>Novos Atributos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>_01_SP_OSM.shp</code></td>
+                            <td>Base OSM completa SP após clip</td>
+                            <td>1.358.788</td>
+                            <td>Cod_ibge, GID_RA</td>
+                        </tr>
+                        <tr>
+                            <td><code>_02_FL_SP_OSM.shp</code></td>
+                            <td>Após intersect faces logradouro</td>
+                            <td>1.205.819</td>
+                            <td>+ path</td>
+                        </tr>
+                        <tr>
+                            <td><code>_03_AU_FL_SP_OSM.shp</code></td>
+                            <td>Após intersect áreas urbanas</td>
+                            <td>1.319.976</td>
+                            <td>+ area_urb</td>
+                        </tr>
+                        <tr>
+                            <td><code>_04_DER_AU_FL_SP_OSM.shp</code></td>
+                            <td>Após intersect buffer DER (final)</td>
+                            <td>1.390.882</td>
+                            <td>+ malha_der</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-warning mt-2">
+                <strong>Observação:</strong> O número de features <em>aumenta</em> após intersecções devido à fragmentação de segmentos que cruzam múltiplos polígonos.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Script R de Agregação</h2>
+            
+            <div class="section-content">
+                <p><strong>Arquivo:</strong> <code>_05_SumarizacaoSHP.R</code></p>
+                
+                <pre><code>library(sp)
+library(rgdal)
+library(dplyr)
+library(writexl)
+
+# Leitura
+SHPMUN <- readShapePoly("LimiteMunicipal_SEADE.shp")
+SHPDER <- readShapePoly("Rodovias_municipais_wgsutm23s_intesect_mun.shp")
+SHPOSM <- readShapePoly("_04_DER_AU_FL_SP_OSM_wgs84Utm23s.shp")
+
+# Filtro vicinais: fora de área urbana E fora de malha DER
+OSM_vicinais <- subset(SHPOSM, area_urb == 0 & malha_der == 0)
+
+# Agregação por município
+DER_resumo <- SHPDER %>%
+  group_by(Cod_ibge) %>%
+  summarise(Vic_DER_metros = sum(metros, na.rm=TRUE),
+            Vic_DER_qtde = n())
+
+OSM_resumo <- OSM_vicinais %>%
+  group_by(Cod_ibge) %>%
+  summarise(Vic_OSM_metros = sum(metros, na.rm=TRUE),
+            Vic_OSM_qtde = n())
+
+# Join com base municipal
+resultado <- merge(SHPMUN, DER_resumo, by="Cod_ibge", all.x=TRUE)
+resultado <- merge(resultado, OSM_resumo, by="Cod_ibge", all.x=TRUE)
+
+# Exportação
+write_xlsx(resultado, "_06_Comparacao_DER_vs_OSM.xlsx")</code></pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Resultados Comparativos</h2>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-value">155.273 km</span>
+                    <span class="stat-label">Vicinais OSM (agregado)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value">25.919 km</span>
+                    <span class="stat-label">Vicinais DER (oficial)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value">6,0x</span>
+                    <span class="stat-label">Razão OSM/DER</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value">644</span>
+                    <span class="stat-label">Municípios com dados OSM</span>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">Arquivo Resultante:</h3>
+            <p class="section-content"><code>06_Comparacao_DER_vs_OSM_analise.xlsx</code> com 645 linhas (municípios) e colunas:</p>
+            <ul class="section-content" class="list-spaced">
+                <li><strong>Identificação:</strong> Cod_ibge, Municipio, GID_RA, RA, Area_Km2</li>
+                <li><strong>DER:</strong> Vic_DER_metros, Vic_DER_qtde</li>
+                <li><strong>OSM:</strong> Vic_OSM_metros, Vic_OSM_qtde</li>
+                <li><strong>Derivados:</strong> Razão DER/OSM, Densidades por km²</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Comparação de Metodologias</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>Metodologia Principal</th>
+                            <th>Metodologia Silvio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Buffer DER</strong></td>
+                            <td>15m</td>
+                            <td>60-100m (interativo)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Threshold</strong></td>
+                            <td>&gt; 50% overlap</td>
+                            <td>Intersect espacial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Faces Logradouro</strong></td>
+                            <td>Não utilizado</td>
+                            <td>Buffer 10m + intersect</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Filtro Highway</strong></td>
+                            <td>Tipos específicos + regex</td>
+                            <td>Via intersect (todos)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Saída</strong></td>
+                            <td>Segmentos (GeoPackage)</td>
+                            <td>Agregado por município (Excel)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Resultado OSM</strong></td>
+                            <td>122.243 km</td>
+                            <td>155.273 km</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Diferença</strong></td>
+                            <td>-</td>
+                            <td>+27% (mais inclusivo)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-success mt-2">
+                <strong>Validação Cruzada:</strong> Ambas as metodologias convergem para ordem de grandeza similar (122-155 mil km), confirmando robustez dos resultados.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Vantagens e Limitações</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">Vantagens</h4>
+                    <div class="card-content">
+                        <ul class="list-tight">
+                            <li>Usa Faces Logradouro (censo 2022)</li>
+                            <li>Agregação facilita análise regional</li>
+                            <li>Comparação direta DER vs OSM</li>
+                            <li>Divisão por RA (SEADE)</li>
+                            <li>Formato Excel acessível</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Limitações</h4>
+                    <div class="card-content">
+                        <ul class="list-tight">
+                            <li>Buffer DER maior pode excluir vicinais paralelas</li>
+                            <li>Perde geometria individual dos segmentos</li>
+                            <li>Não calcula conectividade com SRE</li>
+                            <li>Processamento mais lento (múltiplos intersects)</li>
+                            <li>Dependência de QGIS para etapas iniciais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Estudo de Malha Viária Vicinal - Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: OpenStreetMap (Geofabrik) | IBGE | DER/SP</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologia - Estudo de Vicinais SP</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">
+                <span class="icon icon-map"></span>
+                Estudo de Malha Viária Vicinal - Estado de São Paulo
+            </h1>
+            <p class="header-subtitle">Análise comparativa da malha rodoviária vicinal: OpenStreetMap vs. DER/SP</p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="metodologia.html" class="nav-link active">Metodologia</a></li>
+                <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
+                <li class="nav-item"><a href="processamento.html" class="nav-link">Processamento</a></li>
+                <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia Silvio</a></li>
+                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <h1 class="page-title">Metodologia Principal</h1>
+        <p class="page-subtitle">Pipeline completo de processamento e análise da malha vicinal</p>
+
+        <!-- VISÃO GERAL -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon icon-settings"></span>
+                Visão Geral do Pipeline
+            </h2>
+            
+            <div class="section-content">
+                <p>O estudo utiliza um pipeline de processamento sequencial composto por 5 etapas principais, que transformam os dados brutos do OpenStreetMap em uma malha vicinal refinada e validada.</p>
+                
+                <div class="alert alert-info">
+                    <strong>Objetivo:</strong> Identificar e caracterizar estradas vicinais não catalogadas oficialmente, excluindo vias urbanas, rodovias estaduais/federais e áreas já cobertas pelo DER.
+                </div>
+            </div>
+
+            <div class="cards-grid mt-2">
+                <div class="card">
+                    <h3 class="card-title">Etapa 1</h3>
+                    <div class="card-content">
+                        <strong>Extração OSM</strong><br>
+                        Conversão PBF → GeoPackage<br>
+                        804.868 features iniciais
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Etapa 2</h3>
+                    <div class="card-content">
+                        <strong>Filtros Atributos</strong><br>
+                        Highway, ref, name<br>
+                        123.950 features (redução 84,6%)
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Etapa 3</h3>
+                    <div class="card-content">
+                        <strong>Exclusão Urbana</strong><br>
+                        Áreas IBGE 2019<br>
+                        100.879 features
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Etapa 4</h3>
+                    <div class="card-content">
+                        <strong>Subtração DER</strong><br>
+                        Buffer 15m + overlap &gt;50%<br>
+                        95.177 features
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Etapa 5</h3>
+                    <div class="card-content">
+                        <strong>Conectividade SRE</strong><br>
+                        Buffer 50m<br>
+                        16.647 conectadas
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRITÉRIOS DE SELEÇÃO -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon icon-filter"></span>
+                Critérios de Seleção
+            </h2>
+
+            <h3 class="section-subtitle">1. Filtro por Tipo de Highway</h3>
+            <div class="section-content">
+                <p>São considerados apenas os seguintes tipos de vias:</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tipo Highway</th>
+                                <th>Descrição</th>
+                                <th>Justificativa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>unclassified</code></td>
+                                <td>Estradas não classificadas</td>
+                                <td>Categoria principal de vicinais no OSM</td>
+                            </tr>
+                            <tr>
+                                <td><code>tertiary</code></td>
+                                <td>Estradas terciárias</td>
+                                <td>Conectividade regional secundária</td>
+                            </tr>
+                            <tr>
+                                <td><code>secondary</code></td>
+                                <td>Estradas secundárias</td>
+                                <td>Algumas podem ser vicinais importantes</td>
+                            </tr>
+                            <tr>
+                                <td><code>primary</code></td>
+                                <td>Estradas primárias</td>
+                                <td>Verificação de vicinais principais</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="alert alert-warning mt-2">
+                    <strong>Exclusões:</strong> São excluídos tipos urbanos (residential, service, living_street), trilhas (track, path, footway) e vias especializadas (motorway, trunk, cycleway).
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">2. Filtro por Referência (ref)</h3>
+            <div class="section-content">
+                <p>Padrões de exclusão para evitar rodovias estaduais/federais:</p>
+                <pre><code># Excluir rodovias BR e SP (exceto municipais)
+EXCLUI: ref contém "BR-" ou "BR " (rodovias federais)
+EXCLUI: ref contém "SP-" (rodovias estaduais)
+MANTÉM: ref contém "SPA-", "SPI-", "SPM-" (municipais paulistas)
+
+# Exemplos
+"BR-116" → EXCLUÍDO
+"SP-348" → EXCLUÍDO
+"SPM-123" → MANTIDO
+"SPA-045" → MANTIDO</code></pre>
+            </div>
+
+            <h3 class="section-subtitle">3. Filtro por Nome (name)</h3>
+            <div class="section-content">
+                <p>Exclusão de nomes que indicam contexto urbano:</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Padrão</th>
+                                <th>Exemplos</th>
+                                <th>Motivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rua*</td>
+                                <td>"Rua das Flores"</td>
+                                <td>Via urbana típica</td>
+                            </tr>
+                            <tr>
+                                <td>Avenida*</td>
+                                <td>"Avenida Paulista"</td>
+                                <td>Via urbana principal</td>
+                            </tr>
+                            <tr>
+                                <td>Alameda*</td>
+                                <td>"Alameda Santos"</td>
+                                <td>Via urbana planejada</td>
+                            </tr>
+                            <tr>
+                                <td>Travessa*</td>
+                                <td>"Travessa João"</td>
+                                <td>Via urbana secundária</td>
+                            </tr>
+                            <tr>
+                                <td>Praça*</td>
+                                <td>"Praça da Sé"</td>
+                                <td>Espaço urbano</td>
+                            </tr>
+                            <tr>
+                                <td>Viela*</td>
+                                <td>"Viela São José"</td>
+                                <td>Via urbana estreita</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXCLUSÃO ÁREAS URBANAS -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon icon-layers"></span>
+                Exclusão de Áreas Urbanas
+            </h2>
+            
+            <div class="section-content">
+                <p>Utiliza o dataset oficial de <strong>Áreas Urbanizadas IBGE 2019</strong> para remover segmentos dentro do perímetro urbano.</p>
+                
+                <h3 class="section-subtitle">Procedimento:</h3>
+                <ol class="list-spaced">
+                    <li><strong>Carregamento:</strong> 24.186 polígonos de áreas urbanas do Estado de SP</li>
+                    <li><strong>Intersecção Espacial:</strong> Identifica segmentos que cruzam ou estão contidos em áreas urbanas</li>
+                    <li><strong>Remoção:</strong> Elimina 23.071 segmentos (18,6% do total filtrado)</li>
+                    <li><strong>Resultado:</strong> 100.879 segmentos rurais mantidos</li>
+                </ol>
+
+                <div class="stats-container mt-2">
+                    <div class="stat-box">
+                        <span class="stat-value">24.186</span>
+                        <span class="stat-label">Polígonos urbanos IBGE</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">23.071</span>
+                        <span class="stat-label">Segmentos removidos</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">18,6%</span>
+                        <span class="stat-label">Taxa de exclusão</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">124.098</span>
+                        <span class="stat-label">km remanescentes</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBTRAÇÃO MALHA DER -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon icon-link"></span>
+                Subtração da Malha DER
+            </h2>
+            
+            <div class="section-content">
+                <p>Remove segmentos que coincidem com a malha rodoviária oficial do DER/SP para evitar dupla contagem.</p>
+                
+                <h3 class="section-subtitle">Parâmetros Técnicos:</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Valor</th>
+                                <th>Justificativa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Buffer DER</strong></td>
+                                <td>15 metros</td>
+                                <td>Tolerância para imprecisões de GPS e diferenças de traçado</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Threshold Overlap</strong></td>
+                                <td>&gt; 50%</td>
+                                <td>Segmento removido apenas se maioria coincide com DER</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CRS</strong></td>
+                                <td>EPSG:31983 (SIRGAS 2000 UTM 23S)</td>
+                                <td>Cálculos métricos precisos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="section-subtitle">Algoritmo:</h3>
+                <pre><code>1. Reprojetar OSM e DER para UTM 23S
+2. Criar buffer de 15m ao redor de cada linha DER
+3. Dissolver buffers overlapping
+4. Para cada segmento OSM:
+   a. Calcular comprimento total (L_total)
+   b. Intersectar com buffer DER
+   c. Calcular comprimento dentro do buffer (L_buffer)
+   d. Calcular percentual: P = L_buffer / L_total
+   e. Se P > 0.5: REMOVER
+   f. Senão: MANTER
+5. Salvar segmentos mantidos</code></pre>
+
+                <h3 class="section-subtitle">Resultados:</h3>
+                <div class="stats-container mt-2">
+                    <div class="stat-box">
+                        <span class="stat-value">5.702</span>
+                        <span class="stat-label">Segmentos removidos</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">95.177</span>
+                        <span class="stat-label">Segmentos mantidos</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">5,7%</span>
+                        <span class="stat-label">Taxa de sobreposição</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">122.243</span>
+                        <span class="stat-label">km finais (vicinais)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANÁLISE DE CONECTIVIDADE -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon icon-link"></span>
+                Análise de Conectividade com SRE
+            </h2>
+            
+            <div class="section-content">
+                <p>Identifica vicinais conectadas diretamente ao Sistema Rodoviário Estadual/Federal (SRE) para validação e priorização.</p>
+                
+                <h3 class="section-subtitle">Método:</h3>
+                <ol class="list-spaced">
+                    <li><strong>Carregamento SRE:</strong> Malha de rodovias estaduais (SP-*) e federais (BR-*)</li>
+                    <li><strong>Buffer 50m:</strong> Zona de influência ao redor do SRE</li>
+                    <li><strong>Intersecção:</strong> Identificar vicinais que tocam ou cruzam o buffer</li>
+                    <li><strong>Classificação:</strong>
+                        <ul class="list-compact">
+                            <li><code>conectada=1</code>: Vicinal conecta diretamente ao SRE</li>
+                            <li><code>conectada=0</code>: Vicinal isolada ou conecta apenas a outras vicinais</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="alert alert-success mt-2">
+                    <strong>Resultado:</strong> 16.647 segmentos vicinais (17,5%) conectam diretamente ao SRE, totalizando 16.859 km de extensão com acesso à malha principal.
+                </div>
+
+                <h3 class="section-subtitle">Distribuição:</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Segmentos</th>
+                                <th>%</th>
+                                <th>Extensão (km)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Conectadas ao SRE</strong></td>
+                                <td>16.647</td>
+                                <td>17,5%</td>
+                                <td>16.859</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Não conectadas</strong></td>
+                                <td>78.530</td>
+                                <td>82,5%</td>
+                                <td>105.384</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TOTAL</strong></td>
+                                <td>95.177</td>
+                                <td>100%</td>
+                                <td>122.243</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FERRAMENTAS E TECNOLOGIAS -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon icon-settings"></span>
+                Ferramentas e Tecnologias
+            </h2>
+            
+            <div class="section-content">
+                <h3 class="section-subtitle">Software:</h3>
+                <ul class="list-spaced">
+                    <li><strong>Python 3.x:</strong> Linguagem principal de processamento</li>
+                    <li><strong>GeoPandas:</strong> Manipulação de dados geoespaciais</li>
+                    <li><strong>Shapely:</strong> Operações geométricas</li>
+                    <li><strong>RTree:</strong> Indexação espacial para performance</li>
+                    <li><strong>Osmium:</strong> Leitura eficiente de arquivos PBF</li>
+                    <li><strong>QGIS:</strong> Visualização e validação</li>
+                </ul>
+
+                <h3 class="section-subtitle">Formatos de Dados:</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Formato</th>
+                                <th>Uso</th>
+                                <th>Vantagens</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>PBF</strong></td>
+                                <td>Entrada OSM</td>
+                                <td>Compacto, rápido, formato nativo OSM</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GeoPackage</strong></td>
+                                <td>Processamento</td>
+                                <td>Padrão OGC, suporta CRS, indexação espacial</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shapefile</strong></td>
+                                <td>Compatibilidade</td>
+                                <td>Amplamente suportado, interoperabilidade</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Parquet</strong></td>
+                                <td>Análises</td>
+                                <td>Colunar, compressão eficiente, rápido</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="section-subtitle">Scripts Principais:</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Script</th>
+                                <th>Função</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>converter_pbf_gpkg.py</code></td>
+                                <td>Conversão PBF → GeoPackage</td>
+                            </tr>
+                            <tr>
+                                <td><code>extrair_malha_municipal.py</code></td>
+                                <td>Filtros de atributos (highway, ref, name)</td>
+                            </tr>
+                            <tr>
+                                <td><code>filtro_area_urbana.py</code></td>
+                                <td>Exclusão de áreas urbanas IBGE</td>
+                            </tr>
+                            <tr>
+                                <td><code>refinar_subtrair_der.py</code></td>
+                                <td>Subtração malha DER (buffer + threshold)</td>
+                            </tr>
+                            <tr>
+                                <td><code>refinamento_conectividade.py</code></td>
+                                <td>Análise de conectividade com SRE</td>
+                            </tr>
+                            <tr>
+                                <td><code>extrair_pbf_subtrair_der.py</code></td>
+                                <td>Pipeline alternativo (direto do PBF)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALIDAÇÃO -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon icon-check"></span>
+                Validação da Metodologia
+            </h2>
+            
+            <div class="section-content">
+                <h3 class="section-subtitle">Controles de Qualidade:</h3>
+                <ul class="list-spaced">
+                    <li><strong>Verificação de CRS:</strong> Garantia de sistema de coordenadas consistente em todas as etapas</li>
+                    <li><strong>Validação Geométrica:</strong> Remoção de geometrias inválidas (self-intersection, empty)</li>
+                    <li><strong>Estatísticas Progressivas:</strong> Relatórios detalhados após cada etapa de processamento</li>
+                    <li><strong>Inspeção Visual:</strong> Amostragem em QGIS para validação qualitativa</li>
+                    <li><strong>Comparação DER:</strong> Verificação de ordem de grandeza com cadastro oficial</li>
+                </ul>
+
+                <h3 class="section-subtitle">Limitações Conhecidas:</h3>
+                <div class="alert alert-warning">
+                    <ul class="list-tight">
+                        <li><strong>Completude OSM:</strong> Depende do mapeamento colaborativo (variável por região)</li>
+                        <li><strong>Atualidade:</strong> Snapshot de 11/11/2025 (pode haver mudanças posteriores)</li>
+                        <li><strong>Classificação Highway:</strong> Inconsistências na categorização por mapeadores</li>
+                        <li><strong>Buffer DER:</strong> Valor de 15m é aproximado (pode haver falsos positivos/negativos)</li>
+                        <li><strong>Áreas Urbanas:</strong> Perímetro IBGE 2019 pode não refletir expansão recente</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Estudo de Malha Viária Vicinal - Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: OpenStreetMap (Geofabrik) | IBGE | DER/SP</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

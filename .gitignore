@@ -27,6 +27,8 @@ env/
 # Dados grandes (GeoJSON e GeoPackage)
 app_web/data/*.geojson
 app_web/data/*.gpkg
+docs/data/*.geojson
+docs/data/*.gpkg
 
 # Dados processados (GPKG grandes)
 resultados/dados_processados/*.gpkg
