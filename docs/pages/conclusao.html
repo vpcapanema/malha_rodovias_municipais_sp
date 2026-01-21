@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusão - Inferência Geoespacial</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">
+                <span class="icon icon-map"></span>
+                Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo
+            </h1>
+            <p class="header-subtitle">Base estimada: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE)</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
+                <li class="nav-item"><a href="conclusao.html" class="nav-link active">Conclusão</a></li>
+                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1 class="page-title">Conclusão</h1>
+        <p class="page-subtitle">Síntese técnica, reafirmação do problema e consolidação dos achados</p>
+
+        <section class="section">
+            <h2 class="section-title">Reafirmação do Tema</h2>
+            <div class="section-content">
+                <p>Este estudo demonstrou que a inferência geoespacial aplicada à malha vicinal paulista é viável e indispensável para o PLI/SP. A integração de dados colaborativos (OSM) com bases oficiais (DER/SP, IBGE, SEADE) produziu uma estimativa reprodutível e auditável da rede municipal, preenchendo a lacuna informacional que impedia diagnósticos logísticos em escala estadual.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Objetivos Revisitados</h2>
+            <div class="section-content">
+                <ul class="list-spaced">
+                    <li>Construir uma base geoespacial minimamente aderente da malha vicinal paulista, com filtros explícitos e rastreáveis.</li>
+                    <li>Comparar cobertura e densidade entre OSM e DER/SP para qualificar subnotificação e variabilidade regional.</li>
+                    <li>Fornecer insumos para priorização de atualização cadastral e planejamento de investimentos rodoviários.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Achados Principais</h2>
+            <div class="section-content">
+                <details open>
+                    <summary><strong>1. Divergência estrutural OSM/DER</strong></summary>
+                    <ul class="list-spaced mt-1">
+                        <li>OSM mapeia ~122 mil km de vicinais versus 25,9 mil km no cadastro DER (razão ~4,7×).</li>
+                        <li>Razão permanece estável nas 16 RAs (4,5–7,1×), indicando subnotificação sistemática e não local.</li>
+                        <li>Risco: políticas públicas baseadas apenas no cadastro oficial subdimensionam a malha municipal.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary><strong>2. Cobertura e densidade</strong></summary>
+                    <ul class="list-spaced mt-1">
+                        <li>645 municípios com geometria OSM; 637 com registro DER, mostrando lacunas formais.</li>
+                        <li>Densidade média OSM: 4.920 km/10.000 km²; DER: 1.040 km/10.000 km².</li>
+                        <li>64,7% dos municípios têm &lt;50 km cadastrados no DER, sugerindo viés de subamostragem.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary><strong>3. Viés urbano removido com filtros espaciais</strong></summary>
+                    <ul class="list-spaced mt-1">
+                        <li>Exclusão de áreas urbanas (IBGE 2019) e faces de logradouro (Censo 2022) evitou inflar a malha com vias intraurbanas.</li>
+                        <li>Buffer sobre rede estadual (DER) removeu paralelismos e duplicidades, preservando apenas vicinais genuínas.</li>
+                        <li>Resultado: malha estimada aderente ao conceito de rede municipal rural, com redução de ruído.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary><strong>4. Potencial de uso do OSM</strong></summary>
+                    <ul class="list-spaced mt-1">
+                        <li>OSM apresenta completude espacial e granularidade suficientes para suportar planejamento estadual.</li>
+                        <li>Com validação cruzada por RA e métricas estáveis, OSM pode guiar campanhas de campo e atualização do cadastro oficial.</li>
+                        <li>Recomendação: adotar OSM como fonte complementar sistemática no ciclo de manutenção do DER/SP.</li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Próximos Passos</h2>
+            <div class="section-content">
+                <ul class="list-spaced">
+                    <li>Priorizar inspeções de campo em RAs com razão OSM/DER &gt; 6× e municípios com densidade oficial &lt; 50 km.</li>
+                    <li>Integrar o fluxo de validação OSM ao ciclo de atualização cadastral do DER/SP, com publicação periódica.</li>
+                    <li>Expandir a metodologia para outros estados, mantendo filtros urbanos e subtração da rede estadual.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE/IBGE)</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
