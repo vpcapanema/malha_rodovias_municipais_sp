@@ -1,0 +1,24 @@
+1. OSM - Análise
+
+1.a) extração e tratamento (seleção e deleção de vetores de linha de transmissão de energia) base osm - clip estado são Paulo.
+1.b) intersect base osm com malha de municípios da fundação seade  (região administrativa)
+1.c) intersect com aglomerados urbanos (shape IBGE 2019); 
+1.d) saída: malha osm com atributos do seade  e aglomerados urbanos ibge
+
+2. LOGRADOURO - IBGE censo 2022 (face logradouro)
+2.a) buffer 10m de cada linha e dissolve para limpar;
+2.b) intersect do buffer tratado com 1.d;
+2.b1) saída=buffer logradouro dissolvido 
+2.c) buffer da malha do DER (definição interativa da distancia (60m)); 
+2.d) intersect 2.b1 + 2.c
+
+
+3. INTERSECT final:
+3.a) intersetc de 1.d + 2.d;
+
+definições:
+
+Para que seja considerada a possibilidade de ser malha vicinal deve: 
+sobreposição com 1.c = false;
+sobreposição com 2.b1 = false;
+sobreposição com 2.c = true;

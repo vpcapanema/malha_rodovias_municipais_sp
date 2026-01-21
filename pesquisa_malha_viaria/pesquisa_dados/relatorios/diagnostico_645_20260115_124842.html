@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagnóstico - Pesquisa Malha Viária SP (645 Municípios IBGE)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-box { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat-box.success { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .stat-box.warning { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .stat-box.info { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .stat-value { font-size: 2.5em; font-weight: bold; }
+        .stat-label { font-size: 0.9em; opacity: 0.9; }
+        .progress-bar { background: #ecf0f1; border-radius: 10px; height: 30px; margin: 20px 0; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #11998e, #38ef7d); height: 100%; transition: width 0.5s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #3498db; color: white; }
+        tr:hover { background: #f5f5f5; }
+        .status-ok { color: #27ae60; font-weight: bold; }
+        .status-fail { color: #e74c3c; }
+        .fonte { background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗺️ Diagnóstico - Pesquisa Malha Viária Municipal SP</h1>
+        
+        <div class="fonte">
+            <strong>📊 Fonte Oficial:</strong> IBGE - Instituto Brasileiro de Geografia e Estatística<br>
+            <strong>🔢 Total de Municípios:</strong> 645 (lista completa oficial)
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 100.0%">100.0% Concluído (645/645)</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value">645</div>
+                <div class="stat-label">Municípios Processados</div>
+            </div>
+            <div class="stat-box info">
+                <div class="stat-value">1935</div>
+                <div class="stat-label">Total de Buscas</div>
+            </div>
+            <div class="stat-box success">
+                <div class="stat-value">1271</div>
+                <div class="stat-label">Acessos com Sucesso</div>
+            </div>
+            <div class="stat-box warning">
+                <div class="stat-value">387</div>
+                <div class="stat-label">Com Dados Encontrados</div>
+            </div>
+        </div>
+        
+        <h2>📈 Estatísticas</h2>
+        <ul>
+            <li><strong>Taxa de Sucesso:</strong> 65.7%</li>
+            <li><strong>Buscas por Município:</strong> 3 (site oficial, portal dados, secretaria obras)</li>
+            <li><strong>Início:</strong> 2026-01-15T12:21:43.693095</li>
+        </ul>
+        
+        <h2>📋 Resultados por Município</h2>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Município</th>
+                <th>Status</th>
+                <th>Termos Encontrados</th>
+            </tr>
+
+            <tr>
+                <td>596</td>
+                <td>Tapiraí</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>597</td>
+                <td>Tapiratiba</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS</td>
+            </tr>
+
+            <tr>
+                <td>598</td>
+                <td>Taquaral</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>599</td>
+                <td>Taquaritinga</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>600</td>
+                <td>Taquarituba</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>601</td>
+                <td>Taquarivaí</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>602</td>
+                <td>Tarabai</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, dados abertos</td>
+            </tr>
+
+            <tr>
+                <td>603</td>
+                <td>Tarumã</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS</td>
+            </tr>
+
+            <tr>
+                <td>604</td>
+                <td>Tatuí</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS</td>
+            </tr>
+
+            <tr>
+                <td>605</td>
+                <td>Taubaté</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>606</td>
+                <td>Tejupá</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS</td>
+            </tr>
+
+            <tr>
+                <td>607</td>
+                <td>Teodoro Sampaio</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>608</td>
+                <td>Terra Roxa</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>609</td>
+                <td>Tietê</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>610</td>
+                <td>Timburi</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG, gpkg</td>
+            </tr>
+
+            <tr>
+                <td>611</td>
+                <td>Torre de Pedra</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, dados abertos, SIG</td>
+            </tr>
+
+            <tr>
+                <td>612</td>
+                <td>Torrinha</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, dados abertos, SIG</td>
+            </tr>
+
+            <tr>
+                <td>613</td>
+                <td>Trabiju</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>614</td>
+                <td>Tremembé</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>615</td>
+                <td>Três Fronteiras</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>616</td>
+                <td>Tuiuti</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>617</td>
+                <td>Tupã</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>618</td>
+                <td>Tupi Paulista</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>619</td>
+                <td>Turiúba</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>620</td>
+                <td>Turmalina</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>621</td>
+                <td>Ubarana</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>622</td>
+                <td>Ubatuba</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>623</td>
+                <td>Ubirajara</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>624</td>
+                <td>Uchoa</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS</td>
+            </tr>
+
+            <tr>
+                <td>625</td>
+                <td>União Paulista</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>626</td>
+                <td>Urânia</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>627</td>
+                <td>Uru</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS</td>
+            </tr>
+
+            <tr>
+                <td>628</td>
+                <td>Urupês</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>629</td>
+                <td>Valentim Gentil</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>630</td>
+                <td>Valinhos</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>631</td>
+                <td>Valparaíso</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>632</td>
+                <td>Vargem</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>633</td>
+                <td>Vargem Grande do Sul</td>
+                <td class="status-fail">inacessivel</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>634</td>
+                <td>Vargem Grande Paulista</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>635</td>
+                <td>Várzea Paulista</td>
+                <td class="status-fail">inacessivel</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>636</td>
+                <td>Vera Cruz</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>637</td>
+                <td>Vinhedo</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>638</td>
+                <td>Viradouro</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS</td>
+            </tr>
+
+            <tr>
+                <td>639</td>
+                <td>Vista Alegre do Alto</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS</td>
+            </tr>
+
+            <tr>
+                <td>640</td>
+                <td>Vitória Brasil</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>641</td>
+                <td>Votorantim</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>642</td>
+                <td>Votuporanga</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>643</td>
+                <td>Zacarias</td>
+                <td class="status-ok">acessado</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>644</td>
+                <td>Chavantes</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+            <tr>
+                <td>645</td>
+                <td>Estiva Gerbi</td>
+                <td class="status-ok">dados_encontrados</td>
+                <td>GIS, SIG</td>
+            </tr>
+
+        </table>
+        
+        <p style="margin-top: 30px; color: #7f8c8d; text-align: center;">
+            Gerado em: 15/01/2026 12:48:42 | Fonte: IBGE
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+# 🚀 GUIA RÁPIDO DE USO
+
+## ⚡ Início Rápido (1 minuto)
+
+```bash
+# 1. Entrar no diretório
+cd D:\ESTUDO_VICINAIS_V2\pesquisa_malha_viaria
+
+# 2. EXECUTAR PESQUISA COMPLETA (opção recomendada)
+python PESQUISA_COMPLETA_645.py
+
+# 3. Enquanto roda, em outro terminal, monitorar:
+python monitorar_progresso.py
+
+# 4. Ver relatório atual:
+python gerar_relatorio_atual.py
+```
+
+## 📊 Visualizar Resultados
+
+Abrir arquivo: `pesquisa_dados/relatorios/diagnostico_ATUAL.html`
+
+## 📁 Estrutura de Saída
+
+```
+pesquisa_malha_viaria/
+├── pesquisa_dados/
+│   ├── progresso/
+│   │   └── progresso.json          ← Dados principais aqui
+│   ├── relatorios/
+│   │   └── diagnostico_ATUAL.html  ← Abrir no navegador
+│   ├── dados_encontrados/          ← Dados baixados aqui
+│   └── logs/
+└── [scripts]
+```
+
+## 📈 O Que Esperar
+
+```
+[  1/645] ✓ Adamantina
+[  2/645] ✗ Adolfo
+...
+[ 10/645] ✓ Anhembi              | Sucesso: 8.7%
+...
+[645/645] ✓ [Último município]    | Sucesso: XX.X%
+
+✓ Taxa de Sucesso: XX.X%
+✓ Municípios com Dados: XX
+```
+
+## ⏸️ Se Interromper
+
+Basta executar novamente:
+```bash
+python PESQUISA_COMPLETA_645.py
+```
+
+Retomará de onde parou! ✓
+
+## 🎯 Tempo Estimado
+
+- **Pesquisa Completa**: 20-30 minutos
+- **Processamento**: ~50 municípios/minuto
+- **Relatório Final**: Automático ao terminar
+
+## 💡 Dicas
+
+1. Deixe rodando em background
+2. Monitore com `monitorar_progresso.py`
+3. Atualize relatório com `gerar_relatorio_atual.py`
+4. Resultados salvos em `pesquisa_dados/progresso/progresso.json`
+
+## ❓ Perguntas Frequentes
+
+**P: Pode deixar rodando?**  
+R: Sim! Sistema salva progresso a cada 10 municípios
+
+**P: Quanto tempo leva?**  
+R: ~20-30 minutos para os 645 municípios
+
+**P: E se cair?**  
+R: Execute novamente - retoma automaticamente
+
+**P: Aonde estão os dados?**  
+R: `pesquisa_dados/progresso/progresso.json` e `pesquisa_dados/relatorios/`
+
+---
+
+✅ **Tudo Pronto! Execute: `python PESQUISA_COMPLETA_645.py`**

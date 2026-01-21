@@ -1,0 +1,1903 @@
+{
+  "total_municipios": 50,
+  "total_buscas": 200,
+  "sucesso": 41,
+  "falha": 159,
+  "dados_encontrados": 15,
+  "resultados": [
+    {
+      "id": 1,
+      "nome": "Adamantina",
+      "timestamp": "2026-01-15T12:03:15.933417",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://adamantina.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://adamantina.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://adamantina.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://adamantina.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 2,
+      "nome": "Adolfo",
+      "timestamp": "2026-01-15T12:03:17.621751",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://adolfo.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://adolfo.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://adolfo.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://adolfo.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 3,
+      "nome": "Aguaí",
+      "timestamp": "2026-01-15T12:03:22.205819",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aguai.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS"
+          ]
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aguai.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aguai.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aguai.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 4,
+      "nome": "Águas de Lindóia",
+      "timestamp": "2026-01-15T12:03:26.321313",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aguas-de-lindoia.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aguas-de-lindoia.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aguas-de-lindoia.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aguas-de-lindoia.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 5,
+      "nome": "Águas de Santa Bárbara",
+      "timestamp": "2026-01-15T12:03:27.553940",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aguas-de-santa-barbara.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aguas-de-santa-barbara.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aguas-de-santa-barbara.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aguas-de-santa-barbara.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 6,
+      "nome": "Águas de São Pedro",
+      "timestamp": "2026-01-15T12:03:28.781194",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aguas-de-sao-pedro.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aguas-de-sao-pedro.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aguas-de-sao-pedro.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aguas-de-sao-pedro.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 7,
+      "nome": "Agudos",
+      "timestamp": "2026-01-15T12:03:30.028448",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://agudos.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://agudos.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://agudos.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://agudos.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 8,
+      "nome": "Aiaçaba",
+      "timestamp": "2026-01-15T12:03:32.842238",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aiacaba.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aiacaba.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aiacaba.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aiacaba.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 9,
+      "nome": "Alagoa",
+      "timestamp": "2026-01-15T12:03:34.068195",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alagoa.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alagoa.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alagoa.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alagoa.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 10,
+      "nome": "Alarcellos",
+      "timestamp": "2026-01-15T12:03:35.297787",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alarcellos.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alarcellos.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alarcellos.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alarcellos.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 11,
+      "nome": "Álcalis",
+      "timestamp": "2026-01-15T12:03:36.526079",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alcalis.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alcalis.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alcalis.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alcalis.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 12,
+      "nome": "Alfredo Marcondes",
+      "timestamp": "2026-01-15T12:03:37.747463",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alfredo-marcondes.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alfredo-marcondes.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alfredo-marcondes.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alfredo-marcondes.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 13,
+      "nome": "Alhinópolis",
+      "timestamp": "2026-01-15T12:03:38.975388",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alhinopolis.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alhinopolis.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alhinopolis.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alhinopolis.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 14,
+      "nome": "Alhandra",
+      "timestamp": "2026-01-15T12:03:40.264079",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alhandra.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alhandra.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alhandra.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alhandra.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 15,
+      "nome": "Alméem",
+      "timestamp": "2026-01-15T12:03:41.500106",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://almeem.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://almeem.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://almeem.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://almeem.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 16,
+      "nome": "Almirante Tamandaré do Jaguari",
+      "timestamp": "2026-01-15T12:03:42.724799",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://almirante-tamandare-do-jaguari.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://almirante-tamandare-do-jaguari.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://almirante-tamandare-do-jaguari.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://almirante-tamandare-do-jaguari.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 17,
+      "nome": "Altair",
+      "timestamp": "2026-01-15T12:03:43.964922",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://altair.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://altair.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://altair.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://altair.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 18,
+      "nome": "Alterosa",
+      "timestamp": "2026-01-15T12:03:45.556598",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alterosa.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alterosa.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alterosa.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alterosa.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 19,
+      "nome": "Altinópolis",
+      "timestamp": "2026-01-15T12:03:46.790011",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://altinopolis.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://altinopolis.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://altinopolis.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://altinopolis.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 20,
+      "nome": "Alto Alegre",
+      "timestamp": "2026-01-15T12:03:48.700987",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alto-alegre.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alto-alegre.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alto-alegre.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alto-alegre.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 21,
+      "nome": "Alto do Ribeira",
+      "timestamp": "2026-01-15T12:03:49.924845",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alto-do-ribeira.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alto-do-ribeira.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alto-do-ribeira.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alto-do-ribeira.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 22,
+      "nome": "Álvares Florence",
+      "timestamp": "2026-01-15T12:03:51.159124",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alvares-florence.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alvares-florence.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alvares-florence.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alvares-florence.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 23,
+      "nome": "Álvares Machado",
+      "timestamp": "2026-01-15T12:03:52.379283",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alvares-machado.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alvares-machado.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alvares-machado.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alvares-machado.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 24,
+      "nome": "Alvarado",
+      "timestamp": "2026-01-15T12:03:53.600319",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alvarado.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alvarado.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alvarado.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alvarado.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 25,
+      "nome": "Álvaro de Carvalho",
+      "timestamp": "2026-01-15T12:03:54.825975",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alvaro-de-carvalho.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alvaro-de-carvalho.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alvaro-de-carvalho.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alvaro-de-carvalho.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 26,
+      "nome": "Alvinlândia",
+      "timestamp": "2026-01-15T12:03:56.049742",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://alvinlândia.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://alvinlândia.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://alvinlândia.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://alvinlândia.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 27,
+      "nome": "Americana",
+      "timestamp": "2026-01-15T12:03:57.295249",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://americana.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://americana.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://americana.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://americana.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 28,
+      "nome": "Américo Brasiliense",
+      "timestamp": "2026-01-15T12:03:58.664534",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://americo-brasiliense.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://americo-brasiliense.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://americo-brasiliense.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://americo-brasiliense.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 29,
+      "nome": "Américo de Campos",
+      "timestamp": "2026-01-15T12:03:59.898543",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://americo-de-campos.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://americo-de-campos.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://americo-de-campos.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://americo-de-campos.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 30,
+      "nome": "Amparo",
+      "timestamp": "2026-01-15T12:04:01.139224",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://amparo.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://amparo.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://amparo.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://amparo.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 31,
+      "nome": "Analândia",
+      "timestamp": "2026-01-15T12:04:04.794077",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://analândia.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://analândia.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://analândia.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://analândia.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 32,
+      "nome": "Andradina",
+      "timestamp": "2026-01-15T12:04:06.027281",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://andradina.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://andradina.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://andradina.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://andradina.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 33,
+      "nome": "Angatuba",
+      "timestamp": "2026-01-15T12:04:07.741730",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://angatuba.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://angatuba.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://angatuba.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://angatuba.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 34,
+      "nome": "Anguera",
+      "timestamp": "2026-01-15T12:04:10.338618",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://anguera.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://anguera.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://anguera.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://anguera.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 35,
+      "nome": "Anhembi",
+      "timestamp": "2026-01-15T12:04:11.569101",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://anhembi.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://anhembi.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://anhembi.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://anhembi.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 36,
+      "nome": "Anhumas",
+      "timestamp": "2026-01-15T12:04:13.080985",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://anhumas.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://anhumas.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://anhumas.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://anhumas.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 37,
+      "nome": "Anita Garibaldi",
+      "timestamp": "2026-01-15T12:04:14.577258",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://anita-garibaldi.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://anita-garibaldi.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://anita-garibaldi.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://anita-garibaldi.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 38,
+      "nome": "Ankunding",
+      "timestamp": "2026-01-15T12:04:15.801504",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://ankunding.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://ankunding.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://ankunding.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://ankunding.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 39,
+      "nome": "Antas",
+      "timestamp": "2026-01-15T12:04:17.031176",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://antas.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://antas.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://antas.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://antas.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 40,
+      "nome": "Antônio Dias",
+      "timestamp": "2026-01-15T12:04:18.262963",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://antônio-dias.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://antônio-dias.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://antônio-dias.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://antônio-dias.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 41,
+      "nome": "Antônio Sales",
+      "timestamp": "2026-01-15T12:04:19.487689",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://antônio-sales.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://antônio-sales.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://antônio-sales.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://antônio-sales.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 42,
+      "nome": "Aparecida",
+      "timestamp": "2026-01-15T12:04:20.713420",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aparecida.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aparecida.sp.gov.br/dados",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aparecida.sp.gov.br/open-data",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aparecida.sp.gov.br/secretaria-de-obras",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 43,
+      "nome": "Aparecida d'Oeste",
+      "timestamp": "2026-01-15T12:04:25.570212",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aparecida-d'oeste.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aparecida-d'oeste.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aparecida-d'oeste.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aparecida-d'oeste.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 44,
+      "nome": "Apiaí",
+      "timestamp": "2026-01-15T12:04:26.779266",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://apiai.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": true,
+          "dados_encontrados": [
+            "GIS",
+            "SIG"
+          ]
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://apiai.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://apiai.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://apiai.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 45,
+      "nome": "Araçaba",
+      "timestamp": "2026-01-15T12:04:30.856117",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aracaba.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aracaba.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aracaba.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aracaba.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 46,
+      "nome": "Araçatuba",
+      "timestamp": "2026-01-15T12:04:32.102002",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aracatuba.sp.gov.br",
+          "status": "sucesso",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aracatuba.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aracatuba.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aracatuba.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "acessado"
+    },
+    {
+      "id": 47,
+      "nome": "Araçoaba da Serra",
+      "timestamp": "2026-01-15T12:04:35.108172",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aracoaba-da-serra.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aracoaba-da-serra.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aracoaba-da-serra.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aracoaba-da-serra.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 48,
+      "nome": "Araçu",
+      "timestamp": "2026-01-15T12:04:36.340365",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aracu.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aracu.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aracu.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aracu.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 49,
+      "nome": "Aracuaí",
+      "timestamp": "2026-01-15T12:04:37.578279",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aracuai.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aracuai.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aracuai.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aracuai.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    },
+    {
+      "id": 50,
+      "nome": "Aracuá",
+      "timestamp": "2026-01-15T12:04:38.802894",
+      "buscas": [
+        {
+          "tipo": "site_oficial",
+          "url": "https://aracua.sp.gov.br",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados",
+          "url": "https://aracua.sp.gov.br/dados",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "portal_dados_alt",
+          "url": "https://aracua.sp.gov.br/open-data",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        },
+        {
+          "tipo": "secretaria_obras",
+          "url": "https://aracua.sp.gov.br/secretaria-de-obras",
+          "status": "falha",
+          "conteudo_encontrado": false,
+          "dados_encontrados": []
+        }
+      ],
+      "dados_encontrados": [],
+      "status": "pendente"
+    }
+  ]
+}

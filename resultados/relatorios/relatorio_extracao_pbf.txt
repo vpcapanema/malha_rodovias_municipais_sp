@@ -1,0 +1,54 @@
+RELATÓRIO DE EXTRAÇÃO PBF E SUBTRAÇÃO DER
+============================================================
+
+Data: 2026-01-15 01:05:54
+
+Arquivo PBF: D:\ESTUDO_VICINAIS_V2\dados\Base_OSM\sudeste-251111.osm.pbf
+
+Highways extraídas: 1,642,474
+Removidas (DER): 46,278
+Resultado final: 1,596,196
+
+Extensão total: 601,667.4 km
+
+Distribuição por highway:
+highway
+residential               734332
+service                   237465
+unclassified              193940
+tertiary                   85595
+track                      77303
+footway                    75171
+secondary                  58512
+primary                    26539
+path                       14664
+motorway_link              10572
+living_street              10259
+secondary_link              9424
+construction                9178
+trunk                       8253
+primary_link                7602
+motorway                    7451
+tertiary_link               6206
+steps                       5689
+trunk_link                  4979
+cycleway                    4194
+pedestrian                  2558
+proposed                    2150
+services                    1385
+busway                      1292
+raceway                      527
+corridor                     357
+platform                     273
+bus_stop                     128
+rest_area                     91
+bridleway                     59
+elevator                      17
+dummy                          9
+escape                         6
+emergency_bay                  5
+road                           5
+crossing                       3
+emergency_access_point         1
+ladder                         1
+garage                         1

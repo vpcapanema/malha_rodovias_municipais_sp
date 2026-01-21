@@ -1,0 +1,21 @@
+RELATÓRIO DE EXTRAÇÃO DA MALHA VIÁRIA MUNICIPAL
+============================================================
+
+Data: 2026-01-14 14:57:03
+
+Base Original: 804,868 registros
+Após Filtro Highway: 206,866 registros
+Após Filtro Referência: 195,775 registros
+Após Filtro Nomes Urbanos: 123,950 registros
+
+Extensão total: 126,176.8 km
+
+Distribuição por highway:
+highway
+unclassified      76458
+tertiary          17772
+secondary         12374
+primary_link       6058
+secondary_link     5364
+primary            3179
+tertiary_link      2745

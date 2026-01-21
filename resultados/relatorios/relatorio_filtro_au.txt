@@ -1,0 +1,21 @@
+RELATÓRIO DE FILTRO POR ÁREA URBANA IBGE
+============================================================
+
+Data: 2026-01-14 14:57:29
+
+Vias antes do filtro AU: 123,950
+Polígonos AU (SP): 24,186
+Vias removidas (dentro AU): 23,071
+Vias restantes (fora AU): 100,879
+
+Extensão final: 124,098.2 km
+
+Distribuição por highway:
+highway
+unclassified      72975
+tertiary          13157
+secondary          8246
+primary_link       2464
+secondary_link     1782
+primary            1569
+tertiary_link       686

@@ -1,0 +1,29 @@
+RELATÓRIO DE REFINAMENTO E CONECTIVIDADE
+============================================================
+
+Data: 2026-01-14 21:14:57
+
+SUBTRAÇÃO DA MALHA DER
+----------------------------------------
+Segmentos removidos (sobreposição >50%): 5,702
+Segmentos restantes: 95,177
+
+ANÁLISE DE CONECTIVIDADE
+----------------------------------------
+Diretamente conectados ao SRE: 16,647
+Não conectados diretamente: 78,530
+Extensão conectada: 20,842.8 km
+Extensão desconectada: 101,400.0 km
+
+DISTRIBUIÇÃO POR HIGHWAY
+----------------------------------------
+highway
+unclassified      71949
+tertiary          12289
+secondary          6616
+secondary_link     1345
+primary_link       1263
+primary            1083
+tertiary_link       632
+
+Extensão total: 122,242.8 km
