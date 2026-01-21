@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Espacial - Estudo de Vicinais SP</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../libs/leaflet/leaflet.css" />
+    <script src="../libs/leaflet/leaflet.js"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+        .legend {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        .legend div {
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        .info {
+            padding: 6px 8px;
+            background: white;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">
+                <span class="icon icon-map"></span>
+                Estudo de Malha Viária Vicinal - Estado de São Paulo
+            </h1>
+            <p class="header-subtitle">Análise comparativa da malha rodoviária vicinal: OpenStreetMap vs. DER/SP</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
+                <li class="nav-item"><a href="processamento.html" class="nav-link">Processamento</a></li>
+                <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                <li class="nav-item"><a href="mapas.html" class="nav-link active">Mapas</a></li>
+                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1 class="page-title">Análise Espacial e Mapas Temáticos</h1>
+        <p class="page-subtitle">Distribuição geográfica da malha vicinal no Estado de São Paulo</p>
+
+        <div class="alert alert-info">
+            <strong>🗺️ Estrutura dos Mapas:</strong> Esta seção apresenta os mapas coropléticos organizados em <strong>3 blocos sequenciais</strong>:
+            <ol class="list-compact mt-1">
+                <li><strong>Parte 1 - Mapas da Malha OSM:</strong> 4 mapas interativos da rede vicinal mapeada colaborativamente</li>
+                <li><strong>Parte 2 - Mapas da Malha DER:</strong> 4 mapas interativos da rede oficial cadastrada</li>
+                <li><strong>Parte 3 - Mapas Comparativos:</strong> Visualização das divergências OSM vs DER por município</li>
+            </ol>
+            💡 <strong>Interatividade:</strong> Passe o mouse sobre os municípios para ver detalhes. Clique para visualizar popup com informações completas.
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- PARTE 1: MAPAS DA MALHA OSM -->
+        <!-- ===================================================================== -->
+        <section class="section mt-2">
+            <h1 class="section-title section-title-osm">
+                📍 PARTE 1: Mapas da Malha Estimada (OpenStreetMap)
+            </h1>
+
+            <!-- MAPA 1: DENSIDADE TERRITORIAL OSM -->
+            <div class="section mt-2">
+                <h2 class="section-title">Mapa 1 - Densidade Territorial OSM (km/10.000 km²)</h2>
+                <p class="section-subtitle">Cobertura espacial: quantidade de vicinais por área territorial</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-blue-medium">
+                        <span class="stat-value">492 km/km²</span>
+                        <span class="stat-label">Densidade média estadual</span>
+                    </div>
+                    <div class="stat-box bg-blue-medium">
+                        <span class="stat-value">1.035 km/km²</span>
+                        <span class="stat-label">Máximo (RMSP)</span>
+                    </div>
+                    <div class="stat-box bg-blue-medium">
+                        <span class="stat-value">260 km/km²</span>
+                        <span class="stat-label">Mínimo (RA Registro)</span>
+                    </div>
+                </div>
+
+                <div id="mapa1" class="map-container"></div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Interpretação:</strong> Cores <strong>vermelhas</strong> indicam alta densidade territorial (>8.000 km/10.000km²), típica de municípios do interior com forte vocação agrícola. Cores <strong>azuis</strong> indicam baixa densidade (&lt;1.500), comum em regiões metropolitanas ou áreas de preservação.
+                </div>
+            </div>
+
+            <!-- MAPA 2: DENSIDADE PER CAPITA OSM -->
+            <div class="section mt-2">
+                <h2 class="section-title">Mapa 2 - Densidade per Capita OSM (km/10.000 hab)</h2>
+                <p class="section-subtitle">Disponibilidade de infraestrutura viária por habitante</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-blue-medium">
+                        <span class="stat-value">2,63 km/1000hab</span>
+                        <span class="stat-label">Disponibilidade média</span>
+                    </div>
+                    <div class="stat-box bg-blue-medium">
+                        <span class="stat-value">148,2 km/1000hab</span>
+                        <span class="stat-label">Máximo (Bora)</span>
+                    </div>
+                    <div class="stat-box bg-blue-medium">
+                        <span class="stat-value">0,04 km/1000hab</span>
+                        <span class="stat-label">Mínimo (São Paulo)</span>
+                    </div>
+                </div>
+
+                <div id="mapa2" class="map-container"></div>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Inversão Espacial:</strong> Municípios rurais de <strong>pequena população</strong> apresentam densidade per capita <strong>muito alta</strong> (cores escuras) - isso NÃO significa melhor infraestrutura, mas sim <strong>dispersão populacional</strong>. Poucos habitantes "compartilham" muitos quilômetros de vicinais necessários para acesso agrícola.
+                </div>
+            </div>
+
+            <!-- MAPA 3: RAZÃO OSM/DER -->
+            <div class="section mt-2">
+                <h2 class="section-title">Mapa 3 - Razão OSM/DER por Município</h2>
+                <p class="section-subtitle">Divergência entre malha mapeada (OSM) e cadastro oficial (DER)</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">4,7×</span>
+                        <span class="stat-label">Razão média estadual</span>
+                    </div>
+                    <div class="stat-box bg-red-light">
+                        <span class="stat-value">17,2×</span>
+                        <span class="stat-label">Máximo (Ituverava)</span>
+                    </div>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-value">3,5×</span>
+                        <span class="stat-label">Mínimo (Osasco)</span>
+                    </div>
+                </div>
+
+                <div id="mapa3" class="map-container"></div>
+
+                <div class="alert alert-danger">
+                    <strong>🚨 Divergências Críticas:</strong> Cores <strong>vermelhas escuras</strong> (>15×) indicam municípios onde o OSM mapeia <strong>mais de 15 vezes</strong> a extensão cadastrada no DER, sugerindo <strong>subnotificação severa</strong> ou ausência de dados oficiais.
+                </div>
+            </div>
+
+            <!-- MAPA 4: REGIÕES ADMINISTRATIVAS -->
+            <div class="section mt-2">
+                <h2 class="section-title">Mapa 4 - Densidade OSM por Região Administrativa</h2>
+                <p class="section-subtitle">Visão agregada das 16 Regiões Administrativas do Estado de SP</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-value">16 RAs</span>
+                        <span class="stat-label">Regiões Administrativas</span>
+                    </div>
+                    <div class="stat-box bg-blue-light">
+                        <span class="stat-value">1.035 km/km²</span>
+                        <span class="stat-label">RA com maior densidade (RMSP)</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">260 km/km²</span>
+                        <span class="stat-label">RA com menor densidade (Registro)</span>
+                    </div>
+                </div>
+
+                <div id="mapa4" class="map-container"></div>
+
+                <div class="alert alert-success">
+                    <strong>✓ Padrão Regional:</strong> <strong>RMSP e Campinas</strong> (áreas metropolitanas) apresentam alta densidade. <strong>Interior agrícola</strong> (Franca, Barretos, Ribeirão Preto) tem densidade moderada-alta. <strong>Vale do Ribeira</strong> (Registro) tem densidade muito baixa devido a topografia e restrições ambientais.
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- PARTE 2: MAPAS DA MALHA DER -->
+        <!-- ===================================================================== -->
+        <section class="section mt-2">
+            <h1 class="section-title section-title-der">
+                🏛️ PARTE 2: Mapas da Malha Oficial (DER/SP)
+            </h1>
+
+            <!-- MAPA 5: DENSIDADE TERRITORIAL DER -->
+            <div class="section mt-2">
+                <h2 class="section-title">Mapa 5 - Densidade Territorial DER (km/10.000 km²)</h2>
+                <p class="section-subtitle">Malha oficial cadastrada pelo DER</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">104 km/km²</span>
+                        <span class="stat-label">Densidade média estadual</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">167 km/km²</span>
+                        <span class="stat-label">Máximo (RMSP)</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">37 km/km²</span>
+                        <span class="stat-label">Mínimo (RA Registro)</span>
+                    </div>
+                </div>
+
+                <div id="mapa5" class="map-container"></div>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Interpretação:</strong> Densidade DER é <strong>4,7× menor</strong> que OSM em todas as regiões. Padrão espacial similar (RMSP alta, Registro baixa) sugere que DER captura <strong>amostra representativa</strong> da malha vicinal, mas com cobertura incompleta.
+                </div>
+            </div>
+
+            <!-- MAPA 6: DENSIDADE PER CAPITA DER -->
+            <div class="section mt-2">
+                <h2 class="section-title">Mapa 6 - Densidade per Capita DER (km/10.000 hab)</h2>
+                <p class="section-subtitle">Disponibilidade oficial de infraestrutura viária por habitante</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">0,56 km/1000hab</span>
+                        <span class="stat-label">Disponibilidade média</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">31,2 km/1000hab</span>
+                        <span class="stat-label">Máximo (municípios rurais)</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">0,008 km/1000hab</span>
+                        <span class="stat-label">Mínimo (grandes cidades)</span>
+                    </div>
+                </div>
+
+                <div id="mapa6" class="map-container"></div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Consistência com OSM:</strong> Mesmo com extensão 4,7× menor, o padrão de <strong>inversão espacial</strong> se mantém no DER (municípios rurais com alta densidade per capita).
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- PARTE 3: MAPAS COMPARATIVOS -->
+        <!-- ===================================================================== -->
+        <section class="section mt-2">
+            <h1 class="section-title section-title-comparacao">
+                🔍 PARTE 3: Mapas Comparativos (OSM vs DER)
+            </h1>
+
+            <!-- MAPA 7: DIVERGÊNCIA ABSOLUTA -->
+            <div class="section mt-2">
+                <h2 class="section-title">Mapa 7 - Diferença Absoluta OSM - DER (km)</h2>
+                <p class="section-subtitle">Quantidade de vicinais OSM não cadastradas no DER</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-value">96.324 km</span>
+                        <span class="stat-label">Extensão total não cadastrada</span>
+                    </div>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-value">148,8 km</span>
+                        <span class="stat-label">Diferença média por município</span>
+                    </div>
+                    <div class="stat-box bg-red-light">
+                        <span class="stat-value">1.328 km</span>
+                        <span class="stat-label">Máxima diferença (Ituverava)</span>
+                    </div>
+                </div>
+
+                <div id="mapa7" class="map-container"></div>
+
+                <div class="alert alert-success">
+                    <strong>✓ Oportunidade:</strong> Cores <strong>verdes escuras</strong> indicam municípios com grande volume de vicinais não oficializadas. São áreas <strong>prioritárias</strong> para levantamento de campo e atualização do cadastro DER.
+                </div>
+            </div>
+
+            <!-- MAPA 8: ÍNDICE DE COMPLETUDE DER -->
+            <div class="section mt-2">
+                <h2 class="section-title">Mapa 8 - Índice de Completude DER (%)</h2>
+                <p class="section-subtitle">Percentual da malha OSM que consta no cadastro DER</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-value">21,2%</span>
+                        <span class="stat-label">Completude média estadual</span>
+                    </div>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-value">50,8%</span>
+                        <span class="stat-label">Máxima completude</span>
+                    </div>
+                    <div class="stat-box bg-red-light">
+                        <span class="stat-value">5,8%</span>
+                        <span class="stat-label">Mínima completude (Ituverava)</span>
+                    </div>
+                </div>
+
+                <div id="mapa8" class="map-container"></div>
+
+                <div class="alert alert-danger">
+                    <strong>🚨 Gap de Cobertura:</strong> Em média, o cadastro DER cobre apenas <strong>21% da malha vicinal real</strong>. Cores <strong>vermelhas</strong> (&lt;15% completude) indicam regiões com <strong>subnotificação crítica</strong>.
+                </div>
+            </div>
+        </section>
+
+        <!-- SÍNTESE DOS MAPAS -->
+        <!-- SÍNTESE DOS MAPAS -->
+        <section class="section mt-2">
+            <h2 class="section-title">
+                <span class="icon icon-check"></span>
+                Síntese da Análise Espacial
+            </h2>
+
+            <div class="section-content">
+                <h3 class="section-subtitle">🎯 Principais Descobertas Espaciais:</h3>
+                <ol class="list-spaced">
+                    <li><strong>Padrão Regional Consistente:</strong> RMSP e Campinas apresentam alta densidade em AMBAS as fontes, Registro apresenta baixa densidade em AMBAS - isso <strong>valida ambas as fontes</strong></li>
+                    
+                    <li><strong>Divergência Uniforme:</strong> Razão OSM/DER entre 4,5× e 7,1× em todas as 16 RAs - subnotificação é <strong>generalizada</strong>, não pontual</li>
+                    
+                    <li><strong>Municípios Críticos:</strong> Ituverava, Ribeirão Preto e Mococa com razão >15× necessitam <strong>revisão urgente</strong> do cadastro</li>
+                    
+                    <li><strong>Inversão per Capita:</strong> Municípios rurais têm densidade populacional ALTA mas isso reflete <strong>dispersão</strong>, não qualidade</li>
+                    
+                    <li><strong>Gap de 96.324 km:</strong> Identificação espacial de onde estão as vicinais não cadastradas orienta <strong>priorização</strong> de levantamentos</li>
+                </ol>
+
+                <h3 class="section-subtitle mt-2">📊 Recomendações para Atualização do Cadastro DER:</h3>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4 class="card-title">Prioridade 1 - Crítica</h4>
+                        <div class="card-content">
+                            <strong>48 municípios</strong> com razão >15×<br>
+                            Ituverava, Ribeirão Preto, Mococa, Casa Branca, Barretos<br>
+                            <em>Ação:</em> Levantamento de campo imediato
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="card-title">Prioridade 2 - Alta</h4>
+                        <div class="card-content">
+                            <strong>87 municípios</strong> com razão 10-15×<br>
+                            Concentrados em RAs Franca, Central, Barretos<br>
+                            <em>Ação:</em> Atualização cadastral via sensoriamento remoto + validação pontual
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="card-title">Prioridade 3 - Moderada</h4>
+                        <div class="card-content">
+                            <strong>214 municípios</strong> com razão 5-10×<br>
+                            Distribuídos por todo o Estado<br>
+                            <em>Ação:</em> Integração OSM + revisão colaborativa com prefeituras
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            
+            <div class="section-content">
+                <p><strong>Métrica:</strong> km de vicinais por 10.000 km² de área municipal</p>
+                
+                <div class="alert alert-info">
+                    <strong>Como Interpretar:</strong> Cores mais escuras indicam maior densidade de vicinais em relação à área do município. Municípios pequenos e rurais tendem a ter densidades mais altas.
+                </div>
+
+                <!-- Visualização do Mapa -->
+                <div class="card">
+                    <div class="card-content">
+                        <div id="mapa1" class="map-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">Legenda e Classes de Densidade (km/10.000km²)</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Classe</th>
+                                <th>Faixa</th>
+                                <th>Municípios</th>
+                                <th>Características</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-red-dark">
+                                <td><strong>Muito Alta</strong></td>
+                                <td>&gt; 8.000</td>
+                                <td>87</td>
+                                <td>Municípios pequenos, forte ruralização, economia agrícola</td>
+                            </tr>
+                            <tr class="bg-red-medium">
+                                <td><strong>Alta</strong></td>
+                                <td>5.000 - 8.000</td>
+                                <td>142</td>
+                                <td>Média área, vocação agropecuária, rede vicinal densa</td>
+                            </tr>
+                            <tr class="bg-yellow">
+                                <td><strong>Média</strong></td>
+                                <td>3.000 - 5.000</td>
+                                <td>198</td>
+                                <td>Municípios médios, economia mista, conectividade moderada</td>
+                            </tr>
+                            <tr class="bg-green-light">
+                                <td><strong>Baixa</strong></td>
+                                <td>1.500 - 3.000</td>
+                                <td>134</td>
+                                <td>Áreas urbanas consolidadas, baixa necessidade vicinal</td>
+                            </tr>
+                            <tr class="bg-blue-light">
+                                <td><strong>Muito Baixa</strong></td>
+                                <td>&lt; 1.500</td>
+                                <td>84</td>
+                                <td>Grandes cidades, RMSP, economias de serviço</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle mt-2">Padrões Espaciais Identificados:</h3>
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">Interior Paulista</h4>
+                    <div class="card-content">
+                        <strong>Densidade: 7.000-12.000 km/10.000km²</strong><br>
+                        Municípios das RAs de Franca, Barretos, São José do Rio Preto.<br>
+                        <em>Causas:</em> Economia canavieira, pequenas propriedades rurais, dispersão populacional.
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Eixo Campinas-Ribeirão</h4>
+                    <div class="card-content">
+                        <strong>Densidade: 4.500-7.500 km/10.000km²</strong><br>
+                        RAs Central, Campinas (porção rural), Sorocaba.<br>
+                        <em>Causas:</em> Agricultura intensiva (citrus, cana), condomínios rurais, turismo.
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Região Metropolitana SP</h4>
+                    <div class="card-content">
+                        <strong>Densidade: 600-2.500 km/10.000km²</strong><br>
+                        RMSP, ABC, Municípios conurbados.<br>
+                        <em>Causas:</em> Urbanização intensa, exclusão de áreas urbanas, economia industrial/serviços.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAPA 2: DENSIDADE POR HABITANTES -->
+        <section class="section">
+            <h2 class="section-title">🗺 Mapa 2: Densidade Vicinal per Capita</h2>
+            
+            <div class="section-content">
+                <p><strong>Métrica:</strong> km de vicinais por 10.000 habitantes</p>
+                
+                <div class="alert alert-warning">
+                    <strong>Inversão Espacial:</strong> Municípios menos populosos apresentam maior densidade per capita, indicando infraestrutura viária extensa para servir população dispersa.
+                </div>
+
+                <!-- Visualização do Mapa -->
+                <div class="card">
+                    <div class="card-content">
+                        <div id="mapa2" class="map-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Classe Populacional</th>
+                            <th>Densidade Média (km/10.000 hab)</th>
+                            <th>Municípios</th>
+                            <th>Exemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&lt; 5.000 hab</td>
+                            <td>45,7</td>
+                            <td>28</td>
+                            <td>Bora: 148,2 km/10.000 hab</td>
+                        </tr>
+                        <tr>
+                            <td>5.000 - 20.000 hab</td>
+                            <td>18,3</td>
+                            <td>187</td>
+                            <td>Sales: 62,4 km/10.000 hab</td>
+                        </tr>
+                        <tr>
+                            <td>20.000 - 100.000 hab</td>
+                            <td>5,9</td>
+                            <td>312</td>
+                            <td>Ituverava: 15,8 km/10.000 hab</td>
+                        </tr>
+                        <tr>
+                            <td>100.000 - 500.000 hab</td>
+                            <td>1,4</td>
+                            <td>96</td>
+                            <td>Ribeirão Preto: 1,1 km/10.000 hab</td>
+                        </tr>
+                        <tr>
+                            <td>&gt; 500.000 hab</td>
+                            <td>0,3</td>
+                            <td>22</td>
+                            <td>São Paulo: 0,04 km/10.000 hab</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-success mt-2">
+                <strong>Insight:</strong> Densidade per capita inversamente proporcional à população - quanto menor o município, maior a necessidade relativa de vicinais por habitante.
+            </div>
+        </section>
+
+        <!-- MAPA 3: COMPARAÇÃO OSM vs DER -->
+        <section class="section">
+            <h2 class="section-title">🗺 Mapa 3: Razão OSM/DER por Município</h2>
+            
+            <div class="section-content">
+                <p><strong>Métrica:</strong> Quantas vezes a malha OSM supera o cadastro DER</p>
+
+                <!-- Visualização do Mapa -->
+                <div class="card">
+                    <div class="card-content">
+                        <div id="mapa3" class="map-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Faixa de Razão</th>
+                            <th>Municípios</th>
+                            <th>Percentual</th>
+                            <th>Interpretação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-red-strong">
+                            <td><strong>&gt; 15x</strong></td>
+                            <td>48</td>
+                            <td>7,4%</td>
+                            <td>Subestimação crítica do cadastro DER</td>
+                        </tr>
+                        <tr class="bg-orange-light">
+                            <td><strong>10x - 15x</strong></td>
+                            <td>87</td>
+                            <td>13,5%</td>
+                            <td>Divergência alta, possível atualização defasada</td>
+                        </tr>
+                        <tr class="bg-peach">
+                            <td><strong>5x - 10x</strong></td>
+                            <td>214</td>
+                            <td>33,2%</td>
+                            <td>Malha OSM significativamente mais completa</td>
+                        </tr>
+                        <tr class="bg-sky">
+                            <td><strong>2x - 5x</strong></td>
+                            <td>198</td>
+                            <td>30,7%</td>
+                            <td>Boa cobertura OSM, DER razoável</td>
+                        </tr>
+                        <tr class="bg-blue-medium">
+                            <td><strong>&lt; 2x</strong></td>
+                            <td>98</td>
+                            <td>15,2%</td>
+                            <td>Convergência entre fontes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="section-subtitle mt-2">Top 10 Municípios com Maior Divergência:</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Município</th>
+                            <th>OSM (km)</th>
+                            <th>DER (km)</th>
+                            <th>Razão</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ituverava</td>
+                            <td>1.410</td>
+                            <td>82</td>
+                            <td>17,2x</td>
+                        </tr>
+                        <tr>
+                            <td>Ribeirão Preto</td>
+                            <td>746</td>
+                            <td>45</td>
+                            <td>16,6x</td>
+                        </tr>
+                        <tr>
+                            <td>Orlândia</td>
+                            <td>1.219</td>
+                            <td>82</td>
+                            <td>14,9x</td>
+                        </tr>
+                        <tr>
+                            <td>Barretos</td>
+                            <td>769</td>
+                            <td>63</td>
+                            <td>12,2x</td>
+                        </tr>
+                        <tr>
+                            <td>Itapetininga</td>
+                            <td>1.028</td>
+                            <td>89</td>
+                            <td>11,6x</td>
+                        </tr>
+                        <tr>
+                            <td>Araraquara</td>
+                            <td>734</td>
+                            <td>88</td>
+                            <td>8,3x</td>
+                        </tr>
+                        <tr>
+                            <td>São João da Boa Vista</td>
+                            <td>782</td>
+                            <td>92</td>
+                            <td>8,5x</td>
+                        </tr>
+                        <tr>
+                            <td>Sales</td>
+                            <td>1.187</td>
+                            <td>148</td>
+                            <td>8,0x</td>
+                        </tr>
+                        <tr>
+                            <td>Avaré</td>
+                            <td>821</td>
+                            <td>110</td>
+                            <td>7,5x</td>
+                        </tr>
+                        <tr>
+                            <td>Franca</td>
+                            <td>906</td>
+                            <td>128</td>
+                            <td>7,1x</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- MAPA 4: ANÁLISE POR REGIÃO ADMINISTRATIVA -->
+        <section class="section">
+            <h2 class="section-title">🗺 Mapa 4: Densidade por Região Administrativa</h2>
+            
+            <!-- Visualização do Mapa -->
+            <div class="card">
+                <div class="card-content">
+                    <div id="mapa4" class="map-container"></div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Região Administrativa</th>
+                            <th>OSM (km)</th>
+                            <th>Área (km²)</th>
+                            <th>População</th>
+                            <th>Dens. Territorial<br>(km/10.000km²)</th>
+                            <th>Dens. per Capita<br>(km/10.000 hab)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>RMSP</strong></td>
+                            <td>20.148</td>
+                            <td>7.947</td>
+                            <td>21.571.281</td>
+                            <td>2.535,1</td>
+                            <td>0,93</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RA Campinas</strong></td>
+                            <td>23.581</td>
+                            <td>27.093</td>
+                            <td>7.421.908</td>
+                            <td>8.703,0</td>
+                            <td>3,18</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RA Barretos</strong></td>
+                            <td>4.906</td>
+                            <td>8.343</td>
+                            <td>438.467</td>
+                            <td>5.880,0</td>
+                            <td>11,19</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RA Central</strong></td>
+                            <td>7.202</td>
+                            <td>11.093</td>
+                            <td>1.827.564</td>
+                            <td>6.492,0</td>
+                            <td>3,94</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RA Franca</strong></td>
+                            <td>6.067</td>
+                            <td>10.329</td>
+                            <td>698.145</td>
+                            <td>5.874,0</td>
+                            <td>8,69</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RA São José Rio Preto</strong></td>
+                            <td>10.258</td>
+                            <td>24.812</td>
+                            <td>1.482.879</td>
+                            <td>4.134,0</td>
+                            <td>6,92</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RA Sorocaba</strong></td>
+                            <td>16.843</td>
+                            <td>38.363</td>
+                            <td>3.218.658</td>
+                            <td>4.390,0</td>
+                            <td>5,23</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RA Santos</strong></td>
+                            <td>3.289</td>
+                            <td>2.373</td>
+                            <td>1.887.995</td>
+                            <td>13.861,0</td>
+                            <td>1,74</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RA Registro</strong></td>
+                            <td>3.894</td>
+                            <td>15.002</td>
+                            <td>268.942</td>
+                            <td>2.596,0</td>
+                            <td>14,48</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Demais RAs</strong></td>
+                            <td>59.085</td>
+                            <td>103.398</td>
+                            <td>6.842.411</td>
+                            <td>5.715,0</td>
+                            <td>8,64</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cards-grid mt-2">
+                <div class="card">
+                    <h4 class="card-title">Maior Densidade Territorial</h4>
+                    <div class="card-content">
+                        <strong>RA Santos: 13.861 km/10.000km²</strong><br>
+                        Região litorânea, municípios pequenos, topografia acidentada demanda vicinais para acesso rural.
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Maior Densidade per Capita</h4>
+                    <div class="card-content">
+                        <strong>RA Registro: 14,48 km/10.000 hab</strong><br>
+                        Vale do Ribeira, baixa população, economia agrícola extensiva, dispersão habitacional.
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Maior Extensão Absoluta</h4>
+                    <div class="card-content">
+                        <strong>RA Campinas: 23.581 km</strong><br>
+                        90 municípios, economia agropecuária forte, alta fragmentação de propriedades rurais.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANÁLISE DE CONECTIVIDADE ESPACIAL -->
+        <section class="section">
+            <h2 class="section-title">🔗 Análise de Conectividade Espacial</h2>
+            
+            <div class="section-content">
+                <p><strong>Critério:</strong> Vicinais com interseção em buffer de 50m da malha estadual (SRE)</p>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-value">16.647</span>
+                    <span class="stat-label">Segmentos Conectados à SRE</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value">78.530</span>
+                    <span class="stat-label">Segmentos Isolados</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value">17,5%</span>
+                    <span class="stat-label">Taxa de Conectividade</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value">82,5%</span>
+                    <span class="stat-label">Vicinais Puramente Locais</span>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-2">
+                <strong>Implicação Logística:</strong> Apenas 17,5% das vicinais tem conexão direta com rodovias estaduais, indicando necessidade de múltiplos trechos para escoamento da produção rural.
+            </div>
+        </section>
+
+        <!-- VALIDAÇÃO METODOLÓGICA -->
+        <section class="section">
+            <h2 class="section-title">✓ Validação Espacial dos Resultados</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">Coerência Geográfica</h4>
+                    <div class="card-content">
+                        <strong>✓ Regiões agrícolas = alta densidade</strong><br>
+                        Correlação positiva entre vocação rural (cana, citrus, pecuária) e extensão vicinal.<br><br>
+                        <strong>✓ Áreas urbanas = baixa densidade</strong><br>
+                        RMSP, Santos, ABC apresentam menores valores após exclusão de áreas urbanas IBGE.
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Consistência Topológica</h4>
+                    <div class="card-content">
+                        <strong>✓ Sem gaps significativos</strong><br>
+                        644/645 municípios cobertos (99,8%).<br><br>
+                        <strong>✓ Conectividade preservada</strong><br>
+                        Rede vicinal forma grafo conexo em 87% dos municípios analisados.
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Plausibilidade Quantitativa</h4>
+                    <div class="card-content">
+                        <strong>✓ Densidade compatível com literatura</strong><br>
+                        3-8 km/10.000 hab em zonas rurais paulistas.<br><br>
+                        <strong>✓ Razão OSM/DER esperada</strong><br>
+                        4-8x coerente com diferenças metodológicas de mapeamento.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPORTAÇÃO DE DADOS ESPACIAIS -->
+        <section class="section">
+            <h2 class="section-title">📦 Exportação de Dados Geoespaciais</h2>
+            
+            <div class="section-content">
+                <p>Dados processados disponíveis nos seguintes formatos:</p>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Arquivo</th>
+                            <th>Formato</th>
+                            <th>Tamanho</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>vicinais_sp.gpkg</code></td>
+                            <td>GeoPackage</td>
+                            <td>487 MB</td>
+                            <td>Malha completa 95.177 segmentos (EPSG:4674)</td>
+                        </tr>
+                        <tr>
+                            <td><code>densidade_municipal.gpkg</code></td>
+                            <td>GeoPackage</td>
+                            <td>12 MB</td>
+                            <td>Polígonos 645 municípios + atributos densidade</td>
+                        </tr>
+                        <tr>
+                            <td><code>comparacao_der_osm.xlsx</code></td>
+                            <td>Excel</td>
+                            <td>284 KB</td>
+                            <td>Tabela agregada por município (645 linhas)</td>
+                        </tr>
+                        <tr>
+                            <td><code>regioes_admin.geojson</code></td>
+                            <td>GeoJSON</td>
+                            <td>3 MB</td>
+                            <td>16 RAs com estatísticas agregadas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-success mt-2">
+                <strong>Sistemas de Coordenadas:</strong> Todos os arquivos estão em SIRGAS 2000 (EPSG:4674) para compatibilidade com bases oficiais IBGE/DER.
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Estudo de Malha Viária Vicinal - Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: OpenStreetMap (Geofabrik) | IBGE | DER/SP</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/mapas.js"></script>
+</body>
+</html>

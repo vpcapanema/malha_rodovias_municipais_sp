@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa Municipal - Estudo de Vicinais SP</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">
+                <span class="icon icon-map"></span>
+                Estudo de Malha Viária Vicinal - Estado de São Paulo
+            </h1>
+            <p class="header-subtitle">Análise comparativa da malha rodoviária vicinal: OpenStreetMap vs. DER/SP</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
+                <li class="nav-item"><a href="processamento.html" class="nav-link">Processamento</a></li>
+                <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia Silvio</a></li>
+                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link active">Pesquisa Municipal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1 class="page-title">Sistema de Pesquisa Municipal Automatizada</h1>
+        <p class="page-subtitle">Levantamento de dados cartográficos oficiais nos 645 municípios de São Paulo</p>
+
+        <section class="section">
+            <h2 class="section-title">Visão Geral</h2>
+            
+            <div class="section-content">
+                <p>Sistema automatizado para buscar, baixar e catalogar bases cartográficas de rodovias vicinais disponibilizadas pelos municípios paulistas através de seus portais oficiais.</p>
+                
+                <div class="stats-container mt-2">
+                    <div class="stat-box">
+                        <span class="stat-value">645</span>
+                        <span class="stat-label">Municípios Total</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">442</span>
+                        <span class="stat-label">Processados (68,5%)</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">78</span>
+                        <span class="stat-label">Com Dados Encontrados</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">1.326</span>
+                        <span class="stat-label">Buscas Realizadas</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Arquitetura do Sistema</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">1. Lista IBGE Oficial</h4>
+                    <div class="card-content">
+                        <strong>Arquivo:</strong> <code>municipios_sp_ibge_oficial.json</code><br>
+                        <strong>Origem:</strong> API IBGE Agregados<br>
+                        <strong>Estrutura:</strong>
+                        <pre class="text-sm mt-1"><code>{
+  "codigo": "3500105",
+  "nome": "ADAMANTINA",
+  "microrregiao": "Adamantina"
+}</code></pre>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">2. Orquestrador</h4>
+                    <div class="card-content">
+                        <strong>Arquivo:</strong> <code>PESQUISA_COMPLETA_645.py</code><br>
+                        <strong>Funcionalidades:</strong><br>
+                        - Itera 645 municípios<br>
+                        - Retoma execuções interrompidas<br>
+                        - Salva progresso incremental<br>
+                        - Gera relatório HTML final
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">3. Motor de Busca</h4>
+                    <div class="card-content">
+                        <strong>Arquivo:</strong> <code>01_pesquisador_malha_viaria.py</code><br>
+                        <strong>Operações:</strong><br>
+                        - Busca Google (3 queries/município)<br>
+                        - Download HTML das páginas<br>
+                        - Extração links arquivos espaciais<br>
+                        - Validação extensões
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Termos de Busca</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Query</th>
+                            <th>Alvo</th>
+                            <th>Resultado Esperado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>site:{dominio} malha viária shapefile</code></td>
+                            <td>Portal oficial</td>
+                            <td>Páginas de download ou documentação</td>
+                        </tr>
+                        <tr>
+                            <td><code>site:{dominio} geopackage rodovias vicinais</code></td>
+                            <td>Portal dados abertos</td>
+                            <td>Datasets GeoPackage com camadas rodoviárias</td>
+                        </tr>
+                        <tr>
+                            <td><code>"{municipio}" SP SIG geojson</code></td>
+                            <td>Repositórios externos</td>
+                            <td>GitHub, portais estaduais, projetos acadêmicos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="section-subtitle">Extensões Buscadas:</h3>
+            <div class="section-content">
+                <ul class="column-3 list-spaced">
+                    <li><code>.shp</code> (Shapefile)</li>
+                    <li><code>.geojson</code></li>
+                    <li><code>.gpkg</code> (GeoPackage)</li>
+                    <li><code>.kml</code> / <code>.kmz</code></li>
+                    <li><code>.gml</code></li>
+                    <li><code>.json</code> (spatial)</li>
+                    <li><code>.zip</code> (compactados)</li>
+                    <li><code>.dxf</code></li>
+                    <li><code>.dwg</code></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Fluxo de Execução</h2>
+            
+            <div class="section-content">
+                <pre><code>ETAPA 1: Carregamento
+├─ Lista IBGE (645 municípios)
+├─ Arquivo progresso (JSON)
+└─ Último município processado
+
+ETAPA 2: Iteração
+Para cada município:
+  │
+  ├─ Verificar se já processado
+  │   └─ Se sim: SKIP
+  │
+  ├─ Construir queries de busca (3x)
+  │   ├─ Query 1: site oficial + "shapefile"
+  │   ├─ Query 2: site oficial + "geopackage"
+  │   └─ Query 3: nome município + "geojson"
+  │
+  ├─ Executar buscas Google
+  │   └─ Limite: 10 resultados/query
+  │
+  ├─ Para cada URL retornada:
+  │   ├─ Download HTML
+  │   ├─ Parse links (BeautifulSoup)
+  │   ├─ Filtro extensões espaciais
+  │   └─ Validação domínio (.gov.br/.sp/)
+  │
+  ├─ Consolidar resultados
+  │   ├─ Links encontrados (com metadata)
+  │   ├─ Status: sucesso/sem_dados/erro
+  │   └─ Timestamp
+  │
+  └─ Salvar progresso
+      ├─ Atualizar JSON
+      └─ Log registro
+
+ETAPA 3: Relatório Final
+├─ Agregação estatísticas
+├─ Geração HTML com tabelas
+└─ Exportação CSV</code></pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Estrutura de Dados</h2>
+            
+            <h3 class="section-subtitle">Arquivo: <code>progresso_pesquisa_645.json</code></h3>
+            <pre><code>{
+  "municipios_processados": [
+    {
+      "codigo_ibge": "3500105",
+      "nome": "ADAMANTINA",
+      "status": "sucesso",
+      "timestamp": "2026-01-15T10:23:45",
+      "buscas_realizadas": 3,
+      "links_encontrados": 2,
+      "arquivos": [
+        {
+          "url": "https://adamantina.sp.gov.br/downloads/malha_viaria.zip",
+          "tipo": "shapefile",
+          "tamanho_estimado": "2.3 MB",
+          "validado": true
+        }
+      ]
+    }
+  ],
+  "estatisticas": {
+    "total_municipios": 645,
+    "processados": 442,
+    "com_dados": 78,
+    "sem_dados": 364,
+    "erros": 0
+  },
+  "ultima_atualizacao": "2026-01-15T15:42:19"
+}</code></pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Principais Scripts</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Script</th>
+                            <th>Função</th>
+                            <th>Dependências</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>obter_municipios_ibge.py</code></td>
+                            <td>Baixa lista oficial 645 municípios via API IBGE</td>
+                            <td>requests</td>
+                        </tr>
+                        <tr>
+                            <td><code>00_lista_municipios_sp.py</code></td>
+                            <td>Gera variável Python com nomes e códigos</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><code>01_pesquisador_malha_viaria.py</code></td>
+                            <td>Motor de busca para 1 município</td>
+                            <td>googlesearch-python, BeautifulSoup4</td>
+                        </tr>
+                        <tr>
+                            <td><code>02_executar_pesquisa_completa.py</code></td>
+                            <td>Orquestrador sequencial (legado)</td>
+                            <td>módulo 01_pesquisador</td>
+                        </tr>
+                        <tr>
+                            <td><code>PESQUISA_COMPLETA_645.py</code></td>
+                            <td><strong>Script principal</strong>: loop 645, resume, relatório</td>
+                            <td>todos acima</td>
+                        </tr>
+                        <tr>
+                            <td><code>monitorar_progresso.py</code></td>
+                            <td>Dashboard tempo real com percentuais</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><code>gerar_relatorio_util.py</code></td>
+                            <td>Geração HTML com tabelas e estatísticas</td>
+                            <td>jinja2 (opcional)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Estatísticas Atuais</h2>
+            
+            <div class="section-content">
+                <h3 class="section-subtitle">Progresso Geral:</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill progress-68">68,5%</div>
+                </div>
+                <p class="mt-1"><strong>442 de 645 municípios processados</strong></p>
+            </div>
+
+            <div class="table-container mt-2">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Quantidade</th>
+                            <th>Percentual</th>
+                            <th>Observações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Com Dados Encontrados</strong></td>
+                            <td>78</td>
+                            <td>17,6%</td>
+                            <td>Municípios com arquivos espaciais válidos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sem Dados Disponíveis</strong></td>
+                            <td>364</td>
+                            <td>82,4%</td>
+                            <td>Sem portais de dados abertos ou SIG</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pendentes</strong></td>
+                            <td>203</td>
+                            <td>31,5%</td>
+                            <td>Aguardando processamento</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Buscas</strong></td>
+                            <td>1.326</td>
+                            <td>-</td>
+                            <td>3 queries × 442 municípios</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conexões Estabelecidas</strong></td>
+                            <td>131</td>
+                            <td>9,9%</td>
+                            <td>URLs acessadas com sucesso (timeout/bloqueio)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Municípios com Dados (Exemplos)</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Município</th>
+                            <th>Código IBGE</th>
+                            <th>Tipo Arquivo</th>
+                            <th>URL Portal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>São Paulo</td>
+                            <td>3550308</td>
+                            <td>GeoPackage</td>
+                            <td>geosampa.prefeitura.sp.gov.br</td>
+                            <td><span class="badge badge-success">Validado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Campinas</td>
+                            <td>3509502</td>
+                            <td>Shapefile</td>
+                            <td>dados.campinas.sp.gov.br</td>
+                            <td><span class="badge badge-success">Validado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Santos</td>
+                            <td>3548500</td>
+                            <td>GeoJSON</td>
+                            <td>dados.santos.sp.gov.br</td>
+                            <td><span class="badge badge-success">Validado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ribeirão Preto</td>
+                            <td>3543402</td>
+                            <td>Shapefile (.zip)</td>
+                            <td>ribeiraopreto.sp.gov.br/geoprocessamento</td>
+                            <td><span class="badge badge-success">Validado</span></td>
+                        </tr>
+                        <tr>
+                            <td>São José dos Campos</td>
+                            <td>3549904</td>
+                            <td>KML</td>
+                            <td>servicos.sjc.sp.gov.br</td>
+                            <td><span class="badge badge-warning">Parcial</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sorocaba</td>
+                            <td>3552205</td>
+                            <td>DWG</td>
+                            <td>sorocaba.sp.gov.br/cadastro</td>
+                            <td><span class="badge badge-warning">CAD</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info mt-2">
+                <strong>Nota:</strong> A maioria dos municípios menores (&lt; 50.000 hab.) não possuem portais de dados abertos estruturados.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Desafios Técnicos</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">Limitações API Google</h4>
+                    <div class="card-content">
+                        - Rate limiting (1 req/s)<br>
+                        - CAPTCHAs após ~100 buscas<br>
+                        - IP blocking temporário<br>
+                        <strong>Solução:</strong> Delays entre requests, rotação IPs (VPN)
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Heterogeneidade Portais</h4>
+                    <div class="card-content">
+                        - Estruturas HTML variadas<br>
+                        - Nomenclaturas inconsistentes<br>
+                        - Sem padrão URL<br>
+                        <strong>Solução:</strong> Parser genérico com regex flexível
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Validação Arquivos</h4>
+                    <div class="card-content">
+                        - Links quebrados (~12%)<br>
+                        - Extensões enganosas (.pdf com mapa)<br>
+                        - Dados desatualizados<br>
+                        <strong>Solução:</strong> Download HEAD, verificação content-type
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Relatório HTML Gerado</h2>
+            
+            <div class="section-content">
+                <p><strong>Arquivo:</strong> <code>relatorio_pesquisa_municipal_[data].html</code></p>
+                
+                <h3 class="section-subtitle">Seções do Relatório:</h3>
+                <ul class="list-spaced">
+                    <li><strong>Sumário Executivo:</strong> Estatísticas gerais, percentuais, gráficos</li>
+                    <li><strong>Tabela Completa:</strong> 645 linhas com status por município</li>
+                    <li><strong>Municípios com Dados:</strong> Links diretos, tipos arquivo, validação</li>
+                    <li><strong>Top 10 Portais:</strong> Ranking por qualidade/completude dados</li>
+                    <li><strong>Análise Regional:</strong> Distribuição por RA e microrregiões</li>
+                    <li><strong>Recomendações:</strong> Próximos passos, priorização downloads</li>
+                </ul>
+
+                <div class="alert alert-success mt-2">
+                    <strong>Geração Automática:</strong> Relatório atualizado a cada execução do orquestrador (incremental).
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Comando de Execução</h2>
+            
+            <pre><code># Executar pesquisa completa com retomada automática
+python PESQUISA_COMPLETA_645.py
+
+# Monitorar progresso em tempo real (terminal separado)
+python monitorar_progresso.py
+
+# Gerar relatório sem nova pesquisa
+python gerar_relatorio_util.py --input progresso_pesquisa_645.json</code></pre>
+
+            <div class="section-content mt-2">
+                <h3 class="section-subtitle">Parâmetros Opcionais:</h3>
+                <pre><code>--delay SEGUNDOS      # Delay entre buscas (padrão: 2s)
+--max-results NUM     # Máx. resultados/query (padrão: 10)
+--timeout SEGUNDOS    # Timeout conexão (padrão: 10s)
+--skip-validation     # Não validar URLs (mais rápido)
+--resume              # Retomar de última posição (padrão: True)</code></pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Próximos Passos</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">Fase 2: Download</h4>
+                    <div class="card-content">
+                        - Download automatizado 78 arquivos<br>
+                        - Conversão para GeoPackage<br>
+                        - Padronização CRS (EPSG:4674)<br>
+                        - Catalogação atributos
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Fase 3: Validação</h4>
+                    <div class="card-content">
+                        - Topologia (gaps, overlaps)<br>
+                        - Completude vs OSM<br>
+                        - Atualização datasets<br>
+                        - Metadados (lineage)
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Fase 4: Integração</h4>
+                    <div class="card-content">
+                        - Merge com base OSM<br>
+                        - Conflation geométrica<br>
+                        - Atributos complementares<br>
+                        - Dataset híbrido final
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Estudo de Malha Viária Vicinal - Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: OpenStreetMap (Geofabrik) | IBGE | DER/SP</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
