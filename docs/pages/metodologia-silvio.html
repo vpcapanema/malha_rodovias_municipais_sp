@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodologia Silvio - Estudo de Vicinais SP</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+    <title>Metodologia Silvio - Inferência Geoespacial</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <h1 class="header-title">
                 <span class="icon icon-map"></span>
-                Estudo de Malha Viária Vicinal - Estado de São Paulo
+                Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo
             </h1>
-            <p class="header-subtitle">Análise comparativa da malha rodoviária vicinal: OpenStreetMap vs. DER/SP</p>
+            <p class="header-subtitle">Base estimada: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE)</p>
         </div>
     </header>
 
@@ -20,11 +20,10 @@
         <div class="nav-container">
             <ul class="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
-                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link active">Metodologia</a></li>
                 <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
-                <li class="nav-item"><a href="processamento.html" class="nav-link">Processamento</a></li>
                 <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
-                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link active">Metodologia Silvio</a></li>
+                <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
                 <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
             </ul>
         </div>
@@ -262,20 +261,24 @@ write_xlsx(resultado, "_06_Comparacao_DER_vs_OSM.xlsx")</code></pre>
             
             <div class="stats-container">
                 <div class="stat-box">
-                    <span class="stat-value">155.273 km</span>
-                    <span class="stat-label">Vicinais OSM (agregado)</span>
+                    <span class="stat-label">Vicinais OSM (Agregado)</span>
+                    <span class="stat-value">155.273 <span class="stat-unit">(km)</span></span>
+                    <span class="stat-info">Mapeamento colaborativo completo</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">25.919 km</span>
-                    <span class="stat-label">Vicinais DER (oficial)</span>
+                    <span class="stat-label">Vicinais DER (Oficial)</span>
+                    <span class="stat-value">25.919 <span class="stat-unit">(km)</span></span>
+                    <span class="stat-info">Cadastro oficial estadual</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">6,0x</span>
                     <span class="stat-label">Razão OSM/DER</span>
+                    <span class="stat-value">6,0 <span class="stat-unit">(×)</span></span>
+                    <span class="stat-info">OSM apresenta 6× mais extensão</span>
                 </div>
                 <div class="stat-box">
+                    <span class="stat-label">Municípios com Dados OSM</span>
                     <span class="stat-value">644</span>
-                    <span class="stat-label">Municípios com dados OSM</span>
+                    <span class="stat-info">99,8% de cobertura</span>
                 </div>
             </div>
 
@@ -380,8 +383,8 @@ write_xlsx(resultado, "_06_Comparacao_DER_vs_OSM.xlsx")</code></pre>
 
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">Estudo de Malha Viária Vicinal - Estado de São Paulo | Janeiro 2026</p>
-            <p class="footer-text">Dados: OpenStreetMap (Geofabrik) | IBGE | DER/SP</p>
+            <p class="footer-text">Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE/IBGE)</p>
         </div>
     </footer>
 

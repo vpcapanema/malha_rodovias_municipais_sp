@@ -1,6 +1,10 @@
 # Dados Não Incluídos no Repositório
 
+<div style="text-align: justify;">
+
 Devido ao limite de tamanho de arquivo do GitHub (100MB) e políticas de armazenamento, os seguintes arquivos de dados **não estão incluídos** neste repositório:
+
+</div>
 
 ## Dados Web (app_web/data/)
 - `malha_der.geojson` (364.6 MB) - Malha rodoviária DER-SP
@@ -30,6 +34,8 @@ Devido ao limite de tamanho de arquivo do GitHub (100MB) e políticas de armazen
 
 ## Como Obter os Dados
 
+<div style="text-align: justify;">
+
 ### Opção 1: Processar do Zero
 Execute os scripts Python na ordem:
 1. `converter_pbf_gpkg.py` - Converte PBF para GPKG
@@ -45,6 +51,8 @@ Execute os scripts Python na ordem:
 ### Opção 3: Contato
 Para acesso aos dados processados, entre em contato com o responsável pelo projeto.
 
+</div>
+
 ## Tamanho Total dos Dados Excluídos
 - **Dados Web**: ~713 MB
 - **Dados Base OSM**: ~1.5 GB
@@ -52,4 +60,9 @@ Para acesso aos dados processados, entre em contato com o responsável pelo proj
 - **Total**: ~2.7 GB
 
 ## Nota Importante
+
+<div style="text-align: justify;">
+
 O arquivo `.gitignore` foi configurado para excluir automaticamente estes arquivos em futuros commits. Se você clonar este repositório, será necessário regenerar ou baixar os dados seguindo as opções acima.
+
+</div>

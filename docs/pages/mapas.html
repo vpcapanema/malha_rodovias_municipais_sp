@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise Espacial - Estudo de Vicinais SP</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+    <title>Análise Espacial - Inferência Geoespacial</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../libs/leaflet/leaflet.css" />
     <script src="../libs/leaflet/leaflet.js"></script>
     <style>
@@ -50,9 +50,9 @@
         <div class="header-content">
             <h1 class="header-title">
                 <span class="icon icon-map"></span>
-                Estudo de Malha Viária Vicinal - Estado de São Paulo
+                Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo
             </h1>
-            <p class="header-subtitle">Análise comparativa da malha rodoviária vicinal: OpenStreetMap vs. DER/SP</p>
+            <p class="header-subtitle">Base estimada: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE)</p>
         </div>
     </header>
 
@@ -60,9 +60,8 @@
         <div class="nav-container">
             <ul class="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
-                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia</a></li>
                 <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
-                <li class="nav-item"><a href="processamento.html" class="nav-link">Processamento</a></li>
                 <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
                 <li class="nav-item"><a href="mapas.html" class="nav-link active">Mapas</a></li>
                 <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
@@ -72,7 +71,7 @@
 
     <main class="main-content">
         <h1 class="page-title">Análise Espacial e Mapas Temáticos</h1>
-        <p class="page-subtitle">Distribuição geográfica da malha vicinal no Estado de São Paulo</p>
+        <p class="page-subtitle">Distribuição geográfica da Malha municipal estimada - PLI/SP no Estado de São Paulo</p>
 
         <div class="alert alert-info">
             <strong>🗺️ Estrutura dos Mapas:</strong> Esta seção apresenta os mapas coropléticos organizados em <strong>3 blocos sequenciais</strong>:
@@ -89,7 +88,7 @@
         <!-- ===================================================================== -->
         <section class="section mt-2">
             <h1 class="section-title section-title-osm">
-                📍 PARTE 1: Mapas da Malha Estimada (OpenStreetMap)
+                📍 PARTE 1: Mapas da Malha municipal estimada - PLI/SP (base OSM)
             </h1>
 
             <!-- MAPA 1: DENSIDADE TERRITORIAL OSM -->
@@ -99,23 +98,95 @@
 
                 <div class="stats-container">
                     <div class="stat-box bg-blue-medium">
-                        <span class="stat-value">492 km/km²</span>
-                        <span class="stat-label">Densidade média estadual</span>
+                        <span class="stat-label">Densidade Média Estadual</span>
+                        <span class="stat-value">4.920 <span class="stat-unit">(km/10.000km²)</span></span>
+                        <span class="stat-info">Média ponderada por área territorial</span>
                     </div>
                     <div class="stat-box bg-blue-medium">
-                        <span class="stat-value">1.035 km/km²</span>
-                        <span class="stat-label">Máximo (RMSP)</span>
+                        <span class="stat-label">Densidade Máxima</span>
+                        <span class="stat-value">10.350 <span class="stat-unit">(km/10.000km²)</span></span>
+                        <span class="stat-info">Região Metropolitana de SP</span>
                     </div>
                     <div class="stat-box bg-blue-medium">
-                        <span class="stat-value">260 km/km²</span>
-                        <span class="stat-label">Mínimo (RA Registro)</span>
+                        <span class="stat-label">Densidade Mínima</span>
+                        <span class="stat-value">2.600 <span class="stat-unit">(km/10.000km²)</span></span>
+                        <span class="stat-info">RA Registro (Vale do Ribeira)</span>
                     </div>
                 </div>
 
-                <div id="mapa1" class="map-container"></div>
+                <div class="map-wrapper-with-title">
+                    <h1 class="map-title-overlay">Densidade Territorial OSM por Município</h1>
+                    <div id="mapa1" class="map-container"></div>
+                </div>
 
-                <div class="alert alert-info">
-                    <strong>💡 Interpretação:</strong> Cores <strong>vermelhas</strong> indicam alta densidade territorial (>8.000 km/10.000km²), típica de municípios do interior com forte vocação agrícola. Cores <strong>azuis</strong> indicam baixa densidade (&lt;1.500), comum em regiões metropolitanas ou áreas de preservação.
+                <div class="layer-info-map-leaflet" id="mapa1-layer-info">
+                    <!-- Card 1: Controle de Camadas -->
+                    <div class="layer-control">
+                        <h4>Camadas</h4>
+                        <ul class="layer-list" id="mapa1-layer-list">
+                            <!-- Populado dinamicamente pelo JS -->
+                        </ul>
+                        <div class="layer-separator"></div>
+                        <div class="basemap-section">
+                            <label class="basemap-inline-label">
+                                <span class="layer-row">
+                                    <span class="layer-symbol symbol-raster"></span>
+                                    <span class="layer-label">Mapa Base</span>
+                                </span>
+                                <select id="mapa1-basemap-select" class="basemap-inline-select">
+                                    <!-- Populado dinamicamente pelo JS -->
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Legenda Dinâmica -->
+                    <div class="legend-panel">
+                        <h4>Legenda Dinâmica</h4>
+                        <label>Camada
+                            <select id="mapa1-legend-layer"></select>
+                        </label>
+                        <label>Atributo
+                            <select id="mapa1-legend-attr"></select>
+                        </label>
+                        <label>Tipo (categorizada / graduada)
+                            <select id="mapa1-legend-type">
+                                <option value="auto">Auto</option>
+                                <option value="text">Texto</option>
+                                <option value="numeric">Numérico</option>
+                            </select>
+                        </label>
+                        <label>Legenda
+                            <select id="mapa1-legend-mode">
+                                <option value="continuous">Contínua</option>
+                                <option value="discrete">Discreta</option>
+                            </select>
+                        </label>
+                        <label>Rampa de cores
+                            <select id="mapa1-legend-ramp"></select>
+                            <div class="ramp-preview" id="mapa1-ramp-preview"></div>
+                        </label>
+                        <div class="legend-output" id="mapa1-legend-output"></div>
+                        <button type="button" class="legend-apply" id="mapa1-legend-apply">Gerar legenda</button>
+                    </div>
+
+                    <!-- Card 3: Estatísticas Descritivas -->
+                    <div class="stats-layers">
+                        <h4>Estatísticas Descritivas</h4>
+                        <label>Camada
+                            <select id="mapa1-stats-layer"></select>
+                        </label>
+                        <label>Atributo
+                            <select id="mapa1-stats-attr"></select>
+                        </label>
+                        <button type="button" class="stats-apply" id="mapa1-stats-apply">Gerar estatísticas</button>
+                        <div class="stats-output" id="mapa1-stats-output" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="map-help">
+                    <h4>Sobre este Mapa</h4>
+                    <p><strong>💡 Interpretação:</strong> Cores <strong>vermelhas</strong> indicam alta densidade territorial (>8.000 km/10.000km²), típica de municípios do interior com forte vocação agrícola. Cores <strong>azuis</strong> indicam baixa densidade (&lt;1.500), comum em regiões metropolitanas ou áreas de preservação.</p>
                 </div>
             </div>
 
@@ -126,23 +197,64 @@
 
                 <div class="stats-container">
                     <div class="stat-box bg-blue-medium">
-                        <span class="stat-value">2,63 km/1000hab</span>
-                        <span class="stat-label">Disponibilidade média</span>
+                        <span class="stat-label">Disponibilidade Média</span>
+                        <span class="stat-value">26,3 <span class="stat-unit">(km/10.000hab)</span></span>
+                        <span class="stat-info">Média ponderada por população</span>
                     </div>
                     <div class="stat-box bg-blue-medium">
-                        <span class="stat-value">148,2 km/1000hab</span>
-                        <span class="stat-label">Máximo (Bora)</span>
+                        <span class="stat-label">Disponibilidade Máxima</span>
+                        <span class="stat-value">1.482 <span class="stat-unit">(km/10.000hab)</span></span>
+                        <span class="stat-info">Município de Bora (rural)</span>
                     </div>
                     <div class="stat-box bg-blue-medium">
-                        <span class="stat-value">0,04 km/1000hab</span>
-                        <span class="stat-label">Mínimo (São Paulo)</span>
+                        <span class="stat-label">Disponibilidade Mínima</span>
+                        <span class="stat-value">0,4 <span class="stat-unit">(km/10.000hab)</span></span>
+                        <span class="stat-info">Município de São Paulo (urbano)</span>
                     </div>
                 </div>
 
-                <div id="mapa2" class="map-container"></div>
+                <div class="map-wrapper-with-title">
+                    <h1 class="map-title-overlay">Densidade per Capita OSM por Município</h1>
+                    <div id="mapa2" class="map-container"></div>
+                </div>
 
-                <div class="alert alert-warning">
-                    <strong>⚠️ Inversão Espacial:</strong> Municípios rurais de <strong>pequena população</strong> apresentam densidade per capita <strong>muito alta</strong> (cores escuras) - isso NÃO significa melhor infraestrutura, mas sim <strong>dispersão populacional</strong>. Poucos habitantes "compartilham" muitos quilômetros de vicinais necessários para acesso agrícola.
+                <div class="layer-info-map-leaflet" id="mapa2-layer-info">
+                    <div class="layer-control">
+                        <h4>Camadas</h4>
+                        <ul class="layer-list" id="mapa2-layer-list"></ul>
+                        <div class="layer-separator"></div>
+                        <div class="basemap-section">
+                            <label class="basemap-inline-label">
+                                <span class="layer-row">
+                                    <span class="layer-symbol symbol-raster"></span>
+                                    <span class="layer-label">Mapa Base</span>
+                                </span>
+                                <select id="mapa2-basemap-select" class="basemap-inline-select"></select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="legend-panel">
+                        <h4>Legenda Dinâmica</h4>
+                        <label>Camada<select id="mapa2-legend-layer"></select></label>
+                        <label>Atributo<select id="mapa2-legend-attr"></select></label>
+                        <label>Tipo<select id="mapa2-legend-type"><option value="auto">Auto</option><option value="text">Texto</option><option value="numeric">Numérico</option></select></label>
+                        <label>Legenda<select id="mapa2-legend-mode"><option value="continuous">Contínua</option><option value="discrete">Discreta</option></select></label>
+                        <label>Rampa de cores<select id="mapa2-legend-ramp"></select><div class="ramp-preview" id="mapa2-ramp-preview"></div></label>
+                        <div class="legend-output" id="mapa2-legend-output"></div>
+                        <button type="button" class="legend-apply" id="mapa2-legend-apply">Gerar legenda</button>
+                    </div>
+                    <div class="stats-layers">
+                        <h4>Estatísticas Descritivas</h4>
+                        <label>Camada<select id="mapa2-stats-layer"></select></label>
+                        <label>Atributo<select id="mapa2-stats-attr"></select></label>
+                        <button type="button" class="stats-apply" id="mapa2-stats-apply">Gerar estatísticas</button>
+                        <div class="stats-output" id="mapa2-stats-output" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="map-help">
+                    <h4>Sobre este Mapa</h4>
+                    <p><strong>⚠️ Inversão Espacial:</strong> Municípios rurais de <strong>pequena população</strong> apresentam densidade per capita <strong>muito alta</strong> (cores escuras) - isso NÃO significa melhor infraestrutura, mas sim <strong>dispersão populacional</strong>. Poucos habitantes "compartilham" muitos quilômetros de vicinais necessários para acesso agrícola.</p>
                 </div>
             </div>
 
@@ -153,23 +265,64 @@
 
                 <div class="stats-container">
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">4,7×</span>
-                        <span class="stat-label">Razão média estadual</span>
+                        <span class="stat-label">Razão Média Estadual</span>
+                        <span class="stat-value">4,7 <span class="stat-unit">(×)</span></span>
+                        <span class="stat-info">OSM apresenta 4,7× mais extensão que DER</span>
                     </div>
                     <div class="stat-box bg-red-light">
-                        <span class="stat-value">17,2×</span>
-                        <span class="stat-label">Máximo (Ituverava)</span>
+                        <span class="stat-label">Divergência Máxima</span>
+                        <span class="stat-value">17,2 <span class="stat-unit">(×)</span></span>
+                        <span class="stat-info">Município de Ituverava</span>
                     </div>
                     <div class="stat-box bg-green-light">
-                        <span class="stat-value">3,5×</span>
-                        <span class="stat-label">Mínimo (Osasco)</span>
+                        <span class="stat-label">Divergência Mínima</span>
+                        <span class="stat-value">3,5 <span class="stat-unit">(×)</span></span>
+                        <span class="stat-info">Município de Osasco</span>
                     </div>
                 </div>
 
-                <div id="mapa3" class="map-container"></div>
+                <div class="map-wrapper-with-title">
+                    <h1 class="map-title-overlay">Razão OSM/DER por Município</h1>
+                    <div id="mapa3" class="map-container"></div>
+                </div>
 
-                <div class="alert alert-danger">
-                    <strong>🚨 Divergências Críticas:</strong> Cores <strong>vermelhas escuras</strong> (>15×) indicam municípios onde o OSM mapeia <strong>mais de 15 vezes</strong> a extensão cadastrada no DER, sugerindo <strong>subnotificação severa</strong> ou ausência de dados oficiais.
+                <div class="layer-info-map-leaflet" id="mapa3-layer-info">
+                    <div class="layer-control">
+                        <h4>Camadas</h4>
+                        <ul class="layer-list" id="mapa3-layer-list"></ul>
+                        <div class="layer-separator"></div>
+                        <div class="basemap-section">
+                            <label class="basemap-inline-label">
+                                <span class="layer-row">
+                                    <span class="layer-symbol symbol-raster"></span>
+                                    <span class="layer-label">Mapa Base</span>
+                                </span>
+                                <select id="mapa3-basemap-select" class="basemap-inline-select"></select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="legend-panel">
+                        <h4>Legenda Dinâmica</h4>
+                        <label>Camada<select id="mapa3-legend-layer"></select></label>
+                        <label>Atributo<select id="mapa3-legend-attr"></select></label>
+                        <label>Tipo<select id="mapa3-legend-type"><option value="auto">Auto</option><option value="text">Texto</option><option value="numeric">Numérico</option></select></label>
+                        <label>Legenda<select id="mapa3-legend-mode"><option value="continuous">Contínua</option><option value="discrete">Discreta</option></select></label>
+                        <label>Rampa de cores<select id="mapa3-legend-ramp"></select><div class="ramp-preview" id="mapa3-ramp-preview"></div></label>
+                        <div class="legend-output" id="mapa3-legend-output"></div>
+                        <button type="button" class="legend-apply" id="mapa3-legend-apply">Gerar legenda</button>
+                    </div>
+                    <div class="stats-layers">
+                        <h4>Estatísticas Descritivas</h4>
+                        <label>Camada<select id="mapa3-stats-layer"></select></label>
+                        <label>Atributo<select id="mapa3-stats-attr"></select></label>
+                        <button type="button" class="stats-apply" id="mapa3-stats-apply">Gerar estatísticas</button>
+                        <div class="stats-output" id="mapa3-stats-output" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="map-help">
+                    <h4>Sobre este Mapa</h4>
+                    <p><strong>🚨 Divergências Críticas:</strong> Cores <strong>vermelhas escuras</strong> (>15×) indicam municípios onde o OSM mapeia <strong>mais de 15 vezes</strong> a extensão cadastrada no DER, sugerindo <strong>subnotificação severa</strong> ou ausência de dados oficiais.</p>
                 </div>
             </div>
 
@@ -180,23 +333,64 @@
 
                 <div class="stats-container">
                     <div class="stat-box bg-green-light">
-                        <span class="stat-value">16 RAs</span>
                         <span class="stat-label">Regiões Administrativas</span>
+                        <span class="stat-value">16 <span class="stat-unit">(RAs)</span></span>
+                        <span class="stat-info">Totalidade do Estado de SP</span>
                     </div>
                     <div class="stat-box bg-blue-light">
-                        <span class="stat-value">1.035 km/km²</span>
-                        <span class="stat-label">RA com maior densidade (RMSP)</span>
+                        <span class="stat-label">RA com Maior Densidade</span>
+                        <span class="stat-value">10.350 <span class="stat-unit">(km/10.000km²)</span></span>
+                        <span class="stat-info">Região Metropolitana de SP</span>
                     </div>
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">260 km/km²</span>
-                        <span class="stat-label">RA com menor densidade (Registro)</span>
+                        <span class="stat-label">RA com Menor Densidade</span>
+                        <span class="stat-value">2.600 <span class="stat-unit">(km/10.000km²)</span></span>
+                        <span class="stat-info">RA Registro (Vale do Ribeira)</span>
                     </div>
                 </div>
 
-                <div id="mapa4" class="map-container"></div>
+                <div class="map-wrapper-with-title">
+                    <h1 class="map-title-overlay">Densidade OSM por Região Administrativa</h1>
+                    <div id="mapa4" class="map-container"></div>
+                </div>
 
-                <div class="alert alert-success">
-                    <strong>✓ Padrão Regional:</strong> <strong>RMSP e Campinas</strong> (áreas metropolitanas) apresentam alta densidade. <strong>Interior agrícola</strong> (Franca, Barretos, Ribeirão Preto) tem densidade moderada-alta. <strong>Vale do Ribeira</strong> (Registro) tem densidade muito baixa devido a topografia e restrições ambientais.
+                <div class="layer-info-map-leaflet" id="mapa4-layer-info">
+                    <div class="layer-control">
+                        <h4>Camadas</h4>
+                        <ul class="layer-list" id="mapa4-layer-list"></ul>
+                        <div class="layer-separator"></div>
+                        <div class="basemap-section">
+                            <label class="basemap-inline-label">
+                                <span class="layer-row">
+                                    <span class="layer-symbol symbol-raster"></span>
+                                    <span class="layer-label">Mapa Base</span>
+                                </span>
+                                <select id="mapa4-basemap-select" class="basemap-inline-select"></select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="legend-panel">
+                        <h4>Legenda Dinâmica</h4>
+                        <label>Camada<select id="mapa4-legend-layer"></select></label>
+                        <label>Atributo<select id="mapa4-legend-attr"></select></label>
+                        <label>Tipo<select id="mapa4-legend-type"><option value="auto">Auto</option><option value="text">Texto</option><option value="numeric">Numérico</option></select></label>
+                        <label>Legenda<select id="mapa4-legend-mode"><option value="continuous">Contínua</option><option value="discrete">Discreta</option></select></label>
+                        <label>Rampa de cores<select id="mapa4-legend-ramp"></select><div class="ramp-preview" id="mapa4-ramp-preview"></div></label>
+                        <div class="legend-output" id="mapa4-legend-output"></div>
+                        <button type="button" class="legend-apply" id="mapa4-legend-apply">Gerar legenda</button>
+                    </div>
+                    <div class="stats-layers">
+                        <h4>Estatísticas Descritivas</h4>
+                        <label>Camada<select id="mapa4-stats-layer"></select></label>
+                        <label>Atributo<select id="mapa4-stats-attr"></select></label>
+                        <button type="button" class="stats-apply" id="mapa4-stats-apply">Gerar estatísticas</button>
+                        <div class="stats-output" id="mapa4-stats-output" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="map-help">
+                    <h4>Sobre este Mapa</h4>
+                    <p><strong>✓ Padrão Regional:</strong> <strong>RMSP e Campinas</strong> (áreas metropolitanas) apresentam alta densidade. <strong>Interior agrícola</strong> (Franca, Barretos, Ribeirão Preto) tem densidade moderada-alta. <strong>Vale do Ribeira</strong> (Registro) tem densidade muito baixa devido a topografia e restrições ambientais.</p>
                 </div>
             </div>
         </section>
@@ -216,23 +410,64 @@
 
                 <div class="stats-container">
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">104 km/km²</span>
-                        <span class="stat-label">Densidade média estadual</span>
+                        <span class="stat-label">Densidade Média Estadual</span>
+                        <span class="stat-value">1.040 <span class="stat-unit">(km/10.000km²)</span></span>
+                        <span class="stat-info">Média ponderada DER por área</span>
                     </div>
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">167 km/km²</span>
-                        <span class="stat-label">Máximo (RMSP)</span>
+                        <span class="stat-label">Densidade Máxima</span>
+                        <span class="stat-value">2.850 <span class="stat-unit">(km/10.000km²)</span></span>
+                        <span class="stat-info">Região Metropolitana de SP</span>
                     </div>
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">37 km/km²</span>
-                        <span class="stat-label">Mínimo (RA Registro)</span>
+                        <span class="stat-label">Densidade Mínima</span>
+                        <span class="stat-value">370 <span class="stat-unit">(km/10.000km²)</span></span>
+                        <span class="stat-info">RA Registro (Vale do Ribeira)</span>
                     </div>
                 </div>
 
-                <div id="mapa5" class="map-container"></div>
+                <div class="map-wrapper-with-title">
+                    <h1 class="map-title-overlay">Densidade Territorial DER por Município</h1>
+                    <div id="mapa5" class="map-container"></div>
+                </div>
 
-                <div class="alert alert-warning">
-                    <strong>⚠️ Interpretação:</strong> Densidade DER é <strong>4,7× menor</strong> que OSM em todas as regiões. Padrão espacial similar (RMSP alta, Registro baixa) sugere que DER captura <strong>amostra representativa</strong> da malha vicinal, mas com cobertura incompleta.
+                <div class="layer-info-map-leaflet" id="mapa5-layer-info">
+                    <div class="layer-control">
+                        <h4>Camadas</h4>
+                        <ul class="layer-list" id="mapa5-layer-list"></ul>
+                        <div class="layer-separator"></div>
+                        <div class="basemap-section">
+                            <label class="basemap-inline-label">
+                                <span class="layer-row">
+                                    <span class="layer-symbol symbol-raster"></span>
+                                    <span class="layer-label">Mapa Base</span>
+                                </span>
+                                <select id="mapa5-basemap-select" class="basemap-inline-select"></select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="legend-panel">
+                        <h4>Legenda Dinâmica</h4>
+                        <label>Camada<select id="mapa5-legend-layer"></select></label>
+                        <label>Atributo<select id="mapa5-legend-attr"></select></label>
+                        <label>Tipo<select id="mapa5-legend-type"><option value="auto">Auto</option><option value="text">Texto</option><option value="numeric">Numérico</option></select></label>
+                        <label>Legenda<select id="mapa5-legend-mode"><option value="continuous">Contínua</option><option value="discrete">Discreta</option></select></label>
+                        <label>Rampa de cores<select id="mapa5-legend-ramp"></select><div class="ramp-preview" id="mapa5-ramp-preview"></div></label>
+                        <div class="legend-output" id="mapa5-legend-output"></div>
+                        <button type="button" class="legend-apply" id="mapa5-legend-apply">Gerar legenda</button>
+                    </div>
+                    <div class="stats-layers">
+                        <h4>Estatísticas Descritivas</h4>
+                        <label>Camada<select id="mapa5-stats-layer"></select></label>
+                        <label>Atributo<select id="mapa5-stats-attr"></select></label>
+                        <button type="button" class="stats-apply" id="mapa5-stats-apply">Gerar estatísticas</button>
+                        <div class="stats-output" id="mapa5-stats-output" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="map-help">
+                    <h4>Sobre este Mapa</h4>
+                    <p><strong>⚠️ Interpretação:</strong> Densidade DER é <strong>4,7× menor</strong> que OSM em todas as regiões. Padrão espacial similar (RMSP alta, Registro baixa) sugere que DER captura <strong>amostra representativa</strong> da malha vicinal, mas com cobertura incompleta.</p>
                 </div>
             </div>
 
@@ -243,23 +478,64 @@
 
                 <div class="stats-container">
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">0,56 km/1000hab</span>
-                        <span class="stat-label">Disponibilidade média</span>
+                        <span class="stat-label">Disponibilidade Média</span>
+                        <span class="stat-value">5,6 <span class="stat-unit">(km/10.000hab)</span></span>
+                        <span class="stat-info">Média ponderada DER por população</span>
                     </div>
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">31,2 km/1000hab</span>
-                        <span class="stat-label">Máximo (municípios rurais)</span>
+                        <span class="stat-label">Disponibilidade Máxima</span>
+                        <span class="stat-value">312 <span class="stat-unit">(km/10.000hab)</span></span>
+                        <span class="stat-info">Municípios rurais de baixa população</span>
                     </div>
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">0,008 km/1000hab</span>
-                        <span class="stat-label">Mínimo (grandes cidades)</span>
+                        <span class="stat-label">Disponibilidade Mínima</span>
+                        <span class="stat-value">0,08 <span class="stat-unit">(km/10.000hab)</span></span>
+                        <span class="stat-info">Grandes cidades (RMSP)</span>
                     </div>
                 </div>
 
-                <div id="mapa6" class="map-container"></div>
+                <div class="map-wrapper-with-title">
+                    <h1 class="map-title-overlay">Densidade per Capita DER por Município</h1>
+                    <div id="mapa6" class="map-container"></div>
+                </div>
 
-                <div class="alert alert-info">
-                    <strong>💡 Consistência com OSM:</strong> Mesmo com extensão 4,7× menor, o padrão de <strong>inversão espacial</strong> se mantém no DER (municípios rurais com alta densidade per capita).
+                <div class="layer-info-map-leaflet" id="mapa6-layer-info">
+                    <div class="layer-control">
+                        <h4>Camadas</h4>
+                        <ul class="layer-list" id="mapa6-layer-list"></ul>
+                        <div class="layer-separator"></div>
+                        <div class="basemap-section">
+                            <label class="basemap-inline-label">
+                                <span class="layer-row">
+                                    <span class="layer-symbol symbol-raster"></span>
+                                    <span class="layer-label">Mapa Base</span>
+                                </span>
+                                <select id="mapa6-basemap-select" class="basemap-inline-select"></select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="legend-panel">
+                        <h4>Legenda Dinâmica</h4>
+                        <label>Camada<select id="mapa6-legend-layer"></select></label>
+                        <label>Atributo<select id="mapa6-legend-attr"></select></label>
+                        <label>Tipo<select id="mapa6-legend-type"><option value="auto">Auto</option><option value="text">Texto</option><option value="numeric">Numérico</option></select></label>
+                        <label>Legenda<select id="mapa6-legend-mode"><option value="continuous">Contínua</option><option value="discrete">Discreta</option></select></label>
+                        <label>Rampa de cores<select id="mapa6-legend-ramp"></select><div class="ramp-preview" id="mapa6-ramp-preview"></div></label>
+                        <div class="legend-output" id="mapa6-legend-output"></div>
+                        <button type="button" class="legend-apply" id="mapa6-legend-apply">Gerar legenda</button>
+                    </div>
+                    <div class="stats-layers">
+                        <h4>Estatísticas Descritivas</h4>
+                        <label>Camada<select id="mapa6-stats-layer"></select></label>
+                        <label>Atributo<select id="mapa6-stats-attr"></select></label>
+                        <button type="button" class="stats-apply" id="mapa6-stats-apply">Gerar estatísticas</button>
+                        <div class="stats-output" id="mapa6-stats-output" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="map-help">
+                    <h4>Sobre este Mapa</h4>
+                    <p><strong>💡 Consistência com OSM:</strong> Mesmo com extensão 4,7× menor, o padrão de <strong>inversão espacial</strong> se mantém no DER (municípios rurais com alta densidade per capita).</p>
                 </div>
             </div>
         </section>
@@ -279,23 +555,64 @@
 
                 <div class="stats-container">
                     <div class="stat-box bg-green-light">
-                        <span class="stat-value">96.324 km</span>
-                        <span class="stat-label">Extensão total não cadastrada</span>
+                        <span class="stat-label">Extensão Total Não Cadastrada</span>
+                        <span class="stat-value">96.324 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Diferença OSM - DER (total estadual)</span>
                     </div>
                     <div class="stat-box bg-green-light">
-                        <span class="stat-value">148,8 km</span>
-                        <span class="stat-label">Diferença média por município</span>
+                        <span class="stat-label">Diferença Média por Município</span>
+                        <span class="stat-value">148,8 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Gap médio municipal</span>
                     </div>
                     <div class="stat-box bg-red-light">
-                        <span class="stat-value">1.328 km</span>
-                        <span class="stat-label">Máxima diferença (Ituverava)</span>
+                        <span class="stat-label">Diferença Máxima</span>
+                        <span class="stat-value">1.328 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Município de Ituverava</span>
                     </div>
                 </div>
 
-                <div id="mapa7" class="map-container"></div>
+                <div class="map-wrapper-with-title">
+                    <h1 class="map-title-overlay">Diferença Absoluta OSM - DER</h1>
+                    <div id="mapa7" class="map-container"></div>
+                </div>
 
-                <div class="alert alert-success">
-                    <strong>✓ Oportunidade:</strong> Cores <strong>verdes escuras</strong> indicam municípios com grande volume de vicinais não oficializadas. São áreas <strong>prioritárias</strong> para levantamento de campo e atualização do cadastro DER.
+                <div class="layer-info-map-leaflet" id="mapa7-layer-info">
+                    <div class="layer-control">
+                        <h4>Camadas</h4>
+                        <ul class="layer-list" id="mapa7-layer-list"></ul>
+                        <div class="layer-separator"></div>
+                        <div class="basemap-section">
+                            <label class="basemap-inline-label">
+                                <span class="layer-row">
+                                    <span class="layer-symbol symbol-raster"></span>
+                                    <span class="layer-label">Mapa Base</span>
+                                </span>
+                                <select id="mapa7-basemap-select" class="basemap-inline-select"></select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="legend-panel">
+                        <h4>Legenda Dinâmica</h4>
+                        <label>Camada<select id="mapa7-legend-layer"></select></label>
+                        <label>Atributo<select id="mapa7-legend-attr"></select></label>
+                        <label>Tipo<select id="mapa7-legend-type"><option value="auto">Auto</option><option value="text">Texto</option><option value="numeric">Numérico</option></select></label>
+                        <label>Legenda<select id="mapa7-legend-mode"><option value="continuous">Contínua</option><option value="discrete">Discreta</option></select></label>
+                        <label>Rampa de cores<select id="mapa7-legend-ramp"></select><div class="ramp-preview" id="mapa7-ramp-preview"></div></label>
+                        <div class="legend-output" id="mapa7-legend-output"></div>
+                        <button type="button" class="legend-apply" id="mapa7-legend-apply">Gerar legenda</button>
+                    </div>
+                    <div class="stats-layers">
+                        <h4>Estatísticas Descritivas</h4>
+                        <label>Camada<select id="mapa7-stats-layer"></select></label>
+                        <label>Atributo<select id="mapa7-stats-attr"></select></label>
+                        <button type="button" class="stats-apply" id="mapa7-stats-apply">Gerar estatísticas</button>
+                        <div class="stats-output" id="mapa7-stats-output" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="map-help">
+                    <h4>Sobre este Mapa</h4>
+                    <p><strong>✓ Oportunidade:</strong> Cores <strong>verdes escuras</strong> indicam municípios com grande volume de vicinais não oficializadas. São áreas <strong>prioritárias</strong> para levantamento de campo e atualização do cadastro DER.</p>
                 </div>
             </div>
 
@@ -306,23 +623,64 @@
 
                 <div class="stats-container">
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-value">21,2%</span>
-                        <span class="stat-label">Completude média estadual</span>
+                        <span class="stat-label">Completude Média Estadual</span>
+                        <span class="stat-value">21,2 <span class="stat-unit">(%)</span></span>
+                        <span class="stat-info">DER cobre 21% da malha OSM</span>
                     </div>
                     <div class="stat-box bg-green-light">
-                        <span class="stat-value">50,8%</span>
-                        <span class="stat-label">Máxima completude</span>
+                        <span class="stat-label">Completude Máxima</span>
+                        <span class="stat-value">50,8 <span class="stat-unit">(%)</span></span>
+                        <span class="stat-info">Melhor cobertura cadastral</span>
                     </div>
                     <div class="stat-box bg-red-light">
-                        <span class="stat-value">5,8%</span>
-                        <span class="stat-label">Mínima completude (Ituverava)</span>
+                        <span class="stat-label">Completude Mínima</span>
+                        <span class="stat-value">5,8 <span class="stat-unit">(%)</span></span>
+                        <span class="stat-info">Ituverava (subnotificação crítica)</span>
                     </div>
                 </div>
 
-                <div id="mapa8" class="map-container"></div>
+                <div class="map-wrapper-with-title">
+                    <h1 class="map-title-overlay">Índice de Completude DER</h1>
+                    <div id="mapa8" class="map-container"></div>
+                </div>
 
-                <div class="alert alert-danger">
-                    <strong>🚨 Gap de Cobertura:</strong> Em média, o cadastro DER cobre apenas <strong>21% da malha vicinal real</strong>. Cores <strong>vermelhas</strong> (&lt;15% completude) indicam regiões com <strong>subnotificação crítica</strong>.
+                <div class="layer-info-map-leaflet" id="mapa8-layer-info">
+                    <div class="layer-control">
+                        <h4>Camadas</h4>
+                        <ul class="layer-list" id="mapa8-layer-list"></ul>
+                        <div class="layer-separator"></div>
+                        <div class="basemap-section">
+                            <label class="basemap-inline-label">
+                                <span class="layer-row">
+                                    <span class="layer-symbol symbol-raster"></span>
+                                    <span class="layer-label">Mapa Base</span>
+                                </span>
+                                <select id="mapa8-basemap-select" class="basemap-inline-select"></select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="legend-panel">
+                        <h4>Legenda Dinâmica</h4>
+                        <label>Camada<select id="mapa8-legend-layer"></select></label>
+                        <label>Atributo<select id="mapa8-legend-attr"></select></label>
+                        <label>Tipo<select id="mapa8-legend-type"><option value="auto">Auto</option><option value="text">Texto</option><option value="numeric">Numérico</option></select></label>
+                        <label>Legenda<select id="mapa8-legend-mode"><option value="continuous">Contínua</option><option value="discrete">Discreta</option></select></label>
+                        <label>Rampa de cores<select id="mapa8-legend-ramp"></select><div class="ramp-preview" id="mapa8-ramp-preview"></div></label>
+                        <div class="legend-output" id="mapa8-legend-output"></div>
+                        <button type="button" class="legend-apply" id="mapa8-legend-apply">Gerar legenda</button>
+                    </div>
+                    <div class="stats-layers">
+                        <h4>Estatísticas Descritivas</h4>
+                        <label>Camada<select id="mapa8-stats-layer"></select></label>
+                        <label>Atributo<select id="mapa8-stats-attr"></select></label>
+                        <button type="button" class="stats-apply" id="mapa8-stats-apply">Gerar estatísticas</button>
+                        <div class="stats-output" id="mapa8-stats-output" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="map-help">
+                    <h4>Sobre este Mapa</h4>
+                    <p><strong>🚨 Gap de Cobertura:</strong> Em média, o cadastro DER cobre apenas <strong>21% da malha vicinal real</strong>. Cores <strong>vermelhas</strong> (&lt;15% completude) indicam regiões com <strong>subnotificação crítica</strong>.</p>
                 </div>
             </div>
         </section>
@@ -820,20 +1178,24 @@
 
             <div class="stats-container">
                 <div class="stat-box">
-                    <span class="stat-value">16.647</span>
                     <span class="stat-label">Segmentos Conectados à SRE</span>
+                    <span class="stat-value">16.647</span>
+                    <span class="stat-info">Intersecção em buffer de 50m</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">78.530</span>
                     <span class="stat-label">Segmentos Isolados</span>
+                    <span class="stat-value">78.530</span>
+                    <span class="stat-info">Sem conexão direta com SRE</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">17,5%</span>
                     <span class="stat-label">Taxa de Conectividade</span>
+                    <span class="stat-value">17,5 <span class="stat-unit">(%)</span></span>
+                    <span class="stat-info">Conectados / Total de segmentos</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">82,5%</span>
                     <span class="stat-label">Vicinais Puramente Locais</span>
+                    <span class="stat-value">82,5 <span class="stat-unit">(%)</span></span>
+                    <span class="stat-info">Sem acesso direto a rodovias</span>
                 </div>
             </div>
 
@@ -932,8 +1294,8 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">Estudo de Malha Viária Vicinal - Estado de São Paulo | Janeiro 2026</p>
-            <p class="footer-text">Dados: OpenStreetMap (Geofabrik) | IBGE | DER/SP</p>
+            <p class="footer-text">Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE/IBGE)</p>
         </div>
     </footer>
 

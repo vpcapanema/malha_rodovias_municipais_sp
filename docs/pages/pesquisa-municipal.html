@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa Municipal - Estudo de Vicinais SP</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+    <title>Pesquisa Municipal - Inferência Geoespacial</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <h1 class="header-title">
                 <span class="icon icon-map"></span>
-                Estudo de Malha Viária Vicinal - Estado de São Paulo
+                Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo
             </h1>
-            <p class="header-subtitle">Análise comparativa da malha rodoviária vicinal: OpenStreetMap vs. DER/SP</p>
+            <p class="header-subtitle">Base estimada: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE)</p>
         </div>
     </header>
 
@@ -20,11 +20,10 @@
         <div class="nav-container">
             <ul class="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
-                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia</a></li>
                 <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
-                <li class="nav-item"><a href="processamento.html" class="nav-link">Processamento</a></li>
                 <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
-                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia Silvio</a></li>
+                <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
                 <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link active">Pesquisa Municipal</a></li>
             </ul>
         </div>
@@ -42,20 +41,24 @@
                 
                 <div class="stats-container mt-2">
                     <div class="stat-box">
-                        <span class="stat-value">645</span>
                         <span class="stat-label">Municípios Total</span>
+                        <span class="stat-value">645</span>
+                        <span class="stat-info">Totalidade do Estado de SP</span>
                     </div>
                     <div class="stat-box">
+                        <span class="stat-label">Processados</span>
                         <span class="stat-value">442</span>
-                        <span class="stat-label">Processados (68,5%)</span>
+                        <span class="stat-info">68,5% do total</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-value">78</span>
                         <span class="stat-label">Com Dados Encontrados</span>
+                        <span class="stat-value">78</span>
+                        <span class="stat-info">17,6% dos processados</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-value">1.326</span>
                         <span class="stat-label">Buscas Realizadas</span>
+                        <span class="stat-value">1.326</span>
+                        <span class="stat-info">Média de 3 buscas/município</span>
                     </div>
                 </div>
             </div>
@@ -521,8 +524,8 @@ python gerar_relatorio_util.py --input progresso_pesquisa_645.json</code></pre>
 
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">Estudo de Malha Viária Vicinal - Estado de São Paulo | Janeiro 2026</p>
-            <p class="footer-text">Dados: OpenStreetMap (Geofabrik) | IBGE | DER/SP</p>
+            <p class="footer-text">Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE/IBGE)</p>
         </div>
     </footer>
 

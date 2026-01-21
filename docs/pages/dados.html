@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fontes de Dados - Estudo de Vicinais SP</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+    <title>Fontes de Dados - Inferência Geoespacial</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -11,9 +11,9 @@
         <div class="header-content">
             <h1 class="header-title">
                 <span class="icon icon-map"></span>
-                Estudo de Malha Viária Vicinal - Estado de São Paulo
+                Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo
             </h1>
-            <p class="header-subtitle">Análise comparativa da malha rodoviária vicinal: OpenStreetMap vs. DER/SP</p>
+            <p class="header-subtitle">Base estimada: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE)</p>
         </div>
     </header>
 
@@ -22,11 +22,10 @@
         <div class="nav-container">
             <ul class="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
-                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia</a></li>
                 <li class="nav-item"><a href="dados.html" class="nav-link active">Dados</a></li>
-                <li class="nav-item"><a href="processamento.html" class="nav-link">Processamento</a></li>
                 <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
-                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia Silvio</a></li>
+                <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
                 <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
             </ul>
         </div>
@@ -136,16 +135,19 @@ Para cada way no PBF:
 
                 <div class="stats-container mt-2">
                     <div class="stat-box">
+                        <span class="stat-label">Ways Extraídas (Todos Tipos)</span>
                         <span class="stat-value">1.642.474</span>
-                        <span class="stat-label">Ways extraídas (todos tipos)</span>
+                        <span class="stat-info">Todos os segmentos OSM no Estado</span>
                     </div>
                     <div class="stat-box">
+                        <span class="stat-label">Features Iniciais</span>
                         <span class="stat-value">804.868</span>
-                        <span class="stat-label">Features iniciais (filtros básicos)</span>
+                        <span class="stat-info">Após filtros básicos aplicados</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-value">601.667</span>
-                        <span class="stat-label">km de extensão total</span>
+                        <span class="stat-label">Extensão Total</span>
+                        <span class="stat-value">601.667 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Soma de todos os segmentos viários</span>
                     </div>
                 </div>
             </div>
@@ -471,20 +473,24 @@ Para cada way no PBF:
             <h3 class="section-subtitle">Distribuição DER por Município:</h3>
             <div class="stats-container">
                 <div class="stat-box">
+                    <span class="stat-label">Municípios com Dados DER</span>
                     <span class="stat-value">637</span>
-                    <span class="stat-label">Municípios com dados DER</span>
+                    <span class="stat-info">99% do total (645)</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">40,69 km</span>
-                    <span class="stat-label">Média por município</span>
+                    <span class="stat-label">Média por Município</span>
+                    <span class="stat-value">40,69 <span class="stat-unit">(km)</span></span>
+                    <span class="stat-info">Distribuição média de vicinais</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">32,93 km</span>
-                    <span class="stat-label">Mediana por município</span>
+                    <span class="stat-label">Mediana por Município</span>
+                    <span class="stat-value">32,93 <span class="stat-unit">(km)</span></span>
+                    <span class="stat-info">Valor central da distribuição</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">195 km</span>
-                    <span class="stat-label">Máximo (1 município)</span>
+                    <span class="stat-label">Extensão Máxima</span>
+                    <span class="stat-value">195 <span class="stat-unit">(km)</span></span>
+                    <span class="stat-info">Município com maior malha DER</span>
                 </div>
             </div>
         </section>
@@ -653,8 +659,8 @@ Para cada way no PBF:
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">Estudo de Malha Viária Vicinal - Estado de São Paulo | Janeiro 2026</p>
-            <p class="footer-text">Dados: OpenStreetMap (Geofabrik) | IBGE | DER/SP</p>
+            <p class="footer-text">Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE/IBGE)</p>
         </div>
     </footer>
 
