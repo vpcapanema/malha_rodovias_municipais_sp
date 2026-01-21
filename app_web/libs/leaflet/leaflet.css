@@ -22,8 +22,7 @@
 .leaflet-marker-shadow {
 	-webkit-user-select: none;
 	   -moz-user-select: none;
-	        user-select: none;
-	  -webkit-user-drag: none;
+			user-select: none;
 	}
 /* Prevents IE11 from highlighting tiles in blue */
 .leaflet-tile::selection {
@@ -38,6 +37,7 @@
 	width: 1600px;
 	height: 1600px;
 	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
 	}
 .leaflet-marker-icon,
 .leaflet-marker-shadow {
@@ -62,7 +62,8 @@
 
 .leaflet-container img.leaflet-tile {
 	/* See: https://bugs.chromium.org/p/chromium/issues/detail?id=600120 */
-	mix-blend-mode: plus-lighter;
+	mix-blend-mode: screen; /* Fallback for Opera and other browsers that don't support plus-lighter */
+	mix-blend-mode: plus-lighter; /* Intentionally not supported in Opera - screen fallback is used */
 }
 
 .leaflet-container.leaflet-touch-zoom {

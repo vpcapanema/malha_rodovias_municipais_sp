@@ -73,3 +73,10 @@ Thumbs.db
 *.bak
 *.qgz
 *.cache
+
+# Arquivos muito grandes
+Vicinais.zip
+dados/Base_OSM/*.osm.pbf
+dados/Base_OSM/*.gpkg
+dados/Base_OSM/*.parquet
+dados/*.rar
