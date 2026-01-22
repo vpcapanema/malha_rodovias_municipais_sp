@@ -57,7 +57,9 @@ motodologia_abordagem_silvio/**/*.sbn
 motodologia_abordagem_silvio/**/*.sbx
 
 # IDEs
-.vscode/
+.vscode/*
+!.vscode/
+!.vscode/tasks.json
 .idea/
 *.swp
 *.swo
@@ -75,6 +77,15 @@ Thumbs.db
 *.bak
 *.qgz
 *.cache
+
+# Temporários/locks (ArcGIS/Excel)
+*.sr.lock
+~$*.xlsx
+*.shp.xml
+
+# Backups/testes locais (não publicar)
+docs/pages/resultados_backup*.html
+docs/teste_mapas.html
 
 # Arquivos muito grandes
 Vicinais.zip

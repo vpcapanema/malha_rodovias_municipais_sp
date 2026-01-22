@@ -1,0 +1,544 @@
+/* ============================================================
+   RESULTADOS MUNICIPAL - CSS ESPECÍFICO
+   ============================================================ */
+
+/* Containers de análise */
+.analise-section {
+    background: var(--white, #ffffff);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Aumentar largura do container principal em ~40% (página municipal) */
+.main-content,
+.header-content,
+.nav-container {
+    max-width: 1680px;
+}
+
+.analise-section h2 {
+    color: var(--primary-color, #2c3e50);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color, #3498db);
+}
+
+/* Grid de indicadores - 4 cards em linha única */
+.indicadores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.indicador-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #2c3e50;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.indicador-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.indicador-card.verde {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    border-color: #27ae60;
+}
+
+.indicador-card.laranja {
+    background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);
+    color: white;
+    border-color: #d35400;
+}
+
+.indicador-card.azul {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    border-color: #2c3e50;
+}
+
+.indicador-card.roxo {
+    background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+    color: white;
+    border-color: #8e44ad;
+}
+
+/* Header com ícone e label lado a lado centralizado */
+.indicador-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.indicador-header i {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+.indicador-icone {
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.9;
+}
+
+.indicador-label {
+    font-size: 0.8rem;
+    opacity: 0.95;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.indicador-valor {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0.4rem 0;
+    line-height: 1.1;
+}
+
+.indicador-unidade {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* Unidade sempre ao lado do valor (em uma única linha) */
+.indicador-valor,
+.indicador-unidade {
+    display: inline;
+}
+
+.indicador-unidade {
+    margin-left: 0.35rem;
+    white-space: nowrap;
+}
+
+.indicador-desc {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-top: 0.3rem;
+    line-height: 1.3;
+}
+
+.indicador-descricao {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-top: 0.3rem;
+    line-height: 1.3;
+}
+
+/* Stat cards - mesmo padrão dos indicadores */
+.stat-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #2c3e50;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.stat-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.stat-header i {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0.4rem 0;
+    line-height: 1.1;
+    color: #2c3e50;
+}
+
+.stat-unit {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    color: #6c757d;
+}
+
+/* Tabelas de dados */
+.tabela-dados {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabela-dados thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.tabela-dados th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabela-dados td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tabela-dados tr:hover {
+    background-color: #f5f5f5;
+}
+
+.tabela-dados tr:last-child td {
+    border-bottom: none;
+}
+
+/* Seção de comparação */
+.comparacao-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.comparacao-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.comparacao-item.destaque {
+    background: #fff3cd;
+    border-left-color: #ffc107;
+}
+
+.comparacao-item.alerta {
+    background: #f8d7da;
+    border-left-color: #dc3545;
+}
+
+.comparacao-valor {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0.5rem 0;
+}
+
+.comparacao-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Layouts de gráficos e mapas específicos para municipal */
+.analise-dupla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.analise-tripla {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Containers de visualização */
+.viz-container {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.viz-container canvas {
+    /* Evita canvas “explodindo” em altura quando o container não tem altura fixa */
+    width: 100% !important;
+    height: auto !important;
+    max-height: 520px;
+}
+
+/* Quando o container tem altura fixa (pares), aí sim o canvas pode preencher */
+.chart-map-row .viz-container canvas,
+.viz-container.equal-pair canvas {
+    height: 100% !important;
+    max-height: 100% !important;
+}
+
+/* Alturas consistentes entre gráfico e mapa (em pares) */
+:root {
+    --viz-pair-height: 460px;
+}
+
+.chart-map-row {
+    align-items: stretch;
+}
+
+.chart-map-row .viz-container,
+.chart-map-row .mapa-tematico-small {
+    height: var(--viz-pair-height);
+}
+
+.viz-container.equal-pair,
+.mapa-tematico.equal-pair {
+    height: var(--viz-pair-height) !important;
+}
+
+.viz-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* Mapas temáticos */
+.mapa-tematico {
+    height: 560px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.mapa-tematico-pequeno,
+.mapa-tematico-small {
+    height: var(--viz-pair-height);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Legenda fora do mapa (abaixo do container do mapa) */
+.mapa-legenda-externa {
+    margin-top: 0.6rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.mapa-legenda-externa .legenda-titulo {
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.mapa-legenda-externa .legenda-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--legend-cols, 3), minmax(160px, 1fr));
+    gap: 0.5rem 0.75rem;
+    align-items: center;
+}
+
+.mapa-legenda-externa .legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: 0;
+}
+
+.mapa-legenda-externa .legenda-cor {
+    width: 18px;
+    height: 12px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.18);
+    flex: 0 0 auto;
+}
+
+.mapa-legenda-externa .legenda-linha {
+    width: 20px;
+    height: 0;
+    border-top: 3px solid currentColor;
+    border-radius: 2px;
+}
+
+.mapa-legenda-externa .legenda-label {
+    color: #374151;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Legenda contínua (gradiente) */
+.mapa-legenda-externa .legenda-gradiente {
+    display: grid;
+    gap: 8px;
+}
+
+.mapa-legenda-externa .legenda-gradiente-bar {
+    height: 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.18);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.mapa-legenda-externa .legenda-gradiente-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: #374151;
+}
+
+.mapa-legenda-externa .legenda-gradiente-labels span {
+    white-space: nowrap;
+}
+
+/* Badges e tags */
+.badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-muito-acima {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-acima {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.badge-media {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge-abaixo {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge-muito-abaixo {
+    background: #f5c6cb;
+    color: #721c24;
+}
+
+/* Alertas informativos */
+.alert-metodologia {
+    background: #e7f3ff;
+    border-left: 4px solid #2196f3;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+}
+
+.alert-metodologia strong {
+    color: #1976d2;
+}
+
+.alert-destaque {
+    background: #fff4e5;
+    border-left: 4px solid #ff9800;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .analise-dupla {
+        grid-template-columns: 1fr;
+    }
+    
+    .analise-tripla {
+        grid-template-columns: 1fr;
+    }
+    
+    .indicadores-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .analise-section {
+        padding: 1.5rem;
+    }
+    
+    .indicador-card {
+        padding: 1.25rem;
+    }
+    
+    .indicador-valor {
+        font-size: 2rem;
+    }
+    
+    .comparacao-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mapa-tematico {
+        height: 420px;
+    }
+}
+
+@media (max-width: 480px) {
+    .indicadores-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabela-dados {
+        font-size: 0.85rem;
+    }
+    
+    .tabela-dados th,
+    .tabela-dados td {
+        padding: 0.5rem;
+    }
+}

@@ -1,0 +1,95 @@
+{
+  "estatisticas_segmentos": {
+    "total_segmentos": 7417,
+    "extensao_total_km": 25918.58,
+    "comprimento_medio_km": 3.49,
+    "comprimento_mediano_km": 1.9,
+    "desvio_padrao_km": 4.41,
+    "minimo_km": 0.0,
+    "maximo_km": 37.85,
+    "q25_km": 0.48,
+    "q75_km": 4.9,
+    "amplitude_km": 37.85
+  },
+  "distribuicao_por_faixas": [
+    {
+      "faixa": "0-2 km",
+      "quantidade": 3803,
+      "percentual_quantidade": 51.3,
+      "extensao_km": 2530.9,
+      "percentual_extensao": 9.8
+    },
+    {
+      "faixa": "2-5 km",
+      "quantidade": 1808,
+      "percentual_quantidade": 24.4,
+      "extensao_km": 5975.82,
+      "percentual_extensao": 23.1
+    },
+    {
+      "faixa": "5-10 km",
+      "quantidade": 1211,
+      "percentual_quantidade": 16.3,
+      "extensao_km": 8468.09,
+      "percentual_extensao": 32.7
+    },
+    {
+      "faixa": "10-20 km",
+      "quantidade": 508,
+      "percentual_quantidade": 6.8,
+      "extensao_km": 6792.59,
+      "percentual_extensao": 26.2
+    },
+    {
+      "faixa": "20-40 km",
+      "quantidade": 87,
+      "percentual_quantidade": 1.2,
+      "extensao_km": 2151.18,
+      "percentual_extensao": 8.3
+    }
+  ],
+  "distribuicao_por_tipo": [
+    {
+      "tipo": 0,
+      "quantidade": 15,
+      "extensao_km": 55.42,
+      "percentual_quantidade": 0.2,
+      "percentual_extensao": 0.2
+    },
+    {
+      "tipo": 1,
+      "quantidade": 3,
+      "extensao_km": 3.49,
+      "percentual_quantidade": 0.0,
+      "percentual_extensao": 0.0
+    },
+    {
+      "tipo": 2,
+      "quantidade": 1,
+      "extensao_km": 6.92,
+      "percentual_quantidade": 0.0,
+      "percentual_extensao": 0.0
+    },
+    {
+      "tipo": 7,
+      "quantidade": 20,
+      "extensao_km": 79.53,
+      "percentual_quantidade": 0.3,
+      "percentual_extensao": 0.3
+    },
+    {
+      "tipo": 8,
+      "quantidade": 2752,
+      "extensao_km": 9789.28,
+      "percentual_quantidade": 37.1,
+      "percentual_extensao": 37.8
+    },
+    {
+      "tipo": 9,
+      "quantidade": 4626,
+      "extensao_km": 15983.94,
+      "percentual_quantidade": 62.4,
+      "percentual_extensao": 61.7
+    }
+  ]
+}

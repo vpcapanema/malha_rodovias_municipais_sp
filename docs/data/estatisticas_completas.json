@@ -1,0 +1,61 @@
+{
+  "municipal": {
+    "extensao": {
+      "total": 25918.58,
+      "media": 40.18,
+      "mediana": 32.8,
+      "desvio_padrao": 30.54,
+      "minimo": 0.0,
+      "maximo": 195.02,
+      "q25": 19.31,
+      "q75": 51.48
+    },
+    "densidade_area_10k": {
+      "media": 1311.7889,
+      "mediana": 1115.502,
+      "desvio_padrao": 908.2409,
+      "minimo": 0.0,
+      "maximo": 6046.1964
+    },
+    "densidade_area_abs": {
+      "media": 0.131179,
+      "mediana": 0.11155,
+      "minimo": 0.0,
+      "maximo": 0.60462
+    },
+    "densidade_pop_10k": {
+      "media": 35.0903,
+      "mediana": 22.4163,
+      "desvio_padrao": 38.2867,
+      "minimo": 0.0,
+      "maximo": 304.6983
+    }
+  },
+  "regional": {
+    "extensao": {
+      "total": 25918.58,
+      "media": 1619.91,
+      "minimo": 132.79,
+      "maximo": 3584.3
+    },
+    "densidade_area_10k": {
+      "media": 1024.2015,
+      "minimo": 542.6747,
+      "maximo": 1673.1352
+    },
+    "densidade_pop_10k": {
+      "media": 14.144,
+      "minimo": 0.6168,
+      "maximo": 28.4656
+    }
+  },
+  "geral": {
+    "total_municipios": 645,
+    "municipios_com_dados": 645,
+    "populacao_total": 46081801,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579",
+    "extensao_total_km": 25918.58,
+    "razao_max_min": 528.66
+  }
+}

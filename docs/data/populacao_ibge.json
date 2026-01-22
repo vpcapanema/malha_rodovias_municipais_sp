@@ -1,0 +1,4517 @@
+[
+  {
+    "cod_ibge": "3509908",
+    "municipio": "Cananéia",
+    "populacao": 12491,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520426",
+    "municipio": "Ilha Comprida",
+    "populacao": 14104,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505401",
+    "municipio": "Barra do Turvo",
+    "populacao": 6894,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509254",
+    "municipio": "Cajati",
+    "populacao": 29262,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524600",
+    "municipio": "Jacupiranga",
+    "populacao": 16216,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536208",
+    "municipio": "Pariquera-Açu",
+    "populacao": 19603,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522158",
+    "municipio": "Itaoca",
+    "populacao": 3497,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542800",
+    "municipio": "Ribeira",
+    "populacao": 3158,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522653",
+    "municipio": "Itapirapuã Paulista",
+    "populacao": 4420,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542602",
+    "municipio": "Registro",
+    "populacao": 61927,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520301",
+    "municipio": "Iguape",
+    "populacao": 29891,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505351",
+    "municipio": "Barra do Chapéu",
+    "populacao": 5254,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521200",
+    "municipio": "Iporanga",
+    "populacao": 4083,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507159",
+    "municipio": "Bom Sucesso de Itararé",
+    "populacao": 3609,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502705",
+    "municipio": "Apiaí",
+    "populacao": 24857,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523305",
+    "municipio": "Itariri",
+    "populacao": 15916,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514809",
+    "municipio": "Eldorado",
+    "populacao": 13109,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537602",
+    "municipio": "Peruíbe",
+    "populacao": 70629,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543006",
+    "municipio": "Ribeirão Branco",
+    "populacao": 18942,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532827",
+    "municipio": "Nova Campina",
+    "populacao": 8630,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517604",
+    "municipio": "Guapiara",
+    "populacao": 17225,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551801",
+    "municipio": "Sete Barras",
+    "populacao": 12903,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543253",
+    "municipio": "Ribeirão Grande",
+    "populacao": 7571,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526100",
+    "municipio": "Juquiá",
+    "populacao": 17184,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529906",
+    "municipio": "Miracatu",
+    "populacao": 18610,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531100",
+    "municipio": "Mongaguá",
+    "populacao": 64845,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537206",
+    "municipio": "Pedro de Toledo",
+    "populacao": 11617,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541000",
+    "municipio": "Praia Grande",
+    "populacao": 368539,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522109",
+    "municipio": "Itanhaém",
+    "populacao": 118495,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551009",
+    "municipio": "São Vicente",
+    "populacao": 338326,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523206",
+    "municipio": "Itararé",
+    "populacao": 45213,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553500",
+    "municipio": "Tapiraí",
+    "populacao": 8122,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518701",
+    "municipio": "Guarujá",
+    "populacao": 294871,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553856",
+    "municipio": "Taquarivaí",
+    "populacao": 7170,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526209",
+    "municipio": "Juquitiba",
+    "populacao": 27969,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510203",
+    "municipio": "Capão Bonito",
+    "populacao": 47409,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513504",
+    "municipio": "Cubatão",
+    "populacao": 114870,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549953",
+    "municipio": "São Lourenço da Serra",
+    "populacao": 16479,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515103",
+    "municipio": "Embu-Guaçu",
+    "populacao": 68913,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543501",
+    "municipio": "Riversul",
+    "populacao": 5628,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550209",
+    "municipio": "São Miguel Arcanjo",
+    "populacao": 32924,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548500",
+    "municipio": "Santos",
+    "populacao": 429547,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520400",
+    "municipio": "Ilhabela",
+    "populacao": 36559,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537909",
+    "municipio": "Pilar do Sul",
+    "populacao": 28459,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544103",
+    "municipio": "Rio Grande da Serra",
+    "populacao": 45324,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521705",
+    "municipio": "Itaberá",
+    "populacao": 18263,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522208",
+    "municipio": "Itapecerica da Serra",
+    "populacao": 163003,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513801",
+    "municipio": "Diadema",
+    "populacao": 403579,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550704",
+    "municipio": "São Sebastião",
+    "populacao": 84280,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506359",
+    "municipio": "Bertioga",
+    "populacao": 67436,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548708",
+    "municipio": "São Bernardo do Campo",
+    "populacao": 841154,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537800",
+    "municipio": "Piedade",
+    "populacao": 54266,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543303",
+    "municipio": "Ribeirão Pires",
+    "populacao": 118954,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529401",
+    "municipio": "Mauá",
+    "populacao": 429014,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515004",
+    "municipio": "Embu das Artes",
+    "populacao": 259788,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547809",
+    "municipio": "Santo André",
+    "populacao": 782048,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548807",
+    "municipio": "São Caetano do Sul",
+    "populacao": 172693,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519709",
+    "municipio": "Ibiúna",
+    "populacao": 77801,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552809",
+    "municipio": "Taboão da Serra",
+    "populacao": 285307,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522406",
+    "municipio": "Itapeva",
+    "populacao": 92393,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556453",
+    "municipio": "Vargem Grande Paulista",
+    "populacao": 52352,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545308",
+    "municipio": "Salto de Pirapora",
+    "populacao": 45262,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513009",
+    "municipio": "Cotia",
+    "populacao": 289493,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508009",
+    "municipio": "Buri",
+    "populacao": 20731,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551108",
+    "municipio": "Sarapuí",
+    "populacao": 10677,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512605",
+    "municipio": "Coronel Macedo",
+    "populacao": 4271,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3557006",
+    "municipio": "Votorantim",
+    "populacao": 133510,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525003",
+    "municipio": "Jandira",
+    "populacao": 121550,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515707",
+    "municipio": "Ferraz de Vasconcelos",
+    "populacao": 186479,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510609",
+    "municipio": "Carapicuíba",
+    "populacao": 398236,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509452",
+    "municipio": "Campina do Monte Alegre",
+    "populacao": 6090,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506607",
+    "municipio": "Biritiba Mirim",
+    "populacao": 30564,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539806",
+    "municipio": "Poá",
+    "populacao": 106355,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522505",
+    "municipio": "Itapevi",
+    "populacao": 242995,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522802",
+    "municipio": "Itaporanga",
+    "populacao": 14245,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500758",
+    "municipio": "Alambari",
+    "populacao": 6373,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552502",
+    "municipio": "Suzano",
+    "populacao": 320261,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510500",
+    "municipio": "Caraguatatuba",
+    "populacao": 142248,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545001",
+    "municipio": "Salesópolis",
+    "populacao": 15381,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505708",
+    "municipio": "Barueri",
+    "populacao": 333737,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501152",
+    "municipio": "Alumínio",
+    "populacao": 17607,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534401",
+    "municipio": "Osasco",
+    "populacao": 759524,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505005",
+    "municipio": "Barão de Antonina",
+    "populacao": 3632,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502903",
+    "municipio": "Araçoiaba da Serra",
+    "populacao": 33832,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528403",
+    "municipio": "Mairinque",
+    "populacao": 51888,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523107",
+    "municipio": "Itaquaquecetuba",
+    "populacao": 382983,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550605",
+    "municipio": "São Roque",
+    "populacao": 81366,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522307",
+    "municipio": "Itapetininga",
+    "populacao": 164256,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553807",
+    "municipio": "Taquarituba",
+    "populacao": 24932,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553005",
+    "municipio": "Taguaí",
+    "populacao": 13068,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547304",
+    "municipio": "Santana de Parnaíba",
+    "populacao": 163787,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510302",
+    "municipio": "Capela do Alto",
+    "populacao": 23777,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550308",
+    "municipio": "São Paulo",
+    "populacao": 11904961,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502754",
+    "municipio": "Araçariguama",
+    "populacao": 22314,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552205",
+    "municipio": "Sorocaba",
+    "populacao": 762172,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530607",
+    "municipio": "Mogi das Cruzes",
+    "populacao": 470302,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546009",
+    "municipio": "Santa Branca",
+    "populacao": 14219,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521002",
+    "municipio": "Iperó",
+    "populacao": 38277,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509007",
+    "municipio": "Caieiras",
+    "populacao": 98549,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503901",
+    "municipio": "Arujá",
+    "populacao": 90273,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539103",
+    "municipio": "Pirapora do Bom Jesus",
+    "populacao": 18925,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518305",
+    "municipio": "Guararema",
+    "populacao": 32620,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535606",
+    "municipio": "Paraibuna",
+    "populacao": 17959,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509205",
+    "municipio": "Cajamar",
+    "populacao": 98365,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532306",
+    "municipio": "Natividade da Serra",
+    "populacao": 7155,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518800",
+    "municipio": "Guarulhos",
+    "populacao": 1349100,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535804",
+    "municipio": "Paranapanema",
+    "populacao": 19853,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554201",
+    "municipio": "Tejupá",
+    "populacao": 4119,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502200",
+    "municipio": "Angatuba",
+    "populacao": 24573,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515400",
+    "municipio": "Fartura",
+    "populacao": 17029,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518503",
+    "municipio": "Guareí",
+    "populacao": 15285,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516408",
+    "municipio": "Franco da Rocha",
+    "populacao": 150241,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516309",
+    "municipio": "Francisco Morato",
+    "populacao": 171476,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521804",
+    "municipio": "Itaí",
+    "populacao": 25979,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528502",
+    "municipio": "Mairiporã",
+    "populacao": 97835,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541653",
+    "municipio": "Quadra",
+    "populacao": 3477,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554003",
+    "municipio": "Tatuí",
+    "populacao": 129130,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508405",
+    "municipio": "Cabreúva",
+    "populacao": 48654,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555406",
+    "municipio": "Ubatuba",
+    "populacao": 97096,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554656",
+    "municipio": "Torre de Pedra",
+    "populacao": 2056,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524907",
+    "municipio": "Jambeiro",
+    "populacao": 6611,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507001",
+    "municipio": "Boituva",
+    "populacao": 63850,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546801",
+    "municipio": "Santa Isabel",
+    "populacao": 54691,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551207",
+    "municipio": "Sarutaiá",
+    "populacao": 3772,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556503",
+    "municipio": "Várzea Paulista",
+    "populacao": 119655,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524402",
+    "municipio": "Jacareí",
+    "populacao": 250952,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542305",
+    "municipio": "Redenção da Serra",
+    "populacao": 4637,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523909",
+    "municipio": "Itu",
+    "populacao": 175047,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509601",
+    "municipio": "Campo Limpo Paulista",
+    "populacao": 79781,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511607",
+    "municipio": "Cesário Lange",
+    "populacao": 19707,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511508",
+    "municipio": "Cerquilho",
+    "populacao": 46391,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554607",
+    "municipio": "Timburi",
+    "populacao": 2484,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507100",
+    "municipio": "Bom Jesus dos Perdões",
+    "populacao": 22579,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545209",
+    "municipio": "Salto",
+    "populacao": 141111,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532405",
+    "municipio": "Nazaré Paulista",
+    "populacao": 18675,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540606",
+    "municipio": "Porto Feliz",
+    "populacao": 58605,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503109",
+    "municipio": "Arandu",
+    "populacao": 7076,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550001",
+    "municipio": "São Luiz do Paraitinga",
+    "populacao": 10487,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540507",
+    "municipio": "Porangaba",
+    "populacao": 10850,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525904",
+    "municipio": "Jundiaí",
+    "populacao": 463039,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538808",
+    "municipio": "Piraju",
+    "populacao": 30294,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525854",
+    "municipio": "Jumirim",
+    "populacao": 3132,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524006",
+    "municipio": "Itupeva",
+    "populacao": 74994,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527306",
+    "municipio": "Louveira",
+    "populacao": 54865,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537503",
+    "municipio": "Pereiras",
+    "populacao": 9013,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556701",
+    "municipio": "Vinhedo",
+    "populacao": 79089,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526308",
+    "municipio": "Lagoinha",
+    "populacao": 5183,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520509",
+    "municipio": "Indaiatuba",
+    "populacao": 269657,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504107",
+    "municipio": "Atibaia",
+    "populacao": 167161,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536109",
+    "municipio": "Pardinho",
+    "populacao": 7435,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520202",
+    "municipio": "Igaratá",
+    "populacao": 10984,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542107",
+    "municipio": "Rafard",
+    "populacao": 9145,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514908",
+    "municipio": "Elias Fausto",
+    "populacao": 18168,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520905",
+    "municipio": "Ipaussu",
+    "populacao": 13935,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525201",
+    "municipio": "Jarinu",
+    "populacao": 40007,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508504",
+    "municipio": "Caçapava",
+    "populacao": 100071,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510153",
+    "municipio": "Canitar",
+    "populacao": 6589,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538600",
+    "municipio": "Piracaia",
+    "populacao": 26795,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506904",
+    "municipio": "Bofete",
+    "populacao": 10710,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528601",
+    "municipio": "Manduri",
+    "populacao": 10122,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554102",
+    "municipio": "Taubaté",
+    "populacao": 322397,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523503",
+    "municipio": "Itatinga",
+    "populacao": 19462,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3557204",
+    "municipio": "Chavantes",
+    "populacao": 12415,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523404",
+    "municipio": "Itatiba",
+    "populacao": 127112,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556206",
+    "municipio": "Valinhos",
+    "populacao": 132258,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506300",
+    "municipio": "Bernardino de Campos",
+    "populacao": 11881,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530904",
+    "municipio": "Mombuca",
+    "populacao": 3830,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511409",
+    "municipio": "Cerqueira César",
+    "populacao": 22210,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533809",
+    "municipio": "Óleo",
+    "populacao": 2535,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554508",
+    "municipio": "Tietê",
+    "populacao": 38723,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554805",
+    "municipio": "Tremembé",
+    "populacao": 53426,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531803",
+    "municipio": "Monte Mor",
+    "populacao": 67832,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526407",
+    "municipio": "Laranjal Paulista",
+    "populacao": 27044,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525508",
+    "municipio": "Joanópolis",
+    "populacao": 13131,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510401",
+    "municipio": "Capivari",
+    "populacao": 51369,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534708",
+    "municipio": "Ourinhos",
+    "populacao": 106911,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544301",
+    "municipio": "Roseira",
+    "populacao": 11137,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532009",
+    "municipio": "Morungaba",
+    "populacao": 14147,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531704",
+    "municipio": "Monteiro Lobato",
+    "populacao": 4205,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519071",
+    "municipio": "Hortolândia",
+    "populacao": 248842,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504503",
+    "municipio": "Avaré",
+    "populacao": 96450,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507605",
+    "municipio": "Bragança Paulista",
+    "populacao": 185688,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512308",
+    "municipio": "Conchas",
+    "populacao": 15345,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549904",
+    "municipio": "São José dos Campos",
+    "populacao": 727078,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502507",
+    "municipio": "Aparecida",
+    "populacao": 33141,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556354",
+    "municipio": "Vargem",
+    "populacao": 10863,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545159",
+    "municipio": "Saltinho",
+    "populacao": 8407,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513603",
+    "municipio": "Cunha",
+    "populacao": 22460,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545407",
+    "municipio": "Salto Grande",
+    "populacao": 9221,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540754",
+    "municipio": "Potim",
+    "populacao": 20801,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552403",
+    "municipio": "Sumaré",
+    "populacao": 291116,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516101",
+    "municipio": "Florínea",
+    "populacao": 4022,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554953",
+    "municipio": "Tuiuti",
+    "populacao": 6976,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548203",
+    "municipio": "Santo Antônio do Pinhal",
+    "populacao": 7314,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544004",
+    "municipio": "Rio das Pedras",
+    "populacao": 32329,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541059",
+    "municipio": "Pratânia",
+    "populacao": 5264,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537156",
+    "municipio": "Pedrinhas Paulista",
+    "populacao": 2833,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533403",
+    "municipio": "Nova Odessa",
+    "populacao": 64596,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509502",
+    "municipio": "Campinas",
+    "populacao": 1187974,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500550",
+    "municipio": "Águas de Santa Bárbara",
+    "populacao": 7460,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538204",
+    "municipio": "Pinhalzinho",
+    "populacao": 15676,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538006",
+    "municipio": "Pindamonhangaba",
+    "populacao": 172681,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536802",
+    "municipio": "Pedra Bela",
+    "populacao": 6745,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545803",
+    "municipio": "Santa Bárbara d'Oeste",
+    "populacao": 189456,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535309",
+    "municipio": "Palmital",
+    "populacao": 19714,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537107",
+    "municipio": "Pedreira",
+    "populacao": 44385,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519501",
+    "municipio": "Ibirarema",
+    "populacao": 6450,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536505",
+    "municipio": "Paulínia",
+    "populacao": 116674,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509957",
+    "municipio": "Canas",
+    "populacao": 5068,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553955",
+    "municipio": "Tarumã",
+    "populacao": 15315,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510005",
+    "municipio": "Cândido Mota",
+    "populacao": 30157,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513306",
+    "municipio": "Cruzália",
+    "populacao": 2123,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519253",
+    "municipio": "Iaras",
+    "populacao": 8313,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543204",
+    "municipio": "Ribeirão do Sul",
+    "populacao": 4776,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501608",
+    "municipio": "Americana",
+    "populacao": 247571,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531209",
+    "municipio": "Monte Alegre do Sul",
+    "populacao": 8923,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527207",
+    "municipio": "Lorena",
+    "populacao": 87468,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524709",
+    "municipio": "Jaguariúna",
+    "populacao": 62309,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518404",
+    "municipio": "Guaratinguetá",
+    "populacao": 121916,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549607",
+    "municipio": "São José do Barreiro",
+    "populacao": 3888,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552007",
+    "municipio": "Silveiras",
+    "populacao": 6329,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507506",
+    "municipio": "Botucatu",
+    "populacao": 151053,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502309",
+    "municipio": "Anhembi",
+    "populacao": 5766,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509700",
+    "municipio": "Campos do Jordão",
+    "populacao": 47956,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504909",
+    "municipio": "Bananal",
+    "populacao": 10097,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500600",
+    "municipio": "Águas de São Pedro",
+    "populacao": 2928,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515194",
+    "municipio": "Espírito Santo do Turvo",
+    "populacao": 4214,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548609",
+    "municipio": "São Bento do Sapucaí",
+    "populacao": 11989,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503158",
+    "municipio": "Arapeí",
+    "populacao": 2355,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512803",
+    "municipio": "Cosmópolis",
+    "populacao": 61167,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519055",
+    "municipio": "Holambra",
+    "populacao": 15718,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508603",
+    "municipio": "Cachoeira Paulista",
+    "populacao": 32534,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548005",
+    "municipio": "Santo Antônio de Posse",
+    "populacao": 23867,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501905",
+    "municipio": "Amparo",
+    "populacao": 69792,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550100",
+    "municipio": "São Manuel",
+    "populacao": 38131,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503604",
+    "municipio": "Areiópolis",
+    "populacao": 10242,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507456",
+    "municipio": "Borebi",
+    "populacao": 2801,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539707",
+    "municipio": "Platina",
+    "populacao": 3055,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538709",
+    "municipio": "Piracicaba",
+    "populacao": 440835,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503505",
+    "municipio": "Areias",
+    "populacao": 3617,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521408",
+    "municipio": "Iracemápolis",
+    "populacao": 22500,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546405",
+    "municipio": "Santa Cruz do Rio Pardo",
+    "populacao": 47759,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528809",
+    "municipio": "Maracaí",
+    "populacao": 12804,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551603",
+    "municipio": "Serra Negra",
+    "populacao": 31047,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550506",
+    "municipio": "São Pedro do Turvo",
+    "populacao": 7333,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520004",
+    "municipio": "Igaraçu do Tietê",
+    "populacao": 23421,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538501",
+    "municipio": "Piquete",
+    "populacao": 12516,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536570",
+    "municipio": "Paulistânia",
+    "populacao": 2156,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509809",
+    "municipio": "Campos Novos Paulista",
+    "populacao": 5003,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526803",
+    "municipio": "Lençóis Paulista",
+    "populacao": 68568,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532157",
+    "municipio": "Nantes",
+    "populacao": 2697,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547007",
+    "municipio": "Santa Maria da Serra",
+    "populacao": 5308,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519907",
+    "municipio": "Iepê",
+    "populacao": 7739,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503802",
+    "municipio": "Artur Nogueira",
+    "populacao": 53467,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527009",
+    "municipio": "Lindóia",
+    "populacao": 7158,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552106",
+    "municipio": "Socorro",
+    "populacao": 41527,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513405",
+    "municipio": "Cruzeiro",
+    "populacao": 76444,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526902",
+    "municipio": "Limeira",
+    "populacao": 301292,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504008",
+    "municipio": "Assis",
+    "populacao": 104858,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511706",
+    "municipio": "Charqueada",
+    "populacao": 15814,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555505",
+    "municipio": "Ubirajara",
+    "populacao": 5289,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500501",
+    "municipio": "Águas de Lindóia",
+    "populacao": 18257,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515152",
+    "municipio": "Engenheiro Coelho",
+    "populacao": 20261,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550407",
+    "municipio": "São Pedro",
+    "populacao": 39855,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526605",
+    "municipio": "Lavrinhas",
+    "populacao": 7348,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512407",
+    "municipio": "Cordeirópolis",
+    "populacao": 25286,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546702",
+    "municipio": "Santa Gertrudes",
+    "populacao": 23192,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505302",
+    "municipio": "Barra Bonita",
+    "populacao": 35129,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541901",
+    "municipio": "Queluz",
+    "populacao": 9074,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515301",
+    "municipio": "Estrela do Norte",
+    "populacao": 2751,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515350",
+    "municipio": "Euclides da Cunha Paulista",
+    "populacao": 7883,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508306",
+    "municipio": "Cabrália Paulista",
+    "populacao": 4360,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527504",
+    "municipio": "Lucianópolis",
+    "populacao": 2423,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501509",
+    "municipio": "Alvinlândia",
+    "populacao": 2919,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528007",
+    "municipio": "Macatuba",
+    "populacao": 17140,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554706",
+    "municipio": "Torrinha",
+    "populacao": 9484,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532207",
+    "municipio": "Narandiba",
+    "populacao": 5956,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527801",
+    "municipio": "Lupércio",
+    "populacao": 4004,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529807",
+    "municipio": "Mineiros do Tietê",
+    "populacao": 11322,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500709",
+    "municipio": "Agudos",
+    "populacao": 38988,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521101",
+    "municipio": "Ipeúna",
+    "populacao": 7027,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533700",
+    "municipio": "Ocauçu",
+    "populacao": 4418,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552908",
+    "municipio": "Taciba",
+    "populacao": 6418,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545506",
+    "municipio": "Sandovalina",
+    "populacao": 3697,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515657",
+    "municipio": "Fernão",
+    "populacao": 1692,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539400",
+    "municipio": "Piratininga",
+    "populacao": 15657,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544251",
+    "municipio": "Rosana",
+    "populacao": 17434,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530805",
+    "municipio": "Mogi Mirim",
+    "populacao": 95742,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514502",
+    "municipio": "Duartina",
+    "populacao": 12532,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522604",
+    "municipio": "Itapira",
+    "populacao": 74038,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512209",
+    "municipio": "Conchal",
+    "populacao": 29132,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535507",
+    "municipio": "Paraguaçu Paulista",
+    "populacao": 42049,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553906",
+    "municipio": "Tarabai",
+    "populacao": 6633,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514700",
+    "municipio": "Echaporã",
+    "populacao": 6291,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543907",
+    "municipio": "Rio Claro",
+    "populacao": 210323,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534500",
+    "municipio": "Oscar Bressane",
+    "populacao": 2502,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502408",
+    "municipio": "Anhumas",
+    "populacao": 4118,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539202",
+    "municipio": "Pirapozinho",
+    "populacao": 26097,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503307",
+    "municipio": "Araras",
+    "populacao": 135744,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3557303",
+    "municipio": "Estiva Gerbi",
+    "populacao": 11609,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516606",
+    "municipio": "Gália",
+    "populacao": 6413,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514106",
+    "municipio": "Dois Córregos",
+    "populacao": 24847,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554300",
+    "municipio": "Teodoro Sampaio",
+    "populacao": 22598,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522901",
+    "municipio": "Itapuí",
+    "populacao": 14035,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527900",
+    "municipio": "Lutécia",
+    "populacao": 2697,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507209",
+    "municipio": "Borá",
+    "populacao": 932,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530201",
+    "municipio": "Mirante do Paranapanema",
+    "populacao": 16031,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512704",
+    "municipio": "Corumbataí",
+    "populacao": 4296,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523602",
+    "municipio": "Itirapina",
+    "populacao": 16454,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525300",
+    "municipio": "Jaú",
+    "populacao": 137409,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507308",
+    "municipio": "Boracéia",
+    "populacao": 4838,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556602",
+    "municipio": "Vera Cruz",
+    "populacao": 10274,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536703",
+    "municipio": "Pederneiras",
+    "populacao": 46337,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526704",
+    "municipio": "Leme",
+    "populacao": 101537,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548104",
+    "municipio": "Santo Antônio do Jardim",
+    "populacao": 6243,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516705",
+    "municipio": "Garça",
+    "populacao": 43081,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507902",
+    "municipio": "Brotas",
+    "populacao": 24501,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530706",
+    "municipio": "Mogi Guaçu",
+    "populacao": 160318,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515186",
+    "municipio": "Espírito Santo do Pinhal",
+    "populacao": 40610,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546207",
+    "municipio": "Santa Cruz da Conceição",
+    "populacao": 4375,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506003",
+    "municipio": "Bauru",
+    "populacao": 392947,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520608",
+    "municipio": "Indiana",
+    "populacao": 5200,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542404",
+    "municipio": "Regente Feijó",
+    "populacao": 20620,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514304",
+    "municipio": "Dourado",
+    "populacao": 8169,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504305",
+    "municipio": "Avaí",
+    "populacao": 4503,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534104",
+    "municipio": "Oriente",
+    "populacao": 6180,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501400",
+    "municipio": "Álvaro de Carvalho",
+    "populacao": 4901,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525607",
+    "municipio": "João Ramalho",
+    "populacao": 4464,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541703",
+    "municipio": "Quatá",
+    "populacao": 13412,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502002",
+    "municipio": "Analândia",
+    "populacao": 4694,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541109",
+    "municipio": "Presidente Alves",
+    "populacao": 3830,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506805",
+    "municipio": "Bocaina",
+    "populacao": 11480,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554755",
+    "municipio": "Trabiju",
+    "populacao": 1724,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500303",
+    "municipio": "Aguaí",
+    "populacao": 32886,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542008",
+    "municipio": "Quintana",
+    "populacao": 7260,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501301",
+    "municipio": "Álvares Machado",
+    "populacao": 28386,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542206",
+    "municipio": "Rancharia",
+    "populacao": 29387,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528700",
+    "municipio": "Marabá Paulista",
+    "populacao": 4619,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503406",
+    "municipio": "Arealva",
+    "populacao": 8290,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505203",
+    "municipio": "Bariri",
+    "populacao": 32406,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542909",
+    "municipio": "Ribeirão Bonito",
+    "populacao": 11040,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525805",
+    "municipio": "Júlio Mesquita",
+    "populacao": 4302,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522000",
+    "municipio": "Itaju",
+    "populacao": 3715,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505807",
+    "municipio": "Bastos",
+    "populacao": 21936,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529005",
+    "municipio": "Marília",
+    "populacao": 247348,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500808",
+    "municipio": "Alfredo Marcondes",
+    "populacao": 4574,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529203",
+    "municipio": "Martinópolis",
+    "populacao": 25240,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541208",
+    "municipio": "Presidente Bernardes",
+    "populacao": 14803,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539301",
+    "municipio": "Pirassununga",
+    "populacao": 75594,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504701",
+    "municipio": "Balbinos",
+    "populacao": 3969,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549102",
+    "municipio": "São João da Boa Vista",
+    "populacao": 96080,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506706",
+    "municipio": "Boa Esperança do Sul",
+    "populacao": 13113,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547700",
+    "municipio": "Santo Anastácio",
+    "populacao": 17960,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508900",
+    "municipio": "Caiabu",
+    "populacao": 3726,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519303",
+    "municipio": "Ibaté",
+    "populacao": 33160,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540002",
+    "municipio": "Pompéia",
+    "populacao": 20520,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500402",
+    "municipio": "Águas da Prata",
+    "populacao": 7463,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519006",
+    "municipio": "Herculândia",
+    "populacao": 9316,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555000",
+    "municipio": "Tupã",
+    "populacao": 65433,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544707",
+    "municipio": "Sagres",
+    "populacao": 2522,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540853",
+    "municipio": "Pracinha",
+    "populacao": 2589,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518107",
+    "municipio": "Guarantã",
+    "populacao": 6532,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517307",
+    "municipio": "Guaimbê",
+    "populacao": 5609,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540705",
+    "municipio": "Porto Ferreira",
+    "populacao": 53966,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556404",
+    "municipio": "Vargem Grande do Sul",
+    "populacao": 41256,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519105",
+    "municipio": "Iacanga",
+    "populacao": 10648,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546306",
+    "municipio": "Santa Cruz das Palmeiras",
+    "populacao": 29489,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548302",
+    "municipio": "Santo Expedito",
+    "populacao": 3069,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541406",
+    "municipio": "Presidente Prudente",
+    "populacao": 234706,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532900",
+    "municipio": "Nova Europa",
+    "populacao": 9459,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541802",
+    "municipio": "Queiroz",
+    "populacao": 3366,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513702",
+    "municipio": "Descalvado",
+    "populacao": 32663,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515129",
+    "municipio": "Emilianópolis",
+    "populacao": 3061,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523800",
+    "municipio": "Itobi",
+    "populacao": 8227,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528908",
+    "municipio": "Mariápolis",
+    "populacao": 3526,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516853",
+    "municipio": "Gavião Peixoto",
+    "populacao": 4806,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536000",
+    "municipio": "Parapuã",
+    "populacao": 10720,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503356",
+    "municipio": "Arco-Íris",
+    "populacao": 2089,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517000",
+    "municipio": "Getulina",
+    "populacao": 10337,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501707",
+    "municipio": "Américo Brasiliense",
+    "populacao": 33708,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543238",
+    "municipio": "Ribeirão dos Índios",
+    "populacao": 2040,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538907",
+    "municipio": "Pirajuí",
+    "populacao": 22734,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550803",
+    "municipio": "São Sebastião da Grama",
+    "populacao": 10428,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555901",
+    "municipio": "Uru",
+    "populacao": 1424,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519204",
+    "municipio": "Iacri",
+    "populacao": 6197,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519600",
+    "municipio": "Ibitinga",
+    "populacao": 62143,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542503",
+    "municipio": "Reginópolis",
+    "populacao": 7820,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520806",
+    "municipio": "Inúbia Paulista",
+    "populacao": 3671,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538303",
+    "municipio": "Piquerobi",
+    "populacao": 3287,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515806",
+    "municipio": "Flora Rica",
+    "populacao": 1483,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527702",
+    "municipio": "Luiziânia",
+    "populacao": 4740,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552700",
+    "municipio": "Tabatinga",
+    "populacao": 14997,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540101",
+    "municipio": "Pongaí",
+    "populacao": 3440,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546900",
+    "municipio": "Santa Lúcia",
+    "populacao": 7144,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548401",
+    "municipio": "Santópolis do Aguapeí",
+    "populacao": 3921,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548906",
+    "municipio": "São Carlos",
+    "populacao": 266427,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541505",
+    "municipio": "Presidente Venceslau",
+    "populacao": 35810,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513900",
+    "municipio": "Divinolândia",
+    "populacao": 11305,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510807",
+    "municipio": "Casa Branca",
+    "populacao": 28779,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543808",
+    "municipio": "Rinópolis",
+    "populacao": 9334,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547502",
+    "municipio": "Santa Rita do Passa Quatro",
+    "populacao": 24996,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534609",
+    "municipio": "Osvaldo Cruz",
+    "populacao": 32112,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509106",
+    "municipio": "Caiuá",
+    "populacao": 5599,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503208",
+    "municipio": "Araraquara",
+    "populacao": 253474,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501103",
+    "municipio": "Alto Alegre",
+    "populacao": 3874,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508801",
+    "municipio": "Cafelândia",
+    "populacao": 16907,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529302",
+    "municipio": "Matão",
+    "populacao": 81075,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541307",
+    "municipio": "Presidente Epitácio",
+    "populacao": 40322,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537701",
+    "municipio": "Piacatu",
+    "populacao": 5631,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527108",
+    "municipio": "Lins",
+    "populacao": 76844,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511904",
+    "municipio": "Clementina",
+    "populacao": 7084,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545100",
+    "municipio": "Salmourão",
+    "populacao": 4883,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549706",
+    "municipio": "São José do Rio Pardo",
+    "populacao": 53427,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543709",
+    "municipio": "Rincão",
+    "populacao": 9101,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514007",
+    "municipio": "Dobrada",
+    "populacao": 8986,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507407",
+    "municipio": "Borborema",
+    "populacao": 14405,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507704",
+    "municipio": "Braúna",
+    "populacao": 5477,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516507",
+    "municipio": "Gabriel Monteiro",
+    "populacao": 2813,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553302",
+    "municipio": "Tambaú",
+    "populacao": 21650,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527405",
+    "municipio": "Lucélia",
+    "populacao": 20378,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514403",
+    "municipio": "Dracena",
+    "populacao": 46735,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508702",
+    "municipio": "Caconde",
+    "populacao": 17228,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532058",
+    "municipio": "Motuca",
+    "populacao": 4071,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500105",
+    "municipio": "Adamantina",
+    "populacao": 35673,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547601",
+    "municipio": "Santa Rosa de Viterbo",
+    "populacao": 23710,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534807",
+    "municipio": "Ouro Verde",
+    "populacao": 7900,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546504",
+    "municipio": "Santa Ernestina",
+    "populacao": 6274,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527603",
+    "municipio": "Luís Antônio",
+    "populacao": 12564,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3522703",
+    "municipio": "Itápolis",
+    "populacao": 40445,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517208",
+    "municipio": "Guaiçara",
+    "populacao": 11478,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553609",
+    "municipio": "Tapiratiba",
+    "populacao": 11903,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516002",
+    "municipio": "Flórida Paulista",
+    "populacao": 13175,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544608",
+    "municipio": "Sabino",
+    "populacao": 5182,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3550902",
+    "municipio": "São Simão",
+    "populacao": 13560,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535408",
+    "municipio": "Panorama",
+    "populacao": 15227,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504404",
+    "municipio": "Avanhandava",
+    "populacao": 11436,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534906",
+    "municipio": "Pacaembu",
+    "populacao": 15273,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553708",
+    "municipio": "Taquaritinga",
+    "populacao": 53264,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518602",
+    "municipio": "Guariba",
+    "populacao": 38678,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555109",
+    "municipio": "Tupi Paulista",
+    "populacao": 16259,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506409",
+    "municipio": "Bilac",
+    "populacao": 7464,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518859",
+    "municipio": "Guatapará",
+    "populacao": 7474,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521606",
+    "municipio": "Irapuru",
+    "populacao": 7120,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510104",
+    "municipio": "Cândido Rodrigues",
+    "populacao": 2959,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533502",
+    "municipio": "Novo Horizonte",
+    "populacao": 39494,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533106",
+    "municipio": "Nova Guataporanga",
+    "populacao": 2188,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3541604",
+    "municipio": "Promissão",
+    "populacao": 35973,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530508",
+    "municipio": "Mococa",
+    "populacao": 69372,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540903",
+    "municipio": "Pradópolis",
+    "populacao": 17299,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521903",
+    "municipio": "Itajobi",
+    "populacao": 17502,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544806",
+    "municipio": "Sales",
+    "populacao": 6645,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505104",
+    "municipio": "Barbosa",
+    "populacao": 5627,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547106",
+    "municipio": "Santa Mercedes",
+    "populacao": 3017,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526001",
+    "municipio": "Junqueirópolis",
+    "populacao": 20939,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515608",
+    "municipio": "Fernando Prestes",
+    "populacao": 6080,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545605",
+    "municipio": "Santa Adélia",
+    "populacao": 14193,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512506",
+    "municipio": "Coroados",
+    "populacao": 5504,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546256",
+    "municipio": "Santa Cruz da Esperança",
+    "populacao": 2168,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551405",
+    "municipio": "Serra Azul",
+    "populacao": 13108,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544400",
+    "municipio": "Rubiácea",
+    "populacao": 2740,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500204",
+    "municipio": "Adolfo",
+    "populacao": 4505,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513108",
+    "municipio": "Cravinhos",
+    "populacao": 34307,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537305",
+    "municipio": "Penápolis",
+    "populacao": 63426,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510906",
+    "municipio": "Cássia dos Coqueiros",
+    "populacao": 2861,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528858",
+    "municipio": "Marapoama",
+    "populacao": 3415,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506201",
+    "municipio": "Bento de Abreu",
+    "populacao": 2640,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514601",
+    "municipio": "Dumont",
+    "populacao": 9764,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521507",
+    "municipio": "Irapuã",
+    "populacao": 6932,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531308",
+    "municipio": "Monte Alto",
+    "populacao": 48758,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505609",
+    "municipio": "Barrinha",
+    "populacao": 33304,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549300",
+    "municipio": "São João do Pau d'Alho",
+    "populacao": 2293,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551504",
+    "municipio": "Serrana",
+    "populacao": 45580,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531605",
+    "municipio": "Monte Castelo",
+    "populacao": 4306,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517109",
+    "municipio": "Glicério",
+    "populacao": 4158,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556909",
+    "municipio": "Vista Alegre do Alto",
+    "populacao": 8368,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529500",
+    "municipio": "Mendonça",
+    "populacao": 6420,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555356",
+    "municipio": "Ubarana",
+    "populacao": 5458,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556008",
+    "municipio": "Urupês",
+    "populacao": 14073,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507753",
+    "municipio": "Brejo Alegre",
+    "populacao": 2605,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503703",
+    "municipio": "Ariranha",
+    "populacao": 7621,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3538105",
+    "municipio": "Pindorama",
+    "populacao": 14704,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509403",
+    "municipio": "Cajuru",
+    "populacao": 24233,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514924",
+    "municipio": "Elisiário",
+    "populacao": 3190,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553104",
+    "municipio": "Taiaçu",
+    "populacao": 5744,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553203",
+    "municipio": "Taiúva",
+    "populacao": 6770,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506508",
+    "municipio": "Birigui",
+    "populacao": 123340,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543402",
+    "municipio": "Ribeirão Preto",
+    "populacao": 731639,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524303",
+    "municipio": "Jaboticabal",
+    "populacao": 73473,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536406",
+    "municipio": "Paulicéia",
+    "populacao": 8255,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533205",
+    "municipio": "Nova Independência",
+    "populacao": 4847,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535101",
+    "municipio": "Palmares Paulista",
+    "populacao": 9666,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553658",
+    "municipio": "Taquaral",
+    "populacao": 2649,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511102",
+    "municipio": "Catanduva",
+    "populacao": 119275,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539004",
+    "municipio": "Pirangi",
+    "populacao": 11085,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511201",
+    "municipio": "Catiguá",
+    "populacao": 7101,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3557154",
+    "municipio": "Zacarias",
+    "populacao": 2773,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551702",
+    "municipio": "Sertãozinho",
+    "populacao": 132176,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518206",
+    "municipio": "Guararapes",
+    "populacao": 31888,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508108",
+    "municipio": "Buritama",
+    "populacao": 17658,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540804",
+    "municipio": "Potirendaba",
+    "populacao": 19097,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519402",
+    "municipio": "Ibirá",
+    "populacao": 11952,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547908",
+    "municipio": "Santo Antônio da Alegria",
+    "populacao": 6933,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532801",
+    "municipio": "Nova Aliança",
+    "populacao": 6885,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3507803",
+    "municipio": "Brodowski",
+    "populacao": 26314,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556305",
+    "municipio": "Valparaíso",
+    "populacao": 24779,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535705",
+    "municipio": "Paraíso",
+    "populacao": 6218,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525706",
+    "municipio": "José Bonifácio",
+    "populacao": 37992,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533254",
+    "municipio": "Novais",
+    "populacao": 4463,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3526506",
+    "municipio": "Lavínia",
+    "populacao": 9940,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539608",
+    "municipio": "Planalto",
+    "populacao": 4451,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514957",
+    "municipio": "Embaúba",
+    "populacao": 2349,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3527256",
+    "municipio": "Lourdes",
+    "populacao": 1962,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525102",
+    "municipio": "Jardinópolis",
+    "populacao": 47125,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504602",
+    "municipio": "Bady Bassitt",
+    "populacao": 29346,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540200",
+    "municipio": "Pontal",
+    "populacao": 38286,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539509",
+    "municipio": "Pitangueiras",
+    "populacao": 34361,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555208",
+    "municipio": "Turiúba",
+    "populacao": 1835,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524501",
+    "municipio": "Jaci",
+    "populacao": 7944,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532108",
+    "municipio": "Murutinga do Sul",
+    "populacao": 3748,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517802",
+    "municipio": "Guaraçaí",
+    "populacao": 7453,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555703",
+    "municipio": "União Paulista",
+    "populacao": 1628,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533304",
+    "municipio": "Nova Luzitânia",
+    "populacao": 2817,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532702",
+    "municipio": "Nipoã",
+    "populacao": 4876,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530102",
+    "municipio": "Mirandópolis",
+    "populacao": 28754,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502804",
+    "municipio": "Araçatuba",
+    "populacao": 208415,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511300",
+    "municipio": "Cedral",
+    "populacao": 13314,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3509304",
+    "municipio": "Cajobi",
+    "populacao": 9210,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531506",
+    "municipio": "Monte Azul Paulista",
+    "populacao": 18337,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552601",
+    "municipio": "Tabapuã",
+    "populacao": 11498,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531001",
+    "municipio": "Monções",
+    "populacao": 1947,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501004",
+    "municipio": "Altinópolis",
+    "populacao": 17197,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556800",
+    "municipio": "Viradouro",
+    "populacao": 17685,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3506102",
+    "municipio": "Bebedouro",
+    "populacao": 78257,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555604",
+    "municipio": "Uchoa",
+    "populacao": 10670,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532504",
+    "municipio": "Neves Paulista",
+    "populacao": 9953,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544905",
+    "municipio": "Sales Oliveira",
+    "populacao": 11683,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516804",
+    "municipio": "Gastão Vidigal",
+    "populacao": 3203,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551900",
+    "municipio": "Severínia",
+    "populacao": 14693,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528106",
+    "municipio": "Macaubal",
+    "populacao": 7581,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532868",
+    "municipio": "Nova Castilho",
+    "populacao": 1072,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554409",
+    "municipio": "Terra Roxa",
+    "populacao": 7965,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505906",
+    "municipio": "Batatais",
+    "populacao": 59939,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530300",
+    "municipio": "Mirassol",
+    "populacao": 65811,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3548054",
+    "municipio": "Santo Antônio do Aracanguá",
+    "populacao": 8593,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3539905",
+    "municipio": "Poloni",
+    "populacao": 5702,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502101",
+    "municipio": "Andradina",
+    "populacao": 61625,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549805",
+    "municipio": "São José do Rio Preto",
+    "populacao": 504166,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512001",
+    "municipio": "Colina",
+    "populacao": 18880,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3511003",
+    "municipio": "Castilho",
+    "populacao": 20485,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504800",
+    "municipio": "Bálsamo",
+    "populacao": 9902,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517505",
+    "municipio": "Guapiaçu",
+    "populacao": 22445,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531407",
+    "municipio": "Monte Aprazível",
+    "populacao": 22668,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534302",
+    "municipio": "Orlândia",
+    "populacao": 39144,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533601",
+    "municipio": "Nuporanga",
+    "populacao": 7570,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523701",
+    "municipio": "Itirapuã",
+    "populacao": 5857,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524204",
+    "municipio": "Jaborandi",
+    "populacao": 6280,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3551306",
+    "municipio": "Sebastianópolis do Sul",
+    "populacao": 3191,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3542701",
+    "municipio": "Restinga",
+    "populacao": 6486,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533908",
+    "municipio": "Olímpia",
+    "populacao": 56874,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521150",
+    "municipio": "Ipiguá",
+    "populacao": 7115,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534005",
+    "municipio": "Onda Verde",
+    "populacao": 4942,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552304",
+    "municipio": "Sud Mennucci",
+    "populacao": 7464,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518909",
+    "municipio": "Guzolândia",
+    "populacao": 4259,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536307",
+    "municipio": "Patrocínio Paulista",
+    "populacao": 14888,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532603",
+    "municipio": "Nhandeara",
+    "populacao": 9915,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515905",
+    "municipio": "Floreal",
+    "populacao": 2747,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3504206",
+    "municipio": "Auriflama",
+    "populacao": 13856,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530409",
+    "municipio": "Mirassolândia",
+    "populacao": 4783,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516903",
+    "municipio": "General Salgado",
+    "populacao": 10437,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549508",
+    "municipio": "São José da Bela Vista",
+    "populacao": 7664,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528304",
+    "municipio": "Magda",
+    "populacao": 3211,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3523008",
+    "municipio": "Itapura",
+    "populacao": 4002,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549250",
+    "municipio": "São João de Iracema",
+    "populacao": 1882,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537404",
+    "municipio": "Pereira Barreto",
+    "populacao": 24360,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3531902",
+    "municipio": "Morro Agudo",
+    "populacao": 28521,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549409",
+    "municipio": "São Joaquim da Barra",
+    "populacao": 49885,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3516200",
+    "municipio": "Franca",
+    "populacao": 365494,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3500907",
+    "municipio": "Altair",
+    "populacao": 3467,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529104",
+    "municipio": "Marinópolis",
+    "populacao": 1862,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3502606",
+    "municipio": "Aparecida d'Oeste",
+    "populacao": 4112,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517703",
+    "municipio": "Guará",
+    "populacao": 18748,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543105",
+    "municipio": "Ribeirão Corrente",
+    "populacao": 4717,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540259",
+    "municipio": "Pontalinda",
+    "populacao": 4198,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513850",
+    "municipio": "Dirce Reis",
+    "populacao": 1639,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3552551",
+    "municipio": "Suzanápolis",
+    "populacao": 3465,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549201",
+    "municipio": "São João das Duas Pontes",
+    "populacao": 2623,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535200",
+    "municipio": "Palmeira d'Oeste",
+    "populacao": 8971,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3553401",
+    "municipio": "Tanabi",
+    "populacao": 26071,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3557105",
+    "municipio": "Votuporanga",
+    "populacao": 100568,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529609",
+    "municipio": "Meridiano",
+    "populacao": 4721,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3549003",
+    "municipio": "São Francisco",
+    "populacao": 2623,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556107",
+    "municipio": "Valentim Gentil",
+    "populacao": 14634,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3533007",
+    "municipio": "Nova Granada",
+    "populacao": 19733,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3532843",
+    "municipio": "Nova Canaã Paulista",
+    "populacao": 2055,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3505500",
+    "municipio": "Barretos",
+    "populacao": 126957,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3521309",
+    "municipio": "Ipuã",
+    "populacao": 14701,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520442",
+    "municipio": "Ilha Solteira",
+    "populacao": 26257,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3525409",
+    "municipio": "Jeriquara",
+    "populacao": 4000,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3513207",
+    "municipio": "Cristais Paulista",
+    "populacao": 9600,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512902",
+    "municipio": "Cosmorama",
+    "populacao": 9019,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3519808",
+    "municipio": "Icém",
+    "populacao": 7982,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501806",
+    "municipio": "Américo de Campos",
+    "populacao": 5981,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547650",
+    "municipio": "Santa Salete",
+    "populacao": 1692,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536257",
+    "municipio": "Parisi",
+    "populacao": 3030,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3501202",
+    "municipio": "Álvares Florence",
+    "populacao": 3979,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535002",
+    "municipio": "Palestina",
+    "populacao": 11704,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3554904",
+    "municipio": "Três Fronteiras",
+    "populacao": 7060,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547205",
+    "municipio": "Santana da Ponte Pensa",
+    "populacao": 1699,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524105",
+    "municipio": "Ituverava",
+    "populacao": 38413,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3556958",
+    "municipio": "Vitória Brasil",
+    "populacao": 1828,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3512100",
+    "municipio": "Colômbia",
+    "populacao": 6802,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517901",
+    "municipio": "Guaraci",
+    "populacao": 10554,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3524808",
+    "municipio": "Jales",
+    "populacao": 50078,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546603",
+    "municipio": "Santa Fé do Sul",
+    "populacao": 36288,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503950",
+    "municipio": "Aspásia",
+    "populacao": 1875,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3517406",
+    "municipio": "Guaíra",
+    "populacao": 40489,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3508207",
+    "municipio": "Buritizal",
+    "populacao": 4458,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534203",
+    "municipio": "Orindiúva",
+    "populacao": 6157,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515202",
+    "municipio": "Estrela d'Oeste",
+    "populacao": 9696,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544509",
+    "municipio": "Rubinéia",
+    "populacao": 3998,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3515509",
+    "municipio": "Fernandópolis",
+    "populacao": 73508,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536901",
+    "municipio": "Pedranópolis",
+    "populacao": 2856,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540309",
+    "municipio": "Pontes Gestal",
+    "populacao": 2411,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3503000",
+    "municipio": "Aramina",
+    "populacao": 5535,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555802",
+    "municipio": "Urânia",
+    "populacao": 8973,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3514205",
+    "municipio": "Dolcinópolis",
+    "populacao": 2254,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529708",
+    "municipio": "Miguelópolis",
+    "populacao": 19621,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3518008",
+    "municipio": "Guarani d'Oeste",
+    "populacao": 1999,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3537008",
+    "municipio": "Pedregulho",
+    "populacao": 15737,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3546108",
+    "municipio": "Santa Clara d'Oeste",
+    "populacao": 2694,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3535903",
+    "municipio": "Paranapuã",
+    "populacao": 4118,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3528205",
+    "municipio": "Macedônia",
+    "populacao": 4058,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3555307",
+    "municipio": "Turmalina",
+    "populacao": 1662,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520103",
+    "municipio": "Igarapava",
+    "populacao": 26696,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3547403",
+    "municipio": "Santa Rita d'Oeste",
+    "populacao": 2796,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3543600",
+    "municipio": "Rifaina",
+    "populacao": 4179,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3544202",
+    "municipio": "Riolândia",
+    "populacao": 10444,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3510708",
+    "municipio": "Cardoso",
+    "populacao": 11476,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3545704",
+    "municipio": "Santa Albertina",
+    "populacao": 6566,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3536604",
+    "municipio": "Paulo de Faria",
+    "populacao": 7390,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3530003",
+    "municipio": "Mira Estrela",
+    "populacao": 3209,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3520707",
+    "municipio": "Indiaporã",
+    "populacao": 4113,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3529658",
+    "municipio": "Mesópolis",
+    "populacao": 1990,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3534757",
+    "municipio": "Ouroeste",
+    "populacao": 10660,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  },
+  {
+    "cod_ibge": "3540408",
+    "municipio": "Populina",
+    "populacao": 4182,
+    "ano_referencia": "2025",
+    "fonte": "IBGE SIDRA - Tabela 6579"
+  }
+]

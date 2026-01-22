@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados - Inferência Geoespacial</title>    <link rel="icon" type="image/svg+xml" href="../favicon.svg">    <link rel="stylesheet" href="../css/styles.css">
+    <title>Resultados - Inferência Geoespacial</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/resultados_charts.css">
+    <link rel="stylesheet" href="../css/resultados_maps.css">
     <link rel="stylesheet" href="../libs/leaflet/leaflet.css">
     <script src="../libs/chartjs/chart.umd.min.js"></script>
     <script src="../libs/leaflet/leaflet.js"></script>
@@ -33,755 +37,455 @@
         </div>
     </nav>
 
-    <script src="../js/main.js"></script>
-    <script>
-        // Carrega Chart.js localmente e faz fallback para CDN se necessário, depois desenha os gráficos
-        function loadChartAndRender(renderFn) {
-            if (window.Chart) {
-                renderFn();
-                return;
-            }
-            const localScript = document.createElement('script');
-            localScript.src = '../libs/chartjs/chart.umd.min.js';
-            localScript.onload = renderFn;
-            localScript.onerror = () => {
-                const cdnScript = document.createElement('script');
-                cdnScript.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
-                cdnScript.onload = renderFn;
-                document.head.appendChild(cdnScript);
-            };
-            document.head.appendChild(localScript);
-        }
-
-        function renderCharts() {
-            if (!window.Chart) return;
-            // Configurações globais do Chart.js
-            Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-            Chart.defaults.font.size = 14;
-            
-            // Configuração comum para legendas na parte inferior
-            const legendConfig = {
-                display: true,
-                position: 'bottom',
-                align: 'center',
-                labels: {
-                    padding: 15,
-                    usePointStyle: true,
-                    font: { size: 12 }
-                }
-            };
-            
-            // Gráfico 1: Distribuição OSM por Faixa de Extensão
-            const ctxOSM = document.getElementById('chartDistribuicaoOSM');
-            if (ctxOSM) {
-                new Chart(ctxOSM.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['0-50 km', '50-100 km', '100-200 km', '200-400 km', '> 400 km'],
-                        datasets: [{
-                            label: 'Número de Municípios',
-                            data: [85, 142, 198, 156, 64],
-                            backgroundColor: 'rgba(0, 102, 204, 0.7)',
-                            borderColor: 'rgba(0, 102, 204, 1)',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Distribuição de Municípios por Faixa de Extensão - OSM',
-                                font: { size: 16, weight: 'bold' }
-                            },
-                            legend: legendConfig,
-                            tooltip: {
-                                callbacks: {
-                                    afterLabel: function(context) {
-                                        const extensoes = [3400, 10650, 29700, 46800, 31693];
-                                        const percentuais = ['13.2%', '22.0%', '30.7%', '24.2%', '9.9%'];
-                                        return [`Extensão: ~${extensoes[context.dataIndex].toLocaleString('pt-BR')} km`, 
-                                                `Percentual: ${percentuais[context.dataIndex]}`];
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: { display: true, text: 'Quantidade de Municípios' }
-                            },
-                            x: {
-                                title: { display: true, text: 'Faixa de Extensão' }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // Gráfico 2: Distribuição DER por Faixa
-            const ctxDER = document.getElementById('chartDistribuicaoDER');
-            if (ctxDER) {
-                new Chart(ctxDER.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['0-50 km', '50-100 km', '100-200 km', '200-400 km', '> 400 km'],
-                        datasets: [{
-                            label: 'Número de Municípios',
-                            data: [412, 158, 52, 14, 1],
-                            backgroundColor: 'rgba(255, 102, 0, 0.7)',
-                            borderColor: 'rgba(255, 102, 0, 1)',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Distribuição de Municípios por Faixa de Extensão - DER',
-                                font: { size: 16, weight: 'bold' }
-                            },
-                            legend: legendConfig,
-                            tooltip: {
-                                callbacks: {
-                                    afterLabel: function(context) {
-                                        const extensoes = [12360, 11850, 7800, 4200, 409];
-                                        const percentuais = ['64.7%', '24.8%', '8.2%', '2.2%', '0.2%'];
-                                        return [`Extensão: ~${extensoes[context.dataIndex].toLocaleString('pt-BR')} km`, 
-                                                `Percentual: ${percentuais[context.dataIndex]}`];
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: { display: true, text: 'Quantidade de Municípios' }
-                            },
-                            x: {
-                                title: { display: true, text: 'Faixa de Extensão' }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // Gráfico 3: Comparação Geral OSM vs DER
-            const ctxComp = document.getElementById('chartComparacaoGeral');
-            if (ctxComp) {
-                new Chart(ctxComp.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['Extensão Total (km)', 'Municípios', 'Média/Município (km)', 'Densidade (km/10.000km²)'],
-                        datasets: [{
-                            label: 'OSM',
-                            data: [122243, 645, 189.5, 4920],
-                            backgroundColor: 'rgba(0, 102, 204, 0.7)',
-                            borderColor: 'rgba(0, 102, 204, 1)',
-                            borderWidth: 2
-                        }, {
-                            label: 'DER',
-                            data: [25919, 637, 40.7, 1040],
-                            backgroundColor: 'rgba(255, 102, 0, 0.7)',
-                            borderColor: 'rgba(255, 102, 0, 1)',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Comparação de Métricas: OSM vs DER',
-                                font: { size: 16, weight: 'bold' }
-                            },
-                            legend: legendConfig
-                        },
-                        scales: {
-                            y: {
-                                type: 'logarithmic',
-                                title: { display: true, text: 'Valor (escala logarítmica)' }
-                            },
-                            x: {
-                                title: { display: true, text: 'Métrica' }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // Gráfico 4: Distribuição Comparada por Faixa
-            const ctxCompFaixa = document.getElementById('chartDistribuicaoComparada');
-            if (ctxCompFaixa) {
-                new Chart(ctxCompFaixa.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['0-50 km', '50-100 km', '100-200 km', '200-400 km', '> 400 km'],
-                        datasets: [{
-                            label: 'OSM',
-                            data: [85, 142, 198, 156, 64],
-                            backgroundColor: 'rgba(0, 102, 204, 0.7)',
-                            borderColor: 'rgba(0, 102, 204, 1)',
-                            borderWidth: 2
-                        }, {
-                            label: 'DER',
-                            data: [412, 158, 52, 14, 1],
-                            backgroundColor: 'rgba(255, 102, 0, 0.7)',
-                            borderColor: 'rgba(255, 102, 0, 1)',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Comparação de Distribuição por Faixa: OSM vs DER',
-                                font: { size: 16, weight: 'bold' }
-                            },
-                            legend: legendConfig
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: { display: true, text: 'Quantidade de Municípios' }
-                            },
-                            x: {
-                                title: { display: true, text: 'Faixa de Extensão' }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadChartAndRender(renderCharts);
-        });
-    </script>
     <main class="main-content">
-                <h3 class="section-subtitle mt-2">📈 Distribuição por Faixa de Extensão</h3>
-                <div class="chart-container chart-wrapper">
-                    <canvas id="chartDistribuicaoDER"></canvas>
+        <h1 class="page-title">Resultados</h1>
+        <p class="page-subtitle">Análise exploratória da malha vicinal estimada: caracterização municipal e regional</p>
+
+        <div class="alert alert-warning">
+            <strong>⚠️ Ressalva Metodológica:</strong> Os resultados apresentados nesta seção baseiam-se em uma <strong>estimativa da malha vicinal paulista</strong> gerada a partir da integração de fontes abertas e oficiais. Esta não é uma base oficial do Estado de São Paulo e apresenta limitações inerentes às fontes utilizadas (OpenStreetMap, filtros espaciais, recortes administrativos). Os dados devem ser interpretados como <strong>aproximações</strong> da realidade viária municipal, úteis para análises comparativas e identificação de padrões, mas não substituem levantamentos de campo ou cadastros oficiais validados.
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- PARTE 1: ANÁLISE MUNICIPAL -->
+        <!-- ===================================================================== -->
+        <section class="section">
+            <h1 class="section-title section-title-comparacao">
+                🏘️ PARTE 1: Análise por Município
+            </h1>
+            <p class="subtitle-large">Caracterização da malha vicinal em escala municipal</p>
+
+            <!-- CARACTERÍSTICAS GERAIS -->
+            <div class="section mt-2">
+                <h2 class="section-title">Características Gerais da Base Estimada</h2>
+                <div class="section-content">
+                    <p>A estimativa da malha vicinal paulista, gerada a partir da metodologia apresentada, apresenta as seguintes características consolidadas:</p>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-blue-light">
+                        <span class="stat-label">Extensão Total</span>
+                        <span class="stat-value">25.964 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Malha vicinal estadual</span>
+                    </div>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-label">Total de Segmentos</span>
+                        <span class="stat-value">7.417</span>
+                        <span class="stat-info">Segmentos viários mapeados</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-label">Cobertura Municipal</span>
+                        <span class="stat-value">636 <span class="stat-unit">(municípios)</span></span>
+                        <span class="stat-info">98,6% do total estadual</span>
+                    </div>
+                    <div class="stat-box bg-purple-light">
+                        <span class="stat-label">Sistema de Referência</span>
+                        <span class="stat-value">EPSG:32723</span>
+                        <span class="stat-info">SIRGAS 2000 / UTM 23S</span>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-2">
+                    <strong>💡 Observação:</strong> A base estimada cobre 636 dos 645 municípios paulistas. Os 9 municípios ausentes (1,4%) podem indicar ausência de rodovias municipais nas fontes utilizadas, lacunas no mapeamento colaborativo ou exclusão pelos filtros aplicados. <strong>Esta limitação reforça o caráter estimativo da base.</strong>
+                </div>
+            </div>
+
+            <!-- ESTATÍSTICAS DE SEGMENTOS -->
+            <div class="section mt-2">
+                <h2 class="section-title">Estatísticas dos Segmentos Viários</h2>
+                <p class="section-subtitle">Caracterização do comprimento dos segmentos individuais</p>
+
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <span class="stat-label">Comprimento Médio</span>
+                        <span class="stat-value">3,50 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Por segmento</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Comprimento Mediano</span>
+                        <span class="stat-value">1,90 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Valor central da distribuição</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Desvio Padrão</span>
+                        <span class="stat-value">4,42 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Alta variabilidade</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Amplitude</span>
+                        <span class="stat-value">0 - 38,10 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Mín - Máx</span>
+                    </div>
                 </div>
 
                 <div class="alert alert-warning">
-                    <strong>⚠️ Observação:</strong> <strong>64,7% dos municípios</strong> têm menos de 50 km de vicinais cadastradas no DER, indicando cobertura concentrada em poucos municípios ou subnotificação generalizada.
+                    <strong>⚠️ Interpretação:</strong> O desvio padrão elevado (4,42 km) indica grande heterogeneidade nos comprimentos dos segmentos. A diferença entre média (3,50 km) e mediana (1,90 km) sugere distribuição assimétrica à direita, com poucos segmentos longos elevando a média.
+                </div>
+
+                <h3 class="section-subtitle mt-2">📊 Distribuição por Comprimento de Segmentos</h3>
+                <div class="chart-wrapper">
+                    <canvas id="chartComprimentoSegmentos"></canvas>
+                </div>
+
+                <div class="alert alert-success mt-2">
+                    <strong>✓ Padrões Identificados:</strong>
+                    <ul class="list-spaced">
+                        <li><strong>Fragmentação Alta:</strong> 51% dos segmentos têm menos de 2 km, mas representam apenas 9,7% da extensão total</li>
+                        <li><strong>Consolidação:</strong> Segmentos de 5-10 km (16,4% do total) contribuem com 32,8% da extensão — categoria dominante</li>
+                        <li><strong>Concentração:</strong> Segmentos acima de 5 km representam apenas 24,5% do total, mas 67,3% da extensão</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Q2: CONCESSÕES DER (N/A) -->
+            <!-- TIPO DE SUPERFÍCIE -->
             <div class="section mt-2">
-                <h2 class="section-title">Q2. Qual a participação das concessões na malha vicinal DER?</h2>
-                <div class="alert alert-secondary">
-                    <strong>⚠️ Não aplicável:</strong> Estradas vicinais municipais não fazem parte do regime de concessões estaduais.
+                <h2 class="section-title">Distribuição por Tipo Possível de Pavimento</h2>
+                <p class="section-subtitle">Classificação estimada da superfície dos segmentos viários</p>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Limitação dos Dados:</strong> A classificação de tipo de pavimento provém das tags originais das fontes utilizadas e <strong>não foi validada em campo</strong>. Os tipos apresentados representam estimativas baseadas nos atributos disponíveis nas bases de origem e devem ser interpretados com cautela.
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="chartTipoPavimento"></canvas>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>🚨 Achado Estimado:</strong> A predominância de vias tipo 9 (61,7% da extensão total) na base estimada sugere que a <strong>maior parte da malha vicinal paulista possivelmente não é pavimentada</strong>, sendo caracterizada por estradas de terra ou cascalho. Apenas 37,8% indica pavimentação asfáltica. <strong>Ressalva:</strong> Esta classificação baseia-se em atributos das fontes originais e requer validação de campo para confirmação definitiva.
                 </div>
             </div>
 
-            <!-- Q3: URBANO/RURAL DER -->
+            <!-- DISTRIBUIÇÃO MUNICIPAL -->
             <div class="section mt-2">
-                <h2 class="section-title">Q3. Como as vicinais DER se distribuem entre áreas urbanas e rurais?</h2>
-                <p class="section-subtitle">Classificação baseada nas manchas urbanas do IBGE (2019)</p>
+                <h2 class="section-title">Distribuição Municipal da Malha Vicinal Estimada</h2>
+                <p class="section-subtitle">Análise da extensão viária estimada por município</p>
 
                 <div class="stats-container">
-                    <div class="stat-box bg-green-light">
-                        <span class="stat-label">Área Rural</span>
-                        <span class="stat-value">~22.030 <span class="stat-unit">(km)</span></span>
-                        <span class="stat-info">85% do total DER</span>
+                    <div class="stat-box bg-blue-light">
+                        <span class="stat-label">Média Municipal</span>
+                        <span class="stat-value">40,76 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Por município</span>
                     </div>
-                    <div class="stat-box bg-red-light">
-                        <span class="stat-label">Área Urbana</span>
-                        <span class="stat-value">~2.590 <span class="stat-unit">(km)</span></span>
-                        <span class="stat-info">10% do total DER</span>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-label">Mediana Municipal</span>
+                        <span class="stat-value">32,92 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Valor central</span>
                     </div>
                     <div class="stat-box bg-orange-light">
-                        <span class="stat-label">Área Mista</span>
-                        <span class="stat-value">~1.300 <span class="stat-unit">(km)</span></span>
-                        <span class="stat-info">5% do total DER</span>
+                        <span class="stat-label">Desvio Padrão</span>
+                        <span class="stat-value">30,45 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Alta variabilidade</span>
+                    </div>
+                    <div class="stat-box bg-purple-light">
+                        <span class="stat-label">Amplitude</span>
+                        <span class="stat-value">0,37 - 195 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Mín - Máx</span>
                     </div>
                 </div>
 
                 <div class="alert alert-info">
-                    <strong>💡 Interpretação:</strong> A proporção rural/urbana da malha DER é similar à OSM (85% rural), confirmando a natureza rural das vicinais cadastradas.
+                    <strong>💡 Interpretação:</strong> A diferença entre média (40,76 km) e mediana (32,92 km) indica distribuição assimétrica. O desvio padrão elevado (30,45 km) revela grande heterogeneidade: 60% dos municípios têm menos que a média, enquanto poucos municípios possuem extensões muito superiores.
+                </div>
+
+                <h3 class="section-subtitle mt-2">📊 Concentração por Faixas de Extensão + Mapa Municipal</h3>
+                
+                <!-- Layout lado a lado: gráfico + mapa -->
+                <div class="chart-map-row">
+                    <div class="chart-column">
+                        <div class="chart-wrapper">
+                            <canvas id="chartFaixasExtensao"></canvas>
+                        </div>
+                    </div>
+                    <div class="map-column">
+                        <div class="map-wrapper">
+                            <div id="mapFaixasExtensao" class="map-leaflet"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✓ Padrões Municipais Identificados (Base Estimada):</strong>
+                    <ul class="list-spaced">
+                        <li><strong>Concentração Modal:</strong> 226 municípios (35,5%) na faixa 20-40 km — categoria mais frequente</li>
+                        <li><strong>Abaixo da Média:</strong> 389 municípios (61,1%) com menos de 40 km</li>
+                        <li><strong>Acima de 100 km:</strong> Apenas 36 municípios (5,6%) — possíveis territórios agrícolas extensos</li>
+                        <li><strong>Nenhum município ultrapassa 300 km</strong> de extensão vicinal estimada</li>
+                    </ul>
+                    <p class="mt-1"><strong>Ressalva:</strong> Estes padrões refletem a base estimada e podem divergir de cadastros oficiais municipais.</p>
                 </div>
             </div>
 
-            <!-- Q4: ACESSIBILIDADE DER -->
+            <!-- TOP 10 MUNICÍPIOS -->
             <div class="section mt-2">
-                <h2 class="section-title">Q4. Qual o nível de acessibilidade rodoviária DER para a população?</h2>
-                <p class="section-subtitle">Três métricas complementares</p>
-
-                <div class="stats-container">
-                    <div class="stat-box bg-orange-light">
-                        <span class="stat-label">Extensão Total DER</span>
-                        <span class="stat-value">25.919 <span class="stat-unit">(km)</span></span>
-                        <span class="stat-info">Cadastro oficial estadual</span>
+                <h2 class="section-title">Ranking Municipal: Maiores e Menores Extensões Estimadas</h2>
+                <div class="alert alert-info">
+                    <strong>ℹ️ Sobre o Ranking:</strong> Este ranking baseia-se exclusivamente na base estimada gerada pela metodologia deste estudo. Os valores podem divergir de cadastros oficiais municipais ou estaduais. A posição no ranking reflete a extensão capturada pelas fontes e filtros utilizados, não necessariamente a realidade completa da infraestrutura viária municipal.
+                </div>
+                
+                <h3 class="section-subtitle">🏆 Top 10 Municípios com MAIOR Extensão Vicinal</h3>
+                
+                <!-- Layout lado a lado: gráfico + mapa -->
+                <div class="chart-map-row">
+                    <div class="chart-column">
+                        <div class="chart-wrapper-large">
+                            <canvas id="chartTop10Maior"></canvas>
+                        </div>
                     </div>
-                    <div class="stat-box bg-orange-light">
-                        <span class="stat-label">Densidade por Área</span>
-                        <span class="stat-value">1.040 <span class="stat-unit">(km/10.000km²)</span></span>
-                        <span class="stat-info">Média estadual | Máx: 2.850</span>
-                    </div>
-                    <div class="stat-box bg-orange-light">
-                        <span class="stat-label">Disponibilidade por Habitante</span>
-                        <span class="stat-value">5,6 <span class="stat-unit">(km/10.000hab)</span></span>
-                        <span class="stat-info">Média estadual | Máx: 312</span>
+                    <div class="map-column">
+                        <div class="map-wrapper-large">
+                            <div id="mapTop10Maior" class="map-leaflet"></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="alert alert-danger mt-2">
-                    <strong>⚠️ Gap de Acessibilidade:</strong> Com densidade 4,7× menor que OSM, o cadastro DER representa apenas <strong>21% da infraestrutura vicinal real</strong>, sugerindo grande volume de estradas municipais não oficializadas ou não cadastradas no sistema estadual.
-                </div>
-            </div>
-
-            <!-- Q5: HIERARQUIA DER (N/A) -->
-            <div class="section mt-2">
-                <h2 class="section-title">Q5. Como se estrutura a hierarquia da malha vicinal DER?</h2>
-                <div class="alert alert-secondary">
-                    <strong>⚠️ Limitado:</strong> Vicinais municipais não possuem hierarquia funcional formal como SP/SPA/SPI/BR do sistema rodoviário estadual.
-                </div>
-            </div>
-
-            <!-- Q6: DISPARIDADES REGIONAIS DER -->
-            <div class="section mt-2">
-                <h2 class="section-title">Q6. Existem disparidades regionais significativas na malha DER?</h2>
-                <p class="section-subtitle">Análise do desvio em relação à média estadual (0,104 km/km²)</p>
-
-                <div class="stats-container">
-                    <div class="stat-box bg-green-light">
-                        <span class="stat-label">Municípios Acima da Média</span>
-                        <span class="stat-value">142</span>
-                        <span class="stat-info">22% do total (637 municípios)</span>
+                <h3 class="section-subtitle mt-2">📉 Top 10 Municípios com MENOR Extensão Vicinal</h3>
+                
+                <!-- Layout lado a lado: gráfico + mapa -->
+                <div class="chart-map-row">
+                    <div class="chart-column">
+                        <div class="chart-wrapper-large">
+                            <canvas id="chartTop10Menor"></canvas>
+                        </div>
                     </div>
-                    <div class="stat-box bg-red-light">
-                        <span class="stat-label">Municípios Abaixo da Média</span>
-                        <span class="stat-value">495</span>
-                        <span class="stat-info">78% do total (637 municípios)</span>
+                    <div class="map-column">
+                        <div class="map-wrapper-large">
+                            <div id="mapTop10Menor" class="map-leaflet"></div>
+                        </div>
                     </div>
-                    <div class="stat-box bg-orange-light">
-                        <span class="stat-label">Razão Máximo/Mínimo</span>
-                        <span class="stat-value">2,7 <span class="stat-unit">(×)</span></span>
-                        <span class="stat-info">Variabilidade regional moderada</span>
-                    </div>
-                </div>
-
-                <h3 class="section-subtitle mt-2">📍 Destaques Regionais:</h3>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Região Administrativa</th>
-                                <th>Densidade DER (km/1000km²)</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-green-light">
-                                <td><strong>RMSP</strong></td>
-                                <td>167,3</td>
-                                <td>🟢 Muito acima da média (+61%)</td>
-                            </tr>
-                            <tr class="bg-green-light">
-                                <td><strong>RM de Campinas</strong></td>
-                                <td>145,4</td>
-                                <td>🟢 Muito acima da média (+40%)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>RA de Campinas</strong></td>
-                                <td>132,3</td>
-                                <td>🟡 Acima da média (+27%)</td>
-                            </tr>
-                            <tr class="bg-red-light">
-                                <td><strong>RA de Registro</strong></td>
-                                <td>36,6</td>
-                                <td>🔴 Muito abaixo da média (-65%)</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
 
                 <div class="alert alert-warning">
-                    <strong>⚠️ Interpretação:</strong> Padrão regional DER é <strong>similar ao OSM</strong> (RMSP e Campinas com alta densidade, Registro com baixa), mas com valores absolutos 4-5× menores, sugerindo <strong>subnotificação uniforme</strong> em todas as regiões.
+                    <strong>⚠️ Observação:</strong> A razão entre maior (195 km) e menor (0,37 km) extensão estimada é de <strong>528×</strong>, indicando extrema heterogeneidade territorial na base gerada. Municípios com extensões muito reduzidas podem ter: (1) territórios pequenos, (2) alta urbanização, (3) ausência real de vicinais, ou (4) <strong>lacunas no mapeamento das fontes utilizadas</strong>.
+                </div>
+            </div>
+
+            <!-- DENSIDADE DE SEGMENTOS -->
+            <div class="section mt-2">
+                <h2 class="section-title">Densidade de Segmentos por Município</h2>
+                <p class="section-subtitle">Análise da fragmentação da malha viária</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-blue-light">
+                        <span class="stat-label">Média</span>
+                        <span class="stat-value">11,6 <span class="stat-unit">(segmentos)</span></span>
+                        <span class="stat-info">Por município</span>
+                    </div>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-label">Mediana</span>
+                        <span class="stat-value">9 <span class="stat-unit">(segmentos)</span></span>
+                        <span class="stat-info">Valor central</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-label">Maior Densidade</span>
+                        <span class="stat-value">Campinas</span>
+                        <span class="stat-info">62 segmentos</span>
+                    </div>
+                    <div class="stat-box bg-red-light">
+                        <span class="stat-label">Menor Densidade</span>
+                        <span class="stat-value">Colômbia</span>
+                        <span class="stat-info">1 segmento</span>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Interpretação:</strong> Municípios com maior número de segmentos tendem a ter malhas mais fragmentadas, possivelmente devido a maior área territorial, relevo acidentado ou maior densidade de ligações viárias. Campinas, com 62 segmentos, exemplifica essa fragmentação em áreas metropolitanas.
                 </div>
             </div>
         </section>
 
         <!-- ===================================================================== -->
-        <!-- PARTE 3: COMPARAÇÃO OSM VS DER -->
+        <!-- PARTE 2: ANÁLISE POR REGIÃO ADMINISTRATIVA -->
         <!-- ===================================================================== -->
         <section class="section mt-2">
             <h1 class="section-title section-title-comparacao">
-                🔍 PARTE 3: Comparação OSM vs DER
+                🗺️ PARTE 2: Análise por Região Administrativa
             </h1>
-            <p class="subtitle-large">Análise comparativa das divergências e convergências entre as duas fontes de dados</p>
+            <p class="subtitle-large">Caracterização da malha vicinal estimada em escala regional</p>
 
-            <!-- Q1 COMPARADO: DISTRIBUIÇÃO -->
-            <div class="section mt-2">
-                <h2 class="section-title">Q1. Comparação da Distribuição Territorial</h2>
-                
-                <div class="chart-container chart-wrapper-large">
-                    <canvas id="chartComparacaoGeral"></canvas>
-                </div>
-
-                <h3 class="section-subtitle mt-2">📊 Distribuição Comparada por Faixa:</h3>
-                <div class="chart-container chart-wrapper">
-                    <canvas id="chartDistribuicaoComparada"></canvas>
-                </div>
-
-                <div class="alert alert-danger">
-                    <strong>🚨 Divergência Crítica:</strong> DER concentra <strong>65% dos municípios</strong> na faixa mais baixa (0-50 km), enquanto OSM distribui de forma mais uniforme. Isso indica <strong>subnotificação sistemática</strong> no cadastro oficial, não apenas ausência de algumas vias.
-                </div>
+            <div class="alert alert-warning">
+                <strong>⚠️ Ressalva Regional:</strong> A análise regional baseia-se na agregação dos dados municipais estimados. As diferenças entre regiões refletem tanto características territoriais reais quanto possíveis variações na completude e qualidade do mapeamento colaborativo das fontes utilizadas. Interpretações devem considerar estas limitações.
             </div>
 
-            <!-- Q4 COMPARADO: ACESSIBILIDADE -->
+            <!-- ANÁLISE POR REGIÃO ADMINISTRATIVA -->
             <div class="section mt-2">
-                <h2 class="section-title">Q4. Comparação de Acessibilidade Rodoviária</h2>
+                <h2 class="section-title">Distribuição Regional da Malha Vicinal</h2>
+                <p class="section-subtitle">Análise das Regiões Administrativas do Estado de São Paulo</p>
+
+                <div class="alert alert-info">
+                    <strong>ℹ️ Sobre as Regiões Administrativas:</strong> O Estado de São Paulo é dividido em 16 Regiões Administrativas (RAs) que agrupam municípios com características socioeconômicas e territoriais similares. Esta análise permite identificar padrões regionais de infraestrutura viária municipal.
+                </div>
+
+                <h3 class="section-subtitle mt-2">📊 Ranking de Regiões Administrativas por Extensão Vicinal</h3>
                 
+                <!-- Layout lado a lado: gráfico + mapa -->
+                <div class="chart-map-row">
+                    <div class="chart-column">
+                        <div class="chart-wrapper-xlarge">
+                            <canvas id="chartTop5RA"></canvas>
+                        </div>
+                    </div>
+                    <div class="map-column">
+                        <div class="map-wrapper">
+                            <div id="mapRegioesRA" class="map-leaflet"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✓ Padrões Regionais Identificados (Base Estimada):</strong>
+                    <ul class="list-spaced">
+                        <li><strong>RA de Campinas Lidera:</strong> Com 3.584 km estimados, concentra 13,8% da malha vicinal estadual estimada</li>
+                        <li><strong>Top 5 Concentra 50,3%:</strong> As cinco principais RAs somam metade da extensão total estimada</li>
+                        <li><strong>RA de São José do Rio Preto:</strong> 2.625 km distribuídos por diversos municípios</li>
+                        <li><strong>RA de Presidente Prudente e Sorocaba:</strong> Aproximadamente 2.300-2.400 km cada, indicando malhas municipais possivelmente extensas</li>
+                    </ul>
+                    <p class="mt-1"><strong>Importante:</strong> Estes padrões regionais devem ser validados com fontes oficiais antes de fundamentar políticas públicas.</p>
+                </div>
+
+                <h3 class="section-subtitle mt-2">📊 Comparativo Regional: Extensão vs Densidade Municipal</h3>
                 <div class="cards-grid">
                     <div class="card">
-                        <h4 class="card-title">Extensão Total (km)</h4>
+                        <h4 class="card-title">RA de Campinas</h4>
                         <div class="card-content">
-                            <div class="metric-value-large">OSM: <strong class="metric-osm-color">122.243 km</strong></div>
-                            <div class="metric-value-large">DER: <strong class="metric-der-color">25.919 km</strong></div>
-                            <div class="mt-1 bg-red-light gap-box">
-                                <strong>Razão: 4,7×</strong> | Gap: 96.324 km
-                            </div>
+                            <div class="metric-value-large">3.584 km</div>
+                            <p><strong>Maior extensão total</strong></p>
+                            <span class="badge-inline bg-blue-light">13,8% do total estadual</span>
                         </div>
                     </div>
                     <div class="card">
-                        <h4 class="card-title">Densidade por Área (km/10.000km²)</h4>
+                        <h4 class="card-title">RA de São José do Rio Preto</h4>
                         <div class="card-content">
-                            <div class="metric-value-large">OSM: <strong class="metric-osm-color">4.920</strong></div>
-                            <div class="metric-value-large">DER: <strong class="metric-der-color">1.040</strong></div>
-                            <div class="mt-1 bg-red-light gap-box">
-                                <strong>Razão: 4,7×</strong> | Gap: 3.880 km/10.000km²
-                            </div>
+                            <div class="metric-value-large">2.625 km</div>
+                            <p><strong>Segunda maior extensão</strong></p>
+                            <span class="badge-inline bg-green-light">10,1% do total</span>
                         </div>
                     </div>
                     <div class="card">
-                        <h4 class="card-title">Disponibilidade (km/10.000hab)</h4>
+                        <h4 class="card-title">RA de Presidente Prudente</h4>
                         <div class="card-content">
-                            <div class="metric-value-large">OSM: <strong class="metric-osm-color">26,3</strong></div>
-                            <div class="metric-value-large">DER: <strong class="metric-der-color">5,6</strong></div>
-                            <div class="mt-1 bg-red-light gap-box">
-                                <strong>Razão: 4,7×</strong> | Gap: 20,7 km/10.000hab
-                            </div>
+                            <div class="metric-value-large">2.378 km</div>
+                            <p><strong>Terceira posição</strong></p>
+                            <span class="badge-inline bg-orange-light">9,2% do total</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="alert alert-warning mt-2">
-                    <strong>💡 Consistência:</strong> A razão OSM/DER é <strong>consistentemente 4,7×</strong> nas três métricas, indicando que a divergência é proporcional e <strong>não devida a outliers ou erros pontuais</strong>, mas sim a uma <strong>diferença estrutural de cobertura</strong>.
+                    <strong>⚠️ Disparidades Regionais (Base Estimada):</strong> A diferença entre RA de Campinas (3.584 km) e RAs menores pode indicar: (1) diferenças territoriais significativas reais, (2) concentração de atividades agrícolas, (3) perfil rural mais acentuado, (4) <strong>maior completude do mapeamento colaborativo nessas regiões</strong>, ou (5) <strong>variações na qualidade dos filtros aplicados</strong>. Análises definitivas requerem validação com cadastros oficiais.
                 </div>
             </div>
 
-            <!-- Q6 COMPARADO: DISPARIDADES REGIONAIS -->
+            <!-- ANÁLISE COMPARATIVA REGIONAL -->
             <div class="section mt-2">
-                <h2 class="section-title">Q6. Comparação de Disparidades Regionais</h2>
-                <p class="section-subtitle">Análise da razão OSM/DER por Região Administrativa</p>
+                <h2 class="section-title">Perfis Regionais Distintos</h2>
+                <p class="section-subtitle">Caracterização qualitativa das principais regiões</p>
 
-                <div class="map-wrapper">
-                    <div id="map-ra-divergencia" class="map-container"></div>
-                </div>
-                <script>
-                    // Mapa de divergência OSM/DER por Região Administrativa usando círculos proporcionais
-                    function initRADivergenciaMap() {
-                        if (!window.L) return;
-                        const mapContainer = document.getElementById('map-ra-divergencia');
-                        if (!mapContainer) return;
-
-                        const map = L.map('map-ra-divergencia', { scrollWheelZoom: false });
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                            attribution: '&copy; OpenStreetMap contribuidores'
-                        }).addTo(map);
-
-                        const raData = [
-                            { nome: 'RA de Registro', ratio: 7.1, densOSM: 259.7, densDER: 36.6, coords: [-24.5, -47.84] },
-                            { nome: 'RMSP', ratio: 6.2, densOSM: 1034.7, densDER: 167.3, coords: [-23.55, -46.63] },
-                            { nome: 'RA de Barretos', ratio: 6.6, densOSM: 588.0, densDER: 89.0, coords: [-20.55, -48.57] },
-                            { nome: 'RA de São José do Rio Preto', ratio: 6.0, densOSM: 559.2, densDER: 92.8, coords: [-20.82, -49.38] },
-                            { nome: 'RA de Campinas', ratio: 6.6, densOSM: 870.3, densDER: 132.3, coords: [-22.9, -47.06] },
-                            { nome: 'RA de Sorocaba', ratio: 6.2, densOSM: 818.3, densDER: 131.5, coords: [-23.5, -47.45] },
-                            { nome: 'RA de Presidente Prudente', ratio: 4.7, densOSM: 467.4, densDER: 100.0, coords: [-22.12, -51.39] },
-                            { nome: 'RA de Franca', ratio: 4.5, densOSM: 587.4, densDER: 132.0, coords: [-20.53, -47.4] }
-                        ];
-
-                        const classify = (ratio) => {
-                            if (ratio >= 6.6) return { color: '#e67e22', label: '6,6× ou mais' };
-                            if (ratio >= 5) return { color: '#f1c40f', label: '5,0–6,5×' };
-                            return { color: '#2ecc71', label: 'Até 4,9×' };
-                        };
-
-                        const bounds = [];
-                        raData.forEach(({ nome, ratio, densOSM, densDER, coords }) => {
-                            const { color, label } = classify(ratio);
-                            const radius = Math.min(22, Math.max(8, ratio * 2.2));
-                            const marker = L.circleMarker(coords, {
-                                radius,
-                                color,
-                                weight: 2,
-                                fillColor: color,
-                                fillOpacity: 0.7
-                            }).addTo(map);
-
-                            marker.bindPopup(`
-                                <strong>${nome}</strong><br>
-                                Dens. OSM: ${densOSM.toLocaleString('pt-BR')} km/1000km²<br>
-                                Dens. DER: ${densDER.toLocaleString('pt-BR')} km/1000km²<br>
-                                Razão OSM/DER: <strong>${ratio.toLocaleString('pt-BR')}×</strong><br>
-                                Classificação: ${label}
-                            `);
-
-                            bounds.push(coords);
-                        });
-
-                        if (bounds.length) {
-                            map.fitBounds(bounds, { padding: [20, 20] });
-                        }
-
-                        const legend = L.control({ position: 'bottomright' });
-                        legend.onAdd = function () {
-                            const div = L.DomUtil.create('div', 'legend');
-                            div.innerHTML = `
-                                <strong>Razão OSM/DER</strong><br>
-                                <div><span class="legend-color-box" style="background:#e67e22"></span> 6,6× ou mais</div>
-                                <div><span class="legend-color-box" style="background:#f1c40f"></span> 5,0–6,5×</div>
-                                <div><span class="legend-color-box" style="background:#2ecc71"></span> Até 4,9×</div>
-                                <small>Circulo proporcional à razão</small>
-                            `;
-                            return div;
-                        };
-                        legend.addTo(map);
-                    }
-
-                    document.addEventListener('DOMContentLoaded', initRADivergenciaMap);
-                </script>
-
-                <h3 class="section-subtitle mt-2">📈 Distribuição das Divergências:</h3>
-                <div class="stats-container">
-                    <div class="stat-box bg-green-light">
-                        <span class="stat-label">Divergência Moderada</span>
-                        <span class="stat-value">2 <span class="stat-unit">(RAs)</span></span>
-                        <span class="stat-info">Razão OSM/DER: 4-5×</span>
-                    </div>
-                    <div class="stat-box bg-yellow-light">
-                        <span class="stat-label">Divergência Moderada-Alta</span>
-                        <span class="stat-value">11 <span class="stat-unit">(RAs)</span></span>
-                        <span class="stat-info">Razão OSM/DER: 5-7×</span>
-                    </div>
-                    <div class="stat-box bg-orange-light">
-                        <span class="stat-label">Divergência Alta</span>
-                        <span class="stat-value">3 <span class="stat-unit">(RAs)</span></span>
-                        <span class="stat-info">Razão OSM/DER: 7-9×</span>
-                    </div>
-                </div>
-
-                <div class="alert alert-success">
-                    <strong>✓ Padrão Regional Consistente:</strong> Todas as regiões apresentam <strong>razão OSM/DER entre 4,5× e 7,1×</strong>, indicando que a subnotificação do DER é <strong>uniforme</strong> em todo o Estado, não concentrada em regiões específicas.
-                </div>
-            </div>
-
-            <!-- TOP 10 MUNICÍPIOS COMPARADOS -->
-            <div class="section mt-2">
-                <h2 class="section-title">Top 10 Municípios com Maior Divergência OSM/DER</h2>
-                <p class="section-subtitle">Municípios onde a malha OSM é mais extensa em relação ao cadastro DER</p>
+                <h3 class="section-subtitle">🔍 Análise Detalhada por Região</h3>
                 
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Posição</th>
-                                <th>Município</th>
-                                <th>RA</th>
-                                <th>OSM (km)</th>
-                                <th>DER (km)</th>
-                                <th>Razão</th>
-                                <th>Classificação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-red-light">
-                                <td>1</td>
-                                <td><strong>Ituverava</strong></td>
-                                <td>Franca</td>
-                                <td>1.410,4</td>
-                                <td>82,3</td>
-                                <td><strong>17,1×</strong></td>
-                                <td>🔴 Crítica</td>
-                            </tr>
-                            <tr class="bg-red-light">
-                                <td>2</td>
-                                <td><strong>Ribeirão Preto</strong></td>
-                                <td>Central</td>
-                                <td>745,9</td>
-                                <td>45,2</td>
-                                <td><strong>16,5×</strong></td>
-                                <td>🔴 Crítica</td>
-                            </tr>
-                            <tr class="bg-red-light">
-                                <td>3</td>
-                                <td><strong>Mococa</strong></td>
-                                <td>Campinas</td>
-                                <td>798,6</td>
-                                <td>54,3</td>
-                                <td><strong>14,7×</strong></td>
-                                <td>🔴 Crítica</td>
-                            </tr>
-                            <tr class="bg-orange-light">
-                                <td>4</td>
-                                <td><strong>Casa Branca</strong></td>
-                                <td>Campinas</td>
-                                <td>892,5</td>
-                                <td>68,9</td>
-                                <td><strong>13,0×</strong></td>
-                                <td>🟠 Muito Alta</td>
-                            </tr>
-                            <tr class="bg-orange-light">
-                                <td>5</td>
-                                <td><strong>Barretos</strong></td>
-                                <td>Barretos</td>
-                                <td>769,4</td>
-                                <td>62,8</td>
-                                <td><strong>12,3×</strong></td>
-                                <td>🟠 Muito Alta</td>
-                            </tr>
-                            <tr class="bg-orange-light">
-                                <td>6</td>
-                                <td><strong>Bora</strong></td>
-                                <td>Marília</td>
-                                <td>654,2</td>
-                                <td>56,4</td>
-                                <td><strong>11,6×</strong></td>
-                                <td>🟠 Muito Alta</td>
-                            </tr>
-                            <tr class="bg-orange-light">
-                                <td>7</td>
-                                <td><strong>Franca</strong></td>
-                                <td>Franca</td>
-                                <td>812,3</td>
-                                <td>78,2</td>
-                                <td><strong>10,4×</strong></td>
-                                <td>🟠 Muito Alta</td>
-                            </tr>
-                            <tr class="bg-orange-light">
-                                <td>8</td>
-                                <td><strong>Orlândia</strong></td>
-                                <td>Franca</td>
-                                <td>856,2</td>
-                                <td>95,4</td>
-                                <td><strong>9,0×</strong></td>
-                                <td>🟠 Alta</td>
-                            </tr>
-                            <tr class="bg-yellow-light">
-                                <td>9</td>
-                                <td><strong>São João da Boa Vista</strong></td>
-                                <td>Campinas</td>
-                                <td>782,1</td>
-                                <td>91,7</td>
-                                <td><strong>8,5×</strong></td>
-                                <td>🟡 Alta</td>
-                            </tr>
-                            <tr class="bg-yellow-light">
-                                <td>10</td>
-                                <td><strong>Araraquara</strong></td>
-                                <td>Central</td>
-                                <td>734,2</td>
-                                <td>88,1</td>
-                                <td><strong>8,3×</strong></td>
-                                <td>🟡 Alta</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="alert alert-danger">
-                    <strong>🚨 Municípios Críticos:</strong> <strong>3 municípios</strong> (Ituverava, Ribeirão Preto, Mococa) apresentam <strong>divergência >15×</strong>, indicando possível <strong>ausência quase total</strong> de vicinais no cadastro DER apesar de extensa malha mapeada no OSM.
-                </div>
-            </div>
-
-            <!-- SÍNTESE COMPARATIVA -->
-            <div class="section mt-2">
-                <h2 class="section-title">
-                    <span class="icon icon-check"></span>
-                    Síntese da Comparação OSM vs DER
-                </h2>
-
-                <div class="cards-grid">
-                    <div class="card">
-                        <h4 class="card-title">📏 Extensão</h4>
-                        <div class="card-content">
-                            <strong>OSM: 122.243 km</strong><br>
-                            <strong>DER: 25.919 km</strong><br>
-                            <span class="bg-red-light badge-inline">
-                                <strong>Razão: 4,7×</strong>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h4 class="card-title">🗺️ Cobertura</h4>
-                        <div class="card-content">
-                            <strong>OSM:</strong> 645 municípios (100%)<br>
-                            <strong>DER:</strong> 637 municípios (98,8%)<br>
-                            <span class="bg-green-light badge-inline">
-                                Cobertura similar
-                            </span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h4 class="card-title">📊 Variabilidade</h4>
-                        <div class="card-content">
-                            <strong>OSM:</strong> σ = 191,7 km<br>
-                            <strong>DER:</strong> σ = 30,4 km<br>
-                            <span class="bg-orange-light badge-inline">
-                                <strong>OSM 6,3× mais variável</strong>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="section-subtitle mt-2">🎯 Conclusões da Comparação:</h3>
                 <div class="section-content">
-                    <ol class="list-spaced">
-                        <li><strong>Subnotificação Sistemática:</strong> DER registra apenas <strong>21% da malha vicinal real</strong> mapeada no OSM</li>
-                        
-                        <li><strong>Consistência Proporcional:</strong> Razão OSM/DER de <strong>4,7×</strong> se mantém em todas as métricas (extensão, densidade área, densidade pop)</li>
-                        
-                        <li><strong>Uniformidade Regional:</strong> Todas as 16 RAs apresentam divergência entre <strong>4,5× e 7,1×</strong>, sem outliers extremos</li>
-                        
-                        <li><strong>Municípios Críticos:</strong> <strong>3 municípios</strong> com divergência >15× necessitam revisão urgente do cadastro DER</li>
-                        
-                        <li><strong>Distribuição Desigual DER:</strong> <strong>65% dos municípios</strong> têm <50 km cadastrados no DER vs apenas 13% no OSM</li>
-                        
-                        <li><strong>Validação Cruzada:</strong> Padrão regional similar (RMSP/Campinas altas, Registro baixa) valida ambas as fontes</li>
-                        
-                        <li><strong>Gap de Infraestrutura:</strong> <strong>96.324 km</strong> de vicinais OSM não cadastradas oficialmente representam <strong>oportunidade</strong> para atualização de dados e planejamento</li>
-                    </ol>
+                    <h4><strong>RA de Campinas - Perfil de Alta Extensão e Fragmentação</strong></h4>
+                    <ul class="list-spaced">
+                        <li>Maior extensão absoluta (3.584 km) com distribuição entre diversos municípios</li>
+                        <li>Região economicamente desenvolvida com infraestrutura viária consolidada</li>
+                        <li>Distribuição equilibrada sugere cobertura homogênea entre municípios</li>
+                    </ul>
+
+                    <h4 class="mt-2"><strong>RA de São José do Rio Preto - Perfil Regional Consolidado</strong></h4>
+                    <ul class="list-spaced">
+                        <li>Segunda maior extensão (2.625 km) com vocação agrícola</li>
+                        <li>Região com características rurais marcantes</li>
+                        <li>Extensão reflete importância da malha vicinal para escoamento agrícola</li>
+                    </ul>
+
+                    <h4 class="mt-2"><strong>RA de Presidente Prudente - Perfil de Fronteira Agrícola</strong></h4>
+                    <ul class="list-spaced">
+                        <li>2.378 km distribuídos em região de ocupação agrícola consolidada</li>
+                        <li>Possível perfil de municípios com territórios extensos e baixa densidade</li>
+                        <li>Malha vicinal importante para integração territorial</li>
+                    </ul>
+
+                    <h4 class="mt-2"><strong>RA de Sorocaba - Perfil Industrial e Rural Misto</strong></h4>
+                    <ul class="list-spaced">
+                        <li>2.338 km com características mistas (industrial/rural)</li>
+                        <li>Região próxima à capital com diversidade econômica</li>
+                        <li>Malha vicinal reflete diversidade de usos do solo</li>
+                    </ul>
                 </div>
 
-                <div class="alert alert-success mt-2">
-                    <strong>✓ Recomendação:</strong> OSM pode ser usado como <strong>fonte complementar confiável</strong> para identificar malha vicinal existente e priorizar áreas para levantamento de campo e atualização do cadastro oficial DER/SP.
+                <div class="alert alert-info mt-2">
+                    <strong>💡 Síntese Regional:</strong> A análise regional da base estimada revela perfis distintos de malha vicinal correlacionados com vocações econômicas e padrões de ocupação territorial. <strong>Ressalva:</strong> Essas diferenças refletem tanto características territoriais, econômicas e demográficas reais quanto possíveis limitações das fontes e metodologia aplicada.
                 </div>
             </div>
         </section>
-            
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Métrica</th>
-                            <th>OSM (Metodologia Principal)</th>
-                            <th>OSM (Agregado)</th>
-                            <th>DER</th>
-                            <th>Razão OSM/DER</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+
+        <!-- ===================================================================== -->
+        <!-- SÍNTESE GERAL -->
+        <!-- ===================================================================== -->
+        <section class="section mt-2">
+            <h2 class="section-title">
+                <span class="icon icon-check"></span>
+                Síntese dos Resultados
+            </h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">📏 Extensão e Cobertura</h4>
+                    <div class="card-content">
+                        <strong>25.964 km</strong> em <strong>636 municípios</strong><br>
+                        Média: 40,76 km/município<br>
+                        <span class="bg-blue-light badge-inline">
+                            98,6% de cobertura estadual
+                        </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">🛣️ Pavimentação</h4>
+                    <div class="card-content">
+                        <strong>61,7% não pavimentado</strong> (terra/cascalho)<br>
+                        37,8% pavimentado (asfalto)<br>
+                        <span class="bg-orange-light badge-inline">
+                            Déficit de infraestrutura
+                        </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">📊 Heterogeneidade</h4>
+                    <div class="card-content">
+                        <strong>Razão 528×</strong> entre maior e menor<br>
+                        Desvio padrão: 30,45 km<br>
+                        <span class="bg-red-light badge-inline">
+                            Alta variabilidade municipal
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle mt-2">🎯 Principais Conclusões (Base Estimada):</h3>
+            <div class="section-content">
+                <ol class="list-spaced">
+                    <li><strong>Cobertura Estimada Consolidada:</strong> Base estimada cobre 98,6% dos municípios paulistas com extensão total de 25.964 km</li>
+                    
+                    <li><strong>Distribuição Assimétrica:</strong> 61% dos municípios apresentam menos de 40 km estimados, mas 36 municípios (5,6%) superam 100 km</li>
+                    
+                    <li><strong>Possível Déficit de Pavimentação:</strong> 61,7% da malha estimada aparenta não ser pavimentada, sugerindo necessidade de validação e investimentos</li>
+                    
+                    <li><strong>Fragmentação Elevada:</strong> 51% dos segmentos têm menos de 2 km, mas representam apenas 9,7% da extensão estimada</li>
+                    
+                    <li><strong>Concentração Regional Estimada:</strong> Top 5 RAs concentram 50,3% da extensão total estimada</li>
+                    
+                    <li><strong>Perfis Regionais Distintos:</strong> Regiões apresentam características estimadas muito diferentes correlacionadas com vocações econômicas</li>
+                    
+                    <li><strong>Heterogeneidade Extrema:</strong> Razão de 528× entre maior e menor município na base estimada revela realidades territoriais muito distintas ou limitações do mapeamento</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-danger mt-2">
+                <strong>⚠️ RESSALVA METODOLÓGICA GERAL:</strong> Todas as conclusões apresentadas baseiam-se em uma <strong>estimativa</strong> gerada a partir de fontes abertas e filtros espaciais. Esta não é uma base oficial validada pelo Estado de São Paulo ou pelos municípios. Os resultados são úteis para <strong>análises exploratórias, identificação de padrões e comparações relativas</strong>, mas <strong>não devem fundamentar decisões definitivas de investimento ou planejamento sem validação complementar</strong> através de levantamentos de campo, consulta a cadastros oficiais municipais ou verificação junto aos órgãos competentes.
+            </div>
+
+            <div class="alert alert-success mt-2">
+                <strong>✓ Utilidade da Base Estimada:</strong> Esta base geoespacial estimada oferece uma <strong>primeira aproximação sistemática</strong> da malha vicinal paulista em escala estadual, permitindo análises comparativas exploratórias municipais e regionais, identificação de possíveis padrões de infraestrutura e suporte inicial para priorização de levantamentos de campo ou atualização de cadastros. <strong>Seu valor reside na comparabilidade e na visão de conjunto, não na precisão absoluta de cada trecho individual.</strong>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -792,396 +496,7 @@
     </footer>
 
     <script src="../js/main.js"></script>
-    <script>
-        // Configurações globais do Chart.js
-        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-        Chart.defaults.font.size = 14;
-        
-        // Configuração comum para legendas na parte inferior
-        const legendConfig = {
-            display: true,
-            position: 'bottom',
-            align: 'center',
-            labels: {
-                padding: 15,
-                usePointStyle: true,
-                font: { size: 12 }
-            }
-        };
-        
-        // Gráfico 1: Distribuição OSM por Faixa de Extensão
-        const ctxOSM = document.getElementById('chartDistribuicaoOSM');
-        if (ctxOSM) {
-            new Chart(ctxOSM.getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['0-50 km', '50-100 km', '100-200 km', '200-400 km', '> 400 km'],
-                    datasets: [{
-                        label: 'Número de Municípios',
-                        data: [85, 142, 198, 156, 64],
-                        backgroundColor: 'rgba(0, 102, 204, 0.7)',
-                        borderColor: 'rgba(0, 102, 204, 1)',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Distribuição de Municípios por Faixa de Extensão - OSM',
-                            font: { size: 16, weight: 'bold' }
-                        },
-                        legend: legendConfig,
-                        tooltip: {
-                            callbacks: {
-                                afterLabel: function(context) {
-                                    const extensoes = [3400, 10650, 29700, 46800, 31693];
-                                    const percentuais = ['13.2%', '22.0%', '30.7%', '24.2%', '9.9%'];
-                                    return [`Extensão: ~${extensoes[context.dataIndex].toLocaleString('pt-BR')} km`, 
-                                            `Percentual: ${percentuais[context.dataIndex]}`];
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { display: true, text: 'Quantidade de Municípios' }
-                        },
-                        x: {
-                            title: { display: true, text: 'Faixa de Extensão' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Gráfico 2: Distribuição DER por Faixa
-        const ctxDER = document.getElementById('chartDistribuicaoDER');
-        if (ctxDER) {
-            new Chart(ctxDER.getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['0-50 km', '50-100 km', '100-200 km', '200-400 km', '> 400 km'],
-                    datasets: [{
-                        label: 'Número de Municípios',
-                        data: [412, 158, 52, 14, 1],
-                        backgroundColor: 'rgba(255, 102, 0, 0.7)',
-                        borderColor: 'rgba(255, 102, 0, 1)',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Distribuição de Municípios por Faixa de Extensão - DER',
-                            font: { size: 16, weight: 'bold' }
-                        },
-                        legend: legendConfig,
-                        tooltip: {
-                            callbacks: {
-                                afterLabel: function(context) {
-                                    const extensoes = [12360, 11850, 7800, 4200, 409];
-                                    const percentuais = ['64.7%', '24.8%', '8.2%', '2.2%', '0.2%'];
-                                    return [`Extensão: ~${extensoes[context.dataIndex].toLocaleString('pt-BR')} km`, 
-                                            `Percentual: ${percentuais[context.dataIndex]}`];
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { display: true, text: 'Quantidade de Municípios' }
-                        },
-                        x: {
-                            title: { display: true, text: 'Faixa de Extensão' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Gráfico 3: Comparação Geral OSM vs DER
-        const ctxComp = document.getElementById('chartComparacaoGeral');
-        if (ctxComp) {
-            new Chart(ctxComp.getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['Extensão Total (km)', 'Municípios', 'Média/Município (km)', 'Densidade (km/10.000km²)'],
-                    datasets: [{
-                        label: 'OSM',
-                        data: [122243, 645, 189.5, 4920],
-                        backgroundColor: 'rgba(0, 102, 204, 0.7)',
-                        borderColor: 'rgba(0, 102, 204, 1)',
-                        borderWidth: 2
-                    }, {
-                        label: 'DER',
-                        data: [25919, 637, 40.7, 1040],
-                        backgroundColor: 'rgba(255, 102, 0, 0.7)',
-                        borderColor: 'rgba(255, 102, 0, 1)',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Comparação de Métricas: OSM vs DER',
-                            font: { size: 16, weight: 'bold' }
-                        },
-                        legend: legendConfig
-                    },
-                    scales: {
-                        y: {
-                            type: 'logarithmic',
-                            title: { display: true, text: 'Valor (escala logarítmica)' }
-                        },
-                        x: {
-                            title: { display: true, text: 'Métrica' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Gráfico 4: Distribuição Comparada por Faixa
-        const ctxCompFaixa = document.getElementById('chartDistribuicaoComparada');
-        if (ctxCompFaixa) {
-            new Chart(ctxCompFaixa.getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['0-50 km', '50-100 km', '100-200 km', '200-400 km', '> 400 km'],
-                    datasets: [{
-                        label: 'OSM',
-                        data: [85, 142, 198, 156, 64],
-                        backgroundColor: 'rgba(0, 102, 204, 0.7)',
-                        borderColor: 'rgba(0, 102, 204, 1)',
-                        borderWidth: 2
-                    }, {
-                        label: 'DER',
-                        data: [412, 158, 52, 14, 1],
-                        backgroundColor: 'rgba(255, 102, 0, 0.7)',
-                        borderColor: 'rgba(255, 102, 0, 1)',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Comparação de Distribuição por Faixa: OSM vs DER',
-                            font: { size: 16, weight: 'bold' }
-                        },
-                        legend: legendConfig
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { display: true, text: 'Número de Municípios' }
-                        },
-                        x: {
-                            title: { display: true, text: 'Faixa de Extensão' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Mapa Coroplético de Densidade Regional
-        const mapElement = document.getElementById('mapDensidadeRegional');
-        if (mapElement) {
-            const map = L.map('mapDensidadeRegional').setView([-22.5, -48.5], 7);
-            
-            const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors',
-                maxZoom: 18
-            }).addTo(map);
-
-            // Dados de densidade por região (valores em km/10.000km²)
-            const densidadeRegional = {
-                'RMSP': 10347,
-                'RM de Campinas': 10014,
-                'RA de Campinas': 8703,
-                'RA de Sorocaba': 6200,
-                'RA de São José dos Campos': 5800,
-                'RA de Ribeirão Preto': 5400,
-                'RA de Bauru': 4900,
-                'RA Central': 4500,
-                'RA de Registro': 2597
-            };
-
-            // Função para determinar cor baseada na densidade
-            function getColor(densidade) {
-                return densidade > 8000 ? '#006400' :
-                       densidade > 6000 ? '#27ae60' :
-                       densidade > 5000 ? '#f39c12' :
-                       densidade > 4000 ? '#e67e22' :
-                       densidade > 3000 ? '#d35400' :
-                                         '#c0392b';
-            }
-
-            // Carregar e adicionar GeoJSON das regiões administrativas
-            fetch('../data/regioes_administrativas_sp.geojson')
-                .then(response => response.json())
-                .then(data => {
-                    const regioesLayer = L.geoJSON(data, {
-                        style: function(feature) {
-                            const regiao = feature.properties.nome || feature.properties.NOME;
-                            const densidade = densidadeRegional[regiao] || 4920;
-                            return {
-                                fillColor: getColor(densidade),
-                                weight: 2,
-                                opacity: 1,
-                                color: 'white',
-                                fillOpacity: 0.7
-                            };
-                        },
-                        onEachFeature: function(feature, layer) {
-                            const regiao = feature.properties.nome || feature.properties.NOME;
-                            const densidade = densidadeRegional[regiao] || 4920;
-                            layer.bindPopup(`
-                                <strong>${regiao}</strong><br>
-                                Densidade: ${densidade.toLocaleString('pt-BR')} km/10.000km²
-                            `);
-                        }
-                    }).addTo(map);
-
-                    const layerInfo = document.getElementById('mapDensidadeRegional-layer-info');
-                    if (layerInfo) {
-                        const legendPanel = document.createElement('div');
-                        legendPanel.className = 'legend-panel';
-                        legendPanel.innerHTML = `
-                            <h4>Legenda Dinâmica</h4>
-                            <label>Camada
-                                <select id="mapDensidadeRegional-legend-layer">
-                                    <option value="regioes">Regiões Administrativas</option>
-                                </select>
-                            </label>
-                            <label>Atributo
-                                <select id="mapDensidadeRegional-legend-attr"></select>
-                            </label>
-                            <label>Tipo de dado
-                                <select id="mapDensidadeRegional-legend-type">
-                                    <option value="auto">Auto</option>
-                                    <option value="text">Texto</option>
-                                    <option value="numeric">Numérico</option>
-                                </select>
-                            </label>
-                            <label>Legenda
-                                <select id="mapDensidadeRegional-legend-mode">
-                                    <option value="continuous">Contínua</option>
-                                    <option value="discrete">Discreta</option>
-                                </select>
-                            </label>
-                            <div class="legend-output" id="mapDensidadeRegional-legend-output"></div>
-                        `;
-                        layerInfo.appendChild(legendPanel);
-
-                        const features = Array.isArray(regioesLayer.toGeoJSON().features)
-                            ? regioesLayer.toGeoJSON().features
-                            : [];
-                        const attrSelect = legendPanel.querySelector('#mapDensidadeRegional-legend-attr');
-                        const typeSelect = legendPanel.querySelector('#mapDensidadeRegional-legend-type');
-                        const modeSelect = legendPanel.querySelector('#mapDensidadeRegional-legend-mode');
-                        const output = legendPanel.querySelector('#mapDensidadeRegional-legend-output');
-
-                        const attrs = new Set();
-                        features.forEach(f => {
-                            if (!f || !f.properties) return;
-                            Object.keys(f.properties).forEach(k => attrs.add(k));
-                        });
-                        Array.from(attrs).sort((a, b) => a.localeCompare(b, 'pt-BR')).forEach(a => {
-                            const opt = document.createElement('option');
-                            opt.value = a;
-                            opt.textContent = a;
-                            attrSelect.appendChild(opt);
-                        });
-
-                        const inferType = (attr) => {
-                            let numeric = 0;
-                            let text = 0;
-                            for (const f of features) {
-                                const v = f?.properties?.[attr];
-                                if (v === null || v === undefined || v === '') continue;
-                                const n = Number(v);
-                                if (!Number.isNaN(n) && Number.isFinite(n)) numeric += 1;
-                                else text += 1;
-                                if (numeric + text >= 20) break;
-                            }
-                            return numeric >= text ? 'numeric' : 'text';
-                        };
-
-                        const buildItems = (values, type, mode) => {
-                            if (type === 'text') {
-                                const unique = Array.from(new Set(values)).slice(0, 12);
-                                return unique.map(val => ({
-                                    label: String(val),
-                                    color: `hsl(${Math.floor(Math.random() * 360)}, 65%, 55%)`
-                                }));
-                            }
-                            const nums = values.map(v => Number(v)).filter(v => !Number.isNaN(v) && Number.isFinite(v));
-                            if (!nums.length) return [];
-                            const min = Math.min(...nums);
-                            const max = Math.max(...nums);
-                            const steps = 5;
-                            const ramp = ['#4575b4', '#91bfdb', '#e0f3f8', '#fee090', '#fc8d59'];
-                            const items = [];
-                            for (let i = 0; i < steps; i += 1) {
-                                const from = min + (i * (max - min)) / steps;
-                                const to = min + ((i + 1) * (max - min)) / steps;
-                                items.push({
-                                    label: `${from.toLocaleString('pt-BR', {maximumFractionDigits: 2})} – ${to.toLocaleString('pt-BR', {maximumFractionDigits: 2})}`,
-                                    color: mode === 'discrete'
-                                        ? `hsl(${Math.floor(Math.random() * 360)}, 65%, 55%)`
-                                        : ramp[i % ramp.length]
-                                });
-                            }
-                            return items;
-                        };
-
-                        const renderLegend = () => {
-                            output.innerHTML = '';
-                            const attr = attrSelect.value;
-                            const values = features.map(f => f?.properties?.[attr]).filter(v => v !== undefined && v !== null && v !== '');
-                            const type = typeSelect.value === 'auto' ? inferType(attr) : typeSelect.value;
-                            const mode = modeSelect.value;
-                            const items = buildItems(values, type, mode);
-                            if (!items.length) {
-                                output.innerHTML = '<p>Sem valores suficientes para legenda.</p>';
-                                return;
-                            }
-                            const list = document.createElement('ul');
-                            list.className = 'legend-list';
-                            items.forEach(item => {
-                                const li = document.createElement('li');
-                                li.className = 'legend-item';
-                                const swatch = document.createElement('span');
-                                swatch.className = 'legend-swatch';
-                                swatch.style.backgroundColor = item.color;
-                                const label = document.createElement('span');
-                                label.textContent = item.label;
-                                li.appendChild(swatch);
-                                li.appendChild(label);
-                                list.appendChild(li);
-                            });
-                            output.appendChild(list);
-                        };
-
-                        attrSelect.addEventListener('change', renderLegend);
-                        typeSelect.addEventListener('change', renderLegend);
-                        modeSelect.addEventListener('change', renderLegend);
-                        renderLegend();
-                    }
-                })
-                .catch(err => console.error('Erro ao carregar GeoJSON:', err));
-        }
+    <script src="../js/resultados_charts.js"></script>
+    <script src="../js/resultados_maps.js"></script>
+</body>
+</html>

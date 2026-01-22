@@ -24,7 +24,13 @@
                 <li class="nav-item"><a href="index.html" class="nav-link active">Início</a></li>
                 <li class="nav-item"><a href="pages/dados.html" class="nav-link">Dados</a></li>
                 <li class="nav-item"><a href="pages/metodologia-silvio.html" class="nav-link">Metodologia</a></li>
-                <li class="nav-item"><a href="pages/resultados.html" class="nav-link">Resultados</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Resultados</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pages/resultados-municipal.html" class="dropdown-link">Análise Municipal</a></li>
+                        <li><a href="pages/resultados-regional.html" class="dropdown-link">Análise Regional</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item"><a href="pages/mapas.html" class="nav-link">Mapas</a></li>
                 <li class="nav-item"><a href="pages/conclusao.html" class="nav-link">Conclusão</a></li>
                 <li class="nav-item"><a href="pages/pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
@@ -62,33 +68,37 @@
             </div>
         </section>
 
-        <!-- ESTRATÉGIA DO ESTUDO -->
+        <!-- QUESTÕES NORTEADORAS -->
         <section class="section">
-            <h2 class="section-title">Estratégia de Caracterização</h2>
+            <h2 class="section-title">Questões Norteadoras</h2>
             <div class="section-content">
-                <p>
-                    Diante da inexistência de base oficial unificada, este estudo adota estratégia de integração de fontes abertas e oficiais para estimar a malha vicinal paulista. A base principal provém do OpenStreetMap (OSM), plataforma colaborativa de mapeamento global que registra vias de todas as hierarquias a partir de contribuições voluntárias, imagens de satélite e levantamentos de campo. Para reduzir ruído urbano e garantir aderência ao conceito de malha vicinal, aplicam-se filtros espaciais baseados em áreas urbanizadas (IBGE, 2019), faces de logradouro (Censo 2022) e buffers de sobreposição com a rede estadual (DER/SP). O processamento resulta em uma base geoespacial consistente, com cobertura estadual e recorte municipal, que permite comparações diretas entre os 645 municípios paulistas.
-                </p>
-                <p>
-                    A abordagem metodológica prioriza reprodutibilidade, rastreabilidade de decisões técnicas e documentação integral do fluxo de processamento. Todos os dados de entrada são públicos, as ferramentas utilizadas são de código aberto e os critérios de filtragem são explicitados em detalhes nas seções subsequentes. Essa transparência assegura auditabilidade técnica e permite replicação ou adaptação do estudo para outros contextos territoriais.
-                </p>
-            </div>
-        </section>
-
-        <!-- OBJETIVO E QUESTÕES -->
-        <section class="section">
-            <h2 class="section-title">Objetivo e Questões Norteadoras</h2>
-            <div class="section-content">
-                <p>
-                    O objetivo central deste estudo é <strong>estimar uma base geoespacial minimamente aderente da malha vicinal paulista, consolidando fontes abertas e oficiais, para viabilizar caracterizações iniciais e inferências robustas no contexto do PLI/SP</strong>. Ao disponibilizar a primeira estimativa sistemática da rede vicinal em escala estadual, o estudo preenche lacuna crítica na informação rodoviária e estabelece fundamentos para análises logísticas integradas.
-                </p>
-                <p>As questões norteadoras que orientam o desenvolvimento metodológico são:</p>
+                <p>As questões que orientam o desenvolvimento metodológico deste estudo são:</p>
                 <ul class="list-spaced">
                     <li>Como integrar fontes heterogêneas (abertas e oficiais) em uma base coerente, espacialmente consistente e temporalmente homogênea?</li>
                     <li>Quais critérios de filtragem espacial garantem a exclusão de vias urbanas sem comprometer a cobertura rural?</li>
                     <li>Como assegurar comparabilidade entre municípios com perfis territoriais, demográficos e econômicos distintos?</li>
                     <li>Quais limitações metodológicas e das fontes de dados devem ser explicitadas para evitar interpretações equivocadas dos resultados?</li>
                     <li>De que forma a base estimada pode subsidiar o PLI/SP na modelagem de fluxos logísticos e na priorização de investimentos?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- OBJETIVOS -->
+        <section class="section">
+            <h2 class="section-title">Objetivos</h2>
+            <div class="section-content">
+                <h3>Objetivo Geral</h3>
+                <p>
+                    <strong>Estimar uma base geoespacial minimamente aderente da malha vicinal paulista, consolidando fontes abertas e oficiais, para viabilizar caracterizações iniciais e inferências robustas no contexto do PLI/SP</strong>. Ao disponibilizar a primeira estimativa sistemática da rede vicinal em escala estadual, o estudo preenche lacuna crítica na informação rodoviária e estabelece fundamentos para análises logísticas integradas.
+                </p>
+                
+                <h3>Objetivos Específicos</h3>
+                <ul class="list-spaced">
+                    <li>Desenvolver metodologia reprodutível de integração de fontes abertas (OpenStreetMap) e oficiais (DER/SP, IBGE, SEADE) para geração de base geoespacial da malha vicinal paulista;</li>
+                    <li>Estabelecer e aplicar critérios técnicos de filtragem espacial que permitam a distinção sistemática entre vias urbanas e rurais, garantindo a aderência conceitual da base estimada;</li>
+                    <li>Produzir estimativas municipais comparáveis de extensão viária, densidade espacial e conectividade da malha vicinal, considerando as especificidades territoriais, demográficas e econômicas dos 645 municípios paulistas;</li>
+                    <li>Identificar e documentar as limitações metodológicas e das fontes de dados utilizadas, explicitando as incertezas e restrições analíticas da base estimada;</li>
+                    <li>Demonstrar a aplicabilidade da base geoespacial gerada para subsidiar análises de fluxos logísticos, diagnósticos de acessibilidade e priorização de investimentos no âmbito do PLI/SP.</li>
                 </ul>
             </div>
         </section>
@@ -109,58 +119,7 @@
             </div>
         </section>
 
-        <!-- BASES E PRINCÍPIOS -->
-        <section class="section">
-            <h2 class="section-title">Bases Utilizadas e Princípios Técnicos</h2>
-            <div class="section-content">
-                <p>A integração de bases abertas e oficiais visa reduzir a assimetria informacional entre os níveis hierárquicos da rede rodoviária. As fontes selecionadas atendem critérios de consolidação técnica, atualizabilidade, disponibilidade pública e compatibilidade com sistemas de referência geodésicos nacionais. A Tabela 1 sintetiza as bases principais:</p>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Base</th>
-                                <th>Tipo</th>
-                                <th>Fonte</th>
-                                <th>Período</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Malha rodoviária OSM</td>
-                                <td>Aberta</td>
-                                <td>OpenStreetMap (Geofabrik)</td>
-                                <td>Nov/2025</td>
-                            </tr>
-                            <tr>
-                                <td>Sistema Rodoviário Estadual</td>
-                                <td>Oficial</td>
-                                <td>DER/SP</td>
-                                <td>2025</td>
-                            </tr>
-                            <tr>
-                                <td>Áreas Urbanizadas</td>
-                                <td>Oficial</td>
-                                <td>IBGE</td>
-                                <td>2019</td>
-                            </tr>
-                            <tr>
-                                <td>Faces de Logradouro</td>
-                                <td>Oficial</td>
-                                <td>IBGE (Censo)</td>
-                                <td>2022</td>
-                            </tr>
-                            <tr>
-                                <td>Limites Municipais</td>
-                                <td>Oficial</td>
-                                <td>SEADE</td>
-                                <td>2025</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>Os princípios técnicos que orientam o processamento são: <strong>(i)</strong> reprodutibilidade integral do fluxo analítico, com scripts documentados e versionados; <strong>(ii)</strong> consistência espacial, garantida por reprojeções para sistema único (SIRGAS 2000); <strong>(iii)</strong> rastreabilidade de decisões, com explicitação de parâmetros e limiares adotados; <strong>(iv)</strong> preservação dos dados originais, evitando alterações permanentes nas bases de entrada; <strong>(v)</strong> auditabilidade, mediante documentação completa de ferramentas, versões e operações executadas.</p>
-            </div>
-        </section>
+
     </main>
 
     <footer class="footer">

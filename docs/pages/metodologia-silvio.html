@@ -24,7 +24,13 @@
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                 <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
                 <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link active">Metodologia</a></li>
-                <li class="nav-item"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Resultados</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="resultados-municipal.html" class="dropdown-link">Análise Municipal</a></li>
+                        <li><a href="resultados-regional.html" class="dropdown-link">Análise Regional</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
                 <li class="nav-item"><a href="conclusao.html" class="nav-link">Conclusão</a></li>
                 <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
@@ -37,8 +43,16 @@
         <p class="page-subtitle">Fluxo técnico para estimar a malha vicinal paulista com rastreabilidade e justificativas</p>
 
         <section class="section">
-            <h2 class="section-title">Enquadramento Científico</h2>
+            <h2 class="section-title">Procedimentos Metodológicos</h2>
             <div class="section-content">
+                <p>
+                    Diante da inexistência de base oficial unificada, este estudo adota estratégia de integração de fontes abertas e oficiais para estimar a malha vicinal paulista. A base principal provém do OpenStreetMap (OSM), plataforma colaborativa de mapeamento global que registra vias de todas as hierarquias a partir de contribuições voluntárias, imagens de satélite e levantamentos de campo. Para reduzir ruído urbano e garantir aderência ao conceito de malha vicinal, aplicam-se filtros espaciais baseados em áreas urbanizadas (IBGE, 2019), faces de logradouro (Censo 2022) e buffers de sobreposição com a rede estadual (DER/SP). O processamento resulta em uma base geoespacial consistente, com cobertura estadual e recorte municipal, que permite comparações diretas entre os 645 municípios paulistas.
+                </p>
+                <p>
+                    A abordagem metodológica prioriza reprodutibilidade, rastreabilidade de decisões técnicas e documentação integral do fluxo de processamento. Todos os dados de entrada são públicos, as ferramentas utilizadas são de código aberto e os critérios de filtragem são explicitados em detalhes nas seções subsequentes. Essa transparência assegura auditabilidade técnica e permite replicação ou adaptação do estudo para outros contextos territoriais.
+                </p>
+                
+                <h3>Princípios Norteadores</h3>
                 <p>Adotamos um desenho metodológico replicável, guiado por princípios de ciência de dados espaciais: <strong>completude</strong> (maximizar cobertura territorial), <strong>especificidade</strong> (excluir ruído urbano e duplicidades), <strong>rastreabilidade</strong> (parâmetros explícitos e versionados) e <strong>auditabilidade</strong> (passo a passo documentado). Cada decisão técnica é tomada para minimizar viés de superestimação (inclusão de vias urbanas) ou subestimação (exclusão indevida por buffers).</p>
             </div>
         </section>
@@ -84,24 +98,46 @@
             <h2 class="section-title">Passo a Passo Detalhado</h2>
             <div class="section-content">
                 <h3 class="section-subtitle">1) Preparação e harmonização</h3>
-                <ul class="list-spaced">
-                    <li><strong>Clip OSM para SP (SIRGAS 2000 / UTM 23S):</strong> garante extensão compatível com limites oficiais e reduz volume computacional.</li>
-                    <li><strong>Enriquecimento com SEADE:</strong> agrega <em>Cod_ibge</em> e <em>GID_RA</em> para permitir análises multiescala.</li>
-                </ul>
+                <p>
+                    Os dados da base OSM foram recortados para o limite administrativo do Estado de São Paulo utilizando como referência espacial SIRGAS 2000 / UTM 23S. Esse procedimento garante extensão compatível com os limites oficiais estaduais e reduz significativamente o volume computacional nas etapas subsequentes. Em seguida, os dados foram enriquecidos com informações das bases da Fundação SEADE, agregando os atributos <em>Cod_ibge</em> (código do município) e <em>GID_RA</em> (identificador da Região Administrativa). Esse enriquecimento é fundamental para permitir análises multiescala, possibilitando tanto caracterizações municipais quanto agregações regionais.
+                </p>
+
+                <!-- CARD CRS -->
+                <div class="card" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; border: none; margin: 1.5rem 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <div class="card-content" style="color: white;">
+                        <h4 class="card-title" style="color: white; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem;">🗺️</span>
+                            Sistema de Referência Espacial (CRS) Oficial
+                        </h4>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 0.5rem; color: white;">
+                            <p style="margin: 0 0 0.75rem 0; font-size: 1.05rem; color: white;"><strong style="color: white;">SIRGAS 2000 / UTM Zone 23S (EPSG:31983)</strong></p>
+                            <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none; color: white;">
+                                <li style="margin: 0.5rem 0; color: white;">✓ <strong style="color: white;">Projeção oficial:</strong> Sistema de coordenadas projetadas adotado como padrão para o Estado de São Paulo</li>
+                                <li style="margin: 0.5rem 0; color: white;">✓ <strong style="color: white;">Compatibilização:</strong> Todas as bases espaciais (OSM, DER/SP, IBGE, SEADE) foram reprojetadas para EPSG:31983</li>
+                                <li style="margin: 0.5rem 0; color: white;">✓ <strong style="color: white;">Cálculos métricos:</strong> Todas as medições de área (km²) e comprimento (km) utilizaram geometrias em UTM 23S</li>
+                                <li style="margin: 0.5rem 0; color: white;">✓ <strong style="color: white;">Precisão:</strong> Projeção UTM garante distorção inferior a 1% dentro da zona, adequada para análises em escala estadual</li>
+                            </ul>
+                            <p style="margin: 0.75rem 0 0 0; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.95rem; color: white;">
+                                <strong style="color: white;">Nota técnica:</strong> Embora São Paulo se estenda pelos fusos UTM 22S (oeste) e 23S (leste), adotou-se o fuso 23S por ser o padrão oficial do IBGE, SEADE e DER/SP, garantindo compatibilidade com bases oficiais e consistência nas análises territoriais.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
                 <h3 class="section-subtitle">2) Filtragem de ruído urbano</h3>
-                <ul class="list-spaced">
-                    <li><strong>Intersect com Faces de Logradouro (buffer 10 m):</strong> remove vias intraquadra; evita superestimação por mapeamento denso em áreas urbanas.</li>
-                    <li><strong>Intersect com Áreas Urbanas IBGE 2019:</strong> assegura alinhamento com perímetros oficiais, reduzindo viés metropolitano.</li>
-                </ul>
+                <p>
+                    Para remover vias urbanas que não caracterizam a malha vicinal, foram aplicados dois filtros espaciais complementares. Primeiro, realizou-se uma intersecção com a camada de Faces de Logradouro do IBGE (Censo 2022), utilizando um buffer de 10 metros. Esse procedimento remove vias intraquadra (ruas locais) e evita superestimação causada pelo mapeamento denso característico de áreas urbanas no OpenStreetMap. Em seguida, aplicou-se uma segunda intersecção com a camada de Áreas Urbanizadas do IBGE (2019), assegurando o alinhamento com os perímetros urbanos oficialmente delimitados. Essa estratégia dupla reduz o viés metropolitano e garante que apenas vias com características rurais ou de acesso sejam mantidas na base.
+                </p>
 
                 <h3 class="section-subtitle">3) Subtração da rede estadual</h3>
-                <ul class="list-spaced">
-                    <li><strong>Buffer DER 60–100 m:</strong> margens ampliadas evitam duplicidade com vicinais paralelas; intervalo escolhido para absorver imprecisões de alinhamento.</li>
-                    <li><strong>Máscara de exclusão:</strong> vias que intersectam o buffer DER são descartadas, garantindo que a malha resultante seja exclusivamente municipal.</li>
-                </ul>
+                <p>
+                    Para evitar duplicidade entre a malha estadual (DER/SP) e a malha vicinal estimada, aplicou-se um buffer de 60 a 100 metros sobre os eixos rodoviários estaduais cadastrados. Essas margens ampliadas foram dimensionadas para absorver imprecisões de alinhamento geométrico entre as bases OSM e DER/SP, além de evitar a inclusão de vicinais estritamente paralelas às rodovias estaduais. Todas as vias OSM que intersectam essa máscara de exclusão foram descartadas, garantindo que a malha resultante seja composta exclusivamente por rodovias municipais e estradas vicinais, sem sobreposição com a rede de responsabilidade estadual.
+                </p>
 
                 <h3 class="section-subtitle">4) Seleção final de vicinais</h3>
+                <p>
+                    Após as etapas de filtragem espacial, aplicaram-se critérios lógicos finais para seleção dos segmentos que compõem a malha vicinal estimada. O primeiro critério exclui todos os segmentos marcados com <code>area_urb = 1</code>, eliminando vias remanescentes em áreas urbanas que possam inflar artificialmente a extensão da malha. O segundo critério remove segmentos com <code>path IS NOT NULL</code>, retirando vias censitárias urbanas que eventualmente não foram capturadas pelos filtros espaciais anteriores. Por fim, o terceiro critério descarta segmentos com <code>malha_der = 1</code>, removendo qualquer sobreposição residual com a rede estadual. A aplicação conjunta desses três critérios resulta em uma base final refinada, com alta especificidade para caracterização da malha vicinal paulista.
+                </p>
                 <div class="table-container mt-1">
                     <table>
                         <thead>
@@ -119,7 +155,7 @@
                             </tr>
                             <tr>
                                 <td>Exclusão logradouro</td>
-                                <td><code>path = NULL</code></td>
+                                <td><code>path IS NULL</code></td>
                                 <td>Retira vias censitárias urbanas remanescentes.</td>
                             </tr>
                             <tr>
