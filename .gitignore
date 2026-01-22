@@ -93,3 +93,13 @@ dados/Base_OSM/*.osm.pbf
 dados/Base_OSM/*.gpkg
 dados/Base_OSM/*.parquet
 dados/*.rar
+
+# Artefatos locais (raiz)
+dados.zip
+dados.rar
+
+# Testes locais (web)
+docs/js/teste_elementos.js
+
+# Rascunhos/alternativas (scripts)
+calcular_indicadores_completos.py
