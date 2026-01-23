@@ -70,14 +70,14 @@ async function carregarDadosFullscreen() {
     setFullscreenStatus('Carregando malha vicinal estimada...');
     let malhaVicinaisGeo = null;
     try {
-        const respVicinais = await fetch('../data/malha_vicinais.geojson');
+        const respVicinais = await fetch('../data/malha_vicinal_estimada_osm.geojson');
         if (respVicinais.ok) {
             malhaVicinaisGeo = await respVicinais.json();
         } else {
-            console.warn('Não foi possível carregar malha_vicinais.geojson (HTTP ' + respVicinais.status + ')');
+            console.warn('Não foi possível carregar malha_vicinal_estimada_osm.geojson (HTTP ' + respVicinais.status + ')');
         }
     } catch (err) {
-        console.warn('Erro ao carregar malha_vicinais.geojson', err);
+        console.warn('Erro ao carregar malha_vicinal_estimada_osm.geojson', err);
     }
 
     setFullscreenStatus('Carregando metadados da Malha Total...');

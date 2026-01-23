@@ -1,5 +1,41 @@
 /* ============================================================
-   RESULTADOS MUNICIPAL - CSS ESPECÍFICO
+   RESULTADOS REGIONAL - CSS ESPECÍFICO
+   ============================================================ */
+
+/* ============================================================
+   ESTILOS PARA TOOLTIPS DOS MAPAS
+   ============================================================ */
+.tooltip-ra {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 2px solid #2c3e50 !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25) !important;
+    font-family: inherit !important;
+}
+
+.tooltip-ra .leaflet-tooltip-content {
+    margin: 8px 12px !important;
+}
+
+.leaflet-tooltip-left.tooltip-ra::before {
+    border-left-color: #2c3e50 !important;
+}
+
+.leaflet-tooltip-right.tooltip-ra::before {
+    border-right-color: #2c3e50 !important;
+}
+
+.leaflet-tooltip-top.tooltip-ra::before {
+    border-top-color: #2c3e50 !important;
+}
+
+.leaflet-tooltip-bottom.tooltip-ra::before {
+    border-bottom-color: #2c3e50 !important;
+}
+
+/* ============================================================
+   CONTAINERS DE ANÁLISE
    ============================================================ */
 
 /* Containers de análise */
@@ -12,7 +48,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
 
-/* Aumentar largura do container principal em ~40% (página municipal) */
+/* Aumentar largura do container principal em ~40% (página regional) */
 .main-content,
 .header-content,
 .nav-container {
@@ -1172,6 +1208,33 @@
 .leaflet-control-layers-selector {
     margin-right: 4px !important;
     transform: scale(0.85);
+}
+
+/* ============================================================
+   TOOLTIP CUSTOMIZADO PARA REGIÕES ADMINISTRATIVAS
+   ============================================================ */
+.tooltip-ra {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    border: 2px solid #3498db !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.tooltip-ra::before {
+    border-top-color: #3498db !important;
+}
+
+/* Popup customizado para RAs */
+.leaflet-popup-content-wrapper {
+    border-radius: 10px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+.leaflet-popup-content {
+    margin: 12px 15px !important;
+    line-height: 1.5 !important;
 }
 
 /* Loading overlay para mapas - REMOVIDO (definido em styles.css) */

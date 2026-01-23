@@ -703,7 +703,7 @@ function carregarVicinais() {
 function carregarDER() {
     if (malhaDER) return Promise.resolve(malhaDER);
     console.log('Carregando DER (379.742 segmentos)...');
-    return fetchJson('../data/malha_der.geojson')
+    return fetchJson('../data/malha_estadual_federal_der.geojson')
         .then(data => {
             malhaDER = data;
             console.log(`✓ DER: ${data.features.length} segmentos`);

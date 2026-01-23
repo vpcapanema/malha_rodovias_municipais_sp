@@ -1,35 +1,42 @@
-# Dados GeoJSON
+# Dados GeoJSON e JSON
 
-Os arquivos GeoJSON desta pasta são muito grandes para o GitHub (>100MB).
+Diretório de dados para a aplicação de visualização da Malha Viária Vicinal do Estado de São Paulo.
 
-## Arquivos necessários:
+## Arquivos de Malha Viária
 
-- `areas_urbanizadas_ibge.geojson` - 153.4 MB (128.459 polígonos)
-- `malha_der.geojson` - 364.6 MB (379.742 segmentos)
-- `malha_estadual_der.geojson` - 12.0 MB (4.779 segmentos)
-- `malha_osm.geojson` - 99.2 MB (7.417 segmentos)
-- `municipios_sp.geojson` - 70.5 MB (645 polígonos)
-- `regioes_administrativas_sp.geojson` - 13.5 MB (16 regiões)
-- `indicadores.json` - Metadados (incluído no repositório)
+| Arquivo | Descrição | Extensão |
+|---------|-----------|----------|
+| `malha_vicinal_estimada_osm.geojson` | Malha vicinal estimada somente OSM (Silvio) | 25.918,58 km |
+| `malha_vicinal_estimada_com_der.geojson` | Malha vicinal estimada OSM + DER | 47.666,00 km |
+| `malha_estadual_federal_der.geojson` | Malha estadual/federal oficial DER | Referência |
 
-## Como obter os dados:
+## Arquivos de Indicadores
 
-1. Execute os scripts Python na raiz do projeto para gerar os arquivos:
-   - `converter_camadas_adicionais.py`
-   - `converter_malha_unica.py`
-   - `converter_poligonos_administrativos.py`
+| Arquivo | Descrição | Formato |
+|---------|-----------|---------|
+| `municipios_geo_indicadores.geojson` | Geometrias + indicadores por município | GeoJSON |
+| `municipios_indicadores.json` | Indicadores por município (sem geometria) | JSON |
+| `regioes_geo_indicadores.geojson` | Geometrias + indicadores por RA | GeoJSON |
+| `regioes_indicadores.json` | Indicadores por RA (sem geometria) | JSON |
 
-2. Ou baixe os dados processados de: [adicionar link para armazenamento externo]
+## Arquivos Auxiliares
 
-## Estrutura esperada:
+| Arquivo | Descrição |
+|---------|-----------|
+| `auxiliar_estatisticas_malha.json` | Estatísticas consolidadas da malha |
+| `auxiliar_pavimentacao_malha_total.json` | Dados de pavimentação da malha total |
+| `auxiliar_populacao_ibge.json` | População IBGE 2025 por município |
 
-```
-app_web/data/
-├── areas_urbanizadas_ibge.geojson
-├── malha_der.geojson
-├── malha_estadual_der.geojson
-├── malha_osm.geojson
-├── municipios_sp.geojson
-├── regioes_administrativas_sp.geojson
-└── indicadores.json
-```
+## Diretórios de Tiles
+
+| Diretório | Descrição |
+|-----------|-----------|
+| `tiles/` | Tiles vetoriais da malha OSM |
+| `malha_total_tiles/` | Tiles vetoriais da malha total (OSM + DER) |
+
+## Referências Técnicas
+
+- **CRS**: EPSG:31983 (SIRGAS 2000 / UTM 23S)
+- **Municípios**: 645
+- **Regiões Administrativas**: 16
+- **População IBGE 2025**: 46.081.801 habitantes
