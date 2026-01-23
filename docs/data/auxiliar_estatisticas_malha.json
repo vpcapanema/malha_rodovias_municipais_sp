@@ -1,6 +1,6 @@
 {
   "malha_total": {
-    "extensao_total_km": 47665.99935433216,
+    "extensao_total_km": 47666.0,
     "num_segmentos_total": 12199,
     "num_municipios": 645
   },
@@ -23,13 +23,38 @@
       "media": 3105.2593517829455,
       "mediana": 2536.303,
       "minimo": 0.0,
-      "maximo": 39640.884
+      "maximo": 39640.884,
+      "desvio_padrao": 1461.6355
     },
     "densidade_total_pop_10k": {
       "media": 73.82972217054262,
       "mediana": 59.8399,
       "minimo": 0.0,
-      "maximo": 397.5753
+      "maximo": 397.5753,
+      "desvio_padrao": 50.34
+    }
+  },
+  "regional": {
+    "extensao_total": {
+      "media": 2978.5563,
+      "mediana": 2795.735,
+      "desvio_padrao": 1535.3475,
+      "minimo": 426.93,
+      "maximo": 7190.5
+    },
+    "densidade_total_area_10k": {
+      "media": 1932.9574,
+      "mediana": 1767.2227,
+      "desvio_padrao": 508.4885,
+      "minimo": 1167.7679,
+      "maximo": 3384.4632
+    },
+    "densidade_total_pop_10k": {
+      "media": 25.3429,
+      "mediana": 24.6963,
+      "desvio_padrao": 15.3804,
+      "minimo": 1.2477,
+      "maximo": 54.0429
     }
   }
 }

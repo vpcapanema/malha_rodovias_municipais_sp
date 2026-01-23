@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../libs/leaflet/leaflet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="../libs/chartjs/chart.umd.min.js"></script>
+    <script src="../libs/chartjs/chartjs-plugin-datalabels.min.js"></script>
     <script src="../libs/leaflet/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.vectorgrid/dist/Leaflet.VectorGrid.bundled.js"></script>
     
@@ -90,7 +91,7 @@
             <ul class="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                 <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
-                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link active">Resultados</a>
                     <ul class="dropdown-menu">
@@ -98,9 +99,14 @@
                         <li><a href="resultados-regional.html" class="dropdown-link active">Análise Regional</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
                 <li class="nav-item"><a href="conclusao.html" class="nav-link">Conclusão</a></li>
-                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Anexos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="mapa-fullscreen.html" class="dropdown-link">Mapas</a></li>
+                        <li><a href="pesquisa-municipal.html" class="dropdown-link">Pesquisa Municipal</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -181,7 +187,7 @@
                     </div>
                 </div>
 
-                <h4 class="subsecao-subtitle mt-2">🌐 Malha Total Estadual (OSM Vicinal + DER Oficial)</h4>
+                <h4 class="subsecao-subtitle mt-1">🌐 Malha Total Estadual (OSM Vicinal + DER Oficial)</h4>
                 <div class="indicadores-grid">
                     <div class="indicador-card azul malha-total">
                         <div class="indicador-header">
@@ -224,7 +230,7 @@
                 <div class="mapa-container mt-2">
                     <div class="mapa-header">
                         <h4 class="mapa-title">Malha Vicinal Estimada do Estado de São Paulo</h4>
-                        <a href="mapa-fullscreen.html?map=malha-completa" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa Malha Completa em tela cheia">
+                        <a href="mapa-fullscreen.html?map=reg-malha-completa" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa Malha Completa em tela cheia">
                             <i class="fas fa-expand"></i>
                             Tela cheia
                         </a>
@@ -279,7 +285,7 @@
                     </div>
                 </div>
 
-                <h4 class="subsecao-subtitle mt-2">Malha Total (OSM + DER)</h4>
+                <h4 class="subsecao-subtitle mt-1">Malha Total (OSM + DER)</h4>
                 <div class="indicadores-grid">
                     <div class="indicador-card azul malha-total">
                         <div class="indicador-header">
@@ -348,7 +354,7 @@
                         <div class="mapa-container">
                             <div class="mapa-header">
                                 <h4 class="mapa-title">Tipo de Superfície por Região Administrativa: Pavimentado e Não Pavimentado</h4>
-                                <a href="mapa-fullscreen.html?map=pavimento" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de pavimento em tela cheia">
+                                <a href="mapa-fullscreen.html?map=reg-pavimento" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de pavimento em tela cheia">
                                     <i class="fas fa-expand"></i>
                                     Tela cheia
                                 </a>
@@ -361,7 +367,7 @@
                 </div>
 
                 <div class="alert alert-insight mt-1">
-                    <strong>📊 Achado Principal:</strong> A predominância de vias não pavimentadas (terra/cascalho) na base estimada reflete o perfil típico das rodovias vicinais paulistas, que historicamente conectam áreas rurais e produtivas onde o tráfego é menos intenso e justifica pavimentação menos prioritária.
+                    <strong>📊 Achado Principal:</strong> A predominância de vias não pavimentadas (terra e cascalho) na base estimada reflete o perfil típico das rodovias vicinais paulistas, que historicamente conectam áreas rurais e produtivas onde o tráfego é menos intenso, justificando pavimentação com menor prioridade.
                 </div>
             </div>
 
@@ -409,7 +415,7 @@
                     </div>
                 </div>
 
-                <h4 class="subsecao-subtitle mt-2">Malha Total (OSM + DER)</h4>
+                <h4 class="subsecao-subtitle mt-1">Malha Total (OSM + DER)</h4>
                 <div class="comparacao-grid">
                     <div class="indicador-card azul malha-total">
                         <div class="indicador-header">
@@ -483,7 +489,7 @@
                 <div class="mapa-container mt-2">
                     <div class="mapa-header">
                         <h4 class="mapa-title">Extensão da Malha Vicinal por Região Administrativa (km)</h4>
-                        <a href="mapa-fullscreen.html?map=ranking-extensao" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa ranking de extensão em tela cheia">
+                        <a href="mapa-fullscreen.html?map=reg-ranking-extensao" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa ranking de extensão em tela cheia">
                             <i class="fas fa-expand"></i>
                             Tela cheia
                         </a>
@@ -549,7 +555,7 @@
                     </div>
                 </div>
 
-                <h4 class="subsecao-subtitle mt-2">Malha Total (OSM + DER)</h4>
+                <h4 class="subsecao-subtitle mt-1">Malha Total (OSM + DER)</h4>
                 <div class="comparacao-grid">
                     <div class="indicador-card azul malha-total">
                         <div class="indicador-header">
@@ -600,7 +606,7 @@
                         <div class="mapa-container">
                             <div class="mapa-header">
                                 <h4 class="mapa-title">Densidade Espacial da Malha por Região Administrativa (km/10.000 km²)</h4>
-                                <a href="mapa-fullscreen.html?map=densidade-area" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de densidade por área em tela cheia">
+                                <a href="mapa-fullscreen.html?map=reg-densidade-area" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de densidade por área em tela cheia">
                                     <i class="fas fa-expand"></i>
                                     Tela cheia
                                 </a>
@@ -666,7 +672,7 @@
                     </div>
                 </div>
 
-                <h4 class="subsecao-subtitle mt-2">Malha Total (OSM + DER)</h4>
+                <h4 class="subsecao-subtitle mt-1">Malha Total (OSM + DER)</h4>
                 <div class="comparacao-grid">
                     <div class="indicador-card azul malha-total">
                         <div class="indicador-header">
@@ -717,7 +723,7 @@
                         <div class="mapa-container">
                             <div class="mapa-header">
                                 <h4 class="mapa-title">Densidade Populacional da Malha por Região Administrativa (km/10.000 hab)</h4>
-                                <a href="mapa-fullscreen.html?map=densidade-pop" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de densidade populacional em tela cheia">
+                                <a href="mapa-fullscreen.html?map=reg-densidade-pop" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de densidade populacional em tela cheia">
                                     <i class="fas fa-expand"></i>
                                     Tela cheia
                                 </a>
@@ -757,7 +763,7 @@
                     </div>
                 </div>
 
-                <h4 class="subsecao-subtitle mt-2">Disparidades Espaciais (desvio da média estadual)</h4>
+                <h4 class="subsecao-subtitle mt-1">Disparidades Espaciais (desvio da média estadual)</h4>
                 <div class="chart-map-row mt-2">
                     <div class="chart-column">
                         <div class="viz-container">
@@ -769,7 +775,7 @@
                         <div class="mapa-container">
                             <div class="mapa-header">
                                 <h4 class="mapa-title">Disparidade na Densidade Espacial (desvio da média estadual)</h4>
-                                <a href="mapa-fullscreen.html?map=disparidade-area" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de disparidades espaciais em tela cheia">
+                                <a href="mapa-fullscreen.html?map=reg-disparidade-area" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de disparidades espaciais em tela cheia">
                                     <i class="fas fa-expand"></i>
                                     Tela cheia
                                 </a>
@@ -781,7 +787,7 @@
                     </div>
                 </div>
 
-                <h4 class="subsecao-subtitle mt-2">Disparidades Populacionais (desvio da média estadual)</h4>
+                <h4 class="subsecao-subtitle mt-1">Disparidades Populacionais (desvio da média estadual)</h4>
                 <div class="chart-map-row mt-2">
                     <div class="chart-column">
                         <div class="viz-container">
@@ -793,7 +799,7 @@
                         <div class="mapa-container">
                             <div class="mapa-header">
                                 <h4 class="mapa-title">Disparidade na Densidade Populacional (desvio da média estadual)</h4>
-                                <a href="mapa-fullscreen.html?map=disparidade-pop" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de disparidades populacionais em tela cheia">
+                                <a href="mapa-fullscreen.html?map=reg-disparidade-pop" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de disparidades populacionais em tela cheia">
                                     <i class="fas fa-expand"></i>
                                     Tela cheia
                                 </a>
@@ -843,3 +849,4 @@
     <script src="../js/resultados_regional.js"></script>
 </body>
 </html>
+

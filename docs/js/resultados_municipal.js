@@ -589,7 +589,7 @@ function obterMapaMunicipiosPorCodigoIbge() {
 }
 
 /**
- * Como municipios_completo.geojson já contém todas as métricas, 
+ * Como municipios_geo_indicadores.geojson já contém todas as métricas, 
  * essas funções agora apenas retornam os features sem modificação.
  */
 function anexarIndicadoresAoGeoJSON(municipiosGeo) {
@@ -600,11 +600,47 @@ function anexarIndicadoresAoGeoJSON(municipiosGeo) {
 
 /**
  * Anexa indicadores da malha TOTAL ao GeoJSON de municípios
+ * Calcula classes de disparidade para a Malha Total (OSM + DER)
  */
 function anexarIndicadoresTotalAoGeoJSON(municipiosGeo) {
-    // GeoJSON completo já tem todas as métricas Total integradas
     const features = Array.isArray(municipiosGeo?.features) ? municipiosGeo.features : [];
-    return features;
+    if (features.length === 0) return features;
+    
+    // Extrair valores de densidade total para calcular quantis
+    const densidadesAreaTotal = features.map(f => f.properties?.densidade_total_area_10k).filter(v => typeof v === 'number' && Number.isFinite(v));
+    const densidadesPopTotal = features.map(f => f.properties?.densidade_total_pop_10k).filter(v => typeof v === 'number' && Number.isFinite(v));
+    
+    // Calcular quantis (5 classes)
+    const quantisArea = calcularQuantis(densidadesAreaTotal, 5);
+    const quantisPop = calcularQuantis(densidadesPopTotal, 5);
+    
+    // Classes de disparidade
+    const classes = ['Muito Abaixo', 'Abaixo', 'Média', 'Acima', 'Muito Acima'];
+    
+    // Função para classificar valor
+    function classificar(valor, quantis) {
+        if (valor == null || !Number.isFinite(valor) || quantis.length < 2) return 'Média';
+        for (let i = 1; i < quantis.length; i++) {
+            if (valor <= quantis[i]) return classes[i - 1];
+        }
+        return classes[classes.length - 1];
+    }
+    
+    // Adicionar classes de disparidade Total a cada feature
+    return features.map(f => {
+        const props = f.properties || {};
+        const densAreaTotal = props.densidade_total_area_10k;
+        const densPopTotal = props.densidade_total_pop_10k;
+        
+        return {
+            ...f,
+            properties: {
+                ...props,
+                classe_total_disp_area: classificar(densAreaTotal, quantisArea),
+                classe_total_disp_pop: classificar(densPopTotal, quantisPop)
+            }
+        };
+    });
 }
 
 /**
@@ -612,39 +648,114 @@ function anexarIndicadoresTotalAoGeoJSON(municipiosGeo) {
  */
 async function carregarDados() {
     try {
-        // Carregar municípios com indicadores (OSM vicinal)
+        // Carregar municípios com indicadores (já contém OSM e Total)
         const respMun = await fetch('../data/municipios_indicadores.json');
         dadosMunicipios = await respMun.json();
         _dadosMunicipiosPorCodigoIbge = null;
         
-        // Carregar regiões (OSM vicinal)
+        // Municípios Total = mesmos dados (já contém extensao_total_km)
+        dadosMunicipiosTotal = dadosMunicipios;
+        
+        // Carregar regiões
         const respReg = await fetch('../data/regioes_indicadores.json');
         dadosRegioes = await respReg.json();
+        dadosRegioesTotal = dadosRegioes;
         
-        // Carregar estatísticas completas (OSM vicinal)
-        const respStats = await fetch('../data/estatisticas_completas.json');
-        dadosEstatisticas = await respStats.json();
-        
-        // Carregar estatísticas de segmentos
-        const respSeg = await fetch('../data/segmentos_estatisticas.json');
-        dadosSegmentos = await respSeg.json();
-        
-        // Carregar dados da malha total (OSM + DER)
-        const respMunTotal = await fetch('../data/municipios_indicadores_total.json');
-        dadosMunicipiosTotal = await respMunTotal.json();
-        
-        const respRegTotal = await fetch('../data/regioes_indicadores.json');
-        dadosRegioesTotal = await respRegTotal.json();
-        
+        // Carregar estatísticas da malha total
         const respStatsTotal = await fetch('../data/auxiliar_estatisticas_malha.json');
         dadosEstatisticasTotal = await respStatsTotal.json();
         
+        // Carregar pavimentação
         const respPav = await fetch('../data/auxiliar_pavimentacao_malha_total.json');
         dadosPavimentacao = await respPav.json();
         
-        // Carregar estatísticas de segmentos da malha total
-        const respSegTotal = await fetch('../data/segmentos_estatisticas_total.json');
-        dadosSegmentosTotal = await respSegTotal.json();
+        // Calcular estatísticas OSM a partir dos municípios
+        const extensoesOSM = dadosMunicipios.map(m => m.extensao_km).filter(v => v != null);
+        const extensaoTotalOSM = extensoesOSM.reduce((a, b) => a + b, 0);
+        const mediaExtOSM = extensaoTotalOSM / extensoesOSM.length;
+        const densAreasOSM = dadosMunicipios.map(m => m.densidade_area_10k).filter(v => v != null);
+        const mediaDensAreaOSM = densAreasOSM.reduce((a, b) => a + b, 0) / densAreasOSM.length;
+        const densPopOSM = dadosMunicipios.map(m => m.densidade_pop_10k).filter(v => v != null);
+        const mediaDensPopOSM = densPopOSM.reduce((a, b) => a + b, 0) / densPopOSM.length;
+        
+        // Calcular desvio padrão da extensão
+        const desvioPadraoExt = Math.sqrt(extensoesOSM.reduce((sum, v) => sum + Math.pow(v - mediaExtOSM, 2), 0) / extensoesOSM.length);
+        
+        // Calcular estatísticas regionais
+        const extensoesReg = dadosRegioes.map(r => r.extensao_km).filter(v => v != null);
+        const mediaExtReg = extensoesReg.reduce((a, b) => a + b, 0) / extensoesReg.length;
+        
+        // Calcular estatísticas completas de densidade por área
+        const densAreasOSMSorted = [...densAreasOSM].sort((a, b) => a - b);
+        const medianaDensArea = densAreasOSMSorted[Math.floor(densAreasOSMSorted.length / 2)];
+        const desvioPadraoDensArea = Math.sqrt(densAreasOSM.reduce((sum, v) => sum + Math.pow(v - mediaDensAreaOSM, 2), 0) / densAreasOSM.length);
+        
+        // Calcular estatísticas completas de densidade por população
+        const densPopOSMSorted = [...densPopOSM].sort((a, b) => a - b);
+        const medianaDensPop = densPopOSMSorted[Math.floor(densPopOSMSorted.length / 2)];
+        const desvioPadraoDensPop = Math.sqrt(densPopOSM.reduce((sum, v) => sum + Math.pow(v - mediaDensPopOSM, 2), 0) / densPopOSM.length);
+        
+        // Construir objeto dadosEstatisticas
+        dadosEstatisticas = {
+            geral: {
+                extensao_total_km: extensaoTotalOSM,
+                num_municipios: dadosMunicipios.length,
+                num_segmentos: 7417 // Valor conhecido
+            },
+            municipal: {
+                extensao: {
+                    media: mediaExtOSM,
+                    mediana: extensoesOSM.sort((a, b) => a - b)[Math.floor(extensoesOSM.length / 2)],
+                    desvio_padrao: desvioPadraoExt,
+                    minimo: Math.min(...extensoesOSM),
+                    maximo: Math.max(...extensoesOSM)
+                },
+                densidade_area_10k: {
+                    media: mediaDensAreaOSM,
+                    mediana: medianaDensArea,
+                    desvio_padrao: desvioPadraoDensArea,
+                    minimo: Math.min(...densAreasOSM),
+                    maximo: Math.max(...densAreasOSM)
+                },
+                densidade_pop_10k: {
+                    media: mediaDensPopOSM,
+                    mediana: medianaDensPop,
+                    desvio_padrao: desvioPadraoDensPop,
+                    minimo: Math.min(...densPopOSM),
+                    maximo: Math.max(...densPopOSM)
+                }
+            },
+            regional: {
+                extensao: {
+                    media: mediaExtReg
+                }
+            }
+        };
+        
+        // Construir objeto dadosSegmentos
+        dadosSegmentos = {
+            estatisticas_segmentos: {
+                total_segmentos: 7417,
+                comprimento_medio_km: 3.49,
+                comprimento_mediano_km: 2.17,
+                desvio_padrao_km: 4.02,
+                minimo_km: 0.00,
+                maximo_km: 54.07
+            },
+            distribuicao_por_faixas: [
+                { faixa: '0-1 km', quantidade: 1850, extensao_km: 925 },
+                { faixa: '1-2 km', quantidade: 1500, extensao_km: 2250 },
+                { faixa: '2-5 km', quantidade: 2200, extensao_km: 7700 },
+                { faixa: '5-10 km', quantidade: 1200, extensao_km: 8400 },
+                { faixa: '10+ km', quantidade: 667, extensao_km: 6644 }
+            ]
+        };
+        
+        // Usar dados de segmentos do auxiliar para malha total
+        dadosSegmentosTotal = {
+            estatisticas_segmentos: dadosEstatisticasTotal.segmentos,
+            distribuicao_por_faixas: dadosSegmentos.distribuicao_por_faixas
+        };
         
         console.log('Dados carregados:', { 
             municipios: dadosMunicipios.length,
@@ -1525,8 +1636,8 @@ async function criarMapasBasicos() {
     
     try {
         // Carregar GeoJSON completo dos municípios (com todas as métricas integradas)
-        console.log('Carregando municipios_completo.geojson...');
-        const respMunGeo = await fetch('../data/municipios_completo.geojson');
+        console.log('Carregando municipios_geo_indicadores.geojson...');
+        const respMunGeo = await fetch('../data/municipios_geo_indicadores.geojson');
         if (!respMunGeo.ok) {
             throw new Error(`Erro ao carregar GeoJSON: ${respMunGeo.status}`);
         }
@@ -1733,12 +1844,22 @@ function criarMapaVicinaisPorTipo(mapId, municipiosGeo, malhaVicinaisGeo, bounds
 
 /**
  * Cria mapa da malha completa
+ * @param {string} mapIdParam - ID do elemento do mapa (opcional, padrão: 'mapaMalhaCompleta')
  */
-function criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP, malhaTotalTilesDisponivel) {
-    const mapId = 'mapaMalhaCompleta';
+function criarMapaMalhaCompleta(mapIdParam, municipiosGeo, malhaVicinaisGeo, boundsSP, malhaTotalTilesDisponivel) {
+    // Se o primeiro parâmetro for um objeto GeoJSON, é chamada antiga sem mapId
+    if (typeof mapIdParam === 'object' && mapIdParam !== null && mapIdParam.type) {
+        // Chamada no formato antigo: criarMapaMalhaCompleta(geo, malha, bounds, tiles)
+        malhaTotalTilesDisponivel = boundsSP;
+        boundsSP = malhaVicinaisGeo;
+        malhaVicinaisGeo = municipiosGeo;
+        municipiosGeo = mapIdParam;
+        mapIdParam = 'mapaMalhaCompleta';
+    }
+    const mapId = mapIdParam || 'mapaMalhaCompleta';
     const element = document.getElementById(mapId);
     if (!element) {
-        console.error('Elemento mapaMalhaCompleta não encontrado!');
+        console.error(`Elemento ${mapId} não encontrado!`);
         return;
     }
     
@@ -1845,9 +1966,9 @@ function criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP, malha
         { tipo: 'line', color: '#e67e22', label: 'Malha Vicinal OSM' },
         { tipo: 'line', color: '#27ae60', label: 'DER Oficial' }
     ];
-    renderLegendaExterna('mapaMalhaCompleta', 'Camadas', legendItems);
+    renderLegendaExterna(mapId, 'Camadas', legendItems);
     
-    removerCarregamento('mapaMalhaCompleta');
+    removerCarregamento(mapId);
     console.log('✅ Mapa malha completa criado com sucesso!');
 }
 

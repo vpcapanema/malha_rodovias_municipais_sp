@@ -72,13 +72,14 @@
 
 .indicador-card {
     background: #f8f9fa;
-    padding: 1rem;
+    padding: 0.75rem 0.5rem;
     border-radius: 8px;
     color: #2c3e50;
     border: 1px solid #333;
     box-shadow: 0 4px 12px rgba(0,0,0,0.35);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
+    min-height: 110px;
 }
 
 .indicador-card:hover {
@@ -205,21 +206,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.6rem;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.4rem;
     border-bottom: 1px solid rgba(255,255,255,0.2);
+    min-height: 2rem;
 }
 
 .indicador-header i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     opacity: 0.95;
 }
 
 .indicador-icone-texto {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
     opacity: 0.95;
+    line-height: 1;
 }
 
 .indicador-icone {
@@ -229,11 +232,12 @@
 }
 
 .indicador-label {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     opacity: 0.95;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 /* ============================================================
@@ -268,10 +272,10 @@
 /* Subtítulo de subseção (h4) - unificado */
 .subsecao-subtitle,
 .subtitle-section {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #34495e;
-    margin: 1rem 0 0.75rem 0;
+    margin: 0.75rem 0 0.5rem 0;
     padding-left: 0.5rem;
     border-left: 3px solid #3498db;
     text-align: left;
@@ -302,33 +306,35 @@
 }
 
 .indicador-valor {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    margin: 0.4rem 0;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
 .indicador-unidade {
-    font-size: 0.85rem;
-    opacity: 0.85;
-}
-
-/* Unidade sempre ao lado do valor (em uma única linha) */
-.indicador-valor,
-.indicador-unidade {
-    display: inline;
-}
-
-.indicador-unidade {
-    margin-left: 0.35rem;
+    font-size: 0.65rem;
+    opacity: 0.9;
     white-space: nowrap;
 }
 
+/* Wrapper para valor + unidade ficarem na mesma linha */
+.indicador-card .indicador-valor,
+.indicador-card .indicador-unidade {
+    display: inline;
+    vertical-align: baseline;
+}
+
+/* Centralizar o bloco de valor+unidade */
+.indicador-card .indicador-valor + .indicador-unidade {
+    margin-left: 0.25rem;
+}
+
 .indicador-desc {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     opacity: 0.8;
     margin-top: 0.3rem;
-    line-height: 1.3;
+    line-height: 1.2;
+    display: block;
 }
 
 .indicador-descricao {
@@ -442,8 +448,8 @@
 .comparacao-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin: 1.5rem 0;
+    gap: 0.75rem;
+    margin: 0.75rem 0 1rem 0;
 }
 
 .comparacao-item {
@@ -571,7 +577,7 @@
 .chart-map-row .mapa-tematico-small {
     height: calc(var(--viz-pair-height) - 2rem);
     max-height: calc(var(--viz-pair-height) - 2rem);
-    min-height: auto;
+    min-height: 0;
 }
 
 .viz-container.equal-pair,
@@ -638,7 +644,7 @@
 }
 
 .chart-only-row .viz-container {
-    min-height: auto;
+    min-height: 0;
     padding: 1rem;
 }
 
@@ -832,12 +838,12 @@
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(0,0,0,0.25);
     border-radius: 6px;
-    padding: 0.4rem 0.5rem;
+    padding: 0.5rem 0.6rem;
     box-shadow: 0 3px 12px rgba(0,0,0,0.3);
-    max-width: 200px;
-    width: auto;
+    max-width: none;
+    width: max-content;
     height: auto;
-    min-height: auto;
+    min-height: 0;
     display: inline-flex;
     flex-direction: column;
     pointer-events: auto;
@@ -890,10 +896,8 @@
 
 .mapa-legenda-externa .legenda-label {
     color: #374151;
-    font-size: 0.65rem;
-    line-height: 1.15;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.68rem;
+    line-height: 1.2;
     white-space: nowrap;
 }
 
@@ -927,11 +931,11 @@
     bottom: 1rem;
     left: 1rem;
     right: auto;
-    width: auto;
+    width: max-content;
     min-width: 80px;
-    max-width: 200px;
+    max-width: none;
     height: auto;
-    min-height: auto;
+    min-height: 0;
     max-height: none;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 6px;

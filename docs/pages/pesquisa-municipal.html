@@ -21,7 +21,7 @@
             <ul class="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                 <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
-                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link">Resultados</a>
                     <ul class="dropdown-menu">
@@ -29,9 +29,14 @@
                         <li><a href="resultados-regional.html" class="dropdown-link">Análise Regional</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
                 <li class="nav-item"><a href="conclusao.html" class="nav-link">Conclusão</a></li>
-                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link active">Pesquisa Municipal</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link active">Anexos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="mapa-fullscreen.html" class="dropdown-link">Mapas</a></li>
+                        <li><a href="pesquisa-municipal.html" class="dropdown-link active">Pesquisa Municipal</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -44,7 +49,7 @@
             <h2 class="section-title">Visão Geral</h2>
             
             <div class="section-content">
-                <p>Sistema automatizado para buscar, baixar e catalogar bases cartográficas de rodovias vicinais disponibilizadas pelos municípios paulistas através de seus portais oficiais.</p>
+                <p>Sistema automatizado para buscar, baixar e catalogar bases cartográficas de rodovias vicinais disponibilizadas pelos municípios paulistas por meio de seus portais oficiais.</p>
                 
                 <div class="stats-container mt-2">
                     <div class="stat-box">
@@ -93,7 +98,7 @@
                     <div class="card-content">
                         <strong>Arquivo:</strong> <code>PESQUISA_COMPLETA_645.py</code><br>
                         <strong>Funcionalidades:</strong><br>
-                        - Itera 645 municípios<br>
+                        - Itera pelos 645 municípios<br>
                         - Retoma execuções interrompidas<br>
                         - Salva progresso incremental<br>
                         - Gera relatório HTML final
@@ -104,10 +109,10 @@
                     <div class="card-content">
                         <strong>Arquivo:</strong> <code>01_pesquisador_malha_viaria.py</code><br>
                         <strong>Operações:</strong><br>
-                        - Busca Google (3 queries/município)<br>
-                        - Download HTML das páginas<br>
-                        - Extração links arquivos espaciais<br>
-                        - Validação extensões
+                        - Busca no Google (3 queries por município)<br>
+                        - Download de HTML das páginas<br>
+                        - Extração de links de arquivos espaciais<br>
+                        - Validação de extensões
                     </div>
                 </div>
             </div>
@@ -275,8 +280,8 @@ ETAPA 3: Relatório Final
                         </tr>
                         <tr>
                             <td><code>PESQUISA_COMPLETA_645.py</code></td>
-                            <td><strong>Script principal</strong>: loop 645, resume, relatório</td>
-                            <td>todos acima</td>
+                            <td><strong>Script principal</strong>: itera pelos 645 municípios, retoma e gera relatório</td>
+                            <td>todos os acima</td>
                         </tr>
                         <tr>
                             <td><code>monitorar_progresso.py</code></td>

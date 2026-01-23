@@ -14,7 +14,10 @@
     "extensao_osm_media_mun": 39.83,
     "extensao_total_media_mun": 79.89,
     "desvio_total_dens_area": 37.25,
-    "desvio_total_dens_pop": -61.14
+    "desvio_total_dens_pop": -61.14,
+    "extensao_km": 3584.29,
+    "densidade_area_10k": 1322.4947,
+    "densidade_pop_10k": 4.9093
   },
   {
     "RA": "RA de Sorocaba",
@@ -31,7 +34,10 @@
     "extensao_osm_media_mun": 49.75,
     "extensao_total_media_mun": 98.04,
     "desvio_total_dens_area": 10.51,
-    "desvio_total_dens_pop": -33.75
+    "desvio_total_dens_pop": -33.75,
+    "extensao_km": 2338.17,
+    "densidade_area_10k": 1083.9705,
+    "densidade_pop_10k": 8.5202
   },
   {
     "RA": "RA de São José do Rio Preto",
@@ -48,7 +54,10 @@
     "extensao_osm_media_mun": 27.35,
     "extensao_total_media_mun": 47.11,
     "desvio_total_dens_area": -8.45,
-    "desvio_total_dens_pop": 7.34
+    "desvio_total_dens_pop": 7.34,
+    "extensao_km": 2625.23,
+    "densidade_area_10k": 1027.1998,
+    "densidade_pop_10k": 15.7898
   },
   {
     "RA": "RA de Presidente Prudente",
@@ -65,7 +74,10 @@
     "extensao_osm_media_mun": 44.86,
     "extensao_total_media_mun": 70.21,
     "desvio_total_dens_area": -19.85,
-    "desvio_total_dens_pop": 66.47
+    "desvio_total_dens_pop": 66.47,
+    "extensao_km": 2377.52,
+    "densidade_area_10k": 989.8612,
+    "densidade_pop_10k": 26.9565
   },
   {
     "RA": "RA de São José dos Campos",
@@ -82,7 +94,10 @@
     "extensao_osm_media_mun": 40.22,
     "extensao_total_media_mun": 87.07,
     "desvio_total_dens_area": 8.69,
-    "desvio_total_dens_pop": -48.5
+    "desvio_total_dens_pop": -48.5,
+    "extensao_km": 1568.54,
+    "densidade_area_10k": 970.4414,
+    "densidade_pop_10k": 6.029
   },
   {
     "RA": "RA de Marília",
@@ -99,7 +114,10 @@
     "extensao_osm_media_mun": 36.6,
     "extensao_total_media_mun": 64.09,
     "desvio_total_dens_area": -9.28,
-    "desvio_total_dens_pop": 28.91
+    "desvio_total_dens_pop": 28.91,
+    "extensao_km": 1866.4,
+    "densidade_area_10k": 1001.3262,
+    "densidade_pop_10k": 18.6558
   },
   {
     "RA": "RA de Araçatuba",
@@ -116,7 +134,10 @@
     "extensao_osm_media_mun": 49.46,
     "extensao_total_media_mun": 74.63,
     "desvio_total_dens_area": -11.38,
-    "desvio_total_dens_pop": 58.78
+    "desvio_total_dens_pop": 58.78,
+    "extensao_km": 2126.65,
+    "densidade_area_10k": 1135.1954,
+    "densidade_pop_10k": 26.6653
   },
   {
     "RA": "RA de Itapeva",
@@ -133,7 +154,10 @@
     "extensao_osm_media_mun": 47.77,
     "extensao_total_media_mun": 90.69,
     "desvio_total_dens_area": -22.65,
-    "desvio_total_dens_pop": 113.25
+    "desvio_total_dens_pop": 113.25,
+    "extensao_km": 1528.6,
+    "densidade_area_10k": 787.5935,
+    "densidade_pop_10k": 28.4663
   },
   {
     "RA": "Região Metropolitana de São Paulo",
@@ -150,7 +174,10 @@
     "extensao_osm_media_mun": 34.09,
     "extensao_total_media_mun": 68.96,
     "desvio_total_dens_area": 75.09,
-    "desvio_total_dens_pop": -95.08
+    "desvio_total_dens_pop": -95.08,
+    "extensao_km": 1329.55,
+    "densidade_area_10k": 1673.1413,
+    "densidade_pop_10k": 0.6168
   },
   {
     "RA": "RA de Bauru",
@@ -167,7 +194,10 @@
     "extensao_osm_media_mun": 35.6,
     "extensao_total_media_mun": 65.05,
     "desvio_total_dens_area": -19.32,
-    "desvio_total_dens_pop": -12.44
+    "desvio_total_dens_pop": -12.44,
+    "extensao_km": 1388.41,
+    "densidade_area_10k": 853.4744,
+    "densidade_pop_10k": 12.1437
   },
   {
     "RA": "RA Central",
@@ -184,7 +214,10 @@
     "extensao_osm_media_mun": 46.63,
     "extensao_total_media_mun": 85.16,
     "desvio_total_dens_area": 3.01,
-    "desvio_total_dens_pop": -17.39
+    "desvio_total_dens_pop": -17.39,
+    "extensao_km": 1212.47,
+    "densidade_area_10k": 1090.3654,
+    "densidade_pop_10k": 11.4638
   },
   {
     "RA": "RA de Franca",
@@ -201,7 +234,10 @@
     "extensao_osm_media_mun": 59.29,
     "extensao_total_media_mun": 95.45,
     "desvio_total_dens_area": 9.88,
-    "desvio_total_dens_pop": 13.46
+    "desvio_total_dens_pop": 13.46,
+    "extensao_km": 1363.7,
+    "densidade_area_10k": 1319.3271,
+    "densidade_pop_10k": 17.8603
   },
   {
     "RA": "RA de Ribeirão Preto",
@@ -218,7 +254,10 @@
     "extensao_osm_media_mun": 42.97,
     "extensao_total_media_mun": 81.86,
     "desvio_total_dens_area": 13.65,
-    "desvio_total_dens_pop": -43.83
+    "desvio_total_dens_pop": -43.83,
+    "extensao_km": 1074.27,
+    "densidade_area_10k": 1153.1476,
+    "densidade_pop_10k": 7.4731
   },
   {
     "RA": "RA de Registro",
@@ -235,7 +274,10 @@
     "extensao_osm_media_mun": 47.09,
     "extensao_total_media_mun": 101.32,
     "desvio_total_dens_area": -39.59,
-    "desvio_total_dens_pop": 100.09
+    "desvio_total_dens_pop": 100.09,
+    "extensao_km": 659.19,
+    "densidade_area_10k": 542.6763,
+    "densidade_pop_10k": 23.5655
   },
   {
     "RA": "RA de Barretos",
@@ -252,7 +294,10 @@
     "extensao_osm_media_mun": 39.1,
     "extensao_total_media_mun": 69.02,
     "desvio_total_dens_area": -18.88,
-    "desvio_total_dens_pop": 14.8
+    "desvio_total_dens_pop": 14.8,
+    "extensao_km": 742.82,
+    "densidade_area_10k": 888.1157,
+    "densidade_pop_10k": 16.4791
   },
   {
     "RA": "RA de Santos",
@@ -269,6 +314,9 @@
     "extensao_osm_media_mun": 14.75,
     "extensao_total_media_mun": 47.44,
     "desvio_total_dens_area": -8.7,
-    "desvio_total_dens_pop": -90.98
+    "desvio_total_dens_pop": -90.98,
+    "extensao_km": 132.79,
+    "densidade_area_10k": 548.9186,
+    "densidade_pop_10k": 0.711
   }
 ]

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados - Inferência Geoespacial</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/resultados_charts.css">
+    <link rel="stylesheet" href="../css/resultados_maps.css">
+    <link rel="stylesheet" href="../libs/leaflet/leaflet.css">
+    <script src="../libs/chartjs/chart.umd.min.js"></script>
+    <script src="../libs/leaflet/leaflet.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">
+                <span class="icon icon-map"></span>
+                Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo
+            </h1>
+            <p class="header-subtitle">Base estimada: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE)</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
+                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="resultados.html" class="nav-link active">Resultados</a></li>
+                <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
+                <li class="nav-item"><a href="conclusao.html" class="nav-link">Conclusão</a></li>
+                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1 class="page-title">Resultados</h1>
+        <p class="page-subtitle">Análise exploratória da malha vicinal estimada: caracterização municipal e regional</p>
+
+        <div class="alert alert-warning">
+            <strong>⚠️ Ressalva Metodológica:</strong> Os resultados apresentados nesta seção baseiam-se em uma <strong>estimativa da malha vicinal paulista</strong> gerada a partir da integração de fontes abertas e oficiais. Esta não é uma base oficial do Estado de São Paulo e apresenta limitações inerentes às fontes utilizadas (OpenStreetMap, filtros espaciais, recortes administrativos). Os dados devem ser interpretados como <strong>aproximações</strong> da realidade viária municipal, úteis para análises comparativas e identificação de padrões, mas não substituem levantamentos de campo ou cadastros oficiais validados.
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- PARTE 1: ANÁLISE MUNICIPAL -->
+        <!-- ===================================================================== -->
+        <section class="section">
+            <h1 class="section-title section-title-comparacao">
+                🏘️ PARTE 1: Análise por Município
+            </h1>
+            <p class="subtitle-large">Caracterização da malha vicinal em escala municipal</p>
+
+            <!-- CARACTERÍSTICAS GERAIS -->
+            <div class="section mt-2">
+                <h2 class="section-title">Características Gerais da Base Estimada</h2>
+                <div class="section-content">
+                    <p>A estimativa da malha vicinal paulista, gerada a partir da metodologia apresentada, apresenta as seguintes características consolidadas:</p>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-blue-light">
+                        <span class="stat-label">Extensão Total</span>
+                        <span class="stat-value">25.964 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Malha vicinal estadual</span>
+                    </div>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-label">Total de Segmentos</span>
+                        <span class="stat-value">7.417</span>
+                        <span class="stat-info">Segmentos viários mapeados</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-label">Cobertura Municipal</span>
+                        <span class="stat-value">636 <span class="stat-unit">(municípios)</span></span>
+                        <span class="stat-info">98,6% do total estadual</span>
+                    </div>
+                    <div class="stat-box bg-purple-light">
+                        <span class="stat-label">Sistema de Referência</span>
+                        <span class="stat-value">EPSG:32723</span>
+                        <span class="stat-info">SIRGAS 2000 / UTM 23S</span>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-2">
+                    <strong>💡 Observação:</strong> A base estimada cobre 636 dos 645 municípios paulistas. Os 9 municípios ausentes (1,4%) podem indicar ausência de rodovias municipais nas fontes utilizadas, lacunas no mapeamento colaborativo ou exclusão pelos filtros aplicados. <strong>Esta limitação reforça o caráter estimativo da base.</strong>
+                </div>
+            </div>
+
+            <!-- ESTATÍSTICAS DE SEGMENTOS -->
+            <div class="section mt-2">
+                <h2 class="section-title">Estatísticas dos Segmentos Viários</h2>
+                <p class="section-subtitle">Caracterização do comprimento dos segmentos individuais</p>
+
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <span class="stat-label">Comprimento Médio</span>
+                        <span class="stat-value">3,50 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Por segmento</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Comprimento Mediano</span>
+                        <span class="stat-value">1,90 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Valor central da distribuição</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Desvio Padrão</span>
+                        <span class="stat-value">4,42 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Alta variabilidade</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Amplitude</span>
+                        <span class="stat-value">0 - 38,10 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Mín - Máx</span>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Interpretação:</strong> O desvio padrão elevado (4,42 km) indica grande heterogeneidade nos comprimentos dos segmentos. A diferença entre média (3,50 km) e mediana (1,90 km) sugere distribuição assimétrica à direita, com poucos segmentos longos elevando a média.
+                </div>
+
+                <h3 class="section-subtitle mt-2">📊 Distribuição por Comprimento de Segmentos</h3>
+                <div class="chart-wrapper">
+                    <canvas id="chartComprimentoSegmentos"></canvas>
+                </div>
+
+                <div class="alert alert-success mt-2">
+                    <strong>✓ Padrões Identificados:</strong>
+                    <ul class="list-spaced">
+                        <li><strong>Fragmentação Alta:</strong> 51% dos segmentos têm menos de 2 km, mas representam apenas 9,7% da extensão total</li>
+                        <li><strong>Consolidação:</strong> Segmentos de 5-10 km (16,4% do total) contribuem com 32,8% da extensão — categoria dominante</li>
+                        <li><strong>Concentração:</strong> Segmentos acima de 5 km representam apenas 24,5% do total, mas 67,3% da extensão</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TIPO DE SUPERFÍCIE -->
+            <div class="section mt-2">
+                <h2 class="section-title">Distribuição por Tipo Possível de Pavimento</h2>
+                <p class="section-subtitle">Classificação estimada da superfície dos segmentos viários</p>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Limitação dos Dados:</strong> A classificação de tipo de pavimento provém das tags originais das fontes utilizadas e <strong>não foi validada em campo</strong>. Os tipos apresentados representam estimativas baseadas nos atributos disponíveis nas bases de origem e devem ser interpretados com cautela.
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="chartTipoPavimento"></canvas>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>🚨 Achado Estimado:</strong> A predominância de vias tipo 9 (61,7% da extensão total) na base estimada sugere que a <strong>maior parte da malha vicinal paulista possivelmente não é pavimentada</strong>, sendo caracterizada por estradas de terra ou cascalho. Apenas 37,8% indica pavimentação asfáltica. <strong>Ressalva:</strong> Esta classificação baseia-se em atributos das fontes originais e requer validação de campo para confirmação definitiva.
+                </div>
+            </div>
+
+            <!-- DISTRIBUIÇÃO MUNICIPAL -->
+            <div class="section mt-2">
+                <h2 class="section-title">Distribuição Municipal da Malha Vicinal Estimada</h2>
+                <p class="section-subtitle">Análise da extensão viária estimada por município</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-blue-light">
+                        <span class="stat-label">Média Municipal</span>
+                        <span class="stat-value">40,76 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Por município</span>
+                    </div>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-label">Mediana Municipal</span>
+                        <span class="stat-value">32,92 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Valor central</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-label">Desvio Padrão</span>
+                        <span class="stat-value">30,45 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Alta variabilidade</span>
+                    </div>
+                    <div class="stat-box bg-purple-light">
+                        <span class="stat-label">Amplitude</span>
+                        <span class="stat-value">0,37 - 195 <span class="stat-unit">(km)</span></span>
+                        <span class="stat-info">Mín - Máx</span>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Interpretação:</strong> A diferença entre média (40,76 km) e mediana (32,92 km) indica distribuição assimétrica. O desvio padrão elevado (30,45 km) revela grande heterogeneidade: 60% dos municípios têm menos que a média, enquanto poucos municípios possuem extensões muito superiores.
+                </div>
+
+                <h3 class="section-subtitle mt-2">📊 Concentração por Faixas de Extensão + Mapa Municipal</h3>
+                
+                <!-- Layout lado a lado: gráfico + mapa -->
+                <div class="chart-map-row">
+                    <div class="chart-column">
+                        <div class="chart-wrapper">
+                            <canvas id="chartFaixasExtensao"></canvas>
+                        </div>
+                    </div>
+                    <div class="map-column">
+                        <div class="map-wrapper">
+                            <div id="mapFaixasExtensao" class="map-leaflet"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✓ Padrões Municipais Identificados (Base Estimada):</strong>
+                    <ul class="list-spaced">
+                        <li><strong>Concentração Modal:</strong> 226 municípios (35,5%) na faixa 20-40 km — categoria mais frequente</li>
+                        <li><strong>Abaixo da Média:</strong> 389 municípios (61,1%) com menos de 40 km</li>
+                        <li><strong>Acima de 100 km:</strong> Apenas 36 municípios (5,6%) — possíveis territórios agrícolas extensos</li>
+                        <li><strong>Nenhum município ultrapassa 300 km</strong> de extensão vicinal estimada</li>
+                    </ul>
+                    <p class="mt-1"><strong>Ressalva:</strong> Estes padrões refletem a base estimada e podem divergir de cadastros oficiais municipais.</p>
+                </div>
+            </div>
+
+            <!-- TOP 10 MUNICÍPIOS -->
+            <div class="section mt-2">
+                <h2 class="section-title">Ranking Municipal: Maiores e Menores Extensões Estimadas</h2>
+                <div class="alert alert-info">
+                    <strong>ℹ️ Sobre o Ranking:</strong> Este ranking baseia-se exclusivamente na base estimada gerada pela metodologia deste estudo. Os valores podem divergir de cadastros oficiais municipais ou estaduais. A posição no ranking reflete a extensão capturada pelas fontes e filtros utilizados, não necessariamente a realidade completa da infraestrutura viária municipal.
+                </div>
+                
+                <h3 class="section-subtitle">🏆 Top 10 Municípios com MAIOR Extensão Vicinal</h3>
+                
+                <!-- Layout lado a lado: gráfico + mapa -->
+                <div class="chart-map-row">
+                    <div class="chart-column">
+                        <div class="chart-wrapper-large">
+                            <canvas id="chartTop10Maior"></canvas>
+                        </div>
+                    </div>
+                    <div class="map-column">
+                        <div class="map-wrapper-large">
+                            <div id="mapTop10Maior" class="map-leaflet"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle mt-2">📉 Top 10 Municípios com MENOR Extensão Vicinal</h3>
+                
+                <!-- Layout lado a lado: gráfico + mapa -->
+                <div class="chart-map-row">
+                    <div class="chart-column">
+                        <div class="chart-wrapper-large">
+                            <canvas id="chartTop10Menor"></canvas>
+                        </div>
+                    </div>
+                    <div class="map-column">
+                        <div class="map-wrapper-large">
+                            <div id="mapTop10Menor" class="map-leaflet"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Observação:</strong> A razão entre maior (195 km) e menor (0,37 km) extensão estimada é de <strong>528×</strong>, indicando extrema heterogeneidade territorial na base gerada. Municípios com extensões muito reduzidas podem ter: (1) territórios pequenos, (2) alta urbanização, (3) ausência real de vicinais, ou (4) <strong>lacunas no mapeamento das fontes utilizadas</strong>.
+                </div>
+            </div>
+
+            <!-- DENSIDADE DE SEGMENTOS -->
+            <div class="section mt-2">
+                <h2 class="section-title">Densidade de Segmentos por Município</h2>
+                <p class="section-subtitle">Análise da fragmentação da malha viária</p>
+
+                <div class="stats-container">
+                    <div class="stat-box bg-blue-light">
+                        <span class="stat-label">Média</span>
+                        <span class="stat-value">11,6 <span class="stat-unit">(segmentos)</span></span>
+                        <span class="stat-info">Por município</span>
+                    </div>
+                    <div class="stat-box bg-green-light">
+                        <span class="stat-label">Mediana</span>
+                        <span class="stat-value">9 <span class="stat-unit">(segmentos)</span></span>
+                        <span class="stat-info">Valor central</span>
+                    </div>
+                    <div class="stat-box bg-orange-light">
+                        <span class="stat-label">Maior Densidade</span>
+                        <span class="stat-value">Campinas</span>
+                        <span class="stat-info">62 segmentos</span>
+                    </div>
+                    <div class="stat-box bg-red-light">
+                        <span class="stat-label">Menor Densidade</span>
+                        <span class="stat-value">Colômbia</span>
+                        <span class="stat-info">1 segmento</span>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Interpretação:</strong> Municípios com maior número de segmentos tendem a ter malhas mais fragmentadas, possivelmente devido a maior área territorial, relevo acidentado ou maior densidade de ligações viárias. Campinas, com 62 segmentos, exemplifica essa fragmentação em áreas metropolitanas.
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- PARTE 2: ANÁLISE POR REGIÃO ADMINISTRATIVA -->
+        <!-- ===================================================================== -->
+        <section class="section mt-2">
+            <h1 class="section-title section-title-comparacao">
+                🗺️ PARTE 2: Análise por Região Administrativa
+            </h1>
+            <p class="subtitle-large">Caracterização da malha vicinal estimada em escala regional</p>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ Ressalva Regional:</strong> A análise regional baseia-se na agregação dos dados municipais estimados. As diferenças entre regiões refletem tanto características territoriais reais quanto possíveis variações na completude e qualidade do mapeamento colaborativo das fontes utilizadas. Interpretações devem considerar estas limitações.
+            </div>
+
+            <!-- ANÁLISE POR REGIÃO ADMINISTRATIVA -->
+            <div class="section mt-2">
+                <h2 class="section-title">Distribuição Regional da Malha Vicinal</h2>
+                <p class="section-subtitle">Análise das Regiões Administrativas do Estado de São Paulo</p>
+
+                <div class="alert alert-info">
+                    <strong>ℹ️ Sobre as Regiões Administrativas:</strong> O Estado de São Paulo é dividido em 16 Regiões Administrativas (RAs) que agrupam municípios com características socioeconômicas e territoriais similares. Esta análise permite identificar padrões regionais de infraestrutura viária municipal.
+                </div>
+
+                <h3 class="section-subtitle mt-2">📊 Ranking de Regiões Administrativas por Extensão Vicinal</h3>
+                
+                <!-- Layout lado a lado: gráfico + mapa -->
+                <div class="chart-map-row">
+                    <div class="chart-column">
+                        <div class="chart-wrapper-xlarge">
+                            <canvas id="chartTop5RA"></canvas>
+                        </div>
+                    </div>
+                    <div class="map-column">
+                        <div class="map-wrapper">
+                            <div id="mapRegioesRA" class="map-leaflet"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✓ Padrões Regionais Identificados (Base Estimada):</strong>
+                    <ul class="list-spaced">
+                        <li><strong>RA de Campinas Lidera:</strong> Com 3.584 km estimados, concentra 13,8% da malha vicinal estadual estimada</li>
+                        <li><strong>Top 5 Concentra 50,3%:</strong> As cinco principais RAs somam metade da extensão total estimada</li>
+                        <li><strong>RA de São José do Rio Preto:</strong> 2.625 km distribuídos por diversos municípios</li>
+                        <li><strong>RA de Presidente Prudente e Sorocaba:</strong> Aproximadamente 2.300-2.400 km cada, indicando malhas municipais possivelmente extensas</li>
+                    </ul>
+                    <p class="mt-1"><strong>Importante:</strong> Estes padrões regionais devem ser validados com fontes oficiais antes de fundamentar políticas públicas.</p>
+                </div>
+
+                <h3 class="section-subtitle mt-2">📊 Comparativo Regional: Extensão vs Densidade Municipal</h3>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4 class="card-title">RA de Campinas</h4>
+                        <div class="card-content">
+                            <div class="metric-value-large">3.584 km</div>
+                            <p><strong>Maior extensão total</strong></p>
+                            <span class="badge-inline bg-blue-light">13,8% do total estadual</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="card-title">RA de São José do Rio Preto</h4>
+                        <div class="card-content">
+                            <div class="metric-value-large">2.625 km</div>
+                            <p><strong>Segunda maior extensão</strong></p>
+                            <span class="badge-inline bg-green-light">10,1% do total</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="card-title">RA de Presidente Prudente</h4>
+                        <div class="card-content">
+                            <div class="metric-value-large">2.378 km</div>
+                            <p><strong>Terceira posição</strong></p>
+                            <span class="badge-inline bg-orange-light">9,2% do total</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning mt-2">
+                    <strong>⚠️ Disparidades Regionais (Base Estimada):</strong> A diferença entre RA de Campinas (3.584 km) e RAs menores pode indicar: (1) diferenças territoriais significativas reais, (2) concentração de atividades agrícolas, (3) perfil rural mais acentuado, (4) <strong>maior completude do mapeamento colaborativo nessas regiões</strong>, ou (5) <strong>variações na qualidade dos filtros aplicados</strong>. Análises definitivas requerem validação com cadastros oficiais.
+                </div>
+            </div>
+
+            <!-- ANÁLISE COMPARATIVA REGIONAL -->
+            <div class="section mt-2">
+                <h2 class="section-title">Perfis Regionais Distintos</h2>
+                <p class="section-subtitle">Caracterização qualitativa das principais regiões</p>
+
+                <h3 class="section-subtitle">🔍 Análise Detalhada por Região</h3>
+                
+                <div class="section-content">
+                    <h4><strong>RA de Campinas - Perfil de Alta Extensão e Fragmentação</strong></h4>
+                    <ul class="list-spaced">
+                        <li>Maior extensão absoluta (3.584 km) com distribuição entre diversos municípios</li>
+                        <li>Região economicamente desenvolvida com infraestrutura viária consolidada</li>
+                        <li>Distribuição equilibrada sugere cobertura homogênea entre municípios</li>
+                    </ul>
+
+                    <h4 class="mt-2"><strong>RA de São José do Rio Preto - Perfil Regional Consolidado</strong></h4>
+                    <ul class="list-spaced">
+                        <li>Segunda maior extensão (2.625 km) com vocação agrícola</li>
+                        <li>Região com características rurais marcantes</li>
+                        <li>Extensão reflete importância da malha vicinal para escoamento agrícola</li>
+                    </ul>
+
+                    <h4 class="mt-2"><strong>RA de Presidente Prudente - Perfil de Fronteira Agrícola</strong></h4>
+                    <ul class="list-spaced">
+                        <li>2.378 km distribuídos em região de ocupação agrícola consolidada</li>
+                        <li>Possível perfil de municípios com territórios extensos e baixa densidade</li>
+                        <li>Malha vicinal importante para integração territorial</li>
+                    </ul>
+
+                    <h4 class="mt-2"><strong>RA de Sorocaba - Perfil Industrial e Rural Misto</strong></h4>
+                    <ul class="list-spaced">
+                        <li>2.338 km com características mistas (industrial/rural)</li>
+                        <li>Região próxima à capital com diversidade econômica</li>
+                        <li>Malha vicinal reflete diversidade de usos do solo</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-info mt-2">
+                    <strong>💡 Síntese Regional:</strong> A análise regional da base estimada revela perfis distintos de malha vicinal correlacionados com vocações econômicas e padrões de ocupação territorial. <strong>Ressalva:</strong> Essas diferenças refletem tanto características territoriais, econômicas e demográficas reais quanto possíveis limitações das fontes e metodologia aplicada.
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- SÍNTESE GERAL -->
+        <!-- ===================================================================== -->
+        <section class="section mt-2">
+            <h2 class="section-title">
+                <span class="icon icon-check"></span>
+                Síntese dos Resultados
+            </h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 class="card-title">📏 Extensão e Cobertura</h4>
+                    <div class="card-content">
+                        <strong>25.964 km</strong> em <strong>636 municípios</strong><br>
+                        Média: 40,76 km/município<br>
+                        <span class="bg-blue-light badge-inline">
+                            98,6% de cobertura estadual
+                        </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">🛣️ Pavimentação</h4>
+                    <div class="card-content">
+                        <strong>61,7% não pavimentado</strong> (terra/cascalho)<br>
+                        37,8% pavimentado (asfalto)<br>
+                        <span class="bg-orange-light badge-inline">
+                            Déficit de infraestrutura
+                        </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">📊 Heterogeneidade</h4>
+                    <div class="card-content">
+                        <strong>Razão 528×</strong> entre maior e menor<br>
+                        Desvio padrão: 30,45 km<br>
+                        <span class="bg-red-light badge-inline">
+                            Alta variabilidade municipal
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle mt-2">🎯 Principais Conclusões (Base Estimada):</h3>
+            <div class="section-content">
+                <ol class="list-spaced">
+                    <li><strong>Cobertura Estimada Consolidada:</strong> Base estimada cobre 98,6% dos municípios paulistas com extensão total de 25.964 km</li>
+                    
+                    <li><strong>Distribuição Assimétrica:</strong> 61% dos municípios apresentam menos de 40 km estimados, mas 36 municípios (5,6%) superam 100 km</li>
+                    
+                    <li><strong>Possível Déficit de Pavimentação:</strong> 61,7% da malha estimada aparenta não ser pavimentada, sugerindo necessidade de validação e investimentos</li>
+                    
+                    <li><strong>Fragmentação Elevada:</strong> 51% dos segmentos têm menos de 2 km, mas representam apenas 9,7% da extensão estimada</li>
+                    
+                    <li><strong>Concentração Regional Estimada:</strong> Top 5 RAs concentram 50,3% da extensão total estimada</li>
+                    
+                    <li><strong>Perfis Regionais Distintos:</strong> Regiões apresentam características estimadas muito diferentes correlacionadas com vocações econômicas</li>
+                    
+                    <li><strong>Heterogeneidade Extrema:</strong> Razão de 528× entre maior e menor município na base estimada revela realidades territoriais muito distintas ou limitações do mapeamento</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-danger mt-2">
+                <strong>⚠️ RESSALVA METODOLÓGICA GERAL:</strong> Todas as conclusões apresentadas baseiam-se em uma <strong>estimativa</strong> gerada a partir de fontes abertas e filtros espaciais. Esta não é uma base oficial validada pelo Estado de São Paulo ou pelos municípios. Os resultados são úteis para <strong>análises exploratórias, identificação de padrões e comparações relativas</strong>, mas <strong>não devem fundamentar decisões definitivas de investimento ou planejamento sem validação complementar</strong> através de levantamentos de campo, consulta a cadastros oficiais municipais ou verificação junto aos órgãos competentes.
+            </div>
+
+            <div class="alert alert-success mt-2">
+                <strong>✓ Utilidade da Base Estimada:</strong> Esta base geoespacial estimada oferece uma <strong>primeira aproximação sistemática</strong> da malha vicinal paulista em escala estadual, permitindo análises comparativas exploratórias municipais e regionais, identificação de possíveis padrões de infraestrutura e suporte inicial para priorização de levantamentos de campo ou atualização de cadastros. <strong>Seu valor reside na comparabilidade e na visão de conjunto, não na precisão absoluta de cada trecho individual.</strong>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Inferência Geoespacial Aplicada à Geração de Base Vetorial Rodoviária: Estudo de Caso para o Estado de São Paulo | Janeiro 2026</p>
+            <p class="footer-text">Dados: Malha municipal estimada - PLI/SP (OSM + DER/SP + SEADE/IBGE)</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/resultados_charts.js"></script>
+    <script src="../js/resultados_maps.js"></script>
+</body>
+</html>

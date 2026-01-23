@@ -3,16 +3,431 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa em Tela Cheia | Malha Vicinal SP</title>
+    <title>Mapas Interativos | Malha Vicinal SP</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/resultados_maps.css">
     <link rel="stylesheet" href="../css/resultados_municipal.css">
+    <link rel="stylesheet" href="../css/resultados_regional.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../libs/leaflet/leaflet.css">
     <script src="../libs/leaflet/leaflet.js"></script>
+    <style>
+        /* Estilos para a página de seleção de mapas */
+        .mapa-gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .mapa-gallery-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mapa-gallery-header h1 {
+            color: var(--dark-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .mapa-gallery-header p {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+        }
+        
+        .mapa-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .mapa-section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .mapa-section-title i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .mapa-section-title h2 {
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        
+        .mapa-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+        
+        .mapa-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mapa-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .mapa-card-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .mapa-card-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .mapa-card-content {
+            padding: 1rem 1.25rem 1.25rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mapa-card-title {
+            color: var(--dark-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .mapa-card-desc {
+            color: var(--dark-gray);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .mapa-card-action {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+        
+        .mapa-card-action i {
+            transition: transform 0.2s ease;
+        }
+        
+        .mapa-card:hover .mapa-card-action i {
+            transform: translateX(4px);
+        }
+        
+        /* Cores diferentes para seções */
+        .mapa-section.municipal .mapa-card-icon {
+            background: linear-gradient(135deg, #0066CC, #00a8e8);
+        }
+        
+        .mapa-section.municipal .mapa-section-title {
+            border-bottom-color: #0066CC;
+        }
+        
+        .mapa-section.municipal .mapa-section-title i {
+            color: #0066CC;
+        }
+        
+        .mapa-section.municipal .mapa-card-action {
+            color: #0066CC;
+        }
+        
+        .mapa-section.regional .mapa-card-icon {
+            background: linear-gradient(135deg, #9c27b0, #e91e63);
+        }
+        
+        .mapa-section.regional .mapa-section-title {
+            border-bottom-color: #9c27b0;
+        }
+        
+        .mapa-section.regional .mapa-section-title i {
+            color: #9c27b0;
+        }
+        
+        .mapa-section.regional .mapa-card-action {
+            color: #9c27b0;
+        }
+        
+        /* Navbar simples */
+        .gallery-navbar {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .gallery-navbar .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        
+        .gallery-navbar .brand img {
+            height: 32px;
+        }
+        
+        .gallery-navbar .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .gallery-navbar .nav-links a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .gallery-navbar .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Dropdown para navbar da galeria */
+        .gallery-navbar .dropdown {
+            position: relative;
+        }
+        
+        .gallery-navbar .dropdown-toggle {
+            cursor: pointer;
+        }
+        
+        .gallery-navbar .dropdown-toggle::after {
+            content: ' ▾';
+            font-size: 0.7em;
+        }
+        
+        .gallery-navbar .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 180px;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+        
+        .gallery-navbar .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .gallery-navbar .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .gallery-navbar .dropdown-menu a:hover {
+            background: #f0f0f0;
+            color: var(--primary-color);
+        }
+        
+        /* Ocultar quando exibindo mapa fullscreen */
+        body.showing-map .mapa-gallery-container,
+        body.showing-map .gallery-navbar {
+            display: none;
+        }
+        
+        body:not(.showing-map) .fullscreen-header,
+        body:not(.showing-map) .fullscreen-main,
+        body:not(.showing-map) .fullscreen-footer {
+            display: none;
+        }
+    </style>
 </head>
 <body data-page="fullscreen" class="fullscreen-page">
+    <!-- NAVBAR PARA GALERIA -->
+    <nav class="gallery-navbar">
+        <a href="../index.html" class="brand">
+            <i class="fas fa-road"></i>
+            Malha Vicinal SP
+        </a>
+        <div class="nav-links">
+            <a href="../index.html">Início</a>
+            <a href="resultados-municipal.html">Resultados Municipais</a>
+            <a href="resultados-regional.html">Resultados Regionais</a>
+            <a href="metodologia.html">Metodologia</a>
+            <a href="conclusao.html">Conclusão</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle active">Anexos</a>
+                <div class="dropdown-menu">
+                    <a href="mapa-fullscreen.html" class="active">Mapas</a>
+                    <a href="pesquisa-municipal.html">Pesquisa Municipal</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GALERIA DE MAPAS -->
+    <div class="mapa-gallery-container">
+        <header class="mapa-gallery-header">
+            <h1><i class="fas fa-map-marked-alt"></i> Mapas Interativos</h1>
+            <p>Selecione um mapa para visualizar em tela cheia com todos os controles e legendas</p>
+        </header>
+
+        <!-- MAPAS MUNICIPAIS -->
+        <section class="mapa-section municipal">
+            <div class="mapa-section-title">
+                <i class="fas fa-city"></i>
+                <h2>Mapas por Município (645 municípios)</h2>
+            </div>
+            <div class="mapa-cards-grid">
+                <a href="?map=malha-completa" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Malha Vicinal Completa</div>
+                        <div class="mapa-card-desc">Todas as camadas: municípios, malha OSM e DER com possibilidade de alternar entre camadas.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=pavimento" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-road"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Tipo de Pavimento</div>
+                        <div class="mapa-card-desc">Distribuição por tipo de superfície: Pavimentado vs. Terra/Cascalho.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=ranking-extensao" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-ruler"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Ranking de Extensão</div>
+                        <div class="mapa-card-desc">Extensão total da malha vicinal por município representada com gradiente contínuo.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=densidade-area" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-chart-area"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Densidade por Área</div>
+                        <div class="mapa-card-desc">Relação entre extensão e área territorial (km por 10.000 km²).</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=densidade-pop" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-users"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Densidade por População</div>
+                        <div class="mapa-card-desc">Quilômetros de vicinais para cada 10.000 habitantes por município.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=disparidade-area" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Disparidades Espaciais</div>
+                        <div class="mapa-card-desc">Classes de desvio em relação à média estadual (Muito Abaixo a Muito Acima).</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=disparidade-pop" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Disparidades Populacionais</div>
+                        <div class="mapa-card-desc">Classes de desvio populacional com possibilidade de alternância entre OSM e Malha Total.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- MAPAS REGIONAIS -->
+        <section class="mapa-section regional">
+            <div class="mapa-section-title">
+                <i class="fas fa-map"></i>
+                <h2>Mapas por Região Administrativa (16 RAs)</h2>
+            </div>
+            <div class="mapa-cards-grid">
+                <a href="?map=reg-malha-completa" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Malha por RA</div>
+                        <div class="mapa-card-desc">Visualização da malha vicinal com divisão por Regiões Administrativas.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=reg-pavimento" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-road"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Pavimento por RA</div>
+                        <div class="mapa-card-desc">Distribuição dos tipos de pavimento por Região Administrativa.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=reg-ranking-extensao" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-ruler"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Extensão por RA</div>
+                        <div class="mapa-card-desc">Ranking de extensão total da malha vicinal por Região Administrativa.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=reg-densidade-area" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-chart-area"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Densidade Área (RA)</div>
+                        <div class="mapa-card-desc">Densidade por área territorial (km/10.000km²) por Região Administrativa.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=reg-densidade-pop" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-users"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Densidade Pop (RA)</div>
+                        <div class="mapa-card-desc">Densidade por população (km/10.000 hab) por Região Administrativa.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=reg-disparidade-area" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Disparidades Espaciais (RA)</div>
+                        <div class="mapa-card-desc">Classes de desvio espacial por Região Administrativa.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="?map=reg-disparidade-pop" class="mapa-card">
+                    <div class="mapa-card-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="mapa-card-content">
+                        <div class="mapa-card-title">Disparidades Pop (RA)</div>
+                        <div class="mapa-card-desc">Classes de desvio populacional por Região Administrativa.</div>
+                        <div class="mapa-card-action"><span>Abrir mapa</span> <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- HEADER PARA MAPA FULLSCREEN -->
     <header class="fullscreen-header">
         <div>
             <p class="fullscreen-eyebrow">Mapa em tela cheia</p>
@@ -20,9 +435,9 @@
             <p id="fullscreenDescription" class="fullscreen-description"></p>
         </div>
         <div class="fullscreen-actions">
-            <a href="resultados-municipal.html" class="btn btn-secondary">
-                <i class="fas fa-arrow-left"></i>
-                Voltar ao estudo
+            <a href="mapa-fullscreen.html" class="btn btn-secondary">
+                <i class="fas fa-th-large"></i>
+                Todos os mapas
             </a>
         </div>
     </header>
@@ -33,9 +448,23 @@
         <div id="fullscreenStatus" class="fullscreen-status" aria-live="polite">Carregando dados...</div>
     </main>
     <footer class="fullscreen-footer">
-        <p>Mapa gerado a partir da base consolida com indicadores OSM + DER.</p>
+        <p>Mapa gerado a partir da base consolidada com indicadores OSM + DER.</p>
     </footer>
+
     <script src="../js/resultados_municipal.js"></script>
     <script src="../js/fullscreen_mapas.js"></script>
+    <script>
+        // Verificar se há parâmetro de mapa na URL
+        const params = new URLSearchParams(window.location.search);
+        const mapParam = params.get('map');
+        
+        if (mapParam) {
+            // Mostrar mapa fullscreen
+            document.body.classList.add('showing-map');
+        } else {
+            // Mostrar galeria de mapas
+            document.title = 'Mapas Interativos | Malha Vicinal SP';
+        }
+    </script>
 </body>
 </html>

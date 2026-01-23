@@ -6,6 +6,340 @@
     <title>Conclusão - Inferência Geoespacial</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* ========== HERO STATS - 4 EM LINHA ========== */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+        }
+        
+        .stat-card.osm:hover { border-color: #f59e0b; }
+        .stat-card.total:hover { border-color: #3b82f6; }
+        .stat-card.mun:hover { border-color: #10b981; }
+        .stat-card.ra:hover { border-color: #8b5cf6; }
+        
+        .stat-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            color: #fff;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        
+        .stat-sublabel {
+            font-size: 0.65rem;
+            color: #64748b;
+            margin-top: 0.35rem;
+        }
+        
+        /* ========== INDICADORES ========== */
+        .indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .indicator.up { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .indicator.down { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .indicator.neutral { background: rgba(107, 114, 128, 0.15); color: #6b7280; }
+        
+        /* ========== FINDING CARDS - BORDA SÓLIDA ========== */
+        .finding-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+            border: 2px solid #1e293b;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .finding-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            border-color: #3b82f6;
+        }
+        
+        .finding-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .finding-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border: 2px solid #1e293b;
+        }
+        
+        .finding-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+        
+        .finding-card p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        /* ========== DATA GRID - MÉTRICAS ========== */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        
+        .data-item {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1rem;
+            transition: all 0.25s ease;
+        }
+        
+        .data-item:hover {
+            border-color: #1e293b;
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        
+        .data-item-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .data-item-icon { font-size: 1.25rem; }
+        
+        .data-item-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .data-item-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+        
+        .data-item-sub {
+            font-size: 0.7rem;
+            color: #64748b;
+        }
+        
+        .data-item-badge {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        
+        .data-item-badge.up { background: #dcfce7; color: #16a34a; }
+        .data-item-badge.down { background: #fee2e2; color: #dc2626; }
+        .data-item-badge.neutral { background: #f1f5f9; color: #64748b; }
+        
+        /* ========== COMPARAÇÃO VISUAL ========== */
+        .comparison-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+        }
+        
+        .comparison-side {
+            flex: 1;
+            max-width: 220px;
+            text-align: center;
+            padding: 1.25rem;
+            border-radius: 10px;
+            border: 2px solid #1e293b;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-side:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .comparison-side.high { border-color: #10b981; }
+        .comparison-side.low { border-color: #ef4444; }
+        
+        .comparison-side .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        
+        .comparison-side .value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        
+        .comparison-side .unit {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+        
+        .comparison-side .name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 0.5rem;
+        }
+        
+        .comparison-vs {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #94a3b8;
+            padding: 0 0.5rem;
+        }
+        
+        .comparison-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        /* ========== SECTION HEADERS ========== */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid #1e293b;
+        }
+        
+        .section-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid #1e293b;
+            background: #1e293b;
+            color: #fff;
+        }
+        
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #0f172a;
+        }
+        
+        /* ========== CARDS FINAIS ========== */
+        .final-card {
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .final-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+        
+        .final-card.success {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            border-color: #047857;
+        }
+        
+        .final-card.warning {
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+            border-color: #b45309;
+        }
+        
+        .final-card h3 {
+            color: white;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .final-card ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .final-card li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 1024px) {
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-stats { grid-template-columns: 1fr; }
+            .comparison-box { flex-direction: column; }
+            .comparison-vs { transform: rotate(90deg); }
+            .stat-value { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -23,7 +357,7 @@
             <ul class="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                 <li class="nav-item"><a href="dados.html" class="nav-link">Dados</a></li>
-                <li class="nav-item"><a href="metodologia-silvio.html" class="nav-link">Metodologia</a></li>
+                <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodologia</a></li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link">Resultados</a>
                     <ul class="dropdown-menu">
@@ -31,81 +365,557 @@
                         <li><a href="resultados-regional.html" class="dropdown-link">Análise Regional</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a href="mapas.html" class="nav-link">Mapas</a></li>
                 <li class="nav-item"><a href="conclusao.html" class="nav-link active">Conclusão</a></li>
-                <li class="nav-item"><a href="pesquisa-municipal.html" class="nav-link">Pesquisa Municipal</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Anexos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="mapa-fullscreen.html" class="dropdown-link">Mapas</a></li>
+                        <li><a href="pesquisa-municipal.html" class="dropdown-link">Pesquisa Municipal</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
 
     <main class="main-content">
-        <h1 class="page-title">Conclusão</h1>
-        <p class="page-subtitle">Síntese técnica, reafirmação do problema e consolidação dos achados</p>
+        <h1 class="page-title">Síntese dos Resultados</h1>
+        <p class="page-subtitle">Principais achados da inferência geoespacial aplicada à malha vicinal paulista</p>
 
+        <!-- ========== HERO STATS - 4 EM LINHA ========== -->
         <section class="section">
-            <h2 class="section-title">Reafirmação do Tema</h2>
-            <div class="section-content">
-                <p>Este estudo demonstrou que a inferência geoespacial aplicada à malha vicinal paulista é viável e indispensável para o PLI/SP. A integração de dados colaborativos (OSM) com bases oficiais (DER/SP, IBGE, SEADE) produziu uma estimativa reprodutível e auditável da rede municipal, preenchendo a lacuna informacional que impedia diagnósticos logísticos em escala estadual.</p>
+            <div class="hero-stats">
+                <div class="stat-card osm">
+                    <div class="stat-icon">🛤️</div>
+                    <div class="stat-value">25.918,60 km</div>
+                    <div class="stat-label">Malha Vicinal (OSM)</div>
+                    <div class="stat-sublabel">Base filtrada OpenStreetMap</div>
+                </div>
+                <div class="stat-card total">
+                    <div class="stat-icon">🛣️</div>
+                    <div class="stat-value">47.666,00 km</div>
+                    <div class="stat-label">Malha Total (OSM+DER)</div>
+                    <div class="stat-sublabel">Integração c/ rodovias estaduais</div>
+                </div>
+                <div class="stat-card mun">
+                    <div class="stat-icon">🏛️</div>
+                    <div class="stat-value">645</div>
+                    <div class="stat-label">Municípios</div>
+                    <div class="stat-sublabel">Cobertura estadual completa</div>
+                </div>
+                <div class="stat-card ra">
+                    <div class="stat-icon">🗺️</div>
+                    <div class="stat-value">16</div>
+                    <div class="stat-label">Regiões Admin.</div>
+                    <div class="stat-sublabel">Agregação macrorregional</div>
+                </div>
             </div>
         </section>
 
+        <!-- ========== ACHADOS MUNICIPAIS - OSM ========== -->
         <section class="section">
-            <h2 class="section-title">Objetivos Revisitados</h2>
-            <div class="section-content">
-                <ul class="list-spaced">
-                    <li>Construir uma base geoespacial minimamente aderente da malha vicinal paulista, com filtros explícitos e rastreáveis.</li>
-                    <li>Comparar cobertura e densidade entre OSM e DER/SP para qualificar subnotificação e variabilidade regional.</li>
-                    <li>Fornecer insumos para priorização de atualização cadastral e planejamento de investimentos rodoviários.</li>
+            <div class="section-header">
+                <span class="section-badge">MUNICIPAL • OSM</span>
+                <h2>Achados — Malha Vicinal Estimada</h2>
+            </div>
+            
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">📏</div>
+                    <h3 class="finding-title">Extensão e Distribuição Territorial</h3>
+                </div>
+                <p>
+                    Observa-se heterogeneidade expressiva entre os 645 municípios paulistas, com razão máxima/mínima que pode superar <strong>500:1</strong>. 
+                    A distribuição assimétrica indica que a maioria dos municípios apresenta extensões reduzidas, enquanto poucos concentram malhas mais extensas.
+                    Os centros metropolitanos tendem a registrar extensões absolutas menores, possivelmente refletindo a menor expressão proporcional do sistema vicinal em áreas mais urbanizadas.
+                </p>
+                
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🏛️</span>
+                            <span class="data-item-name">Cananéia</span>
+                        </div>
+                        <div class="data-item-value">74,69 km</div>
+                        <div class="data-item-sub">Extensão estimada OSM</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🌾</span>
+                            <span class="data-item-name">Itaoca</span>
+                        </div>
+                        <div class="data-item-value">35,39 km</div>
+                        <div class="data-item-sub">Extensão estimada OSM</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🏙️</span>
+                            <span class="data-item-name">Guarulhos</span>
+                        </div>
+                        <div class="data-item-value">25,36 km</div>
+                        <div class="data-item-sub">Extensão estimada OSM</div>
+                        <span class="data-item-badge neutral">Metropolitano</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">📐</div>
+                    <h3 class="finding-title">Densidade Espacial — km por Área</h3>
+                </div>
+                <p>
+                    A densidade espacial média estimada é de <strong>~1.312 km/10.000 km²</strong>. 
+                    Municípios com perfil agrícola tendem a apresentar valores superiores à média, enquanto os metropolitanos frequentemente ficam abaixo, padrão possivelmente associado ao uso do solo.
+                    Casos extremos ilustram essa variabilidade: Itaoca (RA Itapeva) atinge +45,9% acima da média, enquanto São Sebastião registra −90,1% abaixo da média.
+                </p>
+                
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🌾</span>
+                            <span class="data-item-name">Itaoca</span>
+                        </div>
+                        <div class="data-item-value">1.914</div>
+                        <div class="data-item-sub">km/10.000km²</div>
+                        <span class="data-item-badge up">↑ +45,9%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🏙️</span>
+                            <span class="data-item-name">Itapecerica da Serra</span>
+                        </div>
+                        <div class="data-item-value">2.283</div>
+                        <div class="data-item-sub">km/10.000km²</div>
+                        <span class="data-item-badge up">↑ +74%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🏖️</span>
+                            <span class="data-item-name">São Sebastião</span>
+                        </div>
+                        <div class="data-item-value">130</div>
+                        <div class="data-item-sub">km/10.000km²</div>
+                        <span class="data-item-badge down">↓ −90,1%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">👥</div>
+                    <h3 class="finding-title">Densidade Populacional — km por Habitante</h3>
+                </div>
+                <p>
+                    A média estimada é de <strong>~35 km/10.000 habitantes</strong>. 
+                    Municípios menos populosos tendem a apresentar maior disponibilidade relativa de malha vicinal, o que sugere função predominantemente rural da infraestrutura.
+                    O contraste entre os extremos pode superar 500 vezes, evidenciando que a malha vicinal é proporcionalmente menos expressiva onde a população se concentra em núcleos urbanos densos.
+                </p>
+                
+                <div class="comparison-box">
+                    <div class="comparison-side high">
+                        <div class="icon">🏛️</div>
+                        <div class="value">111,5</div>
+                        <div class="unit">km/10.000 hab</div>
+                        <div class="name">Ribeira</div>
+                        <span class="indicator up">↑ +217,9%</span>
+                    </div>
+                    <div class="comparison-vs">vs</div>
+                    <div class="comparison-side low">
+                        <div class="icon">🏙️</div>
+                        <div class="value">0,19</div>
+                        <div class="unit">km/10.000 hab</div>
+                        <div class="name">Guarulhos</div>
+                        <span class="indicator down">↓ −99,5%</span>
+                    </div>
+                </div>
+                <p class="comparison-note">Diferença de aproximadamente 587x entre os extremos</p>
+            </div>
+        </section>
+
+        <!-- ========== ACHADOS MUNICIPAIS - TOTAL ========== -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-badge">MUNICIPAL • OSM+DER</span>
+                <h2>Achados — Malha Total</h2>
+            </div>
+            
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">🛣️</div>
+                    <h3 class="finding-title">Incremento pela Integração com DER</h3>
+                </div>
+                <p>
+                    A integração com rodovias estaduais (DER) amplia significativamente a cobertura estimada. 
+                    O incremento proporcional varia entre os municípios conforme a sobreposição entre as fontes e a presença de rodovias estaduais no território.
+                    Alguns municípios praticamente não apresentam incremento (baixa presença do DER), enquanto outros podem mais que quadruplicar sua extensão total.
+                </p>
+                
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🏙️</span>
+                            <span class="data-item-name">Guarulhos</span>
+                        </div>
+                        <div class="data-item-value">25,36 → 109,91 km</div>
+                        <div class="data-item-sub">Incremento absoluto: +84,55 km</div>
+                        <span class="data-item-badge up">↑ +333%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🏛️</span>
+                            <span class="data-item-name">Itaberá</span>
+                        </div>
+                        <div class="data-item-value">34,12 → 162,41 km</div>
+                        <div class="data-item-sub">Incremento absoluto: +128,29 km</div>
+                        <span class="data-item-badge up">↑ +376%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🌾</span>
+                            <span class="data-item-name">Itaoca</span>
+                        </div>
+                        <div class="data-item-value">35,39 → 35,44 km</div>
+                        <div class="data-item-sub">Incremento marginal: +0,05 km</div>
+                        <span class="data-item-badge neutral">~ 0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">⚖️</div>
+                    <h3 class="finding-title">Disparidades Extremas na Malha Total</h3>
+                </div>
+                <p>
+                    Foram identificados municípios com densidades muito acima ou muito abaixo da média estadual, representando possíveis pontos de atenção para validação.
+                    Esses extremos podem refletir características territoriais legítimas (relevo, áreas de preservação, uso do solo) ou potenciais inconsistências nas bases de origem.
+                    Recomenda-se validação em campo antes de quaisquer decisões de investimento.
+                </p>
+                
+                <div class="comparison-box">
+                    <div class="comparison-side high">
+                        <div class="icon">🏙️</div>
+                        <div class="value">7.435</div>
+                        <div class="unit">km/10.000km² (espacial)</div>
+                        <div class="name">Diadema</div>
+                        <span class="indicator up">Muito Alta</span>
+                    </div>
+                    <div class="comparison-vs">vs</div>
+                    <div class="comparison-side low">
+                        <div class="icon">🏖️</div>
+                        <div class="value">1.252</div>
+                        <div class="unit">km/10.000km² (espacial)</div>
+                        <div class="name">Bertioga</div>
+                        <span class="indicator down">Muito Baixa</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== ACHADOS REGIONAIS - OSM ========== -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-badge">REGIONAL • OSM</span>
+                <h2>Achados — Malha Vicinal por RA</h2>
+            </div>
+            
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">🗺️</div>
+                    <h3 class="finding-title">Extensão por Região Administrativa</h3>
+                </div>
+                <p>
+                    A razão máxima/mínima entre as 16 RAs é de aproximadamente <strong>25:1</strong> — significativamente menor que a escala municipal devido ao efeito de agregação.
+                    Regiões do interior paulista, com perfil predominantemente agrícola, tendem a apresentar extensões superiores às metropolitanas.
+                    A RA de Santos registra a menor extensão (133 km), possivelmente refletindo topografia acidentada e perfil urbano-portuário.
+                </p>
+                
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🗺️</span>
+                            <span class="data-item-name">RA Campinas</span>
+                        </div>
+                        <div class="data-item-value">3.584 km</div>
+                        <div class="data-item-sub">90 municípios</div>
+                        <span class="data-item-badge up">1º lugar</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🗺️</span>
+                            <span class="data-item-name">RA S.J. Rio Preto</span>
+                        </div>
+                        <div class="data-item-value">2.625 km</div>
+                        <div class="data-item-sub">96 municípios</div>
+                        <span class="data-item-badge up">2º lugar</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🗺️</span>
+                            <span class="data-item-name">RA Pres. Prudente</span>
+                        </div>
+                        <div class="data-item-value">2.378 km</div>
+                        <div class="data-item-sub">53 municípios</div>
+                        <span class="data-item-badge up">3º lugar</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">⚓</span>
+                            <span class="data-item-name">RA Santos</span>
+                        </div>
+                        <div class="data-item-value">133 km</div>
+                        <div class="data-item-sub">9 municípios</div>
+                        <span class="data-item-badge down">Menor</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">👥</div>
+                    <h3 class="finding-title">Densidade Populacional por RA</h3>
+                </div>
+                <p>
+                    A média regional é de <strong>~12 km/10.000 habitantes</strong>. 
+                    O padrão inversamente proporcional à urbanização se confirma na escala regional: RAs metropolitanas (RMSP, Campinas, Baixada Santista) tendem a valores reduzidos, enquanto RAs agrícolas (Presidente Prudente, Araçatuba, Itapeva) apresentam valores mais elevados.
+                </p>
+                
+                <div class="comparison-box">
+                    <div class="comparison-side high">
+                        <div class="icon">🌾</div>
+                        <div class="value">28,5</div>
+                        <div class="unit">km/10.000 hab</div>
+                        <div class="name">RA Itapeva</div>
+                        <span class="indicator up">↑ +113%</span>
+                    </div>
+                    <div class="comparison-vs">vs</div>
+                    <div class="comparison-side low">
+                        <div class="icon">🏙️</div>
+                        <div class="value">0,62</div>
+                        <div class="unit">km/10.000 hab</div>
+                        <div class="name">RMSP</div>
+                        <span class="indicator down">↓ −95%</span>
+                    </div>
+                </div>
+                <p class="comparison-note">Diferença de ~46x entre a RA mais agrícola e a mais urbanizada</p>
+            </div>
+        </section>
+
+        <!-- ========== ACHADOS REGIONAIS - TOTAL ========== -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-badge">REGIONAL • OSM+DER</span>
+                <h2>Achados — Malha Total por RA</h2>
+            </div>
+            
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">🛣️</div>
+                    <h3 class="finding-title">Extensão Total por Região</h3>
+                </div>
+                <p>
+                    A integração com rodovias estaduais (DER) aproximadamente <strong>dobra</strong> a extensão estimada em todas as regiões, com variações entre +56% e +101%.
+                    A RA de Campinas lidera com 7.191 km de Malha Total, seguida por Sorocaba (4.608 km) e São José do Rio Preto (4.523 km).
+                </p>
+                
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🗺️</span>
+                            <span class="data-item-name">RA Campinas</span>
+                        </div>
+                        <div class="data-item-value">7.191 km</div>
+                        <div class="data-item-sub">OSM: 3.584 km</div>
+                        <span class="data-item-badge up">↑ +101%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🗺️</span>
+                            <span class="data-item-name">RA Sorocaba</span>
+                        </div>
+                        <div class="data-item-value">4.608 km</div>
+                        <div class="data-item-sub">OSM: 2.338 km</div>
+                        <span class="data-item-badge up">↑ +97%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🗺️</span>
+                            <span class="data-item-name">RA S.J. Rio Preto</span>
+                        </div>
+                        <div class="data-item-value">4.523 km</div>
+                        <div class="data-item-sub">OSM: 2.625 km</div>
+                        <span class="data-item-badge up">↑ +72%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🗺️</span>
+                            <span class="data-item-name">RA Pres. Prudente</span>
+                        </div>
+                        <div class="data-item-value">3.721 km</div>
+                        <div class="data-item-sub">OSM: 2.378 km</div>
+                        <span class="data-item-badge up">↑ +56%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">📊</div>
+                    <h3 class="finding-title">Densidade Populacional — Extremos Regionais</h3>
+                </div>
+                <p>
+                    RAs com baixa população e significativa malha rodoviária apresentam maior disponibilidade per capita.
+                    Registro e Itapeva lideram com mais de 50 km/10.000 hab na Malha Total, enquanto RMSP e Santos ficam abaixo de 2,5 km/10.000 hab — confirmando que a infraestrutura vicinal é proporcionalmente menor em regiões altamente urbanizadas.
+                </p>
+                
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🌲</span>
+                            <span class="data-item-name">RA Registro</span>
+                        </div>
+                        <div class="data-item-value">50,7</div>
+                        <div class="data-item-sub">km/10.000 hab</div>
+                        <span class="data-item-badge up">↑ +100%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🌾</span>
+                            <span class="data-item-name">RA Itapeva</span>
+                        </div>
+                        <div class="data-item-value">54,0</div>
+                        <div class="data-item-sub">km/10.000 hab</div>
+                        <span class="data-item-badge up">↑ +113%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🏙️</span>
+                            <span class="data-item-name">RMSP</span>
+                        </div>
+                        <div class="data-item-value">1,25</div>
+                        <div class="data-item-sub">km/10.000 hab</div>
+                        <span class="data-item-badge down">↓ −95%</span>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">⚓</span>
+                            <span class="data-item-name">RA Santos</span>
+                        </div>
+                        <div class="data-item-value">2,29</div>
+                        <div class="data-item-sub">km/10.000 hab</div>
+                        <span class="data-item-badge down">↓ −91%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== COMPARAÇÃO MUNICIPAL VS REGIONAL ========== -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-badge">COMPARATIVO</span>
+                <h2>Escala Municipal vs Regional</h2>
+            </div>
+            
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">📊</div>
+                    <h3 class="finding-title">Efeito de Suavização pela Agregação</h3>
+                </div>
+                <p>
+                    A análise municipal revela maior heterogeneidade (razão ~500:1) que a regional (~25:1). 
+                    A agregação por Região Administrativa dilui os extremos, oferecendo uma visão mais estável para planejamento macrorregional.
+                    Enquanto municípios individuais podem atingir desvios extremos (+217% em Ribeira), a RA que os contém mostra desvios mais moderados (+113% em RA Itapeva).
+                </p>
+                
+                <div class="comparison-box">
+                    <div class="comparison-side high">
+                        <div class="icon">🏛️</div>
+                        <div class="value">500:1</div>
+                        <div class="unit">Razão máx/mín</div>
+                        <div class="name">Escala Municipal</div>
+                        <span class="indicator neutral">Maior heterogeneidade</span>
+                    </div>
+                    <div class="comparison-vs">→</div>
+                    <div class="comparison-side" style="border-color: #3b82f6;">
+                        <div class="icon">🗺️</div>
+                        <div class="value">25:1</div>
+                        <div class="unit">Razão máx/mín</div>
+                        <div class="name">Escala Regional</div>
+                        <span class="indicator neutral">Visão estabilizada</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div class="finding-icon">🎯</div>
+                    <h3 class="finding-title">Aplicabilidade por Escala de Análise</h3>
+                </div>
+                <p>
+                    Cada escala oferece vantagens específicas para diferentes contextos de planejamento e tomada de decisão:
+                </p>
+                
+                <div class="data-grid">
+                    <div class="data-item" style="min-width: 280px;">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🏛️</span>
+                            <span class="data-item-name">Escala Municipal</span>
+                        </div>
+                        <div class="data-item-sub" style="line-height: 1.6; margin-top: 0.5rem;">
+                            Diagnósticos localizados • Priorização de intervenções pontuais • 
+                            Identificação de municípios atípicos • Validação em campo
+                        </div>
+                    </div>
+                    <div class="data-item" style="min-width: 280px;">
+                        <div class="data-item-header">
+                            <span class="data-item-icon">🗺️</span>
+                            <span class="data-item-name">Escala Regional</span>
+                        </div>
+                        <div class="data-item-sub" style="line-height: 1.6; margin-top: 0.5rem;">
+                            Políticas estaduais • Alocação de recursos entre RAs • 
+                            Comparações macrorregionais • Planejamento de longo prazo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONSIDERAÇÕES FINAIS ========== -->
+        <section class="section">
+            <div class="final-card success">
+                <h3>📝 Considerações Finais</h3>
+                <ul>
+                    <li><strong>Duas bases estimadas produzidas:</strong> Malha Vicinal (OSM) com 25.918,60 km e Malha Total (OSM + DER) com 47.666,00 km</li>
+                    <li><strong>Cobertura completa:</strong> 645 municípios e 16 Regiões Administrativas do Estado de São Paulo</li>
+                    <li><strong>Heterogeneidade expressiva:</strong> em ambas as escalas, com padrões possivelmente associados aos perfis produtivos do território</li>
+                    <li><strong>Regiões agrícolas</strong> (Presidente Prudente, Araçatuba, Itapeva) tendem a maior disponibilidade de malha per capita</li>
+                    <li><strong>Regiões metropolitanas</strong> (RMSP, Campinas, Santos) apresentam valores reduzidos proporcionalmente à sua população</li>
                 </ul>
             </div>
-        </section>
 
-        <section class="section">
-            <h2 class="section-title">Achados Principais</h2>
-            <div class="section-content">
-                <details open>
-                    <summary><strong>1. Divergência estrutural OSM/DER</strong></summary>
-                    <ul class="list-spaced mt-1">
-                        <li>OSM mapeia ~122 mil km de vicinais versus 25,9 mil km no cadastro DER (razão ~4,7×).</li>
-                        <li>Razão permanece estável nas 16 RAs (4,5–7,1×), indicando subnotificação sistemática e não local.</li>
-                        <li>Risco: políticas públicas baseadas apenas no cadastro oficial subdimensionam a malha municipal.</li>
-                    </ul>
-                </details>
-                <details>
-                    <summary><strong>2. Cobertura e densidade</strong></summary>
-                    <ul class="list-spaced mt-1">
-                        <li>645 municípios com geometria OSM; 637 com registro DER, mostrando lacunas formais.</li>
-                        <li>Densidade média OSM: 4.920 km/10.000 km²; DER: 1.040 km/10.000 km².</li>
-                        <li>64,7% dos municípios têm &lt;50 km cadastrados no DER, sugerindo viés de subamostragem.</li>
-                    </ul>
-                </details>
-                <details>
-                    <summary><strong>3. Viés urbano removido com filtros espaciais</strong></summary>
-                    <ul class="list-spaced mt-1">
-                        <li>Exclusão de áreas urbanas (IBGE 2019) e faces de logradouro (Censo 2022) evitou inflar a malha com vias intraurbanas.</li>
-                        <li>Buffer sobre rede estadual (DER) removeu paralelismos e duplicidades, preservando apenas vicinais genuínas.</li>
-                        <li>Resultado: malha estimada aderente ao conceito de rede municipal rural, com redução de ruído.</li>
-                    </ul>
-                </details>
-                <details>
-                    <summary><strong>4. Potencial de uso do OSM</strong></summary>
-                    <ul class="list-spaced mt-1">
-                        <li>OSM apresenta completude espacial e granularidade suficientes para suportar planejamento estadual.</li>
-                        <li>Com validação cruzada por RA e métricas estáveis, OSM pode guiar campanhas de campo e atualização do cadastro oficial.</li>
-                        <li>Recomendação: adotar OSM como fonte complementar sistemática no ciclo de manutenção do DER/SP.</li>
-                    </ul>
-                </details>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Próximos Passos</h2>
-            <div class="section-content">
-                <ul class="list-spaced">
-                    <li>Priorizar inspeções de campo em RAs com razão OSM/DER &gt; 6× e municípios com densidade oficial &lt; 50 km.</li>
-                    <li>Integrar o fluxo de validação OSM ao ciclo de atualização cadastral do DER/SP, com publicação periódica.</li>
-                    <li>Expandir a metodologia para outros estados, mantendo filtros urbanos e subtração da rede estadual.</li>
-                </ul>
+            <div class="final-card warning">
+                <h3>⚠️ Ressalva Metodológica</h3>
+                <p style="margin-bottom: 1rem; line-height: 1.7;">
+                    A <strong>Malha Vicinal Estimada</strong> apresentada neste estudo constitui uma <strong>aproximação</strong> da infraestrutura rodoviária municipal paulista, 
+                    obtida por meio de <strong>geoprocessamento aplicado a bases existentes</strong> (OpenStreetMap, DER/SP, IBGE). 
+                    Trata-se de um produto derivado de inferência geoespacial — não de levantamento topográfico ou cadastro oficial.
+                </p>
+                <p style="margin-bottom: 1rem; line-height: 1.7;">
+                    Portanto, <strong>toda e qualquer inferência feita a partir desta base deve ser acompanhada de ressalvas importantes</strong>. 
+                    Os valores apresentados são indicativos e podem divergir da realidade em campo devido a limitações inerentes às fontes de origem, 
+                    à metodologia de filtragem e aos processos de integração espacial empregados.
+                </p>
+                <p style="margin-bottom: 1rem; line-height: 1.7;">
+                    Esta base representa um <strong>ponto de partida</strong> rumo a uma representação mais sólida da malha vicinal paulista. 
+                    Seu aprimoramento demanda esforços contínuos de <strong>validação cruzada com outras fontes oficiais</strong>, 
+                    <strong>verificações em campo</strong> e <strong>integração com cadastros municipais</strong> quando disponíveis.
+                </p>
+                <p style="line-height: 1.7;">
+                    Ainda assim, a base cumpre papel relevante ao <strong>subsidiar as análises exploratórias iniciais do PLI/SP</strong>, 
+                    permitindo a <strong>identificação preliminar de padrões e tendências territoriais</strong>. 
+                    Essas informações são valiosas para <strong>orientar a priorização de ações</strong> que demandam esforços mais aprofundados — 
+                    como levantamentos de campo, estudos de viabilidade e diagnósticos localizados — concentrando recursos onde os indícios iniciais sugerem maior relevância.
+                </p>
             </div>
         </section>
     </main>
