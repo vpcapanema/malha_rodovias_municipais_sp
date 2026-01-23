@@ -1,7 +1,7 @@
 [
   {
     "Cod_ibge": "3509908",
-    "Municipio": "CananÃ©ia",
+    "Municipio": "Cananéia",
     "RA": "RA de Registro",
     "Area_Km2": 1249.22,
     "Pop_2025": 12491,
@@ -76,7 +76,7 @@
   },
   {
     "Cod_ibge": "3536208",
-    "Municipio": "Pariquera-AÃ§u",
+    "Municipio": "Pariquera-Açu",
     "RA": "RA de Registro",
     "Area_Km2": 359.74,
     "Pop_2025": 19603,
@@ -121,7 +121,7 @@
   },
   {
     "Cod_ibge": "3522653",
-    "Municipio": "ItapirapuÃ£ Paulista",
+    "Municipio": "Itapirapuã Paulista",
     "RA": "RA de Itapeva",
     "Area_Km2": 407.21,
     "Pop_2025": 4420,
@@ -166,7 +166,7 @@
   },
   {
     "Cod_ibge": "3505351",
-    "Municipio": "Barra do ChapÃ©u",
+    "Municipio": "Barra do Chapéu",
     "RA": "RA de Itapeva",
     "Area_Km2": 406.57,
     "Pop_2025": 5254,
@@ -196,7 +196,7 @@
   },
   {
     "Cod_ibge": "3507159",
-    "Municipio": "Bom Sucesso de ItararÃ©",
+    "Municipio": "Bom Sucesso de Itararé",
     "RA": "RA de Itapeva",
     "Area_Km2": 134.92,
     "Pop_2025": 3609,
@@ -211,7 +211,7 @@
   },
   {
     "Cod_ibge": "3502705",
-    "Municipio": "ApiaÃ­",
+    "Municipio": "Apiaí",
     "RA": "RA de Itapeva",
     "Area_Km2": 978.51,
     "Pop_2025": 24857,
@@ -256,7 +256,7 @@
   },
   {
     "Cod_ibge": "3537602",
-    "Municipio": "PeruÃ­be",
+    "Municipio": "Peruíbe",
     "RA": "RA de Santos",
     "Area_Km2": 322.9,
     "Pop_2025": 70629,
@@ -271,7 +271,7 @@
   },
   {
     "Cod_ibge": "3543006",
-    "Municipio": "RibeirÃ£o Branco",
+    "Municipio": "Ribeirão Branco",
     "RA": "RA de Itapeva",
     "Area_Km2": 699.24,
     "Pop_2025": 18942,
@@ -331,7 +331,7 @@
   },
   {
     "Cod_ibge": "3543253",
-    "Municipio": "RibeirÃ£o Grande",
+    "Municipio": "Ribeirão Grande",
     "RA": "RA de Itapeva",
     "Area_Km2": 333.45,
     "Pop_2025": 7571,
@@ -346,7 +346,7 @@
   },
   {
     "Cod_ibge": "3526100",
-    "Municipio": "JuquiÃ¡",
+    "Municipio": "Juquiá",
     "RA": "RA de Registro",
     "Area_Km2": 813.33,
     "Pop_2025": 17184,
@@ -376,7 +376,7 @@
   },
   {
     "Cod_ibge": "3531100",
-    "Municipio": "MongaguÃ¡",
+    "Municipio": "Mongaguá",
     "RA": "RA de Santos",
     "Area_Km2": 141.84,
     "Pop_2025": 64845,
@@ -421,7 +421,7 @@
   },
   {
     "Cod_ibge": "3522109",
-    "Municipio": "ItanhaÃ©m",
+    "Municipio": "Itanhaém",
     "RA": "RA de Santos",
     "Area_Km2": 598.92,
     "Pop_2025": 118495,
@@ -436,7 +436,7 @@
   },
   {
     "Cod_ibge": "3551009",
-    "Municipio": "SÃ£o Vicente",
+    "Municipio": "São Vicente",
     "RA": "RA de Santos",
     "Area_Km2": 150.25,
     "Pop_2025": 338326,
@@ -451,7 +451,7 @@
   },
   {
     "Cod_ibge": "3523206",
-    "Municipio": "ItararÃ©",
+    "Municipio": "Itararé",
     "RA": "RA de Itapeva",
     "Area_Km2": 1004.21,
     "Pop_2025": 45213,
@@ -466,7 +466,7 @@
   },
   {
     "Cod_ibge": "3553500",
-    "Municipio": "TapiraÃ­",
+    "Municipio": "Tapiraí",
     "RA": "RA de Sorocaba",
     "Area_Km2": 755.16,
     "Pop_2025": 8122,
@@ -481,7 +481,7 @@
   },
   {
     "Cod_ibge": "3518701",
-    "Municipio": "GuarujÃ¡",
+    "Municipio": "Guarujá",
     "RA": "RA de Santos",
     "Area_Km2": 143.3,
     "Pop_2025": 294871,
@@ -496,7 +496,7 @@
   },
   {
     "Cod_ibge": "3553856",
-    "Municipio": "TaquarivaÃ­",
+    "Municipio": "Taquarivaí",
     "RA": "RA de Itapeva",
     "Area_Km2": 231.51,
     "Pop_2025": 7170,
@@ -512,7 +512,7 @@
   {
     "Cod_ibge": "3526209",
     "Municipio": "Juquitiba",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 522.19,
     "Pop_2025": 27969,
     "extensao_km": 37.96,
@@ -526,7 +526,7 @@
   },
   {
     "Cod_ibge": "3510203",
-    "Municipio": "CapÃ£o Bonito",
+    "Municipio": "Capão Bonito",
     "RA": "RA de Itapeva",
     "Area_Km2": 1643.16,
     "Pop_2025": 47409,
@@ -541,7 +541,7 @@
   },
   {
     "Cod_ibge": "3513504",
-    "Municipio": "CubatÃ£o",
+    "Municipio": "Cubatão",
     "RA": "RA de Santos",
     "Area_Km2": 143.18,
     "Pop_2025": 114870,
@@ -556,8 +556,8 @@
   },
   {
     "Cod_ibge": "3549953",
-    "Municipio": "SÃ£o LourenÃ§o da Serra",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "São Lourenço da Serra",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 187.04,
     "Pop_2025": 16479,
     "extensao_km": 43.21,
@@ -571,8 +571,8 @@
   },
   {
     "Cod_ibge": "3515103",
-    "Municipio": "Embu-GuaÃ§u",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Embu-Guaçu",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 155.04,
     "Pop_2025": 68913,
     "extensao_km": 37.6,
@@ -601,7 +601,7 @@
   },
   {
     "Cod_ibge": "3550209",
-    "Municipio": "SÃ£o Miguel Arcanjo",
+    "Municipio": "São Miguel Arcanjo",
     "RA": "RA de Sorocaba",
     "Area_Km2": 932.61,
     "Pop_2025": 32924,
@@ -632,7 +632,7 @@
   {
     "Cod_ibge": "3520400",
     "Municipio": "Ilhabela",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 347.29,
     "Pop_2025": 36559,
     "extensao_km": 8.0,
@@ -662,7 +662,7 @@
   {
     "Cod_ibge": "3544103",
     "Municipio": "Rio Grande da Serra",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 36.45,
     "Pop_2025": 45324,
     "extensao_km": 19.65,
@@ -676,7 +676,7 @@
   },
   {
     "Cod_ibge": "3521705",
-    "Municipio": "ItaberÃ¡",
+    "Municipio": "Itaberá",
     "RA": "RA de Itapeva",
     "Area_Km2": 1104.0,
     "Pop_2025": 18263,
@@ -692,7 +692,7 @@
   {
     "Cod_ibge": "3522208",
     "Municipio": "Itapecerica da Serra",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 150.7,
     "Pop_2025": 163003,
     "extensao_km": 34.4,
@@ -707,7 +707,7 @@
   {
     "Cod_ibge": "3513801",
     "Municipio": "Diadema",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 30.64,
     "Pop_2025": 403579,
     "extensao_km": 6.86,
@@ -721,8 +721,8 @@
   },
   {
     "Cod_ibge": "3550704",
-    "Municipio": "SÃ£o SebastiÃ£o",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "São Sebastião",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 400.38,
     "Pop_2025": 84280,
     "extensao_km": 5.21,
@@ -751,8 +751,8 @@
   },
   {
     "Cod_ibge": "3548708",
-    "Municipio": "SÃ£o Bernardo do Campo",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "São Bernardo do Campo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 409.93,
     "Pop_2025": 841154,
     "extensao_km": 22.13,
@@ -781,8 +781,8 @@
   },
   {
     "Cod_ibge": "3543303",
-    "Municipio": "RibeirÃ£o Pires",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Ribeirão Pires",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 98.76,
     "Pop_2025": 118954,
     "extensao_km": 20.79,
@@ -796,8 +796,8 @@
   },
   {
     "Cod_ibge": "3529401",
-    "Municipio": "MauÃ¡",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Mauá",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 61.98,
     "Pop_2025": 429014,
     "extensao_km": 28.34,
@@ -812,7 +812,7 @@
   {
     "Cod_ibge": "3515004",
     "Municipio": "Embu das Artes",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 70.33,
     "Pop_2025": 259788,
     "extensao_km": 36.54,
@@ -826,8 +826,8 @@
   },
   {
     "Cod_ibge": "3547809",
-    "Municipio": "Santo AndrÃ©",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Santo André",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 174.36,
     "Pop_2025": 782048,
     "extensao_km": 9.09,
@@ -841,8 +841,8 @@
   },
   {
     "Cod_ibge": "3548807",
-    "Municipio": "SÃ£o Caetano do Sul",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "São Caetano do Sul",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 15.4,
     "Pop_2025": 172693,
     "extensao_km": 0.0,
@@ -856,7 +856,7 @@
   },
   {
     "Cod_ibge": "3519709",
-    "Municipio": "IbiÃºna",
+    "Municipio": "Ibiúna",
     "RA": "RA de Sorocaba",
     "Area_Km2": 1057.65,
     "Pop_2025": 77801,
@@ -871,8 +871,8 @@
   },
   {
     "Cod_ibge": "3552809",
-    "Municipio": "TaboÃ£o da Serra",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Taboão da Serra",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 20.52,
     "Pop_2025": 285307,
     "extensao_km": 0.0,
@@ -902,7 +902,7 @@
   {
     "Cod_ibge": "3556453",
     "Municipio": "Vargem Grande Paulista",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 42.42,
     "Pop_2025": 52352,
     "extensao_km": 12.71,
@@ -932,7 +932,7 @@
   {
     "Cod_ibge": "3513009",
     "Municipio": "Cotia",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 323.97,
     "Pop_2025": 289493,
     "extensao_km": 82.52,
@@ -961,7 +961,7 @@
   },
   {
     "Cod_ibge": "3551108",
-    "Municipio": "SarapuÃ­",
+    "Municipio": "Sarapuí",
     "RA": "RA de Sorocaba",
     "Area_Km2": 353.45,
     "Pop_2025": 10677,
@@ -1007,7 +1007,7 @@
   {
     "Cod_ibge": "3525003",
     "Municipio": "Jandira",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 17.5,
     "Pop_2025": 121550,
     "extensao_km": 7.05,
@@ -1022,7 +1022,7 @@
   {
     "Cod_ibge": "3515707",
     "Municipio": "Ferraz de Vasconcelos",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 29.16,
     "Pop_2025": 186479,
     "extensao_km": 13.48,
@@ -1036,8 +1036,8 @@
   },
   {
     "Cod_ibge": "3510609",
-    "Municipio": "CarapicuÃ­ba",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Carapicuíba",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 36.18,
     "Pop_2025": 398236,
     "extensao_km": 3.7,
@@ -1067,7 +1067,7 @@
   {
     "Cod_ibge": "3506607",
     "Municipio": "Biritiba Mirim",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 317.45,
     "Pop_2025": 30564,
     "extensao_km": 61.71,
@@ -1081,8 +1081,8 @@
   },
   {
     "Cod_ibge": "3539806",
-    "Municipio": "PoÃ¡",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Poá",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 17.35,
     "Pop_2025": 106355,
     "extensao_km": 5.35,
@@ -1097,7 +1097,7 @@
   {
     "Cod_ibge": "3522505",
     "Municipio": "Itapevi",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 82.59,
     "Pop_2025": 242995,
     "extensao_km": 32.02,
@@ -1142,7 +1142,7 @@
   {
     "Cod_ibge": "3552502",
     "Municipio": "Suzano",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 206.52,
     "Pop_2025": 320261,
     "extensao_km": 83.98,
@@ -1157,7 +1157,7 @@
   {
     "Cod_ibge": "3510500",
     "Municipio": "Caraguatatuba",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 482.74,
     "Pop_2025": 142248,
     "extensao_km": 33.23,
@@ -1171,8 +1171,8 @@
   },
   {
     "Cod_ibge": "3545001",
-    "Municipio": "SalesÃ³polis",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Salesópolis",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 425.79,
     "Pop_2025": 15381,
     "extensao_km": 41.1,
@@ -1187,7 +1187,7 @@
   {
     "Cod_ibge": "3505708",
     "Municipio": "Barueri",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 64.12,
     "Pop_2025": 333737,
     "extensao_km": 6.41,
@@ -1201,7 +1201,7 @@
   },
   {
     "Cod_ibge": "3501152",
-    "Municipio": "AlumÃ­nio",
+    "Municipio": "Alumínio",
     "RA": "RA de Sorocaba",
     "Area_Km2": 84.07,
     "Pop_2025": 17607,
@@ -1217,7 +1217,7 @@
   {
     "Cod_ibge": "3534401",
     "Municipio": "Osasco",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 64.91,
     "Pop_2025": 759524,
     "extensao_km": 10.11,
@@ -1231,7 +1231,7 @@
   },
   {
     "Cod_ibge": "3505005",
-    "Municipio": "BarÃ£o de Antonina",
+    "Municipio": "Barão de Antonina",
     "RA": "RA de Itapeva",
     "Area_Km2": 154.2,
     "Pop_2025": 3632,
@@ -1246,7 +1246,7 @@
   },
   {
     "Cod_ibge": "3502903",
-    "Municipio": "AraÃ§oiaba da Serra",
+    "Municipio": "Araçoiaba da Serra",
     "RA": "RA de Sorocaba",
     "Area_Km2": 255.7,
     "Pop_2025": 33832,
@@ -1277,7 +1277,7 @@
   {
     "Cod_ibge": "3523107",
     "Municipio": "Itaquaquecetuba",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 82.1,
     "Pop_2025": 382983,
     "extensao_km": 36.69,
@@ -1291,7 +1291,7 @@
   },
   {
     "Cod_ibge": "3550605",
-    "Municipio": "SÃ£o Roque",
+    "Municipio": "São Roque",
     "RA": "RA de Sorocaba",
     "Area_Km2": 307.1,
     "Pop_2025": 81366,
@@ -1336,7 +1336,7 @@
   },
   {
     "Cod_ibge": "3553005",
-    "Municipio": "TaguaÃ­",
+    "Municipio": "Taguaí",
     "RA": "RA de Itapeva",
     "Area_Km2": 145.77,
     "Pop_2025": 13068,
@@ -1351,8 +1351,8 @@
   },
   {
     "Cod_ibge": "3547304",
-    "Municipio": "Santana de ParnaÃ­ba",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Santana de Parnaíba",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 180.15,
     "Pop_2025": 163787,
     "extensao_km": 21.49,
@@ -1381,8 +1381,8 @@
   },
   {
     "Cod_ibge": "3550308",
-    "Municipio": "SÃ£o Paulo",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "São Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 1521.68,
     "Pop_2025": 11904961,
     "extensao_km": 122.28,
@@ -1396,7 +1396,7 @@
   },
   {
     "Cod_ibge": "3502754",
-    "Municipio": "AraÃ§ariguama",
+    "Municipio": "Araçariguama",
     "RA": "RA de Sorocaba",
     "Area_Km2": 145.87,
     "Pop_2025": 22314,
@@ -1427,7 +1427,7 @@
   {
     "Cod_ibge": "3530607",
     "Municipio": "Mogi das Cruzes",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 712.4,
     "Pop_2025": 470302,
     "extensao_km": 97.64,
@@ -1442,7 +1442,7 @@
   {
     "Cod_ibge": "3546009",
     "Municipio": "Santa Branca",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 271.55,
     "Pop_2025": 14219,
     "extensao_km": 51.25,
@@ -1456,7 +1456,7 @@
   },
   {
     "Cod_ibge": "3521002",
-    "Municipio": "IperÃ³",
+    "Municipio": "Iperó",
     "RA": "RA de Sorocaba",
     "Area_Km2": 170.39,
     "Pop_2025": 38277,
@@ -1472,7 +1472,7 @@
   {
     "Cod_ibge": "3509007",
     "Municipio": "Caieiras",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 96.6,
     "Pop_2025": 98549,
     "extensao_km": 34.28,
@@ -1486,8 +1486,8 @@
   },
   {
     "Cod_ibge": "3503901",
-    "Municipio": "ArujÃ¡",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Arujá",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 95.88,
     "Pop_2025": 90273,
     "extensao_km": 24.95,
@@ -1502,7 +1502,7 @@
   {
     "Cod_ibge": "3539103",
     "Municipio": "Pirapora do Bom Jesus",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 109.23,
     "Pop_2025": 18925,
     "extensao_km": 22.54,
@@ -1517,7 +1517,7 @@
   {
     "Cod_ibge": "3518305",
     "Municipio": "Guararema",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 271.27,
     "Pop_2025": 32620,
     "extensao_km": 44.21,
@@ -1532,7 +1532,7 @@
   {
     "Cod_ibge": "3535606",
     "Municipio": "Paraibuna",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 808.46,
     "Pop_2025": 17959,
     "extensao_km": 61.28,
@@ -1547,7 +1547,7 @@
   {
     "Cod_ibge": "3509205",
     "Municipio": "Cajamar",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 131.04,
     "Pop_2025": 98365,
     "extensao_km": 45.31,
@@ -1562,7 +1562,7 @@
   {
     "Cod_ibge": "3532306",
     "Municipio": "Natividade da Serra",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 832.0,
     "Pop_2025": 7155,
     "extensao_km": 89.9,
@@ -1577,7 +1577,7 @@
   {
     "Cod_ibge": "3518800",
     "Municipio": "Guarulhos",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 318.86,
     "Pop_2025": 1349100,
     "extensao_km": 25.36,
@@ -1606,7 +1606,7 @@
   },
   {
     "Cod_ibge": "3554201",
-    "Municipio": "TejupÃ¡",
+    "Municipio": "Tejupá",
     "RA": "RA de Itapeva",
     "Area_Km2": 298.09,
     "Pop_2025": 4119,
@@ -1651,7 +1651,7 @@
   },
   {
     "Cod_ibge": "3518503",
-    "Municipio": "GuareÃ­",
+    "Municipio": "Guareí",
     "RA": "RA de Sorocaba",
     "Area_Km2": 568.67,
     "Pop_2025": 15285,
@@ -1667,7 +1667,7 @@
   {
     "Cod_ibge": "3516408",
     "Municipio": "Franco da Rocha",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 133.26,
     "Pop_2025": 150241,
     "extensao_km": 37.52,
@@ -1682,7 +1682,7 @@
   {
     "Cod_ibge": "3516309",
     "Municipio": "Francisco Morato",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 48.61,
     "Pop_2025": 171476,
     "extensao_km": 14.76,
@@ -1696,7 +1696,7 @@
   },
   {
     "Cod_ibge": "3521804",
-    "Municipio": "ItaÃ­",
+    "Municipio": "Itaí",
     "RA": "RA de Itapeva",
     "Area_Km2": 1092.25,
     "Pop_2025": 25979,
@@ -1711,8 +1711,8 @@
   },
   {
     "Cod_ibge": "3528502",
-    "Municipio": "MairiporÃ£",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "Municipio": "Mairiporã",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 320.91,
     "Pop_2025": 97835,
     "extensao_km": 100.63,
@@ -1741,7 +1741,7 @@
   },
   {
     "Cod_ibge": "3554003",
-    "Municipio": "TatuÃ­",
+    "Municipio": "Tatuí",
     "RA": "RA de Sorocaba",
     "Area_Km2": 524.57,
     "Pop_2025": 129130,
@@ -1756,7 +1756,7 @@
   },
   {
     "Cod_ibge": "3508405",
-    "Municipio": "CabreÃºva",
+    "Municipio": "Cabreúva",
     "RA": "RA de Campinas",
     "Area_Km2": 260.29,
     "Pop_2025": 48654,
@@ -1772,7 +1772,7 @@
   {
     "Cod_ibge": "3555406",
     "Municipio": "Ubatuba",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 708.77,
     "Pop_2025": 97096,
     "extensao_km": 29.8,
@@ -1802,7 +1802,7 @@
   {
     "Cod_ibge": "3524907",
     "Municipio": "Jambeiro",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 183.99,
     "Pop_2025": 6611,
     "extensao_km": 15.35,
@@ -1832,7 +1832,7 @@
   {
     "Cod_ibge": "3546801",
     "Municipio": "Santa Isabel",
-    "RA": "RegiÃ£o Metropolitana de SÃ£o Paulo",
+    "RA": "Região Metropolitana de São Paulo",
     "Area_Km2": 363.14,
     "Pop_2025": 54691,
     "extensao_km": 45.18,
@@ -1846,7 +1846,7 @@
   },
   {
     "Cod_ibge": "3551207",
-    "Municipio": "SarutaiÃ¡",
+    "Municipio": "Sarutaiá",
     "RA": "RA de Itapeva",
     "Area_Km2": 141.89,
     "Pop_2025": 3772,
@@ -1861,7 +1861,7 @@
   },
   {
     "Cod_ibge": "3556503",
-    "Municipio": "VÃ¡rzea Paulista",
+    "Municipio": "Várzea Paulista",
     "RA": "RA de Campinas",
     "Area_Km2": 34.93,
     "Pop_2025": 119655,
@@ -1876,8 +1876,8 @@
   },
   {
     "Cod_ibge": "3524402",
-    "Municipio": "JacareÃ­",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Jacareí",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 463.58,
     "Pop_2025": 250952,
     "extensao_km": 41.37,
@@ -1891,8 +1891,8 @@
   },
   {
     "Cod_ibge": "3542305",
-    "Municipio": "RedenÃ§Ã£o da Serra",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Redenção da Serra",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 309.13,
     "Pop_2025": 4637,
     "extensao_km": 31.67,
@@ -1936,7 +1936,7 @@
   },
   {
     "Cod_ibge": "3511607",
-    "Municipio": "CesÃ¡rio Lange",
+    "Municipio": "Cesário Lange",
     "RA": "RA de Sorocaba",
     "Area_Km2": 191.37,
     "Pop_2025": 19707,
@@ -1967,7 +1967,7 @@
   {
     "Cod_ibge": "3554607",
     "Municipio": "Timburi",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 198.45,
     "Pop_2025": 2484,
     "extensao_km": 13.73,
@@ -1981,7 +1981,7 @@
   },
   {
     "Cod_ibge": "3507100",
-    "Municipio": "Bom Jesus dos PerdÃµes",
+    "Municipio": "Bom Jesus dos Perdões",
     "RA": "RA de Campinas",
     "Area_Km2": 108.34,
     "Pop_2025": 22579,
@@ -2011,7 +2011,7 @@
   },
   {
     "Cod_ibge": "3532405",
-    "Municipio": "NazarÃ© Paulista",
+    "Municipio": "Nazaré Paulista",
     "RA": "RA de Campinas",
     "Area_Km2": 326.09,
     "Pop_2025": 18675,
@@ -2056,8 +2056,8 @@
   },
   {
     "Cod_ibge": "3550001",
-    "Municipio": "SÃ£o Luiz do Paraitinga",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "São Luiz do Paraitinga",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 617.96,
     "Pop_2025": 10487,
     "extensao_km": 11.41,
@@ -2086,7 +2086,7 @@
   },
   {
     "Cod_ibge": "3525904",
-    "Municipio": "JundiaÃ­",
+    "Municipio": "Jundiaí",
     "RA": "RA de Campinas",
     "Area_Km2": 430.73,
     "Pop_2025": 463039,
@@ -2192,7 +2192,7 @@
   {
     "Cod_ibge": "3526308",
     "Municipio": "Lagoinha",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 255.15,
     "Pop_2025": 5183,
     "extensao_km": 29.8,
@@ -2251,8 +2251,8 @@
   },
   {
     "Cod_ibge": "3520202",
-    "Municipio": "IgaratÃ¡",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Igaratá",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 292.89,
     "Pop_2025": 10984,
     "extensao_km": 24.86,
@@ -2297,7 +2297,7 @@
   {
     "Cod_ibge": "3520905",
     "Municipio": "Ipaussu",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 208.96,
     "Pop_2025": 13935,
     "extensao_km": 20.9,
@@ -2326,8 +2326,8 @@
   },
   {
     "Cod_ibge": "3508504",
-    "Municipio": "CaÃ§apava",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Caçapava",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 369.78,
     "Pop_2025": 100071,
     "extensao_km": 32.93,
@@ -2342,7 +2342,7 @@
   {
     "Cod_ibge": "3510153",
     "Municipio": "Canitar",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 57.87,
     "Pop_2025": 6589,
     "extensao_km": 8.13,
@@ -2401,8 +2401,8 @@
   },
   {
     "Cod_ibge": "3554102",
-    "Municipio": "TaubatÃ©",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Taubaté",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 624.68,
     "Pop_2025": 322397,
     "extensao_km": 78.3,
@@ -2432,7 +2432,7 @@
   {
     "Cod_ibge": "3557204",
     "Municipio": "Chavantes",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 189.36,
     "Pop_2025": 12415,
     "extensao_km": 8.52,
@@ -2477,7 +2477,7 @@
   {
     "Cod_ibge": "3506300",
     "Municipio": "Bernardino de Campos",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 245.67,
     "Pop_2025": 11881,
     "extensao_km": 32.8,
@@ -2506,7 +2506,7 @@
   },
   {
     "Cod_ibge": "3511409",
-    "Municipio": "Cerqueira CÃ©sar",
+    "Municipio": "Cerqueira César",
     "RA": "RA de Sorocaba",
     "Area_Km2": 515.25,
     "Pop_2025": 22210,
@@ -2521,8 +2521,8 @@
   },
   {
     "Cod_ibge": "3533809",
-    "Municipio": "Ãleo",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Óleo",
+    "RA": "RA de Marília",
     "Area_Km2": 198.7,
     "Pop_2025": 2535,
     "extensao_km": 28.62,
@@ -2536,7 +2536,7 @@
   },
   {
     "Cod_ibge": "3554508",
-    "Municipio": "TietÃª",
+    "Municipio": "Tietê",
     "RA": "RA de Sorocaba",
     "Area_Km2": 405.45,
     "Pop_2025": 38723,
@@ -2551,8 +2551,8 @@
   },
   {
     "Cod_ibge": "3554805",
-    "Municipio": "TremembÃ©",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Tremembé",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 191.74,
     "Pop_2025": 53426,
     "extensao_km": 30.87,
@@ -2596,7 +2596,7 @@
   },
   {
     "Cod_ibge": "3525508",
-    "Municipio": "JoanÃ³polis",
+    "Municipio": "Joanópolis",
     "RA": "RA de Campinas",
     "Area_Km2": 373.37,
     "Pop_2025": 13131,
@@ -2627,7 +2627,7 @@
   {
     "Cod_ibge": "3534708",
     "Municipio": "Ourinhos",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 298.25,
     "Pop_2025": 106911,
     "extensao_km": 36.26,
@@ -2642,7 +2642,7 @@
   {
     "Cod_ibge": "3544301",
     "Municipio": "Roseira",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 130.23,
     "Pop_2025": 11137,
     "extensao_km": 25.22,
@@ -2672,7 +2672,7 @@
   {
     "Cod_ibge": "3531704",
     "Municipio": "Monteiro Lobato",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 332.28,
     "Pop_2025": 4205,
     "extensao_km": 50.92,
@@ -2686,7 +2686,7 @@
   },
   {
     "Cod_ibge": "3519071",
-    "Municipio": "HortolÃ¢ndia",
+    "Municipio": "Hortolândia",
     "RA": "RA de Campinas",
     "Area_Km2": 61.81,
     "Pop_2025": 248842,
@@ -2701,7 +2701,7 @@
   },
   {
     "Cod_ibge": "3504503",
-    "Municipio": "AvarÃ©",
+    "Municipio": "Avaré",
     "RA": "RA de Sorocaba",
     "Area_Km2": 1219.61,
     "Pop_2025": 96450,
@@ -2716,7 +2716,7 @@
   },
   {
     "Cod_ibge": "3507605",
-    "Municipio": "BraganÃ§a Paulista",
+    "Municipio": "Bragança Paulista",
     "RA": "RA de Campinas",
     "Area_Km2": 513.0,
     "Pop_2025": 185688,
@@ -2746,8 +2746,8 @@
   },
   {
     "Cod_ibge": "3549904",
-    "Municipio": "SÃ£o JosÃ© dos Campos",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "São José dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 1098.91,
     "Pop_2025": 727078,
     "extensao_km": 101.0,
@@ -2762,7 +2762,7 @@
   {
     "Cod_ibge": "3502507",
     "Municipio": "Aparecida",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 121.69,
     "Pop_2025": 33141,
     "extensao_km": 22.77,
@@ -2807,7 +2807,7 @@
   {
     "Cod_ibge": "3513603",
     "Municipio": "Cunha",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 1407.33,
     "Pop_2025": 22460,
     "extensao_km": 195.02,
@@ -2822,7 +2822,7 @@
   {
     "Cod_ibge": "3545407",
     "Municipio": "Salto Grande",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 190.45,
     "Pop_2025": 9221,
     "extensao_km": 17.43,
@@ -2837,7 +2837,7 @@
   {
     "Cod_ibge": "3540754",
     "Municipio": "Potim",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 44.54,
     "Pop_2025": 20801,
     "extensao_km": 22.44,
@@ -2851,7 +2851,7 @@
   },
   {
     "Cod_ibge": "3552403",
-    "Municipio": "SumarÃ©",
+    "Municipio": "Sumaré",
     "RA": "RA de Campinas",
     "Area_Km2": 153.39,
     "Pop_2025": 291116,
@@ -2866,8 +2866,8 @@
   },
   {
     "Cod_ibge": "3516101",
-    "Municipio": "FlorÃ­nea",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Florínea",
+    "RA": "RA de Marília",
     "Area_Km2": 228.86,
     "Pop_2025": 4022,
     "extensao_km": 19.31,
@@ -2896,8 +2896,8 @@
   },
   {
     "Cod_ibge": "3548203",
-    "Municipio": "Santo AntÃ´nio do Pinhal",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Santo Antônio do Pinhal",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 136.56,
     "Pop_2025": 7314,
     "extensao_km": 22.83,
@@ -2926,7 +2926,7 @@
   },
   {
     "Cod_ibge": "3541059",
-    "Municipio": "PratÃ¢nia",
+    "Municipio": "Pratânia",
     "RA": "RA de Sorocaba",
     "Area_Km2": 175.3,
     "Pop_2025": 5264,
@@ -2942,7 +2942,7 @@
   {
     "Cod_ibge": "3537156",
     "Municipio": "Pedrinhas Paulista",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 154.24,
     "Pop_2025": 2833,
     "extensao_km": 0.0,
@@ -2986,7 +2986,7 @@
   },
   {
     "Cod_ibge": "3500550",
-    "Municipio": "Ãguas de Santa BÃ¡rbara",
+    "Municipio": "Águas de Santa Bárbara",
     "RA": "RA de Sorocaba",
     "Area_Km2": 406.6,
     "Pop_2025": 7460,
@@ -3017,7 +3017,7 @@
   {
     "Cod_ibge": "3538006",
     "Municipio": "Pindamonhangaba",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 729.17,
     "Pop_2025": 172681,
     "extensao_km": 73.23,
@@ -3046,7 +3046,7 @@
   },
   {
     "Cod_ibge": "3545803",
-    "Municipio": "Santa BÃ¡rbara d'Oeste",
+    "Municipio": "Santa Bárbara d'Oeste",
     "RA": "RA de Campinas",
     "Area_Km2": 272.66,
     "Pop_2025": 189456,
@@ -3062,7 +3062,7 @@
   {
     "Cod_ibge": "3535309",
     "Municipio": "Palmital",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 552.32,
     "Pop_2025": 19714,
     "extensao_km": 44.19,
@@ -3092,7 +3092,7 @@
   {
     "Cod_ibge": "3519501",
     "Municipio": "Ibirarema",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 229.78,
     "Pop_2025": 6450,
     "extensao_km": 31.42,
@@ -3106,7 +3106,7 @@
   },
   {
     "Cod_ibge": "3536505",
-    "Municipio": "PaulÃ­nia",
+    "Municipio": "Paulínia",
     "RA": "RA de Campinas",
     "Area_Km2": 140.05,
     "Pop_2025": 116674,
@@ -3122,7 +3122,7 @@
   {
     "Cod_ibge": "3509957",
     "Municipio": "Canas",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 52.87,
     "Pop_2025": 5068,
     "extensao_km": 8.23,
@@ -3136,8 +3136,8 @@
   },
   {
     "Cod_ibge": "3553955",
-    "Municipio": "TarumÃ£",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Tarumã",
+    "RA": "RA de Marília",
     "Area_Km2": 305.76,
     "Pop_2025": 15315,
     "extensao_km": 26.19,
@@ -3151,8 +3151,8 @@
   },
   {
     "Cod_ibge": "3510005",
-    "Municipio": "CÃ¢ndido Mota",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Cândido Mota",
+    "RA": "RA de Marília",
     "Area_Km2": 600.99,
     "Pop_2025": 30157,
     "extensao_km": 76.72,
@@ -3166,8 +3166,8 @@
   },
   {
     "Cod_ibge": "3513306",
-    "Municipio": "CruzÃ¡lia",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Cruzália",
+    "RA": "RA de Marília",
     "Area_Km2": 149.87,
     "Pop_2025": 2123,
     "extensao_km": 22.45,
@@ -3196,8 +3196,8 @@
   },
   {
     "Cod_ibge": "3543204",
-    "Municipio": "RibeirÃ£o do Sul",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Ribeirão do Sul",
+    "RA": "RA de Marília",
     "Area_Km2": 204.52,
     "Pop_2025": 4776,
     "extensao_km": 51.97,
@@ -3242,7 +3242,7 @@
   {
     "Cod_ibge": "3527207",
     "Municipio": "Lorena",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 413.69,
     "Pop_2025": 87468,
     "extensao_km": 48.34,
@@ -3256,7 +3256,7 @@
   },
   {
     "Cod_ibge": "3524709",
-    "Municipio": "JaguariÃºna",
+    "Municipio": "Jaguariúna",
     "RA": "RA de Campinas",
     "Area_Km2": 141.38,
     "Pop_2025": 62309,
@@ -3271,8 +3271,8 @@
   },
   {
     "Cod_ibge": "3518404",
-    "Municipio": "GuaratinguetÃ¡",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Guaratinguetá",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 750.88,
     "Pop_2025": 121916,
     "extensao_km": 71.38,
@@ -3286,8 +3286,8 @@
   },
   {
     "Cod_ibge": "3549607",
-    "Municipio": "SÃ£o JosÃ© do Barreiro",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "São José do Barreiro",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 570.95,
     "Pop_2025": 3888,
     "extensao_km": 18.29,
@@ -3302,7 +3302,7 @@
   {
     "Cod_ibge": "3552007",
     "Municipio": "Silveiras",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 414.75,
     "Pop_2025": 6329,
     "extensao_km": 49.2,
@@ -3346,8 +3346,8 @@
   },
   {
     "Cod_ibge": "3509700",
-    "Municipio": "Campos do JordÃ£o",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Campos do Jordão",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 288.66,
     "Pop_2025": 47956,
     "extensao_km": 72.64,
@@ -3362,7 +3362,7 @@
   {
     "Cod_ibge": "3504909",
     "Municipio": "Bananal",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 616.27,
     "Pop_2025": 10097,
     "extensao_km": 7.81,
@@ -3376,7 +3376,7 @@
   },
   {
     "Cod_ibge": "3500600",
-    "Municipio": "Ãguas de SÃ£o Pedro",
+    "Municipio": "Águas de São Pedro",
     "RA": "RA de Campinas",
     "Area_Km2": 3.62,
     "Pop_2025": 2928,
@@ -3391,8 +3391,8 @@
   },
   {
     "Cod_ibge": "3515194",
-    "Municipio": "EspÃ­rito Santo do Turvo",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Espírito Santo do Turvo",
+    "RA": "RA de Marília",
     "Area_Km2": 193.92,
     "Pop_2025": 4214,
     "extensao_km": 13.99,
@@ -3406,8 +3406,8 @@
   },
   {
     "Cod_ibge": "3548609",
-    "Municipio": "SÃ£o Bento do SapucaÃ­",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "São Bento do Sapucaí",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 251.38,
     "Pop_2025": 11989,
     "extensao_km": 47.79,
@@ -3421,8 +3421,8 @@
   },
   {
     "Cod_ibge": "3503158",
-    "Municipio": "ArapeÃ­",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "Municipio": "Arapeí",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 155.13,
     "Pop_2025": 2355,
     "extensao_km": 5.11,
@@ -3436,7 +3436,7 @@
   },
   {
     "Cod_ibge": "3512803",
-    "Municipio": "CosmÃ³polis",
+    "Municipio": "Cosmópolis",
     "RA": "RA de Campinas",
     "Area_Km2": 155.42,
     "Pop_2025": 61167,
@@ -3467,7 +3467,7 @@
   {
     "Cod_ibge": "3508603",
     "Municipio": "Cachoeira Paulista",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 287.61,
     "Pop_2025": 32534,
     "extensao_km": 51.03,
@@ -3481,7 +3481,7 @@
   },
   {
     "Cod_ibge": "3548005",
-    "Municipio": "Santo AntÃ´nio de Posse",
+    "Municipio": "Santo Antônio de Posse",
     "RA": "RA de Campinas",
     "Area_Km2": 153.66,
     "Pop_2025": 23867,
@@ -3511,7 +3511,7 @@
   },
   {
     "Cod_ibge": "3550100",
-    "Municipio": "SÃ£o Manuel",
+    "Municipio": "São Manuel",
     "RA": "RA de Sorocaba",
     "Area_Km2": 651.69,
     "Pop_2025": 38131,
@@ -3526,7 +3526,7 @@
   },
   {
     "Cod_ibge": "3503604",
-    "Municipio": "AreiÃ³polis",
+    "Municipio": "Areiópolis",
     "RA": "RA de Sorocaba",
     "Area_Km2": 85.92,
     "Pop_2025": 10242,
@@ -3557,7 +3557,7 @@
   {
     "Cod_ibge": "3539707",
     "Municipio": "Platina",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 329.17,
     "Pop_2025": 3055,
     "extensao_km": 31.13,
@@ -3587,7 +3587,7 @@
   {
     "Cod_ibge": "3503505",
     "Municipio": "Areias",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 303.8,
     "Pop_2025": 3617,
     "extensao_km": 13.53,
@@ -3601,7 +3601,7 @@
   },
   {
     "Cod_ibge": "3521408",
-    "Municipio": "IracemÃ¡polis",
+    "Municipio": "Iracemápolis",
     "RA": "RA de Campinas",
     "Area_Km2": 115.69,
     "Pop_2025": 22500,
@@ -3617,7 +3617,7 @@
   {
     "Cod_ibge": "3546405",
     "Municipio": "Santa Cruz do Rio Pardo",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 1120.56,
     "Pop_2025": 47759,
     "extensao_km": 58.29,
@@ -3631,8 +3631,8 @@
   },
   {
     "Cod_ibge": "3528809",
-    "Municipio": "MaracaÃ­",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Maracaí",
+    "RA": "RA de Marília",
     "Area_Km2": 536.88,
     "Pop_2025": 12804,
     "extensao_km": 36.34,
@@ -3661,8 +3661,8 @@
   },
   {
     "Cod_ibge": "3550506",
-    "Municipio": "SÃ£o Pedro do Turvo",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "São Pedro do Turvo",
+    "RA": "RA de Marília",
     "Area_Km2": 734.67,
     "Pop_2025": 7333,
     "extensao_km": 75.07,
@@ -3676,7 +3676,7 @@
   },
   {
     "Cod_ibge": "3520004",
-    "Municipio": "IgaraÃ§u do TietÃª",
+    "Municipio": "Igaraçu do Tietê",
     "RA": "RA de Bauru",
     "Area_Km2": 97.91,
     "Pop_2025": 23421,
@@ -3692,7 +3692,7 @@
   {
     "Cod_ibge": "3538501",
     "Municipio": "Piquete",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 175.05,
     "Pop_2025": 12516,
     "extensao_km": 21.14,
@@ -3706,7 +3706,7 @@
   },
   {
     "Cod_ibge": "3536570",
-    "Municipio": "PaulistÃ¢nia",
+    "Municipio": "Paulistânia",
     "RA": "RA de Bauru",
     "Area_Km2": 257.74,
     "Pop_2025": 2156,
@@ -3722,7 +3722,7 @@
   {
     "Cod_ibge": "3509809",
     "Municipio": "Campos Novos Paulista",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 487.77,
     "Pop_2025": 5003,
     "extensao_km": 33.48,
@@ -3736,7 +3736,7 @@
   },
   {
     "Cod_ibge": "3526803",
-    "Municipio": "LenÃ§Ã³is Paulista",
+    "Municipio": "Lençóis Paulista",
     "RA": "RA de Bauru",
     "Area_Km2": 810.71,
     "Pop_2025": 68568,
@@ -3781,7 +3781,7 @@
   },
   {
     "Cod_ibge": "3519907",
-    "Municipio": "IepÃª",
+    "Municipio": "Iepê",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 601.53,
     "Pop_2025": 7739,
@@ -3811,7 +3811,7 @@
   },
   {
     "Cod_ibge": "3527009",
-    "Municipio": "LindÃ³ia",
+    "Municipio": "Lindóia",
     "RA": "RA de Campinas",
     "Area_Km2": 48.56,
     "Pop_2025": 7158,
@@ -3842,7 +3842,7 @@
   {
     "Cod_ibge": "3513405",
     "Municipio": "Cruzeiro",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 305.29,
     "Pop_2025": 76444,
     "extensao_km": 24.06,
@@ -3872,7 +3872,7 @@
   {
     "Cod_ibge": "3504008",
     "Municipio": "Assis",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 463.85,
     "Pop_2025": 104858,
     "extensao_km": 41.57,
@@ -3916,7 +3916,7 @@
   },
   {
     "Cod_ibge": "3500501",
-    "Municipio": "Ãguas de LindÃ³ia",
+    "Municipio": "Águas de Lindóia",
     "RA": "RA de Campinas",
     "Area_Km2": 59.67,
     "Pop_2025": 18257,
@@ -3946,7 +3946,7 @@
   },
   {
     "Cod_ibge": "3550407",
-    "Municipio": "SÃ£o Pedro",
+    "Municipio": "São Pedro",
     "RA": "RA de Campinas",
     "Area_Km2": 612.8,
     "Pop_2025": 39855,
@@ -3962,7 +3962,7 @@
   {
     "Cod_ibge": "3526605",
     "Municipio": "Lavrinhas",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 166.61,
     "Pop_2025": 7348,
     "extensao_km": 21.51,
@@ -3976,7 +3976,7 @@
   },
   {
     "Cod_ibge": "3512407",
-    "Municipio": "CordeirÃ³polis",
+    "Municipio": "Cordeirópolis",
     "RA": "RA de Campinas",
     "Area_Km2": 137.87,
     "Pop_2025": 25286,
@@ -4022,7 +4022,7 @@
   {
     "Cod_ibge": "3541901",
     "Municipio": "Queluz",
-    "RA": "RA de SÃ£o JosÃ© dos Campos",
+    "RA": "RA de São José dos Campos",
     "Area_Km2": 249.42,
     "Pop_2025": 9074,
     "extensao_km": 19.82,
@@ -4066,7 +4066,7 @@
   },
   {
     "Cod_ibge": "3508306",
-    "Municipio": "CabrÃ¡lia Paulista",
+    "Municipio": "Cabrália Paulista",
     "RA": "RA de Bauru",
     "Area_Km2": 240.98,
     "Pop_2025": 4360,
@@ -4081,7 +4081,7 @@
   },
   {
     "Cod_ibge": "3527504",
-    "Municipio": "LucianÃ³polis",
+    "Municipio": "Lucianópolis",
     "RA": "RA de Bauru",
     "Area_Km2": 190.91,
     "Pop_2025": 2423,
@@ -4096,8 +4096,8 @@
   },
   {
     "Cod_ibge": "3501509",
-    "Municipio": "AlvinlÃ¢ndia",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Alvinlândia",
+    "RA": "RA de Marília",
     "Area_Km2": 85.54,
     "Pop_2025": 2919,
     "extensao_km": 10.85,
@@ -4156,8 +4156,8 @@
   },
   {
     "Cod_ibge": "3527801",
-    "Municipio": "LupÃ©rcio",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Lupércio",
+    "RA": "RA de Marília",
     "Area_Km2": 155.42,
     "Pop_2025": 4004,
     "extensao_km": 20.16,
@@ -4171,7 +4171,7 @@
   },
   {
     "Cod_ibge": "3529807",
-    "Municipio": "Mineiros do TietÃª",
+    "Municipio": "Mineiros do Tietê",
     "RA": "RA de Bauru",
     "Area_Km2": 213.33,
     "Pop_2025": 11322,
@@ -4201,7 +4201,7 @@
   },
   {
     "Cod_ibge": "3521101",
-    "Municipio": "IpeÃºna",
+    "Municipio": "Ipeúna",
     "RA": "RA de Campinas",
     "Area_Km2": 190.68,
     "Pop_2025": 7027,
@@ -4216,8 +4216,8 @@
   },
   {
     "Cod_ibge": "3533700",
-    "Municipio": "OcauÃ§u",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Ocauçu",
+    "RA": "RA de Marília",
     "Area_Km2": 301.85,
     "Pop_2025": 4418,
     "extensao_km": 15.91,
@@ -4261,8 +4261,8 @@
   },
   {
     "Cod_ibge": "3515657",
-    "Municipio": "FernÃ£o",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Fernão",
+    "RA": "RA de Marília",
     "Area_Km2": 101.1,
     "Pop_2025": 1692,
     "extensao_km": 23.18,
@@ -4366,8 +4366,8 @@
   },
   {
     "Cod_ibge": "3535507",
-    "Municipio": "ParaguaÃ§u Paulista",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Paraguaçu Paulista",
+    "RA": "RA de Marília",
     "Area_Km2": 1010.58,
     "Pop_2025": 42049,
     "extensao_km": 82.6,
@@ -4396,8 +4396,8 @@
   },
   {
     "Cod_ibge": "3514700",
-    "Municipio": "EchaporÃ£",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Echaporã",
+    "RA": "RA de Marília",
     "Area_Km2": 518.41,
     "Pop_2025": 6291,
     "extensao_km": 9.95,
@@ -4427,7 +4427,7 @@
   {
     "Cod_ibge": "3534500",
     "Municipio": "Oscar Bressane",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 223.07,
     "Pop_2025": 2502,
     "extensao_km": 21.74,
@@ -4501,8 +4501,8 @@
   },
   {
     "Cod_ibge": "3516606",
-    "Municipio": "GÃ¡lia",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Gália",
+    "RA": "RA de Marília",
     "Area_Km2": 359.55,
     "Pop_2025": 6413,
     "extensao_km": 14.05,
@@ -4516,7 +4516,7 @@
   },
   {
     "Cod_ibge": "3514106",
-    "Municipio": "Dois CÃ³rregos",
+    "Municipio": "Dois Córregos",
     "RA": "RA de Bauru",
     "Area_Km2": 634.31,
     "Pop_2025": 24847,
@@ -4546,7 +4546,7 @@
   },
   {
     "Cod_ibge": "3522901",
-    "Municipio": "ItapuÃ­",
+    "Municipio": "Itapuí",
     "RA": "RA de Bauru",
     "Area_Km2": 141.28,
     "Pop_2025": 14035,
@@ -4561,8 +4561,8 @@
   },
   {
     "Cod_ibge": "3527900",
-    "Municipio": "LutÃ©cia",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Lutécia",
+    "RA": "RA de Marília",
     "Area_Km2": 477.97,
     "Pop_2025": 2697,
     "extensao_km": 47.49,
@@ -4576,8 +4576,8 @@
   },
   {
     "Cod_ibge": "3507209",
-    "Municipio": "BorÃ¡",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Borá",
+    "RA": "RA de Marília",
     "Area_Km2": 119.01,
     "Pop_2025": 932,
     "extensao_km": 15.81,
@@ -4606,7 +4606,7 @@
   },
   {
     "Cod_ibge": "3512704",
-    "Municipio": "CorumbataÃ­",
+    "Municipio": "Corumbataí",
     "RA": "RA de Campinas",
     "Area_Km2": 280.79,
     "Pop_2025": 4296,
@@ -4636,7 +4636,7 @@
   },
   {
     "Cod_ibge": "3525300",
-    "Municipio": "JaÃº",
+    "Municipio": "Jaú",
     "RA": "RA de Bauru",
     "Area_Km2": 688.65,
     "Pop_2025": 137409,
@@ -4651,7 +4651,7 @@
   },
   {
     "Cod_ibge": "3507308",
-    "Municipio": "BoracÃ©ia",
+    "Municipio": "Boracéia",
     "RA": "RA de Bauru",
     "Area_Km2": 120.11,
     "Pop_2025": 4838,
@@ -4667,7 +4667,7 @@
   {
     "Cod_ibge": "3556602",
     "Municipio": "Vera Cruz",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 249.48,
     "Pop_2025": 10274,
     "extensao_km": 17.24,
@@ -4711,7 +4711,7 @@
   },
   {
     "Cod_ibge": "3548104",
-    "Municipio": "Santo AntÃ´nio do Jardim",
+    "Municipio": "Santo Antônio do Jardim",
     "RA": "RA de Campinas",
     "Area_Km2": 107.85,
     "Pop_2025": 6243,
@@ -4726,8 +4726,8 @@
   },
   {
     "Cod_ibge": "3516705",
-    "Municipio": "GarÃ§a",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Garça",
+    "RA": "RA de Marília",
     "Area_Km2": 556.84,
     "Pop_2025": 43081,
     "extensao_km": 24.72,
@@ -4756,7 +4756,7 @@
   },
   {
     "Cod_ibge": "3530706",
-    "Municipio": "Mogi GuaÃ§u",
+    "Municipio": "Mogi Guaçu",
     "RA": "RA de Campinas",
     "Area_Km2": 811.21,
     "Pop_2025": 160318,
@@ -4771,7 +4771,7 @@
   },
   {
     "Cod_ibge": "3515186",
-    "Municipio": "EspÃ­rito Santo do Pinhal",
+    "Municipio": "Espírito Santo do Pinhal",
     "RA": "RA de Campinas",
     "Area_Km2": 388.97,
     "Pop_2025": 40610,
@@ -4786,7 +4786,7 @@
   },
   {
     "Cod_ibge": "3546207",
-    "Municipio": "Santa Cruz da ConceiÃ§Ã£o",
+    "Municipio": "Santa Cruz da Conceição",
     "RA": "RA de Campinas",
     "Area_Km2": 150.07,
     "Pop_2025": 4375,
@@ -4831,7 +4831,7 @@
   },
   {
     "Cod_ibge": "3542404",
-    "Municipio": "Regente FeijÃ³",
+    "Municipio": "Regente Feijó",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 267.6,
     "Pop_2025": 20620,
@@ -4861,7 +4861,7 @@
   },
   {
     "Cod_ibge": "3504305",
-    "Municipio": "AvaÃ­",
+    "Municipio": "Avaí",
     "RA": "RA de Bauru",
     "Area_Km2": 543.45,
     "Pop_2025": 4503,
@@ -4877,7 +4877,7 @@
   {
     "Cod_ibge": "3534104",
     "Municipio": "Oriente",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 219.83,
     "Pop_2025": 6180,
     "extensao_km": 29.87,
@@ -4891,8 +4891,8 @@
   },
   {
     "Cod_ibge": "3501400",
-    "Municipio": "Ãlvaro de Carvalho",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Álvaro de Carvalho",
+    "RA": "RA de Marília",
     "Area_Km2": 153.93,
     "Pop_2025": 4901,
     "extensao_km": 0.0,
@@ -4906,8 +4906,8 @@
   },
   {
     "Cod_ibge": "3525607",
-    "Municipio": "JoÃ£o Ramalho",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "João Ramalho",
+    "RA": "RA de Marília",
     "Area_Km2": 419.8,
     "Pop_2025": 4464,
     "extensao_km": 14.28,
@@ -4921,8 +4921,8 @@
   },
   {
     "Cod_ibge": "3541703",
-    "Municipio": "QuatÃ¡",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Quatá",
+    "RA": "RA de Marília",
     "Area_Km2": 656.62,
     "Pop_2025": 13412,
     "extensao_km": 77.01,
@@ -4936,7 +4936,7 @@
   },
   {
     "Cod_ibge": "3502002",
-    "Municipio": "AnalÃ¢ndia",
+    "Municipio": "Analândia",
     "RA": "RA de Campinas",
     "Area_Km2": 326.94,
     "Pop_2025": 4694,
@@ -4996,7 +4996,7 @@
   },
   {
     "Cod_ibge": "3500303",
-    "Municipio": "AguaÃ­",
+    "Municipio": "Aguaí",
     "RA": "RA de Campinas",
     "Area_Km2": 473.4,
     "Pop_2025": 32886,
@@ -5012,7 +5012,7 @@
   {
     "Cod_ibge": "3542008",
     "Municipio": "Quintana",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 321.87,
     "Pop_2025": 7260,
     "extensao_km": 42.85,
@@ -5026,7 +5026,7 @@
   },
   {
     "Cod_ibge": "3501301",
-    "Municipio": "Ãlvares Machado",
+    "Municipio": "Álvares Machado",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 350.97,
     "Pop_2025": 28386,
@@ -5056,7 +5056,7 @@
   },
   {
     "Cod_ibge": "3528700",
-    "Municipio": "MarabÃ¡ Paulista",
+    "Municipio": "Marabá Paulista",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 928.9,
     "Pop_2025": 4619,
@@ -5101,7 +5101,7 @@
   },
   {
     "Cod_ibge": "3542909",
-    "Municipio": "RibeirÃ£o Bonito",
+    "Municipio": "Ribeirão Bonito",
     "RA": "RA Central",
     "Area_Km2": 472.46,
     "Pop_2025": 11040,
@@ -5116,8 +5116,8 @@
   },
   {
     "Cod_ibge": "3525805",
-    "Municipio": "JÃºlio Mesquita",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Júlio Mesquita",
+    "RA": "RA de Marília",
     "Area_Km2": 128.85,
     "Pop_2025": 4302,
     "extensao_km": 17.93,
@@ -5147,7 +5147,7 @@
   {
     "Cod_ibge": "3505807",
     "Municipio": "Bastos",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 173.29,
     "Pop_2025": 21936,
     "extensao_km": 67.75,
@@ -5161,8 +5161,8 @@
   },
   {
     "Cod_ibge": "3529005",
-    "Municipio": "MarÃ­lia",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Marília",
+    "RA": "RA de Marília",
     "Area_Km2": 1176.09,
     "Pop_2025": 247348,
     "extensao_km": 78.73,
@@ -5191,7 +5191,7 @@
   },
   {
     "Cod_ibge": "3529203",
-    "Municipio": "MartinÃ³polis",
+    "Municipio": "Martinópolis",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 1264.48,
     "Pop_2025": 25240,
@@ -5251,7 +5251,7 @@
   },
   {
     "Cod_ibge": "3549102",
-    "Municipio": "SÃ£o JoÃ£o da Boa Vista",
+    "Municipio": "São João da Boa Vista",
     "RA": "RA de Campinas",
     "Area_Km2": 517.98,
     "Pop_2025": 96080,
@@ -5266,7 +5266,7 @@
   },
   {
     "Cod_ibge": "3506706",
-    "Municipio": "Boa EsperanÃ§a do Sul",
+    "Municipio": "Boa Esperança do Sul",
     "RA": "RA Central",
     "Area_Km2": 692.63,
     "Pop_2025": 13113,
@@ -5281,7 +5281,7 @@
   },
   {
     "Cod_ibge": "3547700",
-    "Municipio": "Santo AnastÃ¡cio",
+    "Municipio": "Santo Anastácio",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 558.66,
     "Pop_2025": 17960,
@@ -5311,7 +5311,7 @@
   },
   {
     "Cod_ibge": "3519303",
-    "Municipio": "IbatÃ©",
+    "Municipio": "Ibaté",
     "RA": "RA Central",
     "Area_Km2": 291.16,
     "Pop_2025": 33160,
@@ -5326,8 +5326,8 @@
   },
   {
     "Cod_ibge": "3540002",
-    "Municipio": "PompÃ©ia",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Pompéia",
+    "RA": "RA de Marília",
     "Area_Km2": 791.41,
     "Pop_2025": 20520,
     "extensao_km": 56.21,
@@ -5341,7 +5341,7 @@
   },
   {
     "Cod_ibge": "3500402",
-    "Municipio": "Ãguas da Prata",
+    "Municipio": "Águas da Prata",
     "RA": "RA de Campinas",
     "Area_Km2": 143.11,
     "Pop_2025": 7463,
@@ -5356,8 +5356,8 @@
   },
   {
     "Cod_ibge": "3519006",
-    "Municipio": "HerculÃ¢ndia",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Herculândia",
+    "RA": "RA de Marília",
     "Area_Km2": 367.3,
     "Pop_2025": 9316,
     "extensao_km": 55.52,
@@ -5371,8 +5371,8 @@
   },
   {
     "Cod_ibge": "3555000",
-    "Municipio": "TupÃ£",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Tupã",
+    "RA": "RA de Marília",
     "Area_Km2": 632.01,
     "Pop_2025": 65433,
     "extensao_km": 128.35,
@@ -5416,7 +5416,7 @@
   },
   {
     "Cod_ibge": "3518107",
-    "Municipio": "GuarantÃ£",
+    "Municipio": "Guarantã",
     "RA": "RA de Bauru",
     "Area_Km2": 464.76,
     "Pop_2025": 6532,
@@ -5431,7 +5431,7 @@
   },
   {
     "Cod_ibge": "3517307",
-    "Municipio": "GuaimbÃª",
+    "Municipio": "Guaimbê",
     "RA": "RA de Bauru",
     "Area_Km2": 219.22,
     "Pop_2025": 5609,
@@ -5552,7 +5552,7 @@
   {
     "Cod_ibge": "3541802",
     "Municipio": "Queiroz",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 237.83,
     "Pop_2025": 3366,
     "extensao_km": 42.17,
@@ -5581,7 +5581,7 @@
   },
   {
     "Cod_ibge": "3515129",
-    "Municipio": "EmilianÃ³polis",
+    "Municipio": "Emilianópolis",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 225.99,
     "Pop_2025": 3061,
@@ -5611,7 +5611,7 @@
   },
   {
     "Cod_ibge": "3528908",
-    "Municipio": "MariÃ¡polis",
+    "Municipio": "Mariápolis",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 187.58,
     "Pop_2025": 3526,
@@ -5626,7 +5626,7 @@
   },
   {
     "Cod_ibge": "3516853",
-    "Municipio": "GaviÃ£o Peixoto",
+    "Municipio": "Gavião Peixoto",
     "RA": "RA Central",
     "Area_Km2": 244.54,
     "Pop_2025": 4806,
@@ -5641,8 +5641,8 @@
   },
   {
     "Cod_ibge": "3536000",
-    "Municipio": "ParapuÃ£",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Parapuã",
+    "RA": "RA de Marília",
     "Area_Km2": 368.46,
     "Pop_2025": 10720,
     "extensao_km": 74.03,
@@ -5656,8 +5656,8 @@
   },
   {
     "Cod_ibge": "3503356",
-    "Municipio": "Arco-Ãris",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Arco-Íris",
+    "RA": "RA de Marília",
     "Area_Km2": 266.13,
     "Pop_2025": 2089,
     "extensao_km": 37.44,
@@ -5686,7 +5686,7 @@
   },
   {
     "Cod_ibge": "3501707",
-    "Municipio": "AmÃ©rico Brasiliense",
+    "Municipio": "Américo Brasiliense",
     "RA": "RA Central",
     "Area_Km2": 122.7,
     "Pop_2025": 33708,
@@ -5701,7 +5701,7 @@
   },
   {
     "Cod_ibge": "3543238",
-    "Municipio": "RibeirÃ£o dos Ãndios",
+    "Municipio": "Ribeirão dos Índios",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 198.81,
     "Pop_2025": 2040,
@@ -5716,7 +5716,7 @@
   },
   {
     "Cod_ibge": "3538907",
-    "Municipio": "PirajuÃ­",
+    "Municipio": "Pirajuí",
     "RA": "RA de Bauru",
     "Area_Km2": 825.38,
     "Pop_2025": 22734,
@@ -5731,7 +5731,7 @@
   },
   {
     "Cod_ibge": "3550803",
-    "Municipio": "SÃ£o SebastiÃ£o da Grama",
+    "Municipio": "São Sebastião da Grama",
     "RA": "RA de Campinas",
     "Area_Km2": 252.22,
     "Pop_2025": 10428,
@@ -5762,7 +5762,7 @@
   {
     "Cod_ibge": "3519204",
     "Municipio": "Iacri",
-    "RA": "RA de MarÃ­lia",
+    "RA": "RA de Marília",
     "Area_Km2": 324.84,
     "Pop_2025": 6197,
     "extensao_km": 63.8,
@@ -5791,7 +5791,7 @@
   },
   {
     "Cod_ibge": "3542503",
-    "Municipio": "ReginÃ³polis",
+    "Municipio": "Reginópolis",
     "RA": "RA de Bauru",
     "Area_Km2": 411.79,
     "Pop_2025": 7820,
@@ -5806,7 +5806,7 @@
   },
   {
     "Cod_ibge": "3520806",
-    "Municipio": "InÃºbia Paulista",
+    "Municipio": "Inúbia Paulista",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 87.38,
     "Pop_2025": 3671,
@@ -5851,8 +5851,8 @@
   },
   {
     "Cod_ibge": "3527702",
-    "Municipio": "LuiziÃ¢nia",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Luiziânia",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 167.62,
     "Pop_2025": 4740,
     "extensao_km": 35.14,
@@ -5881,7 +5881,7 @@
   },
   {
     "Cod_ibge": "3540101",
-    "Municipio": "PongaÃ­",
+    "Municipio": "Pongaí",
     "RA": "RA de Bauru",
     "Area_Km2": 183.88,
     "Pop_2025": 3440,
@@ -5896,7 +5896,7 @@
   },
   {
     "Cod_ibge": "3546900",
-    "Municipio": "Santa LÃºcia",
+    "Municipio": "Santa Lúcia",
     "RA": "RA Central",
     "Area_Km2": 155.21,
     "Pop_2025": 7144,
@@ -5911,8 +5911,8 @@
   },
   {
     "Cod_ibge": "3548401",
-    "Municipio": "SantÃ³polis do AguapeÃ­",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Santópolis do Aguapeí",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 129.1,
     "Pop_2025": 3921,
     "extensao_km": 11.84,
@@ -5926,7 +5926,7 @@
   },
   {
     "Cod_ibge": "3548906",
-    "Municipio": "SÃ£o Carlos",
+    "Municipio": "São Carlos",
     "RA": "RA Central",
     "Area_Km2": 1140.04,
     "Pop_2025": 266427,
@@ -5956,7 +5956,7 @@
   },
   {
     "Cod_ibge": "3513900",
-    "Municipio": "DivinolÃ¢ndia",
+    "Municipio": "Divinolândia",
     "RA": "RA de Campinas",
     "Area_Km2": 222.36,
     "Pop_2025": 11305,
@@ -5986,8 +5986,8 @@
   },
   {
     "Cod_ibge": "3543808",
-    "Municipio": "RinÃ³polis",
-    "RA": "RA de MarÃ­lia",
+    "Municipio": "Rinópolis",
+    "RA": "RA de Marília",
     "Area_Km2": 361.33,
     "Pop_2025": 9334,
     "extensao_km": 48.25,
@@ -6031,7 +6031,7 @@
   },
   {
     "Cod_ibge": "3509106",
-    "Municipio": "CaiuÃ¡",
+    "Municipio": "Caiuá",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 559.64,
     "Pop_2025": 5599,
@@ -6062,7 +6062,7 @@
   {
     "Cod_ibge": "3501103",
     "Municipio": "Alto Alegre",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 321.08,
     "Pop_2025": 3874,
     "extensao_km": 46.53,
@@ -6076,7 +6076,7 @@
   },
   {
     "Cod_ibge": "3508801",
-    "Municipio": "CafelÃ¢ndia",
+    "Municipio": "Cafelândia",
     "RA": "RA de Bauru",
     "Area_Km2": 925.48,
     "Pop_2025": 16907,
@@ -6091,7 +6091,7 @@
   },
   {
     "Cod_ibge": "3529302",
-    "Municipio": "MatÃ£o",
+    "Municipio": "Matão",
     "RA": "RA Central",
     "Area_Km2": 526.21,
     "Pop_2025": 81075,
@@ -6106,7 +6106,7 @@
   },
   {
     "Cod_ibge": "3541307",
-    "Municipio": "Presidente EpitÃ¡cio",
+    "Municipio": "Presidente Epitácio",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 1281.64,
     "Pop_2025": 40322,
@@ -6122,7 +6122,7 @@
   {
     "Cod_ibge": "3537701",
     "Municipio": "Piacatu",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 234.19,
     "Pop_2025": 5631,
     "extensao_km": 38.15,
@@ -6152,7 +6152,7 @@
   {
     "Cod_ibge": "3511904",
     "Municipio": "Clementina",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 169.96,
     "Pop_2025": 7084,
     "extensao_km": 47.54,
@@ -6166,7 +6166,7 @@
   },
   {
     "Cod_ibge": "3545100",
-    "Municipio": "SalmourÃ£o",
+    "Municipio": "Salmourão",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 174.35,
     "Pop_2025": 4883,
@@ -6181,7 +6181,7 @@
   },
   {
     "Cod_ibge": "3549706",
-    "Municipio": "SÃ£o JosÃ© do Rio Pardo",
+    "Municipio": "São José do Rio Pardo",
     "RA": "RA de Campinas",
     "Area_Km2": 418.81,
     "Pop_2025": 53427,
@@ -6196,7 +6196,7 @@
   },
   {
     "Cod_ibge": "3543709",
-    "Municipio": "RincÃ£o",
+    "Municipio": "Rincão",
     "RA": "RA Central",
     "Area_Km2": 316.03,
     "Pop_2025": 9101,
@@ -6241,8 +6241,8 @@
   },
   {
     "Cod_ibge": "3507704",
-    "Municipio": "BraÃºna",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Braúna",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 196.58,
     "Pop_2025": 5477,
     "extensao_km": 57.47,
@@ -6257,7 +6257,7 @@
   {
     "Cod_ibge": "3516507",
     "Municipio": "Gabriel Monteiro",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 139.54,
     "Pop_2025": 2813,
     "extensao_km": 37.21,
@@ -6271,7 +6271,7 @@
   },
   {
     "Cod_ibge": "3553302",
-    "Municipio": "TambaÃº",
+    "Municipio": "Tambaú",
     "RA": "RA de Campinas",
     "Area_Km2": 561.31,
     "Pop_2025": 21650,
@@ -6286,7 +6286,7 @@
   },
   {
     "Cod_ibge": "3527405",
-    "Municipio": "LucÃ©lia",
+    "Municipio": "Lucélia",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 317.44,
     "Pop_2025": 20378,
@@ -6362,7 +6362,7 @@
   {
     "Cod_ibge": "3547601",
     "Municipio": "Santa Rosa de Viterbo",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 289.6,
     "Pop_2025": 23710,
     "extensao_km": 25.64,
@@ -6406,8 +6406,8 @@
   },
   {
     "Cod_ibge": "3527603",
-    "Municipio": "LuÃ­s AntÃ´nio",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Luís Antônio",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 599.16,
     "Pop_2025": 12564,
     "extensao_km": 39.0,
@@ -6421,7 +6421,7 @@
   },
   {
     "Cod_ibge": "3522703",
-    "Municipio": "ItÃ¡polis",
+    "Municipio": "Itápolis",
     "RA": "RA Central",
     "Area_Km2": 998.7,
     "Pop_2025": 40445,
@@ -6436,7 +6436,7 @@
   },
   {
     "Cod_ibge": "3517208",
-    "Municipio": "GuaiÃ§ara",
+    "Municipio": "Guaiçara",
     "RA": "RA de Bauru",
     "Area_Km2": 272.68,
     "Pop_2025": 11478,
@@ -6466,7 +6466,7 @@
   },
   {
     "Cod_ibge": "3516002",
-    "Municipio": "FlÃ³rida Paulista",
+    "Municipio": "Flórida Paulista",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 530.09,
     "Pop_2025": 13175,
@@ -6496,8 +6496,8 @@
   },
   {
     "Cod_ibge": "3550902",
-    "Municipio": "SÃ£o SimÃ£o",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "São Simão",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 617.97,
     "Pop_2025": 13560,
     "extensao_km": 30.22,
@@ -6527,7 +6527,7 @@
   {
     "Cod_ibge": "3504404",
     "Municipio": "Avanhandava",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 339.97,
     "Pop_2025": 11436,
     "extensao_km": 39.74,
@@ -6572,7 +6572,7 @@
   {
     "Cod_ibge": "3518602",
     "Municipio": "Guariba",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 270.35,
     "Pop_2025": 38678,
     "extensao_km": 30.1,
@@ -6602,7 +6602,7 @@
   {
     "Cod_ibge": "3506409",
     "Municipio": "Bilac",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 158.99,
     "Pop_2025": 7464,
     "extensao_km": 31.46,
@@ -6616,8 +6616,8 @@
   },
   {
     "Cod_ibge": "3518859",
-    "Municipio": "GuataparÃ¡",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Guatapará",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 414.16,
     "Pop_2025": 7474,
     "extensao_km": 55.29,
@@ -6646,7 +6646,7 @@
   },
   {
     "Cod_ibge": "3510104",
-    "Municipio": "CÃ¢ndido Rodrigues",
+    "Municipio": "Cândido Rodrigues",
     "RA": "RA Central",
     "Area_Km2": 71.0,
     "Pop_2025": 2959,
@@ -6662,7 +6662,7 @@
   {
     "Cod_ibge": "3533502",
     "Municipio": "Novo Horizonte",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 934.62,
     "Pop_2025": 39494,
     "extensao_km": 61.27,
@@ -6691,7 +6691,7 @@
   },
   {
     "Cod_ibge": "3541604",
-    "Municipio": "PromissÃ£o",
+    "Municipio": "Promissão",
     "RA": "RA de Bauru",
     "Area_Km2": 784.7,
     "Pop_2025": 35973,
@@ -6721,8 +6721,8 @@
   },
   {
     "Cod_ibge": "3540903",
-    "Municipio": "PradÃ³polis",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Pradópolis",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 168.22,
     "Pop_2025": 17299,
     "extensao_km": 27.15,
@@ -6737,7 +6737,7 @@
   {
     "Cod_ibge": "3521903",
     "Municipio": "Itajobi",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 505.05,
     "Pop_2025": 17502,
     "extensao_km": 52.82,
@@ -6752,7 +6752,7 @@
   {
     "Cod_ibge": "3544806",
     "Municipio": "Sales",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 310.39,
     "Pop_2025": 6645,
     "extensao_km": 33.46,
@@ -6767,7 +6767,7 @@
   {
     "Cod_ibge": "3505104",
     "Municipio": "Barbosa",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 206.55,
     "Pop_2025": 5627,
     "extensao_km": 28.63,
@@ -6796,7 +6796,7 @@
   },
   {
     "Cod_ibge": "3526001",
-    "Municipio": "JunqueirÃ³polis",
+    "Municipio": "Junqueirópolis",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 589.74,
     "Pop_2025": 20939,
@@ -6826,8 +6826,8 @@
   },
   {
     "Cod_ibge": "3545605",
-    "Municipio": "Santa AdÃ©lia",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Santa Adélia",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 332.28,
     "Pop_2025": 14193,
     "extensao_km": 41.98,
@@ -6842,7 +6842,7 @@
   {
     "Cod_ibge": "3512506",
     "Municipio": "Coroados",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 249.07,
     "Pop_2025": 5504,
     "extensao_km": 38.82,
@@ -6856,8 +6856,8 @@
   },
   {
     "Cod_ibge": "3546256",
-    "Municipio": "Santa Cruz da EsperanÃ§a",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Santa Cruz da Esperança",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 148.2,
     "Pop_2025": 2168,
     "extensao_km": 17.27,
@@ -6872,7 +6872,7 @@
   {
     "Cod_ibge": "3551405",
     "Municipio": "Serra Azul",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 283.41,
     "Pop_2025": 13108,
     "extensao_km": 42.2,
@@ -6886,8 +6886,8 @@
   },
   {
     "Cod_ibge": "3544400",
-    "Municipio": "RubiÃ¡cea",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Rubiácea",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 239.14,
     "Pop_2025": 2740,
     "extensao_km": 42.41,
@@ -6902,7 +6902,7 @@
   {
     "Cod_ibge": "3500204",
     "Municipio": "Adolfo",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 212.49,
     "Pop_2025": 4505,
     "extensao_km": 32.34,
@@ -6917,7 +6917,7 @@
   {
     "Cod_ibge": "3513108",
     "Municipio": "Cravinhos",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 310.73,
     "Pop_2025": 34307,
     "extensao_km": 13.33,
@@ -6931,8 +6931,8 @@
   },
   {
     "Cod_ibge": "3537305",
-    "Municipio": "PenÃ¡polis",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Penápolis",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 715.34,
     "Pop_2025": 63426,
     "extensao_km": 83.57,
@@ -6946,8 +6946,8 @@
   },
   {
     "Cod_ibge": "3510906",
-    "Municipio": "CÃ¡ssia dos Coqueiros",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Cássia dos Coqueiros",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 192.03,
     "Pop_2025": 2861,
     "extensao_km": 69.79,
@@ -6962,7 +6962,7 @@
   {
     "Cod_ibge": "3528858",
     "Municipio": "Marapoama",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 112.83,
     "Pop_2025": 3415,
     "extensao_km": 22.5,
@@ -6977,7 +6977,7 @@
   {
     "Cod_ibge": "3506201",
     "Municipio": "Bento de Abreu",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 304.07,
     "Pop_2025": 2640,
     "extensao_km": 29.12,
@@ -6992,7 +6992,7 @@
   {
     "Cod_ibge": "3514601",
     "Municipio": "Dumont",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 111.53,
     "Pop_2025": 9764,
     "extensao_km": 16.65,
@@ -7006,8 +7006,8 @@
   },
   {
     "Cod_ibge": "3521507",
-    "Municipio": "IrapuÃ£",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Irapuã",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 258.91,
     "Pop_2025": 6932,
     "extensao_km": 17.61,
@@ -7022,7 +7022,7 @@
   {
     "Cod_ibge": "3531308",
     "Municipio": "Monte Alto",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 348.0,
     "Pop_2025": 48758,
     "extensao_km": 44.68,
@@ -7037,7 +7037,7 @@
   {
     "Cod_ibge": "3505609",
     "Municipio": "Barrinha",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 146.07,
     "Pop_2025": 33304,
     "extensao_km": 35.92,
@@ -7051,7 +7051,7 @@
   },
   {
     "Cod_ibge": "3549300",
-    "Municipio": "SÃ£o JoÃ£o do Pau d'Alho",
+    "Municipio": "São João do Pau d'Alho",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 119.26,
     "Pop_2025": 2293,
@@ -7067,7 +7067,7 @@
   {
     "Cod_ibge": "3551504",
     "Municipio": "Serrana",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 126.13,
     "Pop_2025": 45580,
     "extensao_km": 6.04,
@@ -7096,8 +7096,8 @@
   },
   {
     "Cod_ibge": "3517109",
-    "Municipio": "GlicÃ©rio",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Glicério",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 274.39,
     "Pop_2025": 4158,
     "extensao_km": 39.07,
@@ -7126,8 +7126,8 @@
   },
   {
     "Cod_ibge": "3529500",
-    "Municipio": "MendonÃ§a",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Mendonça",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 195.5,
     "Pop_2025": 6420,
     "extensao_km": 31.6,
@@ -7142,7 +7142,7 @@
   {
     "Cod_ibge": "3555356",
     "Municipio": "Ubarana",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 210.71,
     "Pop_2025": 5458,
     "extensao_km": 9.65,
@@ -7156,8 +7156,8 @@
   },
   {
     "Cod_ibge": "3556008",
-    "Municipio": "UrupÃªs",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Urupês",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 326.57,
     "Pop_2025": 14073,
     "extensao_km": 43.54,
@@ -7172,7 +7172,7 @@
   {
     "Cod_ibge": "3507753",
     "Municipio": "Brejo Alegre",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 106.38,
     "Pop_2025": 2605,
     "extensao_km": 7.88,
@@ -7187,7 +7187,7 @@
   {
     "Cod_ibge": "3503703",
     "Municipio": "Ariranha",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 133.1,
     "Pop_2025": 7621,
     "extensao_km": 68.55,
@@ -7202,7 +7202,7 @@
   {
     "Cod_ibge": "3538105",
     "Municipio": "Pindorama",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 185.31,
     "Pop_2025": 14704,
     "extensao_km": 30.54,
@@ -7217,7 +7217,7 @@
   {
     "Cod_ibge": "3509403",
     "Municipio": "Cajuru",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 660.64,
     "Pop_2025": 24233,
     "extensao_km": 66.88,
@@ -7231,8 +7231,8 @@
   },
   {
     "Cod_ibge": "3514924",
-    "Municipio": "ElisiÃ¡rio",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Elisiário",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 92.55,
     "Pop_2025": 3190,
     "extensao_km": 14.31,
@@ -7246,7 +7246,7 @@
   },
   {
     "Cod_ibge": "3553104",
-    "Municipio": "TaiaÃ§u",
+    "Municipio": "Taiaçu",
     "RA": "RA de Barretos",
     "Area_Km2": 106.63,
     "Pop_2025": 5744,
@@ -7261,7 +7261,7 @@
   },
   {
     "Cod_ibge": "3553203",
-    "Municipio": "TaiÃºva",
+    "Municipio": "Taiúva",
     "RA": "RA de Barretos",
     "Area_Km2": 132.88,
     "Pop_2025": 6770,
@@ -7277,7 +7277,7 @@
   {
     "Cod_ibge": "3506508",
     "Municipio": "Birigui",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 534.33,
     "Pop_2025": 123340,
     "extensao_km": 83.15,
@@ -7291,8 +7291,8 @@
   },
   {
     "Cod_ibge": "3543402",
-    "Municipio": "RibeirÃ£o Preto",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Ribeirão Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 651.82,
     "Pop_2025": 731639,
     "extensao_km": 62.78,
@@ -7307,7 +7307,7 @@
   {
     "Cod_ibge": "3524303",
     "Municipio": "Jaboticabal",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 708.06,
     "Pop_2025": 73473,
     "extensao_km": 54.34,
@@ -7321,7 +7321,7 @@
   },
   {
     "Cod_ibge": "3536406",
-    "Municipio": "PaulicÃ©ia",
+    "Municipio": "Paulicéia",
     "RA": "RA de Presidente Prudente",
     "Area_Km2": 376.9,
     "Pop_2025": 8255,
@@ -7336,8 +7336,8 @@
   },
   {
     "Cod_ibge": "3533205",
-    "Municipio": "Nova IndependÃªncia",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Nova Independência",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 267.75,
     "Pop_2025": 4847,
     "extensao_km": 19.03,
@@ -7352,7 +7352,7 @@
   {
     "Cod_ibge": "3535101",
     "Municipio": "Palmares Paulista",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 82.55,
     "Pop_2025": 9666,
     "extensao_km": 16.48,
@@ -7367,7 +7367,7 @@
   {
     "Cod_ibge": "3553658",
     "Municipio": "Taquaral",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 54.04,
     "Pop_2025": 2649,
     "extensao_km": 0.37,
@@ -7382,7 +7382,7 @@
   {
     "Cod_ibge": "3511102",
     "Municipio": "Catanduva",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 292.92,
     "Pop_2025": 119275,
     "extensao_km": 40.44,
@@ -7411,8 +7411,8 @@
   },
   {
     "Cod_ibge": "3511201",
-    "Municipio": "CatiguÃ¡",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Catiguá",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 146.84,
     "Pop_2025": 7101,
     "extensao_km": 14.87,
@@ -7427,7 +7427,7 @@
   {
     "Cod_ibge": "3557154",
     "Municipio": "Zacarias",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 320.86,
     "Pop_2025": 2773,
     "extensao_km": 21.23,
@@ -7441,8 +7441,8 @@
   },
   {
     "Cod_ibge": "3551702",
-    "Municipio": "SertÃ£ozinho",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Sertãozinho",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 404.1,
     "Pop_2025": 132176,
     "extensao_km": 88.4,
@@ -7457,7 +7457,7 @@
   {
     "Cod_ibge": "3518206",
     "Municipio": "Guararapes",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 962.84,
     "Pop_2025": 31888,
     "extensao_km": 108.54,
@@ -7472,7 +7472,7 @@
   {
     "Cod_ibge": "3508108",
     "Municipio": "Buritama",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 328.84,
     "Pop_2025": 17658,
     "extensao_km": 36.68,
@@ -7487,7 +7487,7 @@
   {
     "Cod_ibge": "3540804",
     "Municipio": "Potirendaba",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 344.29,
     "Pop_2025": 19097,
     "extensao_km": 113.7,
@@ -7501,8 +7501,8 @@
   },
   {
     "Cod_ibge": "3519402",
-    "Municipio": "IbirÃ¡",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Ibirá",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 271.85,
     "Pop_2025": 11952,
     "extensao_km": 23.29,
@@ -7516,8 +7516,8 @@
   },
   {
     "Cod_ibge": "3547908",
-    "Municipio": "Santo AntÃ´nio da Alegria",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Santo Antônio da Alegria",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 308.91,
     "Pop_2025": 6933,
     "extensao_km": 55.66,
@@ -7531,8 +7531,8 @@
   },
   {
     "Cod_ibge": "3532801",
-    "Municipio": "Nova AlianÃ§a",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Nova Aliança",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 218.29,
     "Pop_2025": 6885,
     "extensao_km": 19.81,
@@ -7547,7 +7547,7 @@
   {
     "Cod_ibge": "3507803",
     "Municipio": "Brodowski",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 280.4,
     "Pop_2025": 26314,
     "extensao_km": 48.06,
@@ -7561,8 +7561,8 @@
   },
   {
     "Cod_ibge": "3556305",
-    "Municipio": "ValparaÃ­so",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Valparaíso",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 864.43,
     "Pop_2025": 24779,
     "extensao_km": 86.42,
@@ -7576,8 +7576,8 @@
   },
   {
     "Cod_ibge": "3535705",
-    "Municipio": "ParaÃ­so",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Paraíso",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 155.74,
     "Pop_2025": 6218,
     "extensao_km": 24.61,
@@ -7591,8 +7591,8 @@
   },
   {
     "Cod_ibge": "3525706",
-    "Municipio": "JosÃ© BonifÃ¡cio",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "José Bonifácio",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 865.01,
     "Pop_2025": 37992,
     "extensao_km": 92.58,
@@ -7607,7 +7607,7 @@
   {
     "Cod_ibge": "3533254",
     "Municipio": "Novais",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 118.25,
     "Pop_2025": 4463,
     "extensao_km": 18.02,
@@ -7621,8 +7621,8 @@
   },
   {
     "Cod_ibge": "3526506",
-    "Municipio": "LavÃ­nia",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Lavínia",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 542.98,
     "Pop_2025": 9940,
     "extensao_km": 55.79,
@@ -7637,7 +7637,7 @@
   {
     "Cod_ibge": "3539608",
     "Municipio": "Planalto",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 291.93,
     "Pop_2025": 4451,
     "extensao_km": 36.26,
@@ -7651,7 +7651,7 @@
   },
   {
     "Cod_ibge": "3514957",
-    "Municipio": "EmbaÃºba",
+    "Municipio": "Embaúba",
     "RA": "RA de Barretos",
     "Area_Km2": 83.52,
     "Pop_2025": 2349,
@@ -7667,7 +7667,7 @@
   {
     "Cod_ibge": "3527256",
     "Municipio": "Lourdes",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 114.36,
     "Pop_2025": 1962,
     "extensao_km": 21.9,
@@ -7681,8 +7681,8 @@
   },
   {
     "Cod_ibge": "3525102",
-    "Municipio": "JardinÃ³polis",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Jardinópolis",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 503.2,
     "Pop_2025": 47125,
     "extensao_km": 22.09,
@@ -7697,7 +7697,7 @@
   {
     "Cod_ibge": "3504602",
     "Municipio": "Bady Bassitt",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 110.41,
     "Pop_2025": 29346,
     "extensao_km": 8.53,
@@ -7712,7 +7712,7 @@
   {
     "Cod_ibge": "3540200",
     "Municipio": "Pontal",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 357.41,
     "Pop_2025": 38286,
     "extensao_km": 73.87,
@@ -7727,7 +7727,7 @@
   {
     "Cod_ibge": "3539509",
     "Municipio": "Pitangueiras",
-    "RA": "RA de RibeirÃ£o Preto",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 431.28,
     "Pop_2025": 34361,
     "extensao_km": 40.66,
@@ -7741,8 +7741,8 @@
   },
   {
     "Cod_ibge": "3555208",
-    "Municipio": "TuriÃºba",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Turiúba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 154.41,
     "Pop_2025": 1835,
     "extensao_km": 33.62,
@@ -7757,7 +7757,7 @@
   {
     "Cod_ibge": "3524501",
     "Municipio": "Jaci",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 145.72,
     "Pop_2025": 7944,
     "extensao_km": 22.94,
@@ -7772,7 +7772,7 @@
   {
     "Cod_ibge": "3532108",
     "Municipio": "Murutinga do Sul",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 253.1,
     "Pop_2025": 3748,
     "extensao_km": 9.37,
@@ -7786,8 +7786,8 @@
   },
   {
     "Cod_ibge": "3517802",
-    "Municipio": "GuaraÃ§aÃ­",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Guaraçaí",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 575.51,
     "Pop_2025": 7453,
     "extensao_km": 71.01,
@@ -7801,8 +7801,8 @@
   },
   {
     "Cod_ibge": "3555703",
-    "Municipio": "UniÃ£o Paulista",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "União Paulista",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 79.74,
     "Pop_2025": 1628,
     "extensao_km": 9.41,
@@ -7816,8 +7816,8 @@
   },
   {
     "Cod_ibge": "3533304",
-    "Municipio": "Nova LuzitÃ¢nia",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Nova Luzitânia",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 74.33,
     "Pop_2025": 2817,
     "extensao_km": 24.17,
@@ -7831,8 +7831,8 @@
   },
   {
     "Cod_ibge": "3532702",
-    "Municipio": "NipoÃ£",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Nipoã",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 138.77,
     "Pop_2025": 4876,
     "extensao_km": 14.33,
@@ -7846,8 +7846,8 @@
   },
   {
     "Cod_ibge": "3530102",
-    "Municipio": "MirandÃ³polis",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Mirandópolis",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 927.11,
     "Pop_2025": 28754,
     "extensao_km": 103.38,
@@ -7861,8 +7861,8 @@
   },
   {
     "Cod_ibge": "3502804",
-    "Municipio": "AraÃ§atuba",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Araçatuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 1177.1,
     "Pop_2025": 208415,
     "extensao_km": 171.72,
@@ -7877,7 +7877,7 @@
   {
     "Cod_ibge": "3511300",
     "Municipio": "Cedral",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 197.74,
     "Pop_2025": 13314,
     "extensao_km": 17.07,
@@ -7921,8 +7921,8 @@
   },
   {
     "Cod_ibge": "3552601",
-    "Municipio": "TabapuÃ£",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Tabapuã",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 346.64,
     "Pop_2025": 11498,
     "extensao_km": 50.9,
@@ -7936,8 +7936,8 @@
   },
   {
     "Cod_ibge": "3531001",
-    "Municipio": "MonÃ§Ãµes",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Monções",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 104.85,
     "Pop_2025": 1947,
     "extensao_km": 11.99,
@@ -7951,8 +7951,8 @@
   },
   {
     "Cod_ibge": "3501004",
-    "Municipio": "AltinÃ³polis",
-    "RA": "RA de RibeirÃ£o Preto",
+    "Municipio": "Altinópolis",
+    "RA": "RA de Ribeirão Preto",
     "Area_Km2": 930.56,
     "Pop_2025": 17197,
     "extensao_km": 107.88,
@@ -7997,7 +7997,7 @@
   {
     "Cod_ibge": "3555604",
     "Municipio": "Uchoa",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 253.89,
     "Pop_2025": 10670,
     "extensao_km": 35.54,
@@ -8012,7 +8012,7 @@
   {
     "Cod_ibge": "3532504",
     "Municipio": "Neves Paulista",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 219.88,
     "Pop_2025": 9953,
     "extensao_km": 21.89,
@@ -8041,8 +8041,8 @@
   },
   {
     "Cod_ibge": "3516804",
-    "Municipio": "GastÃ£o Vidigal",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Gastão Vidigal",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 182.09,
     "Pop_2025": 3203,
     "extensao_km": 14.53,
@@ -8056,7 +8056,7 @@
   },
   {
     "Cod_ibge": "3551900",
-    "Municipio": "SeverÃ­nia",
+    "Municipio": "Severínia",
     "RA": "RA de Barretos",
     "Area_Km2": 140.42,
     "Pop_2025": 14693,
@@ -8072,7 +8072,7 @@
   {
     "Cod_ibge": "3528106",
     "Municipio": "Macaubal",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 249.19,
     "Pop_2025": 7581,
     "extensao_km": 28.42,
@@ -8087,7 +8087,7 @@
   {
     "Cod_ibge": "3532868",
     "Municipio": "Nova Castilho",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 184.85,
     "Pop_2025": 1072,
     "extensao_km": 32.66,
@@ -8132,7 +8132,7 @@
   {
     "Cod_ibge": "3530300",
     "Municipio": "Mirassol",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 244.85,
     "Pop_2025": 65811,
     "extensao_km": 42.11,
@@ -8146,8 +8146,8 @@
   },
   {
     "Cod_ibge": "3548054",
-    "Municipio": "Santo AntÃ´nio do AracanguÃ¡",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Santo Antônio do Aracanguá",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 1316.89,
     "Pop_2025": 8593,
     "extensao_km": 117.06,
@@ -8162,7 +8162,7 @@
   {
     "Cod_ibge": "3539905",
     "Municipio": "Poloni",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 134.85,
     "Pop_2025": 5702,
     "extensao_km": 7.9,
@@ -8177,7 +8177,7 @@
   {
     "Cod_ibge": "3502101",
     "Municipio": "Andradina",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 974.38,
     "Pop_2025": 61625,
     "extensao_km": 85.37,
@@ -8191,8 +8191,8 @@
   },
   {
     "Cod_ibge": "3549805",
-    "Municipio": "SÃ£o JosÃ© do Rio Preto",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "São José do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 428.87,
     "Pop_2025": 504166,
     "extensao_km": 62.95,
@@ -8222,7 +8222,7 @@
   {
     "Cod_ibge": "3511003",
     "Municipio": "Castilho",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 1078.32,
     "Pop_2025": 20485,
     "extensao_km": 114.52,
@@ -8236,8 +8236,8 @@
   },
   {
     "Cod_ibge": "3504800",
-    "Municipio": "BÃ¡lsamo",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Bálsamo",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 151.74,
     "Pop_2025": 9902,
     "extensao_km": 12.93,
@@ -8251,8 +8251,8 @@
   },
   {
     "Cod_ibge": "3517505",
-    "Municipio": "GuapiaÃ§u",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Guapiaçu",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 326.69,
     "Pop_2025": 22445,
     "extensao_km": 32.79,
@@ -8266,8 +8266,8 @@
   },
   {
     "Cod_ibge": "3531407",
-    "Municipio": "Monte AprazÃ­vel",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Monte Aprazível",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 498.28,
     "Pop_2025": 22668,
     "extensao_km": 41.04,
@@ -8281,7 +8281,7 @@
   },
   {
     "Cod_ibge": "3534302",
-    "Municipio": "OrlÃ¢ndia",
+    "Municipio": "Orlândia",
     "RA": "RA de Franca",
     "Area_Km2": 291.89,
     "Pop_2025": 39144,
@@ -8311,7 +8311,7 @@
   },
   {
     "Cod_ibge": "3523701",
-    "Municipio": "ItirapuÃ£",
+    "Municipio": "Itirapuã",
     "RA": "RA de Franca",
     "Area_Km2": 160.65,
     "Pop_2025": 5857,
@@ -8341,8 +8341,8 @@
   },
   {
     "Cod_ibge": "3551306",
-    "Municipio": "SebastianÃ³polis do Sul",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Sebastianópolis do Sul",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 168.8,
     "Pop_2025": 3191,
     "extensao_km": 17.81,
@@ -8371,7 +8371,7 @@
   },
   {
     "Cod_ibge": "3533908",
-    "Municipio": "OlÃ­mpia",
+    "Municipio": "Olímpia",
     "RA": "RA de Barretos",
     "Area_Km2": 806.25,
     "Pop_2025": 56874,
@@ -8386,8 +8386,8 @@
   },
   {
     "Cod_ibge": "3521150",
-    "Municipio": "IpiguÃ¡",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Ipiguá",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 141.4,
     "Pop_2025": 7115,
     "extensao_km": 6.25,
@@ -8402,7 +8402,7 @@
   {
     "Cod_ibge": "3534005",
     "Municipio": "Onda Verde",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 244.16,
     "Pop_2025": 4942,
     "extensao_km": 35.65,
@@ -8417,7 +8417,7 @@
   {
     "Cod_ibge": "3552304",
     "Municipio": "Sud Mennucci",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 597.1,
     "Pop_2025": 7464,
     "extensao_km": 31.89,
@@ -8431,8 +8431,8 @@
   },
   {
     "Cod_ibge": "3518909",
-    "Municipio": "GuzolÃ¢ndia",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Guzolândia",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 254.24,
     "Pop_2025": 4259,
     "extensao_km": 17.22,
@@ -8446,7 +8446,7 @@
   },
   {
     "Cod_ibge": "3536307",
-    "Municipio": "PatrocÃ­nio Paulista",
+    "Municipio": "Patrocínio Paulista",
     "RA": "RA de Franca",
     "Area_Km2": 604.25,
     "Pop_2025": 14888,
@@ -8462,7 +8462,7 @@
   {
     "Cod_ibge": "3532603",
     "Municipio": "Nhandeara",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 438.95,
     "Pop_2025": 9915,
     "extensao_km": 22.61,
@@ -8477,7 +8477,7 @@
   {
     "Cod_ibge": "3515905",
     "Municipio": "Floreal",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 205.32,
     "Pop_2025": 2747,
     "extensao_km": 21.51,
@@ -8492,7 +8492,7 @@
   {
     "Cod_ibge": "3504206",
     "Municipio": "Auriflama",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 437.32,
     "Pop_2025": 13856,
     "extensao_km": 51.27,
@@ -8506,8 +8506,8 @@
   },
   {
     "Cod_ibge": "3530409",
-    "Municipio": "MirassolÃ¢ndia",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Mirassolândia",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 166.67,
     "Pop_2025": 4783,
     "extensao_km": 16.84,
@@ -8522,7 +8522,7 @@
   {
     "Cod_ibge": "3516903",
     "Municipio": "General Salgado",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 496.81,
     "Pop_2025": 10437,
     "extensao_km": 45.2,
@@ -8536,7 +8536,7 @@
   },
   {
     "Cod_ibge": "3549508",
-    "Municipio": "SÃ£o JosÃ© da Bela Vista",
+    "Municipio": "São José da Bela Vista",
     "RA": "RA de Franca",
     "Area_Km2": 277.27,
     "Pop_2025": 7664,
@@ -8552,7 +8552,7 @@
   {
     "Cod_ibge": "3528304",
     "Municipio": "Magda",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 313.97,
     "Pop_2025": 3211,
     "extensao_km": 23.18,
@@ -8567,7 +8567,7 @@
   {
     "Cod_ibge": "3523008",
     "Municipio": "Itapura",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 328.85,
     "Pop_2025": 4002,
     "extensao_km": 12.48,
@@ -8581,8 +8581,8 @@
   },
   {
     "Cod_ibge": "3549250",
-    "Municipio": "SÃ£o JoÃ£o de Iracema",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "São João de Iracema",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 179.53,
     "Pop_2025": 1882,
     "extensao_km": 15.0,
@@ -8597,7 +8597,7 @@
   {
     "Cod_ibge": "3537404",
     "Municipio": "Pereira Barreto",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 987.91,
     "Pop_2025": 24360,
     "extensao_km": 63.86,
@@ -8626,7 +8626,7 @@
   },
   {
     "Cod_ibge": "3549409",
-    "Municipio": "SÃ£o Joaquim da Barra",
+    "Municipio": "São Joaquim da Barra",
     "RA": "RA de Franca",
     "Area_Km2": 412.43,
     "Pop_2025": 49885,
@@ -8671,8 +8671,8 @@
   },
   {
     "Cod_ibge": "3529104",
-    "Municipio": "MarinÃ³polis",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Marinópolis",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 78.58,
     "Pop_2025": 1862,
     "extensao_km": 8.92,
@@ -8687,7 +8687,7 @@
   {
     "Cod_ibge": "3502606",
     "Municipio": "Aparecida d'Oeste",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 180.4,
     "Pop_2025": 4112,
     "extensao_km": 41.72,
@@ -8701,7 +8701,7 @@
   },
   {
     "Cod_ibge": "3517703",
-    "Municipio": "GuarÃ¡",
+    "Municipio": "Guará",
     "RA": "RA de Franca",
     "Area_Km2": 363.84,
     "Pop_2025": 18748,
@@ -8716,7 +8716,7 @@
   },
   {
     "Cod_ibge": "3543105",
-    "Municipio": "RibeirÃ£o Corrente",
+    "Municipio": "Ribeirão Corrente",
     "RA": "RA de Franca",
     "Area_Km2": 149.11,
     "Pop_2025": 4717,
@@ -8732,7 +8732,7 @@
   {
     "Cod_ibge": "3540259",
     "Municipio": "Pontalinda",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 211.82,
     "Pop_2025": 4198,
     "extensao_km": 8.96,
@@ -8747,7 +8747,7 @@
   {
     "Cod_ibge": "3513850",
     "Municipio": "Dirce Reis",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 88.97,
     "Pop_2025": 1639,
     "extensao_km": 13.96,
@@ -8761,8 +8761,8 @@
   },
   {
     "Cod_ibge": "3552551",
-    "Municipio": "SuzanÃ¡polis",
-    "RA": "RA de AraÃ§atuba",
+    "Municipio": "Suzanápolis",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 332.58,
     "Pop_2025": 3465,
     "extensao_km": 54.67,
@@ -8776,8 +8776,8 @@
   },
   {
     "Cod_ibge": "3549201",
-    "Municipio": "SÃ£o JoÃ£o das Duas Pontes",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "São João das Duas Pontes",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 130.31,
     "Pop_2025": 2623,
     "extensao_km": 24.43,
@@ -8792,7 +8792,7 @@
   {
     "Cod_ibge": "3535200",
     "Municipio": "Palmeira d'Oeste",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 322.18,
     "Pop_2025": 8971,
     "extensao_km": 44.78,
@@ -8807,7 +8807,7 @@
   {
     "Cod_ibge": "3553401",
     "Municipio": "Tanabi",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 751.41,
     "Pop_2025": 26071,
     "extensao_km": 58.44,
@@ -8822,7 +8822,7 @@
   {
     "Cod_ibge": "3557105",
     "Municipio": "Votuporanga",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 423.81,
     "Pop_2025": 100568,
     "extensao_km": 46.07,
@@ -8837,7 +8837,7 @@
   {
     "Cod_ibge": "3529609",
     "Municipio": "Meridiano",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 229.16,
     "Pop_2025": 4721,
     "extensao_km": 53.13,
@@ -8851,8 +8851,8 @@
   },
   {
     "Cod_ibge": "3549003",
-    "Municipio": "SÃ£o Francisco",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "São Francisco",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 75.91,
     "Pop_2025": 2623,
     "extensao_km": 0.0,
@@ -8867,7 +8867,7 @@
   {
     "Cod_ibge": "3556107",
     "Municipio": "Valentim Gentil",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 150.51,
     "Pop_2025": 14634,
     "extensao_km": 36.75,
@@ -8882,7 +8882,7 @@
   {
     "Cod_ibge": "3533007",
     "Municipio": "Nova Granada",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 534.12,
     "Pop_2025": 19733,
     "extensao_km": 20.31,
@@ -8896,8 +8896,8 @@
   },
   {
     "Cod_ibge": "3532843",
-    "Municipio": "Nova CanaÃ£ Paulista",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Nova Canaã Paulista",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 125.37,
     "Pop_2025": 2055,
     "extensao_km": 22.3,
@@ -8926,7 +8926,7 @@
   },
   {
     "Cod_ibge": "3521309",
-    "Municipio": "IpuÃ£",
+    "Municipio": "Ipuã",
     "RA": "RA de Franca",
     "Area_Km2": 466.29,
     "Pop_2025": 14701,
@@ -8942,7 +8942,7 @@
   {
     "Cod_ibge": "3520442",
     "Municipio": "Ilha Solteira",
-    "RA": "RA de AraÃ§atuba",
+    "RA": "RA de Araçatuba",
     "Area_Km2": 653.85,
     "Pop_2025": 26257,
     "extensao_km": 31.56,
@@ -8987,7 +8987,7 @@
   {
     "Cod_ibge": "3512902",
     "Municipio": "Cosmorama",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 442.72,
     "Pop_2025": 9019,
     "extensao_km": 44.9,
@@ -9001,8 +9001,8 @@
   },
   {
     "Cod_ibge": "3519808",
-    "Municipio": "IcÃ©m",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Icém",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 363.71,
     "Pop_2025": 7982,
     "extensao_km": 6.47,
@@ -9016,8 +9016,8 @@
   },
   {
     "Cod_ibge": "3501806",
-    "Municipio": "AmÃ©rico de Campos",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Américo de Campos",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 255.11,
     "Pop_2025": 5981,
     "extensao_km": 32.62,
@@ -9032,7 +9032,7 @@
   {
     "Cod_ibge": "3547650",
     "Municipio": "Santa Salete",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 79.76,
     "Pop_2025": 1692,
     "extensao_km": 3.53,
@@ -9047,7 +9047,7 @@
   {
     "Cod_ibge": "3536257",
     "Municipio": "Parisi",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 85.37,
     "Pop_2025": 3030,
     "extensao_km": 18.82,
@@ -9061,8 +9061,8 @@
   },
   {
     "Cod_ibge": "3501202",
-    "Municipio": "Ãlvares Florence",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Álvares Florence",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 363.71,
     "Pop_2025": 3979,
     "extensao_km": 31.91,
@@ -9077,7 +9077,7 @@
   {
     "Cod_ibge": "3535002",
     "Municipio": "Palestina",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 699.76,
     "Pop_2025": 11704,
     "extensao_km": 81.92,
@@ -9091,8 +9091,8 @@
   },
   {
     "Cod_ibge": "3554904",
-    "Municipio": "TrÃªs Fronteiras",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Três Fronteiras",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 152.65,
     "Pop_2025": 7060,
     "extensao_km": 23.61,
@@ -9107,7 +9107,7 @@
   {
     "Cod_ibge": "3547205",
     "Municipio": "Santana da Ponte Pensa",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 131.34,
     "Pop_2025": 1699,
     "extensao_km": 10.63,
@@ -9136,8 +9136,8 @@
   },
   {
     "Cod_ibge": "3556958",
-    "Municipio": "VitÃ³ria Brasil",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Vitória Brasil",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 50.24,
     "Pop_2025": 1828,
     "extensao_km": 1.24,
@@ -9151,7 +9151,7 @@
   },
   {
     "Cod_ibge": "3512100",
-    "Municipio": "ColÃ´mbia",
+    "Municipio": "Colômbia",
     "RA": "RA de Barretos",
     "Area_Km2": 730.1,
     "Pop_2025": 6802,
@@ -9182,7 +9182,7 @@
   {
     "Cod_ibge": "3524808",
     "Municipio": "Jales",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 371.27,
     "Pop_2025": 50078,
     "extensao_km": 24.24,
@@ -9196,8 +9196,8 @@
   },
   {
     "Cod_ibge": "3546603",
-    "Municipio": "Santa FÃ© do Sul",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Santa Fé do Sul",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 208.44,
     "Pop_2025": 36288,
     "extensao_km": 30.63,
@@ -9211,8 +9211,8 @@
   },
   {
     "Cod_ibge": "3503950",
-    "Municipio": "AspÃ¡sia",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Aspásia",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 69.69,
     "Pop_2025": 1875,
     "extensao_km": 15.0,
@@ -9226,7 +9226,7 @@
   },
   {
     "Cod_ibge": "3517406",
-    "Municipio": "GuaÃ­ra",
+    "Municipio": "Guaíra",
     "RA": "RA de Barretos",
     "Area_Km2": 1260.5,
     "Pop_2025": 40489,
@@ -9256,8 +9256,8 @@
   },
   {
     "Cod_ibge": "3534203",
-    "Municipio": "OrindiÃºva",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Orindiúva",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 248.88,
     "Pop_2025": 6157,
     "extensao_km": 15.79,
@@ -9272,7 +9272,7 @@
   {
     "Cod_ibge": "3515202",
     "Municipio": "Estrela d'Oeste",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 299.13,
     "Pop_2025": 9696,
     "extensao_km": 30.56,
@@ -9286,8 +9286,8 @@
   },
   {
     "Cod_ibge": "3544509",
-    "Municipio": "RubinÃ©ia",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Rubinéia",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 226.25,
     "Pop_2025": 3998,
     "extensao_km": 19.57,
@@ -9301,8 +9301,8 @@
   },
   {
     "Cod_ibge": "3515509",
-    "Municipio": "FernandÃ³polis",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Fernandópolis",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 553.51,
     "Pop_2025": 73508,
     "extensao_km": 25.86,
@@ -9316,8 +9316,8 @@
   },
   {
     "Cod_ibge": "3536901",
-    "Municipio": "PedranÃ³polis",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Pedranópolis",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 262.01,
     "Pop_2025": 2856,
     "extensao_km": 24.39,
@@ -9332,7 +9332,7 @@
   {
     "Cod_ibge": "3540309",
     "Municipio": "Pontes Gestal",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 218.17,
     "Pop_2025": 2411,
     "extensao_km": 32.08,
@@ -9361,8 +9361,8 @@
   },
   {
     "Cod_ibge": "3555802",
-    "Municipio": "UrÃ¢nia",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Urânia",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 210.2,
     "Pop_2025": 8973,
     "extensao_km": 12.33,
@@ -9376,8 +9376,8 @@
   },
   {
     "Cod_ibge": "3514205",
-    "Municipio": "DolcinÃ³polis",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Dolcinópolis",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 78.83,
     "Pop_2025": 2254,
     "extensao_km": 4.18,
@@ -9391,7 +9391,7 @@
   },
   {
     "Cod_ibge": "3529708",
-    "Municipio": "MiguelÃ³polis",
+    "Municipio": "Miguelópolis",
     "RA": "RA de Franca",
     "Area_Km2": 820.4,
     "Pop_2025": 19621,
@@ -9407,7 +9407,7 @@
   {
     "Cod_ibge": "3518008",
     "Municipio": "Guarani d'Oeste",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 86.17,
     "Pop_2025": 1999,
     "extensao_km": 0.97,
@@ -9437,7 +9437,7 @@
   {
     "Cod_ibge": "3546108",
     "Municipio": "Santa Clara d'Oeste",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 184.18,
     "Pop_2025": 2694,
     "extensao_km": 6.36,
@@ -9451,8 +9451,8 @@
   },
   {
     "Cod_ibge": "3535903",
-    "Municipio": "ParanapuÃ£",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Paranapuã",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 141.35,
     "Pop_2025": 4118,
     "extensao_km": 24.67,
@@ -9466,8 +9466,8 @@
   },
   {
     "Cod_ibge": "3528205",
-    "Municipio": "MacedÃ´nia",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Macedônia",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 329.64,
     "Pop_2025": 4058,
     "extensao_km": 34.44,
@@ -9482,7 +9482,7 @@
   {
     "Cod_ibge": "3555307",
     "Municipio": "Turmalina",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 148.92,
     "Pop_2025": 1662,
     "extensao_km": 14.72,
@@ -9512,7 +9512,7 @@
   {
     "Cod_ibge": "3547403",
     "Municipio": "Santa Rita d'Oeste",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 212.33,
     "Pop_2025": 2796,
     "extensao_km": 22.5,
@@ -9541,8 +9541,8 @@
   },
   {
     "Cod_ibge": "3544202",
-    "Municipio": "RiolÃ¢ndia",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Riolândia",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 635.6,
     "Pop_2025": 10444,
     "extensao_km": 13.72,
@@ -9557,7 +9557,7 @@
   {
     "Cod_ibge": "3510708",
     "Municipio": "Cardoso",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 643.85,
     "Pop_2025": 11476,
     "extensao_km": 40.84,
@@ -9572,7 +9572,7 @@
   {
     "Cod_ibge": "3545704",
     "Municipio": "Santa Albertina",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 274.51,
     "Pop_2025": 6566,
     "extensao_km": 6.99,
@@ -9587,7 +9587,7 @@
   {
     "Cod_ibge": "3536604",
     "Municipio": "Paulo de Faria",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 740.84,
     "Pop_2025": 7390,
     "extensao_km": 6.28,
@@ -9602,7 +9602,7 @@
   {
     "Cod_ibge": "3530003",
     "Municipio": "Mira Estrela",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 217.15,
     "Pop_2025": 3209,
     "extensao_km": 25.11,
@@ -9616,8 +9616,8 @@
   },
   {
     "Cod_ibge": "3520707",
-    "Municipio": "IndiaporÃ£",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Indiaporã",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 281.18,
     "Pop_2025": 4113,
     "extensao_km": 37.34,
@@ -9631,8 +9631,8 @@
   },
   {
     "Cod_ibge": "3529658",
-    "Municipio": "MesÃ³polis",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "Municipio": "Mesópolis",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 150.08,
     "Pop_2025": 1990,
     "extensao_km": 22.24,
@@ -9647,7 +9647,7 @@
   {
     "Cod_ibge": "3534757",
     "Municipio": "Ouroeste",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 289.98,
     "Pop_2025": 10660,
     "extensao_km": 24.09,
@@ -9662,7 +9662,7 @@
   {
     "Cod_ibge": "3540408",
     "Municipio": "Populina",
-    "RA": "RA de SÃ£o JosÃ© do Rio Preto",
+    "RA": "RA de São José do Rio Preto",
     "Area_Km2": 317.85,
     "Pop_2025": 4182,
     "extensao_km": 28.86,

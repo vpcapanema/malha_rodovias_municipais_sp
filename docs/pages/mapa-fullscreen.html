@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa em Tela Cheia | Malha Vicinal SP</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/resultados_maps.css">
+    <link rel="stylesheet" href="../css/resultados_municipal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../libs/leaflet/leaflet.css">
+    <script src="../libs/leaflet/leaflet.js"></script>
+</head>
+<body data-page="fullscreen" class="fullscreen-page">
+    <header class="fullscreen-header">
+        <div>
+            <p class="fullscreen-eyebrow">Mapa em tela cheia</p>
+            <h1 id="fullscreenTitle">Carregando mapa...</h1>
+            <p id="fullscreenDescription" class="fullscreen-description"></p>
+        </div>
+        <div class="fullscreen-actions">
+            <a href="resultados-municipal.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Voltar ao estudo
+            </a>
+        </div>
+    </header>
+    <main class="fullscreen-main">
+        <div id="mapaFullscreen" class="mapa-tematico mapa-fullscreen">
+            <div id="legenda-mapaFullscreen" class="mapa-legenda-externa" aria-label="Legenda do mapa em tela cheia"></div>
+        </div>
+        <div id="fullscreenStatus" class="fullscreen-status" aria-live="polite">Carregando dados...</div>
+    </main>
+    <footer class="fullscreen-footer">
+        <p>Mapa gerado a partir da base consolida com indicadores OSM + DER.</p>
+    </footer>
+    <script src="../js/resultados_municipal.js"></script>
+    <script src="../js/fullscreen_mapas.js"></script>
+</body>
+</html>

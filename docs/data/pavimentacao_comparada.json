@@ -1,0 +1,27 @@
+{
+  "osm_vicinal": {
+    "pavimentado_km": 9789.28,
+    "nao_pavimentado_km": 15983.94,
+    "outros_km": 145.36,
+    "total_km": 25918.58,
+    "pct_pavimentado": 37.8,
+    "pct_nao_pavimentado": 61.7,
+    "pct_outros": 0.6
+  },
+  "der_oficial": {
+    "pavimentado_km": 21702.26,
+    "nao_pavimentado_km": 0.0,
+    "total_km": 21702.26,
+    "pct_pavimentado": 100.0,
+    "pct_nao_pavimentado": 0.0
+  },
+  "malha_total": {
+    "pavimentado_km": 31491.54,
+    "nao_pavimentado_km": 15983.94,
+    "outros_km": 145.36,
+    "total_km": 47620.84,
+    "pct_pavimentado": 66.1,
+    "pct_nao_pavimentado": 33.6,
+    "pct_outros": 0.3
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "name": "malha_total",
+    "description": "Tiles vetoriais da malha total (OSM + DER) para o estado de São Paulo",
+    "tileUrlTemplate": "../data/malha_total_tiles/{z}/{x}/{y}.pbf",
+    "minzoom": 7,
+    "maxzoom": 14,
+    "tileCount": 12199,
+    "lineWeight": 2,
+    "lineOpacity": 0.9
+}

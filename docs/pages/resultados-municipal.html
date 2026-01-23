@@ -13,8 +13,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="../libs/chartjs/chart.umd.min.js"></script>
     <script src="../libs/leaflet/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.vectorgrid/dist/Leaflet.VectorGrid.bundled.js"></script>
+    
+    <!-- Inicialização instantânea dos mapas (antes do body) -->
+    <script>
+        // Cache global de mapas Leaflet
+        window.mapasLeaflet = {};
+        
+        // Bounds do estado de SP
+        var BOUNDS_SP = [[-25.3, -53.2], [-19.7, -44.0]];
+        
+        // Basemap padrão (CARTO Light)
+        var BASEMAP_URL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+        var BASEMAP_ATTR = '&copy; OpenStreetMap &copy; CARTO';
+        
+        // Função para mostrar loading overlay
+        function mostrarLoadingInicial(mapId) {
+            var container = document.getElementById(mapId);
+            if (!container) return;
+            var overlay = document.createElement('div');
+            overlay.className = 'map-loading-overlay';
+            overlay.innerHTML = '<div class="map-loading-content"><div class="map-loading-spinner"></div><div class="map-loading-message">Carregando...</div></div>';
+            container.appendChild(overlay);
+        }
+        
+        // Função para inicializar um mapa instantaneamente
+        function initMapaInstantaneo(mapId) {
+            var el = document.getElementById(mapId);
+            if (!el || window.mapasLeaflet[mapId]) return;
+            
+            var map = L.map(mapId, { 
+                preferCanvas: true, 
+                zoomControl: false,
+                attributionControl: true
+            });
+            
+            L.tileLayer(BASEMAP_URL, {
+                attribution: BASEMAP_ATTR,
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+            
+            map.fitBounds(BOUNDS_SP);
+            window.mapasLeaflet[mapId] = map;
+            mostrarLoadingInicial(mapId);
+        }
+        
+        // Inicializar mapas assim que o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', function() {
+            var mapaIds = [
+                'mapaMalhaCompleta',
+                'mapaPavimento',
+                'mapaRankingExtensao',
+                'mapaDensidadeArea',
+                'mapaDensidadePop',
+                'mapaDisparidadesArea',
+                'mapaDisparidadesPop'
+            ];
+            mapaIds.forEach(initMapaInstantaneo);
+        });
+    </script>
 </head>
-<body>
+<body data-page="resultados">
     <header class="header">
         <div class="header-content">
             <h1 class="header-title">
@@ -50,18 +110,18 @@
         <p class="page-subtitle">Análise exploratória e indicadores de densidade da malha vicinal paulista</p>
 
         <!-- DESTAQUE DADOS ATUALIZADOS -->
-        <div class="alert alert-success" style="background: linear-gradient(135deg, #065f46 0%, #10b981 100%); color: white; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem;">
-            <h3 style="color: white; margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
-                <span style="font-size: 1.5rem;">✅</span>
+        <div class="alert alert-dados-validados">
+            <h3>
+                <span>✅</span>
                 Dados Atualizados e Validados
             </h3>
-            <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
-                <p style="margin: 0 0 0.5rem 0;"><strong>Base de dados:</strong> Malha vicinal estimada pelo Prof. Silvio (maio/2025)</p>
-                <p style="margin: 0 0 0.5rem 0;"><strong>Total validado:</strong> 25.918,58 km em 7.417 segmentos</p>
-                <p style="margin: 0 0 0.5rem 0;"><strong>Cobertura:</strong> 645 municípios paulistas (637 com rodovias, 8 sem rodovias)</p>
-                <p style="margin: 0 0 0.5rem 0;"><strong>CRS utilizado:</strong> SIRGAS 2000 / UTM Zone 23S (EPSG:31983)</p>
-                <p style="margin: 0 0 0.5rem 0;"><strong>População IBGE 2025:</strong> 46.081.801 habitantes</p>
-                <p style="margin: 0; font-size: 0.9rem; opacity: 0.95; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.2);">
+            <div class="dados-box">
+                <p><strong>Base de dados:</strong> Malha vicinal estimada pelo Prof. Silvio (maio/2025)</p>
+                <p><strong>Total validado:</strong> 25.918,58 km em 7.417 segmentos</p>
+                <p><strong>Cobertura:</strong> 645 municípios paulistas (637 com rodovias, 8 sem rodovias)</p>
+                <p><strong>CRS utilizado:</strong> SIRGAS 2000 / UTM Zone 23S (EPSG:31983)</p>
+                <p><strong>População IBGE 2025:</strong> 46.081.801 habitantes</p>
+                <p>
                     Todos os cálculos de área e comprimento foram realizados em projeção UTM 23S para garantir precisão métrica. Os valores apresentados correspondem aos comprimentos pré-calculados pelo processamento do Prof. Silvio.
                 </p>
             </div>
@@ -81,6 +141,7 @@
             <div class="subsecao">
                 <h3 class="subsecao-title">1.1. Características Gerais da Base Estimada</h3>
                 
+                <h4 class="subsecao-subtitle">📊 Malha Vicinal Estimada (OSM)</h4>
                 <div class="indicadores-grid">
                     <div class="indicador-card azul">
                         <div class="indicador-header">
@@ -120,10 +181,57 @@
                     </div>
                 </div>
 
+                <h4 class="subsecao-subtitle mt-2">🌐 Malha Total Estadual (OSM Vicinal + DER Oficial)</h4>
+                <div class="indicadores-grid">
+                    <div class="indicador-card azul malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-road"></i>
+                            <span class="indicador-label">Extensão Total</span>
+                        </div>
+                        <div class="indicador-valor" id="extensaoTotalMalhaTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">OSM + DER</div>
+                    </div>
+                    <div class="indicador-card verde malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-route"></i>
+                            <span class="indicador-label">Total de Segmentos</span>
+                        </div>
+                        <div class="indicador-valor" id="totalSegmentosMalhaTotal">-</div>
+                        <div class="indicador-unidade">segmentos</div>
+                        <div class="indicador-desc">OSM + DER combinados</div>
+                    </div>
+                    <div class="indicador-card laranja malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="indicador-label">Extensão Média/Município</span>
+                        </div>
+                        <div class="indicador-valor" id="extensaoMediaMunMalhaTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Distribuição municipal total</div>
+                    </div>
+                    <div class="indicador-card roxo malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-percent"></i>
+                            <span class="indicador-label">Incremento DER</span>
+                        </div>
+                        <div class="indicador-valor" id="incrementoDER">-</div>
+                        <div class="indicador-unidade">%</div>
+                        <div class="indicador-desc">Acréscimo sobre malha OSM</div>
+                    </div>
+                </div>
+
                 <div class="mapa-container mt-2">
-                    <h4 class="mapa-title">Malha Vicinal Estimada Completa</h4>
-                    <div id="mapaMalhaCompleta" class="mapa-tematico" style="height: 500px;"></div>
-                    <div id="legenda-mapaMalhaCompleta" class="mapa-legenda-externa" aria-label="Legenda do mapa Malha Vicinal Estimada Completa"></div>
+                    <div class="mapa-header">
+                        <h4 class="mapa-title">Malha Vicinal Estimada do Estado de São Paulo</h4>
+                        <a href="mapa-fullscreen.html?map=malha-completa" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa Malha Completa em tela cheia">
+                            <i class="fas fa-expand"></i>
+                            Tela cheia
+                        </a>
+                    </div>
+                    <div id="mapaMalhaCompleta" class="mapa-tematico mapa-medio">
+                        <div id="legenda-mapaMalhaCompleta" class="mapa-legenda-externa" aria-label="Legenda da malha vicinal estimada completa"></div>
+                    </div>
                 </div>
             </div>
 
@@ -131,6 +239,7 @@
             <div class="subsecao mt-2">
                 <h3 class="subsecao-title">1.2. Estatísticas dos Segmentos Viários</h3>
                 
+                <h4 class="subsecao-subtitle">Malha Vicinal (OSM)</h4>
                 <div class="indicadores-grid">
                     <div class="indicador-card azul">
                         <div class="indicador-header">
@@ -152,7 +261,7 @@
                     </div>
                     <div class="indicador-card laranja">
                         <div class="indicador-header">
-                            <i class="fas fa-sigma"></i>
+                            <span class="indicador-icone-texto">±</span>
                             <span class="indicador-label">Desvio Padrão</span>
                         </div>
                         <div class="indicador-valor" id="desvioPadrao">-</div>
@@ -170,13 +279,53 @@
                     </div>
                 </div>
 
+                <h4 class="subsecao-subtitle mt-2">Malha Total (OSM + DER)</h4>
+                <div class="indicadores-grid">
+                    <div class="indicador-card azul malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-chart-bar"></i>
+                            <span class="indicador-label">Comprimento Médio</span>
+                        </div>
+                        <div class="indicador-valor" id="compMedioTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Por segmento</div>
+                    </div>
+                    <div class="indicador-card verde malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="indicador-label">Comprimento Mediano</span>
+                        </div>
+                        <div class="indicador-valor" id="compMedianoTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Valor central</div>
+                    </div>
+                    <div class="indicador-card laranja malha-total">
+                        <div class="indicador-header">
+                            <span class="indicador-icone-texto">±</span>
+                            <span class="indicador-label">Desvio Padrão</span>
+                        </div>
+                        <div class="indicador-valor" id="desvioPadraoTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Variabilidade</div>
+                    </div>
+                    <div class="indicador-card roxo malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-arrows-alt-h"></i>
+                            <span class="indicador-label">Amplitude</span>
+                        </div>
+                        <div class="indicador-valor" id="amplitudeTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Mín - Máx</div>
+                    </div>
+                </div>
+
                 <div class="viz-container mt-2">
-                    <h4 class="chart-title">Distribuição por Comprimento de Segmentos</h4>
+                    <h4 class="chart-title">Segmentos Viários por Faixa de Comprimento (km)</h4>
                     <canvas id="chartComprimentoSegmentos"></canvas>
                 </div>
 
-                <div class="alert alert-success mt-1">
-                    <strong>✓ Interpretação:</strong> O desvio padrão elevado indica grande heterogeneidade nos comprimentos. A diferença entre média e mediana sugere distribuição assimétrica à direita, com poucos segmentos longos elevando a média.
+                <div class="alert alert-info mt-1">
+                    <strong>💡 Como Interpretar:</strong> A maioria dos segmentos tem comprimento inferior a 5 km. O desvio padrão elevado indica grande variação: alguns segmentos são muito curtos (conectores urbanos) e outros muito longos (estradas rurais). A diferença entre média e mediana revela que poucos segmentos muito longos elevam a média acima do valor central típico.
                 </div>
             </div>
 
@@ -188,19 +337,31 @@
                     <strong>⚠️ Limitação:</strong> A classificação provém das tags originais e <strong>não foi validada em campo</strong>. Os tipos representam estimativas das fontes.
                 </div>
 
-                <div class="viz-container mt-1 equal-pair">
-                    <h4 class="chart-title">Distribuição por Tipo</h4>
-                    <canvas id="chartTipoPavimento"></canvas>
+                <div class="chart-map-row mt-2">
+                    <div class="chart-column">
+                        <div class="viz-container">
+                            <h4 class="chart-title">Extensão da Malha por Tipo de Pavimento (km)</h4>
+                            <canvas id="chartTipoPavimento"></canvas>
+                        </div>
+                    </div>
+                    <div class="map-column">
+                        <div class="mapa-container">
+                            <div class="mapa-header">
+                                <h4 class="mapa-title">Tipo de Superfície por Município: Pavimentado e Não Pavimentado</h4>
+                                <a href="mapa-fullscreen.html?map=pavimento" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de pavimento em tela cheia">
+                                    <i class="fas fa-expand"></i>
+                                    Tela cheia
+                                </a>
+                            </div>
+                            <div id="mapaPavimento" class="mapa-tematico-small">
+                                <div id="legenda-mapaPavimento" class="mapa-legenda-externa" aria-label="Legenda do mapa por tipo de pavimento"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mapa-container mt-2">
-                    <h4 class="mapa-title">Malha Vicinal Estimada por Tipo (classificação)</h4>
-                    <div id="mapaPavimento" class="mapa-tematico equal-pair" style="height: 500px;"></div>
-                    <div id="legenda-mapaPavimento" class="mapa-legenda-externa" aria-label="Legenda do mapa Malha Vicinal Estimada por Tipo"></div>
-                </div>
-
-                <div class="alert alert-destaque mt-1">
-                    <strong>🚨 Achado:</strong> A predominância de vias não pavimentadas sugere que a maior parte da malha vicinal é caracterizada por estradas de terra ou cascalho.
+                <div class="alert alert-insight mt-1">
+                    <strong>📊 Achado Principal:</strong> A predominância de vias não pavimentadas (terra/cascalho) na base estimada reflete o perfil típico das rodovias vicinais paulistas, que historicamente conectam áreas rurais e produtivas onde o tráfego é menos intenso e justifica pavimentação menos prioritária.
                 </div>
             </div>
 
@@ -208,6 +369,7 @@
             <div class="subsecao mt-2">
                 <h3 class="subsecao-title">1.4. Distribuição Municipal da Malha Vicinal Estimada</h3>
                 
+                <h4 class="subsecao-subtitle">Malha Vicinal (OSM)</h4>
                 <div class="comparacao-grid">
                     <div class="indicador-card azul">
                         <div class="indicador-header">
@@ -229,7 +391,7 @@
                     </div>
                     <div class="indicador-card laranja">
                         <div class="indicador-header">
-                            <i class="fas fa-sigma"></i>
+                            <span class="indicador-icone-texto">±</span>
                             <span class="indicador-label">Desvio Padrão</span>
                         </div>
                         <div class="indicador-valor" id="desvioMunicipal">-</div>
@@ -247,19 +409,50 @@
                     </div>
                 </div>
 
-                <div class="chart-map-row mt-2">
-                    <div class="chart-column">
-                        <div class="viz-container">
-                            <h4 class="chart-title">Concentração por Faixas</h4>
-                            <canvas id="chartFaixasExtensao"></canvas>
+                <h4 class="subsecao-subtitle mt-2">Malha Total (OSM + DER)</h4>
+                <div class="comparacao-grid">
+                    <div class="indicador-card azul malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-chart-bar"></i>
+                            <span class="indicador-label">Média Municipal</span>
                         </div>
+                        <div class="indicador-valor" id="mediaMunicipalTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Distribuição média</div>
                     </div>
-                    <div class="map-column">
-                        <div class="mapa-container">
-                            <h4 class="mapa-title">Mapa por Faixas</h4>
-                            <div id="mapaFaixasExtensao" class="mapa-tematico-small"></div>
-                            <div id="legenda-mapaFaixasExtensao" class="mapa-legenda-externa" aria-label="Legenda do mapa por faixas"></div>
+                    <div class="indicador-card verde malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="indicador-label">Mediana Municipal</span>
                         </div>
+                        <div class="indicador-valor" id="medianaMunicipalTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Valor central</div>
+                    </div>
+                    <div class="indicador-card laranja malha-total">
+                        <div class="indicador-header">
+                            <span class="indicador-icone-texto">±</span>
+                            <span class="indicador-label">Desvio Padrão</span>
+                        </div>
+                        <div class="indicador-valor" id="desvioMunicipalTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Variabilidade</div>
+                    </div>
+                    <div class="indicador-card roxo malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-arrows-alt-h"></i>
+                            <span class="indicador-label">Amplitude</span>
+                        </div>
+                        <div class="indicador-valor" id="amplitudeMunicipalTotal">-</div>
+                        <div class="indicador-unidade">km</div>
+                        <div class="indicador-desc">Variação mín-máx</div>
+                    </div>
+                </div>
+
+                <div class="chart-only-row mt-2">
+                    <div class="viz-container">
+                        <h4 class="chart-title">Quantidade de Municípios por Faixa de Extensão de Malha (km)</h4>
+                        <canvas id="chartFaixasExtensao"></canvas>
                     </div>
                 </div>
             </div>
@@ -275,22 +468,29 @@
                 <div class="chart-map-row mt-2">
                     <div class="chart-column">
                         <div class="viz-container">
-                            <h4 class="chart-title">🏆 Top 10 MAIOR Extensão</h4>
+                            <h4 class="chart-title">10 Municípios com Maior Extensão de Malha Vicinal (km)</h4>
                             <canvas id="chartTop10Maior"></canvas>
                         </div>
                     </div>
                     <div class="chart-column">
                         <div class="viz-container">
-                            <h4 class="chart-title">📉 Top 10 MENOR Extensão</h4>
+                            <h4 class="chart-title">10 Municípios com Menor Extensão de Malha Vicinal (km)</h4>
                             <canvas id="chartTop10Menor"></canvas>
                         </div>
                     </div>
                 </div>
 
                 <div class="mapa-container mt-2">
-                    <h4 class="mapa-title">Mapa contínuo (gradiente): Extensão municipal da malha vicinal estimada</h4>
-                    <div id="mapaRankingExtensao" class="mapa-tematico"></div>
-                    <div id="legenda-mapaRankingExtensao" class="mapa-legenda-externa" aria-label="Legenda do mapa contínuo de extensão municipal"></div>
+                    <div class="mapa-header">
+                        <h4 class="mapa-title">Extensão da Malha Vicinal por Município (km)</h4>
+                        <a href="mapa-fullscreen.html?map=ranking-extensao" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa ranking de extensão em tela cheia">
+                            <i class="fas fa-expand"></i>
+                            Tela cheia
+                        </a>
+                    </div>
+                    <div id="mapaRankingExtensao" class="mapa-tematico">
+                        <div id="legenda-mapaRankingExtensao" class="mapa-legenda-externa mapa-legenda-overlay" aria-label="Legenda do gradiente de extensão municipal"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -309,6 +509,7 @@
                     <strong>📐 Método de Cálculo:</strong> Densidade = (Extensão km / Área km²) × 10.000
                 </div>
 
+                <h4 class="subsecao-subtitle">Malha Vicinal (OSM)</h4>
                 <div class="comparacao-grid">
                     <div class="indicador-card azul">
                         <div class="indicador-header">
@@ -330,42 +531,89 @@
                     </div>
                     <div class="indicador-card laranja">
                         <div class="indicador-header">
-                            <i class="fas fa-chart-line"></i>
-                            <span class="indicador-label">Mínimo</span>
+                            <span class="indicador-icone-texto">±</span>
+                            <span class="indicador-label">Desvio Padrão</span>
                         </div>
-                        <div class="indicador-valor" id="densAreaMin">-</div>
+                        <div class="indicador-valor" id="densAreaDesvio">-</div>
                         <div class="indicador-unidade">km/10.000km²</div>
-                        <div class="indicador-desc">Menor densidade</div>
+                        <div class="indicador-desc">Variabilidade</div>
                     </div>
                     <div class="indicador-card roxo">
                         <div class="indicador-header">
-                            <i class="fas fa-chart-line"></i>
-                            <span class="indicador-label">Máximo</span>
+                            <i class="fas fa-arrows-alt-h"></i>
+                            <span class="indicador-label">Amplitude</span>
                         </div>
-                        <div class="indicador-valor" id="densAreaMax">-</div>
+                        <div class="indicador-valor" id="densAreaAmplitude">-</div>
                         <div class="indicador-unidade">km/10.000km²</div>
-                        <div class="indicador-desc">Maior densidade</div>
+                        <div class="indicador-desc">Intervalo mín-máx</div>
+                    </div>
+                </div>
+
+                <h4 class="subsecao-subtitle mt-2">Malha Total (OSM + DER)</h4>
+                <div class="comparacao-grid">
+                    <div class="indicador-card azul malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-chart-bar"></i>
+                            <span class="indicador-label">Densidade Média</span>
+                        </div>
+                        <div class="indicador-valor" id="densAreaMediaTotal">-</div>
+                        <div class="indicador-unidade">km/10.000km²</div>
+                        <div class="indicador-desc">Média estadual</div>
+                    </div>
+                    <div class="indicador-card verde malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="indicador-label">Densidade Mediana</span>
+                        </div>
+                        <div class="indicador-valor" id="densAreaMedianaTotal">-</div>
+                        <div class="indicador-unidade">km/10.000km²</div>
+                        <div class="indicador-desc">Valor central</div>
+                    </div>
+                    <div class="indicador-card laranja malha-total">
+                        <div class="indicador-header">
+                            <span class="indicador-icone-texto">±</span>
+                            <span class="indicador-label">Desvio Padrão</span>
+                        </div>
+                        <div class="indicador-valor" id="densAreaDesvioTotal">-</div>
+                        <div class="indicador-unidade">km/10.000km²</div>
+                        <div class="indicador-desc">Variabilidade</div>
+                    </div>
+                    <div class="indicador-card roxo malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-arrows-alt-h"></i>
+                            <span class="indicador-label">Amplitude</span>
+                        </div>
+                        <div class="indicador-valor" id="densAreaAmplitudeTotal">-</div>
+                        <div class="indicador-unidade">km/10.000km²</div>
+                        <div class="indicador-desc">Intervalo mín-máx</div>
                     </div>
                 </div>
 
                 <div class="chart-map-row mt-2">
                     <div class="chart-column">
                         <div class="viz-container">
-                            <h4 class="chart-title">Distribuição de Densidade Espacial</h4>
+                            <h4 class="chart-title">Quantidade de Municípios por Faixa de Densidade Espacial (km/10.000km²)</h4>
                             <canvas id="chartDensidadeArea"></canvas>
                         </div>
                     </div>
                     <div class="map-column">
                         <div class="mapa-container">
-                            <h4 class="mapa-title">Mapa de Densidade Espacial</h4>
-                            <div id="mapaDensidadeArea" class="mapa-tematico-small"></div>
-                            <div id="legenda-mapaDensidadeArea" class="mapa-legenda-externa" aria-label="Legenda do mapa de densidade espacial"></div>
+                            <div class="mapa-header">
+                                <h4 class="mapa-title">Densidade Espacial da Malha por Município (km/10.000 km²)</h4>
+                                <a href="mapa-fullscreen.html?map=densidade-area" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de densidade por área em tela cheia">
+                                    <i class="fas fa-expand"></i>
+                                    Tela cheia
+                                </a>
+                            </div>
+                            <div id="mapaDensidadeArea" class="mapa-tematico-small">
+                                <div id="legenda-mapaDensidadeArea" class="mapa-legenda-externa mapa-legenda-overlay" aria-label="Legenda do gradiente de densidade por área (km/10.000km²)"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="alert alert-success mt-1">
-                    <strong>✓ Interpretação:</strong> Municípios com densidade alta possuem malha vicinal mais densa em relação ao território. Valores baixos podem indicar áreas de conservação, urbanização concentrada ou lacunas no mapeamento.
+                <div class="alert alert-info mt-1">
+                    <strong>💡 Como Interpretar:</strong> A densidade espacial relaciona a extensão de malha com o tamanho do território. Valores altos indicam malha densa (muitos km de rodovia por área), comum em regiões agrícolas intensivas. Valores baixos podem refletir municípios com áreas de conservação ambiental, grandes extensões urbanizadas sem necessidade de vicinais, ou lacunas no mapeamento da base estimada.
                 </div>
             </div>
 
@@ -378,6 +626,7 @@
                     <strong>📊 Fonte:</strong> População IBGE 2025 (Estimativa SIDRA - Tabela 6579)
                 </div>
 
+                <h4 class="subsecao-subtitle">Malha Vicinal (OSM)</h4>
                 <div class="comparacao-grid">
                     <div class="indicador-card azul">
                         <div class="indicador-header">
@@ -399,42 +648,89 @@
                     </div>
                     <div class="indicador-card laranja">
                         <div class="indicador-header">
-                            <i class="fas fa-chart-line"></i>
-                            <span class="indicador-label">Mínimo</span>
+                            <span class="indicador-icone-texto">±</span>
+                            <span class="indicador-label">Desvio Padrão</span>
                         </div>
-                        <div class="indicador-valor" id="densPopMin">-</div>
+                        <div class="indicador-valor" id="densPopDesvio">-</div>
                         <div class="indicador-unidade">km/10.000 hab</div>
-                        <div class="indicador-desc">Menor densidade</div>
+                        <div class="indicador-desc">Variabilidade</div>
                     </div>
                     <div class="indicador-card roxo">
                         <div class="indicador-header">
-                            <i class="fas fa-chart-line"></i>
-                            <span class="indicador-label">Máximo</span>
+                            <i class="fas fa-arrows-alt-h"></i>
+                            <span class="indicador-label">Amplitude</span>
                         </div>
-                        <div class="indicador-valor" id="densPopMax">-</div>
+                        <div class="indicador-valor" id="densPopAmplitude">-</div>
                         <div class="indicador-unidade">km/10.000 hab</div>
-                        <div class="indicador-desc">Maior densidade</div>
+                        <div class="indicador-desc">Intervalo mín-máx</div>
+                    </div>
+                </div>
+
+                <h4 class="subsecao-subtitle mt-2">Malha Total (OSM + DER)</h4>
+                <div class="comparacao-grid">
+                    <div class="indicador-card azul malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-chart-bar"></i>
+                            <span class="indicador-label">Densidade Média</span>
+                        </div>
+                        <div class="indicador-valor" id="densPopMediaTotal">-</div>
+                        <div class="indicador-unidade">km/10.000 hab</div>
+                        <div class="indicador-desc">Média estadual</div>
+                    </div>
+                    <div class="indicador-card verde malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="indicador-label">Densidade Mediana</span>
+                        </div>
+                        <div class="indicador-valor" id="densPopMedianaTotal">-</div>
+                        <div class="indicador-unidade">km/10.000 hab</div>
+                        <div class="indicador-desc">Valor central</div>
+                    </div>
+                    <div class="indicador-card laranja malha-total">
+                        <div class="indicador-header">
+                            <span class="indicador-icone-texto">±</span>
+                            <span class="indicador-label">Desvio Padrão</span>
+                        </div>
+                        <div class="indicador-valor" id="densPopDesvioTotal">-</div>
+                        <div class="indicador-unidade">km/10.000 hab</div>
+                        <div class="indicador-desc">Variabilidade</div>
+                    </div>
+                    <div class="indicador-card roxo malha-total">
+                        <div class="indicador-header">
+                            <i class="fas fa-arrows-alt-h"></i>
+                            <span class="indicador-label">Amplitude</span>
+                        </div>
+                        <div class="indicador-valor" id="densPopAmplitudeTotal">-</div>
+                        <div class="indicador-unidade">km/10.000 hab</div>
+                        <div class="indicador-desc">Intervalo mín-máx</div>
                     </div>
                 </div>
 
                 <div class="chart-map-row mt-2">
                     <div class="chart-column">
                         <div class="viz-container">
-                            <h4 class="chart-title">Distribuição de Densidade Populacional</h4>
+                            <h4 class="chart-title">Quantidade de Municípios por Faixa de Densidade Populacional (km/10.000 hab)</h4>
                             <canvas id="chartDensidadePop"></canvas>
                         </div>
                     </div>
                     <div class="map-column">
                         <div class="mapa-container">
-                            <h4 class="mapa-title">Mapa de Densidade Populacional</h4>
-                            <div id="mapaDensidadePop" class="mapa-tematico-small"></div>
-                            <div id="legenda-mapaDensidadePop" class="mapa-legenda-externa" aria-label="Legenda do mapa de densidade populacional"></div>
+                            <div class="mapa-header">
+                                <h4 class="mapa-title">Densidade Populacional da Malha por Município (km/10.000 hab)</h4>
+                                <a href="mapa-fullscreen.html?map=densidade-pop" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de densidade populacional em tela cheia">
+                                    <i class="fas fa-expand"></i>
+                                    Tela cheia
+                                </a>
+                            </div>
+                            <div id="mapaDensidadePop" class="mapa-tematico-small">
+                                <div id="legenda-mapaDensidadePop" class="mapa-legenda-externa mapa-legenda-overlay" aria-label="Legenda do gradiente de densidade populacional (km/10.000 hab)"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="alert alert-success mt-1">
-                    <strong>✓ Interpretação:</strong> Valores altos indicam maior disponibilidade de vias vicinais per capita. Municípios rurais tendem a apresentar valores maiores que áreas metropolitanas densamente povoadas.
+                <div class="alert alert-info mt-1">
+                    <strong>💡 Como Interpretar:</strong> A densidade populacional mostra quantos km de malha vicinal existem para cada 10.000 habitantes. Valores altos (municípios rurais) indicam grande disponibilidade de vias por habitante, refletindo economia baseada em produção agrícola dispersa. Valores baixos (regiões metropolitanas) mostram alta concentração populacional com menor necessidade relativa de vicinais.
                 </div>
             </div>
 
@@ -447,42 +743,70 @@
                     <strong>📊 Classes:</strong> Muito Abaixo (<-50%), Abaixo (-50% a -20%), Média (-20% a +20%), Acima (+20% a +50%), Muito Acima (>+50%)
                 </div>
 
-                <h4 class="subtitle-section mt-2">Disparidades Espaciais (por área)</h4>
-                <div class="chart-map-row">
+                <!-- Controle de seleção de malha -->
+                <div class="controle-malha-container">
+                    <label class="controle-malha-label">
+                        <i class="fas fa-layer-group"></i> Visualizar dados de:
+                    </label>
+                    <div class="toggle-switch">
+                        <input type="radio" id="disparidadeOSM" name="tipoMalhaDisparidade" value="osm" checked>
+                        <label for="disparidadeOSM" class="toggle-label">Malha Vicinal (OSM)</label>
+                        
+                        <input type="radio" id="disparidadeTotal" name="tipoMalhaDisparidade" value="total">
+                        <label for="disparidadeTotal" class="toggle-label">Malha Total (OSM+DER)</label>
+                    </div>
+                </div>
+
+                <h4 class="subsecao-subtitle mt-2">Disparidades Espaciais (desvio da média estadual)</h4>
+                <div class="chart-map-row mt-2">
                     <div class="chart-column">
                         <div class="viz-container">
-                            <h4 class="chart-title">Distribuição por Classe</h4>
+                            <h4 class="chart-title">Municípios por Classe de Disparidade Espacial</h4>
                             <canvas id="chartDisparidadesArea"></canvas>
                         </div>
                     </div>
                     <div class="map-column">
                         <div class="mapa-container">
-                            <h4 class="mapa-title">Mapa de Disparidades Espaciais</h4>
-                            <div id="mapaDisparidadesArea" class="mapa-tematico-small"></div>
-                            <div id="legenda-mapaDisparidadesArea" class="mapa-legenda-externa" aria-label="Legenda do mapa de disparidades espaciais"></div>
+                            <div class="mapa-header">
+                                <h4 class="mapa-title">Disparidade na Densidade Espacial (desvio da média estadual)</h4>
+                                <a href="mapa-fullscreen.html?map=disparidade-area" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de disparidades espaciais em tela cheia">
+                                    <i class="fas fa-expand"></i>
+                                    Tela cheia
+                                </a>
+                            </div>
+                            <div id="mapaDisparidadesArea" class="mapa-tematico-small">
+                                <div id="legenda-mapaDisparidadesArea" class="mapa-legenda-externa mapa-legenda-overlay" aria-label="Legenda das classes de disparidade espacial"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h4 class="subtitle-section mt-2">Disparidades Populacionais</h4>
-                <div class="chart-map-row">
+                <h4 class="subsecao-subtitle mt-2">Disparidades Populacionais (desvio da média estadual)</h4>
+                <div class="chart-map-row mt-2">
                     <div class="chart-column">
                         <div class="viz-container">
-                            <h4 class="chart-title">Distribuição por Classe</h4>
+                            <h4 class="chart-title">Municípios por Classe de Disparidade Populacional</h4>
                             <canvas id="chartDisparidadesPop"></canvas>
                         </div>
                     </div>
                     <div class="map-column">
                         <div class="mapa-container">
-                            <h4 class="mapa-title">Mapa de Disparidades Populacionais</h4>
-                            <div id="mapaDisparidadesPop" class="mapa-tematico-small"></div>
-                            <div id="legenda-mapaDisparidadesPop" class="mapa-legenda-externa" aria-label="Legenda do mapa de disparidades populacionais"></div>
+                            <div class="mapa-header">
+                                <h4 class="mapa-title">Disparidade na Densidade Populacional (desvio da média estadual)</h4>
+                                <a href="mapa-fullscreen.html?map=disparidade-pop" target="_blank" rel="noopener" class="mapa-fullscreen-btn" aria-label="Abrir mapa de disparidades populacionais em tela cheia">
+                                    <i class="fas fa-expand"></i>
+                                    Tela cheia
+                                </a>
+                            </div>
+                            <div id="mapaDisparidadesPop" class="mapa-tematico-small">
+                                <div id="legenda-mapaDisparidadesPop" class="mapa-legenda-externa mapa-legenda-overlay" aria-label="Legenda das classes de disparidade populacional"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="alert alert-destaque mt-1">
-                    <strong>🎯 Achados:</strong> As disparidades revelam heterogeneidade significativa na distribuição da malha vicinal. Municípios com desvios elevados podem necessitar de políticas específicas de investimento em infraestrutura viária.
+                <div class="alert alert-insight mt-1">
+                    <strong>📊 Achado Principal:</strong> A análise de disparidades revela grande heterogeneidade na distribuição da malha vicinal entre municípios. Municípios classificados como "Muito Abaixo" ou "Muito Acima" da média estadual podem necessitar de políticas específicas: investimento em infraestrutura para os primeiros, manutenção adequada para os segundos.
                 </div>
             </div>
         </section>

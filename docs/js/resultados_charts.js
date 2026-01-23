@@ -134,6 +134,14 @@ function createChartTipoPavimento() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 60,
+                    right: 60,
+                    top: 20,
+                    bottom: 20
+                }
+            },
             plugins: {
                 title: {
                     display: true,
@@ -141,10 +149,12 @@ function createChartTipoPavimento() {
                     font: { size: 16, weight: 'bold' }
                 },
                 legend: {
-                    position: 'right',
+                    position: 'bottom',
+                    align: 'center',
                     labels: {
                         padding: 15,
-                        font: { size: 11 }
+                        font: { size: 12 },
+                        boxWidth: 20
                     }
                 },
                 tooltip: {

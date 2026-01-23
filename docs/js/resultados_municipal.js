@@ -10,11 +10,25 @@ let dadosRegioes = [];
 let dadosEstatisticas = {};
 let dadosSegmentos = {};
 
+// Dados da malha total (OSM + DER)
+let dadosMunicipiosTotal = [];
+let dadosRegioesTotal = [];
+let dadosEstatisticasTotal = {};
+let dadosPavimentacao = {};
+let dadosSegmentosTotal = {}; // Estatísticas de segmentos da malha total
+let malhaTotalTilesInfo = null;
+
+// Estado do toggle de visualização
+let visualizacaoAtual = 'osm'; // 'osm' ou 'total'
+
 // Cache para acelerar joins por código IBGE
 let _dadosMunicipiosPorCodigoIbge = null;
 
 // Flag para evitar inicialização múltipla
 let paginaInicializada = false;
+
+// Cache de mapas Leaflet (usa o cache global inicializado no HTML)
+const mapasLeaflet = window.mapasLeaflet || {};
 
 // Referências aos gráficos Chart.js para destruição
 let chartComprimentoSegmentos = null;
@@ -26,6 +40,55 @@ let chartDensidadeArea = null;
 let chartDensidadePop = null;
 let chartDisparidadeArea = null;
 let chartDisparidadePop = null;
+
+function formatDecimal(value, { digits = 2, fallback = 'N/D' } = {}) {
+    if (typeof value === 'number' && Number.isFinite(value)) {
+        return value.toLocaleString('pt-BR', {
+            minimumFractionDigits: digits,
+            maximumFractionDigits: digits
+        });
+    }
+    return fallback;
+}
+
+/**
+ * Calcula o desvio padrão de um array de valores numéricos
+ */
+function calcularDesvioPadrao(valores) {
+    const nums = valores.filter(v => typeof v === 'number' && Number.isFinite(v));
+    if (nums.length === 0) return null;
+    const media = nums.reduce((a, b) => a + b, 0) / nums.length;
+    const somaQuadrados = nums.reduce((sum, v) => sum + Math.pow(v - media, 2), 0);
+    return Math.sqrt(somaQuadrados / nums.length);
+}
+
+/**
+ * Calcula quebras por quantis para classificação coroplética
+ * Distribui os valores em classes com aproximadamente o mesmo número de observações
+ * @param {number[]} valores - Array de valores numéricos
+ * @param {number} numClasses - Número de classes desejadas (padrão: 5)
+ * @returns {number[]} Array de quebras (tamanho = numClasses + 1, incluindo min e max)
+ */
+function calcularQuantis(valores, numClasses = 5) {
+    const nums = valores.filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+    if (nums.length === 0) return [];
+    
+    // Ordenar valores
+    const sorted = [...nums].sort((a, b) => a - b);
+    const n = sorted.length;
+    
+    const breaks = [sorted[0]]; // Começa com o mínimo
+    
+    for (let i = 1; i < numClasses; i++) {
+        // Índice do quantil
+        const idx = Math.floor((i / numClasses) * n);
+        breaks.push(sorted[Math.min(idx, n - 1)]);
+    }
+    
+    breaks.push(sorted[n - 1]); // Termina com o máximo
+    
+    return breaks;
+}
 
 function descricaoTipoPavimento(tipo) {
     const t = String(tipo ?? '').trim();
@@ -54,7 +117,186 @@ function corTipoPavimento(tipo) {
 }
 
 function getLegendaContainer(mapId) {
-    return document.getElementById(`legenda-${mapId}`);
+    // Primeiro tenta encontrar legenda existente pelo ID
+    let el = document.getElementById(`legenda-${mapId}`);
+    if (el) return el;
+    
+    // Se não existir, cria dentro do container do mapa
+    const mapContainer = document.getElementById(mapId);
+    if (!mapContainer) return null;
+    
+    // Procurar o parent .mapa-container ou usar o próprio mapa
+    const parentContainer = mapContainer.closest('.mapa-container') || mapContainer.parentElement;
+    if (!parentContainer) return null;
+    
+    // Criar elemento de legenda
+    el = document.createElement('div');
+    el.id = `legenda-${mapId}`;
+    el.className = 'mapa-legenda-externa';
+    el.setAttribute('aria-label', 'Legenda do mapa');
+    
+    // Inserir dentro do container do mapa (não depois)
+    parentContainer.style.position = 'relative';
+    parentContainer.appendChild(el);
+    
+    return el;
+}
+
+/**
+ * Bounds padrão do estado de SP
+ */
+const BOUNDS_SP_PADRAO = [[-25.3, -53.2], [-19.7, -44.0]];
+const CENTER_SP = [-22.5, -48.5];
+
+/**
+ * IDs de todos os mapas da página
+ */
+const MAPA_IDS = [
+    'mapaMalhaCompleta',
+    'mapaPavimento', 
+    'mapaRankingExtensao',
+    'mapaDensidadeArea',
+    'mapaDensidadePop',
+    'mapaTop10Maior',
+    'mapaTop10Menor',
+    'mapaDisparidadesArea',
+    'mapaDisparidadesPop'
+];
+
+/**
+ * Inicializa todos os mapas instantaneamente com basemap
+ * Verifica se já foram inicializados pelo HTML inline
+ */
+function inicializarMapasInstantaneo() {
+    console.log('🗺️ Verificando mapas pré-inicializados...');
+    
+    MAPA_IDS.forEach(mapId => {
+        // Se já foi inicializado pelo HTML, apenas mostrar loading
+        if (mapasLeaflet[mapId]) {
+            console.log(`  ✓ ${mapId} já inicializado`);
+            mostrarCarregamento(mapId, 'Carregando dados...', 'Aguarde');
+            return;
+        }
+        
+        const element = document.getElementById(mapId);
+        if (!element) return;
+        
+        // Limpar mapa anterior se existir
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        
+        try {
+            const map = L.map(mapId, { 
+                preferCanvas: true, 
+                zoomControl: false,
+                attributionControl: true
+            });
+            
+            // Adicionar basemap padrão imediatamente
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Enquadrar no estado de SP
+            map.fitBounds(BOUNDS_SP_PADRAO);
+            
+            // Salvar no cache
+            mapasLeaflet[mapId] = map;
+            
+            // Mostrar loading
+            mostrarCarregamento(mapId, 'Carregando dados...', 'Aguarde');
+            
+        } catch (err) {
+            console.warn(`⚠️ Erro ao inicializar mapa ${mapId}:`, err);
+        }
+    });
+    
+    console.log(`✅ ${Object.keys(mapasLeaflet).length} mapas pré-inicializados`);
+}
+
+/**
+ * Obtém mapa do cache ou cria novo se não existir
+ */
+function obterOuCriarMapa(mapId, options = {}) {
+    if (mapasLeaflet[mapId]) {
+        return mapasLeaflet[mapId];
+    }
+    
+    const element = document.getElementById(mapId);
+    if (!element) return null;
+    
+    // Limpar se já existe
+    if (element._leaflet_id) {
+        element._leaflet_id = null;
+        element.innerHTML = '';
+    }
+    
+    const map = L.map(mapId, { 
+        preferCanvas: options.preferCanvas !== false, 
+        zoomControl: options.zoomControl || false,
+        ...options
+    });
+    
+    mapasLeaflet[mapId] = map;
+    return map;
+}
+
+/**
+ * Cria indicador de carregamento sobre o mapa
+ */
+function mostrarCarregamento(mapId, mensagem = 'Carregando...') {
+    const container = document.getElementById(mapId);
+    if (!container) return;
+
+    // Remover loading anterior se existir
+    const existente = container.querySelector('.map-loading-overlay');
+    if (existente) existente.remove();
+    
+    const overlay = document.createElement('div');
+    overlay.className = 'map-loading-overlay';
+    overlay.innerHTML = `
+        <div class="map-loading-content">
+            <div class="map-loading-spinner"></div>
+            <div class="map-loading-message">${mensagem}</div>
+            <div class="map-loading-details"></div>
+        </div>
+    `;
+    container.appendChild(overlay);
+}
+
+/**
+ * Atualiza mensagem do indicador de carregamento
+ */
+function atualizarCarregamento(mapId, mensagem, detalhes = '') {
+    const container = document.getElementById(mapId);
+    if (!container) return;
+    
+    const overlay = container.querySelector('.map-loading-overlay');
+    if (!overlay) return;
+    
+    const msgEl = overlay.querySelector('.map-loading-message');
+    const detailsEl = overlay.querySelector('.map-loading-details');
+    
+    if (msgEl) msgEl.textContent = mensagem;
+    if (detailsEl) detailsEl.textContent = detalhes;
+}
+
+/**
+ * Remove indicador de carregamento
+ */
+function removerCarregamento(mapId) {
+    const container = document.getElementById(mapId);
+    if (!container) return;
+    
+    const overlay = container.querySelector('.map-loading-overlay');
+    if (overlay) {
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.remove(), 300);
+    }
 }
 
 function renderLegendaExterna(mapId, titulo, items) {
@@ -64,9 +306,9 @@ function renderLegendaExterna(mapId, titulo, items) {
         return;
     }
 
+    // Sempre layout vertical com 1 coluna
     const safeItems = Array.isArray(items) ? items.filter(Boolean) : [];
-    const cols = Math.max(1, Math.min(8, safeItems.length || 1));
-    el.style.setProperty('--legend-cols', String(cols));
+    el.style.setProperty('--legend-cols', '1');
 
     const tituloHtml = titulo ? `<div class="legenda-titulo">${titulo}</div>` : '';
     const gridItemsHtml = safeItems.map(it => {
@@ -89,7 +331,7 @@ function renderLegendaExterna(mapId, titulo, items) {
         `;
     }).join('');
 
-    el.innerHTML = `${tituloHtml}<div class="legenda-grid">${gridItemsHtml}</div>`;
+    el.innerHTML = `${tituloHtml}<div class="legenda-grid legenda-vertical">${gridItemsHtml}</div>`;
 }
 
 function renderLegendaGradienteExterna(mapId, titulo, minVal, maxVal, options = {}) {
@@ -102,6 +344,9 @@ function renderLegendaGradienteExterna(mapId, titulo, minVal, maxVal, options = 
     const fromColor = options.fromColor || '#ffffcc';
     const toColor = options.toColor || '#253494';
     const unidade = options.unidade || '';
+    const orientation = options.orientation || 'horizontal';
+    const isVertical = orientation === 'vertical';
+    const unitLabel = unidade ? ` ${unidade}` : '';
 
     const fmt = (v) => {
         if (typeof v !== 'number' || !Number.isFinite(v)) return 'N/A';
@@ -109,13 +354,27 @@ function renderLegendaGradienteExterna(mapId, titulo, minVal, maxVal, options = 
     };
 
     const tituloHtml = titulo ? `<div class="legenda-titulo">${titulo}</div>` : '';
-    const gradHtml = `
-        <div class="legenda-gradiente">
-            <div class="legenda-gradiente-bar" style="background: linear-gradient(90deg, ${fromColor}, ${toColor});"></div>
-            <div class="legenda-gradiente-labels">
-                <span>${fmt(minVal)}${unidade ? ` ${unidade}` : ''}</span>
-                <span>${fmt(maxVal)}${unidade ? ` ${unidade}` : ''}</span>
+    const gradientDirection = isVertical ? 'to bottom' : 'to right';
+    const gradientClass = isVertical ? ' legenda-gradiente-vertical' : '';
+    const gradientBarClass = isVertical ? ' legenda-gradiente-bar-vertical' : '';
+    
+    // Para vertical: barra à esquerda, valores à direita (max no topo, min embaixo)
+    // Para horizontal: min à esquerda, max à direita
+    const gradHtml = isVertical ? `
+        <div class="legenda-gradiente${gradientClass}">
+            <div class="legenda-gradiente-bar${gradientBarClass}" style="background: linear-gradient(${gradientDirection}, ${toColor}, ${fromColor});"></div>
+            <div class="legenda-valores-lateral">
+                <span class="legenda-valor-max">${fmt(maxVal)}</span>
+                <span class="legenda-valor-min">${fmt(minVal)}</span>
             </div>
+        </div>
+    ` : `
+        <div class="legenda-gradiente">
+            <div class="legenda-gradiente-labels">
+                <span>${fmt(minVal)}</span>
+                <span>${fmt(maxVal)}</span>
+            </div>
+            <div class="legenda-gradiente-bar" style="background: linear-gradient(${gradientDirection}, ${fromColor}, ${toColor});"></div>
         </div>
     `;
 
@@ -150,6 +409,36 @@ function interpolarHex(a, b, t) {
         g: ca.g + (cb.g - ca.g) * tClamped,
         b: ca.b + (cb.b - ca.b) * tClamped
     });
+}
+
+/**
+ * Cria uma função que mapeia valores para posição percentil (0-1)
+ * Melhora contraste distribuindo valores uniformemente no gradiente
+ * @param {number[]} valores - Array de todos os valores do dataset
+ * @returns {function} Função que recebe um valor e retorna sua posição percentil (0-1)
+ */
+function criarMapeadorPercentil(valores) {
+    const nums = valores.filter(v => typeof v === 'number' && Number.isFinite(v));
+    if (nums.length === 0) return () => 0.5;
+    
+    // Ordenar valores e criar lookup
+    const sorted = [...nums].sort((a, b) => a - b);
+    const n = sorted.length;
+    
+    return (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return 0.5;
+        
+        // Encontrar posição do valor no array ordenado (busca binária aproximada)
+        let low = 0, high = n - 1;
+        while (low < high) {
+            const mid = Math.floor((low + high) / 2);
+            if (sorted[mid] < valor) low = mid + 1;
+            else high = mid;
+        }
+        
+        // Retornar posição como percentil (0 a 1)
+        return low / Math.max(1, n - 1);
+    };
 }
 
 function criarBasemaps() {
@@ -299,17 +588,23 @@ function obterMapaMunicipiosPorCodigoIbge() {
     return mapa;
 }
 
+/**
+ * Como municipios_completo.geojson já contém todas as métricas, 
+ * essas funções agora apenas retornam os features sem modificação.
+ */
 function anexarIndicadoresAoGeoJSON(municipiosGeo) {
-    const mapa = obterMapaMunicipiosPorCodigoIbge();
+    // GeoJSON completo já tem todas as métricas OSM integradas
     const features = Array.isArray(municipiosGeo?.features) ? municipiosGeo.features : [];
-    return features.map(feature => {
-        const codIbge = obterCodigoIbgeFeature(feature);
-        const dadosMun = codIbge ? mapa.get(codIbge) : null;
-        return {
-            ...feature,
-            properties: { ...feature.properties, ...(dadosMun || {}) }
-        };
-    });
+    return features;
+}
+
+/**
+ * Anexa indicadores da malha TOTAL ao GeoJSON de municípios
+ */
+function anexarIndicadoresTotalAoGeoJSON(municipiosGeo) {
+    // GeoJSON completo já tem todas as métricas Total integradas
+    const features = Array.isArray(municipiosGeo?.features) ? municipiosGeo.features : [];
+    return features;
 }
 
 /**
@@ -317,16 +612,16 @@ function anexarIndicadoresAoGeoJSON(municipiosGeo) {
  */
 async function carregarDados() {
     try {
-        // Carregar municípios com indicadores
+        // Carregar municípios com indicadores (OSM vicinal)
         const respMun = await fetch('../data/municipios_indicadores.json');
         dadosMunicipios = await respMun.json();
         _dadosMunicipiosPorCodigoIbge = null;
         
-        // Carregar regiões
+        // Carregar regiões (OSM vicinal)
         const respReg = await fetch('../data/regioes_indicadores.json');
         dadosRegioes = await respReg.json();
         
-        // Carregar estatísticas completas
+        // Carregar estatísticas completas (OSM vicinal)
         const respStats = await fetch('../data/estatisticas_completas.json');
         dadosEstatisticas = await respStats.json();
         
@@ -334,9 +629,28 @@ async function carregarDados() {
         const respSeg = await fetch('../data/segmentos_estatisticas.json');
         dadosSegmentos = await respSeg.json();
         
+        // Carregar dados da malha total (OSM + DER)
+        const respMunTotal = await fetch('../data/municipios_indicadores_total.json');
+        dadosMunicipiosTotal = await respMunTotal.json();
+        
+        const respRegTotal = await fetch('../data/regioes_indicadores_total.json');
+        dadosRegioesTotal = await respRegTotal.json();
+        
+        const respStatsTotal = await fetch('../data/estatisticas_malha_total.json');
+        dadosEstatisticasTotal = await respStatsTotal.json();
+        
+        const respPav = await fetch('../data/pavimentacao_comparada.json');
+        dadosPavimentacao = await respPav.json();
+        
+        // Carregar estatísticas de segmentos da malha total
+        const respSegTotal = await fetch('../data/segmentos_estatisticas_total.json');
+        dadosSegmentosTotal = await respSegTotal.json();
+        
         console.log('Dados carregados:', { 
-            municipios: dadosMunicipios.length, 
-            regioes: dadosRegioes.length 
+            municipios: dadosMunicipios.length,
+            municipiosTotal: dadosMunicipiosTotal.length,
+            regioes: dadosRegioes.length,
+            regioesTotal: dadosRegioesTotal.length
         });
         
         return true;
@@ -368,6 +682,38 @@ function preencherCardsGerais() {
 }
 
 /**
+ * Preenche os cards da malha total (OSM + DER)
+ */
+function preencherCardsMalhaTotal() {
+    // Verificar se dados existem
+    if (!dadosEstatisticasTotal || !dadosEstatisticasTotal.malha_total) {
+        console.warn('Dados da malha total não disponíveis');
+        return;
+    }
+    
+    const malhaTotal = dadosEstatisticasTotal.malha_total;
+    const municipal = dadosEstatisticasTotal.municipal;
+    
+    // Extensão total (OSM + DER)
+    document.getElementById('extensaoTotalMalhaTotal').textContent = 
+        malhaTotal.extensao_total_km.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    
+    // Total de segmentos (OSM + DER)
+    document.getElementById('totalSegmentosMalhaTotal').textContent = 
+        malhaTotal.num_segmentos_total.toLocaleString('pt-BR');
+    
+    // Extensão média por município (malha total)
+    document.getElementById('extensaoMediaMunMalhaTotal').textContent = 
+        municipal.extensao_total.media.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    
+    // Calcular incremento DER
+    const extensaoOSM = dadosEstatisticas.geral.extensao_total_km;
+    const incremento = ((malhaTotal.extensao_total_km - extensaoOSM) / extensaoOSM) * 100;
+    document.getElementById('incrementoDER').textContent = 
+        incremento.toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+}
+
+/**
  * Preenche os cards de estatísticas de segmentos (Seção 1.2)
  */
 function preencherCardsSegmentos() {
@@ -381,6 +727,25 @@ function preencherCardsSegmentos() {
 }
 
 /**
+ * Preenche cards de segmentos da malha total (Seção 1.2)
+ */
+function preencherCardsSegmentosTotal() {
+    if (!dadosEstatisticasTotal || !dadosEstatisticasTotal.segmentos) {
+        console.warn('Dados de segmentos da malha total não disponíveis');
+        return;
+    }
+    
+    const stats = dadosEstatisticasTotal.segmentos;
+    
+    document.getElementById('compMedioTotal').textContent = stats.comprimento_medio_km.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('compMedianoTotal').textContent = stats.comprimento_mediano_km.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('desvioPadraoTotal').textContent = stats.desvio_padrao_km.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('amplitudeTotal').textContent = 
+        `${stats.minimo_km.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} - ${stats.maximo_km.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+}
+
+
+/**
  * Cria gráfico de distribuição por comprimento de segmentos (Seção 1.2)
  */
 function criarGraficoComprimentoSegmentos() {
@@ -392,23 +757,39 @@ function criarGraficoComprimentoSegmentos() {
         chartComprimentoSegmentos.destroy();
     }
     
-    const distribuicao = dadosSegmentos.distribuicao_por_faixas;
+    const distribuicaoOSM = dadosSegmentos.distribuicao_por_faixas;
+    const distribuicaoTotal = dadosSegmentosTotal.distribuicao_por_faixas || distribuicaoOSM;
     
     chartComprimentoSegmentos = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: distribuicao.map(d => d.faixa),
-            datasets: [{
-                label: 'Quantidade (segmentos)',
-                data: distribuicao.map(d => d.quantidade),
-                backgroundColor: 'rgba(52, 152, 219, 0.7)',
-                yAxisID: 'y'
-            }, {
-                label: 'Extensão (km)',
-                data: distribuicao.map(d => d.extensao_km),
-                backgroundColor: 'rgba(46, 204, 113, 0.7)',
-                yAxisID: 'y1'
-            }]
+            labels: distribuicaoOSM.map(d => d.faixa),
+            datasets: [
+                {
+                    label: 'Quantidade OSM (segmentos)',
+                    data: distribuicaoOSM.map(d => d.quantidade),
+                    backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Extensão OSM (km)',
+                    data: distribuicaoOSM.map(d => d.extensao_km),
+                    backgroundColor: 'rgba(46, 204, 113, 0.7)',
+                    yAxisID: 'y1'
+                },
+                {
+                    label: 'Quantidade Total (segmentos)',
+                    data: distribuicaoTotal.map(d => d.quantidade),
+                    backgroundColor: 'rgba(155, 89, 182, 0.6)',
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Extensão Total (km)',
+                    data: distribuicaoTotal.map(d => d.extensao_km),
+                    backgroundColor: 'rgba(231, 76, 60, 0.6)',
+                    yAxisID: 'y1'
+                }
+            ]
         },
         options: {
             responsive: true,
@@ -435,6 +816,13 @@ function criarGraficoComprimentoSegmentos() {
                 }
             },
             scales: {
+                x: {
+                    title: { 
+                        display: true, 
+                        text: 'Faixa de Comprimento (km)',
+                        font: { size: 13, weight: 'bold' }
+                    }
+                },
                 y: {
                     beginAtZero: true,
                     position: 'left',
@@ -462,50 +850,77 @@ function criarGraficoComprimentoSegmentos() {
 }
 
 /**
- * Cria gráfico de tipo de pavimento (Seção 1.3)
+ * Cria gráfico de tipo de pavimento (Seção 1.3) - COMPARATIVO OSM vs TOTAL
  */
 function criarGraficoTipoPavimento() {
     const ctx = document.getElementById('chartTipoPavimento');
-    if (!ctx || !dadosSegmentos.distribuicao_por_tipo.length) return;
+    if (!ctx || !dadosPavimentacao || !dadosPavimentacao.osm_vicinal) return;
     
     // Destruir gráfico existente
     if (chartTipoPavimento) {
         chartTipoPavimento.destroy();
     }
     
-    // Ordenar por tipo alfabeticamente
-    const distribuicao = dadosSegmentos.distribuicao_por_tipo
-        .slice()
-        .sort((a, b) => {
-            const tipoA = String(a?.tipo ?? '');
-            const tipoB = String(b?.tipo ?? '');
-            return tipoA.localeCompare(tipoB, 'pt-BR', { sensitivity: 'base' });
-        });
+    const osm = dadosPavimentacao.osm_vicinal;
+    const total = dadosPavimentacao.malha_total;
+    
+    // Preparar dados ordenados do maior para menor
+    const dadosOrdenados = [
+        { label: 'Pavimentado (OSM)', value: osm.pavimentado_km, color: '#3498db' },
+        { label: 'Não Pavimentado (OSM)', value: osm.nao_pavimentado_km, color: '#e67e22' },
+        { label: 'DER Pavimentado', value: dadosPavimentacao.der_oficial.pavimentado_km, color: '#27ae60' }
+    ].sort((a, b) => b.value - a.value);
     
     chartTipoPavimento = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: distribuicao.map(d => {
-                const tipo = d?.tipo;
-                const tipoStr = (tipo === null || tipo === undefined || tipo === '') ? 'N/A' : String(tipo);
-                const desc = descricaoTipoPavimento(tipo);
-                return `${tipoStr} (${desc})`;
-            }),
+            labels: dadosOrdenados.map(d => d.label),
             datasets: [{
-                data: distribuicao.map(d => d.percentual_extensao),
-                backgroundColor: distribuicao.map(d => corTipoPavimento(d?.tipo)),
+                data: dadosOrdenados.map(d => d.value),
+                backgroundColor: dadosOrdenados.map(d => d.color),
                 borderColor: 'rgba(255,255,255,0.85)',
-                borderWidth: 1
+                borderWidth: 2
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            layout: {
+                padding: 10
+            },
             plugins: {
-                legend: { display: true, position: 'right' }
+                legend: { 
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const value = context.raw;
+                            const pct = ((value / total.total_km) * 100).toFixed(1);
+                            return `${context.label}: ${value.toFixed(2)} km (${pct}%)`;
+                        }
+                    }
+                }
             }
         }
     });
+    
+    // Criar legenda HTML customizada em coluna única
+    let legendaContainer = document.getElementById('legendaTipoPavimento');
+    if (!legendaContainer) {
+        legendaContainer = document.createElement('div');
+        legendaContainer.id = 'legendaTipoPavimento';
+        legendaContainer.className = 'legenda-coluna-unica';
+        ctx.parentNode.appendChild(legendaContainer);
+    }
+    
+    legendaContainer.innerHTML = dadosOrdenados.map((d, i) => {
+        const pct = ((d.value / total.total_km) * 100).toFixed(1);
+        return `<div class="legenda-item">
+            <span class="legenda-cor" style="background-color: ${d.color};"></span>
+            <span class="legenda-texto">${d.label}: ${d.value.toFixed(0)} km (${pct}%)</span>
+        </div>`;
+    }).join('');
 }
 
 /**
@@ -520,6 +935,25 @@ function preencherCardsMunicipais() {
     document.getElementById('amplitudeMunicipal').textContent = 
         `${stats.minimo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} - ${stats.maximo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
 }
+
+/**
+ * Preenche cards de distribuição municipal da malha total (Seção 1.4)
+ */
+function preencherCardsMunicipaisTotal() {
+    if (!dadosEstatisticasTotal || !dadosEstatisticasTotal.municipal) {
+        console.warn('Dados municipais da malha total não disponíveis');
+        return;
+    }
+    
+    const stats = dadosEstatisticasTotal.municipal.extensao_total;
+    
+    document.getElementById('mediaMunicipalTotal').textContent = stats.media.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('medianaMunicipalTotal').textContent = stats.mediana.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('desvioMunicipalTotal').textContent = stats.desvio_padrao.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('amplitudeMunicipalTotal').textContent = 
+        `${stats.minimo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} - ${stats.maximo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+}
+
 
 /**
  * Cria gráfico de faixas de extensão municipal (Seção 1.4)
@@ -542,9 +976,15 @@ function criarGraficoFaixasExtensao() {
         { label: '>100 km', min: 100, max: Infinity }
     ];
     
-    const contagens = faixas.map(faixa => {
+    const contagensOSM = faixas.map(faixa => {
         return dadosMunicipios.filter(m => 
             m.extensao_km >= faixa.min && m.extensao_km < faixa.max
+        ).length;
+    });
+    
+    const contagensTotal = faixas.map(faixa => {
+        return dadosMunicipiosTotal.filter(m => 
+            m.extensao_total_km >= faixa.min && m.extensao_total_km < faixa.max
         ).length;
     });
     
@@ -552,18 +992,46 @@ function criarGraficoFaixasExtensao() {
         type: 'bar',
         data: {
             labels: faixas.map(f => f.label),
-            datasets: [{
-                label: 'Número de Municípios',
-                data: contagens,
-                backgroundColor: 'rgba(52, 152, 219, 0.7)'
-            }]
+            datasets: [
+                {
+                    label: 'Malha Vicinal (OSM)',
+                    data: contagensOSM,
+                    backgroundColor: 'rgba(52, 152, 219, 0.7)'
+                },
+                {
+                    label: 'Malha Total (OSM+DER)',
+                    data: contagensTotal,
+                    backgroundColor: 'rgba(46, 204, 113, 0.7)'
+                }
+            ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            plugins: { 
+                legend: { 
+                    display: true,
+                    position: 'top'
+                } 
+            },
             scales: {
-                y: { beginAtZero: true, title: { display: true, text: 'Municípios' } }
+                x: {
+                    title: { 
+                        display: true, 
+                        text: 'Faixa de Extensão da Malha Municipal (km)',
+                        font: { size: 10, weight: 'bold' }
+                    },
+                    ticks: { font: { size: 9 } }
+                },
+                y: { 
+                    beginAtZero: true, 
+                    title: { 
+                        display: true, 
+                        text: 'Quantidade de Municípios',
+                        font: { size: 10, weight: 'bold' }
+                    },
+                    ticks: { font: { size: 9 } }
+                }
             }
         }
     });
@@ -585,21 +1053,48 @@ function criarGraficosRanking() {
             chartTop10Maior.destroy();
         }
         
+        // Buscar dados da malha total para os mesmos municípios
+        const top10Total = top10.map(m => {
+            const munTotal = dadosMunicipiosTotal.find(mt => mt.Cod_ibge === m.Cod_ibge);
+            return munTotal ? munTotal.extensao_total_km : m.extensao_km;
+        });
+        
         chartTop10Maior = new Chart(ctxMaior, {
             type: 'bar',
             data: {
                 labels: top10.map(m => m.Municipio),
-                datasets: [{
-                    label: 'Extensão (km)',
-                    data: top10.map(m => m.extensao_km),
-                    backgroundColor: 'rgba(46, 204, 113, 0.7)'
-                }]
+                datasets: [
+                    {
+                        label: 'Malha Vicinal (OSM)',
+                        data: top10.map(m => m.extensao_km),
+                        backgroundColor: 'rgba(46, 204, 113, 0.7)'
+                    },
+                    {
+                        label: 'Malha Total (OSM+DER)',
+                        data: top10Total,
+                        backgroundColor: 'rgba(52, 152, 219, 0.7)'
+                    }
+                ]
             },
             options: {
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } }
+                plugins: { 
+                    legend: { 
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { 
+                            display: true, 
+                            text: 'Extensão da Malha (km)',
+                            font: { size: 12, weight: 'bold' }
+                        }
+                    }
+                }
             }
         });
     }
@@ -617,21 +1112,48 @@ function criarGraficosRanking() {
             chartTop10Menor.destroy();
         }
         
+        // Buscar dados da malha total
+        const bottom10Total = bottom10.map(m => {
+            const munTotal = dadosMunicipiosTotal.find(mt => mt.Cod_ibge === m.Cod_ibge);
+            return munTotal ? munTotal.extensao_total_km : m.extensao_km;
+        });
+        
         chartTop10Menor = new Chart(ctxMenor, {
             type: 'bar',
             data: {
                 labels: bottom10.map(m => m.Municipio),
-                datasets: [{
-                    label: 'Extensão (km)',
-                    data: bottom10.map(m => m.extensao_km),
-                    backgroundColor: 'rgba(231, 76, 60, 0.7)'
-                }]
+                datasets: [
+                    {
+                        label: 'Malha Vicinal (OSM)',
+                        data: bottom10.map(m => m.extensao_km),
+                        backgroundColor: 'rgba(231, 76, 60, 0.7)'
+                    },
+                    {
+                        label: 'Malha Total (OSM+DER)',
+                        data: bottom10Total,
+                        backgroundColor: 'rgba(52, 152, 219, 0.7)'
+                    }
+                ]
             },
             options: {
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } }
+                plugins: { 
+                    legend: { 
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { 
+                            display: true, 
+                            text: 'Extensão da Malha (km)',
+                            font: { size: 12, weight: 'bold' }
+                        }
+                    }
+                }
             }
         });
     }
@@ -643,10 +1165,40 @@ function criarGraficosRanking() {
 function preencherCardsDensidadeArea() {
     const stats = dadosEstatisticas.municipal.densidade_area_10k;
     
-    document.getElementById('densAreaMedia').textContent = stats.media.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('densAreaMediana').textContent = stats.mediana.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('densAreaMin').textContent = stats.minimo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('densAreaMax').textContent = stats.maximo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const format = (value) => value.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('densAreaMedia').textContent = format(stats.media);
+    document.getElementById('densAreaMediana').textContent = format(stats.mediana);
+    document.getElementById('densAreaDesvio').textContent = format(stats.desvio_padrao);
+    document.getElementById('densAreaAmplitude').textContent = `${format(stats.minimo)} - ${format(stats.maximo)}`;
+}
+
+/**
+ * Preenche cards de densidade área da malha total (Seção 2.1)
+ */
+function preencherCardsDensidadeAreaTotal() {
+    if (!dadosEstatisticasTotal || !dadosEstatisticasTotal.municipal) {
+        console.warn('Dados de densidade da malha total não disponíveis');
+        return;
+    }
+    
+    const stats = dadosEstatisticasTotal.municipal.densidade_total_area_10k;
+    if (!stats) {
+        console.warn('Estatísticas de densidade por área da malha total ausentes');
+        return;
+    }
+    
+    // Calcular desvio padrão se não existir
+    let desvioPadrao = stats.desvio_padrao;
+    if (desvioPadrao == null && dadosMunicipiosTotal && dadosMunicipiosTotal.length > 0) {
+        const valores = dadosMunicipiosTotal.map(m => m.densidade_total_area_10k).filter(v => v != null);
+        desvioPadrao = calcularDesvioPadrao(valores);
+    }
+    
+    const formatStat = (value) => formatDecimal(value);
+    document.getElementById('densAreaMediaTotal').textContent = formatStat(stats.media);
+    document.getElementById('densAreaMedianaTotal').textContent = formatStat(stats.mediana);
+    document.getElementById('densAreaDesvioTotal').textContent = formatStat(desvioPadrao);
+    document.getElementById('densAreaAmplitudeTotal').textContent = `${formatStat(stats.minimo)} - ${formatStat(stats.maximo)}`;
 }
 
 /**
@@ -670,9 +1222,18 @@ function criarGraficoDensidadeArea() {
         { label: '>2000', min: 2000 }
     ];
     
-    const contagens = faixas.map(faixa => {
+    const contagensOSM = faixas.map(faixa => {
         return dadosMunicipios.filter(m => {
             const dens = m.densidade_area_10k;
+            if (faixa.min === undefined) return dens < faixa.max;
+            if (faixa.max === undefined) return dens >= faixa.min;
+            return dens >= faixa.min && dens < faixa.max;
+        }).length;
+    });
+    
+    const contagensTotal = faixas.map(faixa => {
+        return dadosMunicipiosTotal.filter(m => {
+            const dens = m.densidade_total_area_10k;
             if (faixa.min === undefined) return dens < faixa.max;
             if (faixa.max === undefined) return dens >= faixa.min;
             return dens >= faixa.min && dens < faixa.max;
@@ -683,18 +1244,46 @@ function criarGraficoDensidadeArea() {
         type: 'bar',
         data: {
             labels: faixas.map(f => f.label),
-            datasets: [{
-                label: 'Número de Municípios',
-                data: contagens,
-                backgroundColor: 'rgba(52, 152, 219, 0.7)'
-            }]
+            datasets: [
+                {
+                    label: 'Malha Vicinal (OSM)',
+                    data: contagensOSM,
+                    backgroundColor: 'rgba(52, 152, 219, 0.7)'
+                },
+                {
+                    label: 'Malha Total (OSM+DER)',
+                    data: contagensTotal,
+                    backgroundColor: 'rgba(46, 204, 113, 0.7)'
+                }
+            ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            plugins: { 
+                legend: { 
+                    display: true,
+                    position: 'top'
+                } 
+            },
             scales: {
-                y: { beginAtZero: true, title: { display: true, text: 'Municípios' } }
+                x: {
+                    title: { 
+                        display: true, 
+                        text: 'Faixa de Densidade Espacial (km/10.000km²)',
+                        font: { size: 10, weight: 'bold' }
+                    },
+                    ticks: { font: { size: 9 } }
+                },
+                y: { 
+                    beginAtZero: true, 
+                    title: { 
+                        display: true, 
+                        text: 'Quantidade de Municípios',
+                        font: { size: 10, weight: 'bold' }
+                    },
+                    ticks: { font: { size: 9 } }
+                }
             }
         }
     });
@@ -705,11 +1294,40 @@ function criarGraficoDensidadeArea() {
  */
 function preencherCardsDensidadePop() {
     const stats = dadosEstatisticas.municipal.densidade_pop_10k;
+    const format = (value) => value.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('densPopMedia').textContent = format(stats.media);
+    document.getElementById('densPopMediana').textContent = format(stats.mediana);
+    document.getElementById('densPopDesvio').textContent = format(stats.desvio_padrao);
+    document.getElementById('densPopAmplitude').textContent = `${format(stats.minimo)} - ${format(stats.maximo)}`;
+}
+
+/**
+ * Preenche cards de densidade populacional da malha total (Seção 2.2)
+ */
+function preencherCardsDensidadePopTotal() {
+    if (!dadosEstatisticasTotal || !dadosEstatisticasTotal.municipal) {
+        console.warn('Dados de densidade populacional da malha total não disponíveis');
+        return;
+    }
     
-    document.getElementById('densPopMedia').textContent = stats.media.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('densPopMediana').textContent = stats.mediana.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('densPopMin').textContent = stats.minimo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('densPopMax').textContent = stats.maximo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const stats = dadosEstatisticasTotal.municipal.densidade_total_pop_10k;
+    if (!stats) {
+        console.warn('Estatísticas de densidade populacional da malha total ausentes');
+        return;
+    }
+
+    // Calcular desvio padrão se não existir
+    let desvioPadrao = stats.desvio_padrao;
+    if (desvioPadrao == null && dadosMunicipiosTotal && dadosMunicipiosTotal.length > 0) {
+        const valores = dadosMunicipiosTotal.map(m => m.densidade_total_pop_10k).filter(v => v != null);
+        desvioPadrao = calcularDesvioPadrao(valores);
+    }
+
+    const formatStat = (value) => formatDecimal(value);
+    document.getElementById('densPopMediaTotal').textContent = formatStat(stats.media);
+    document.getElementById('densPopMedianaTotal').textContent = formatStat(stats.mediana);
+    document.getElementById('densPopDesvioTotal').textContent = formatStat(desvioPadrao);
+    document.getElementById('densPopAmplitudeTotal').textContent = `${formatStat(stats.minimo)} - ${formatStat(stats.maximo)}`;
 }
 
 /**
@@ -732,9 +1350,18 @@ function criarGraficoDensidadePop() {
         { label: '>60', min: 60 }
     ];
     
-    const contagens = faixas.map(faixa => {
+    const contagensOSM = faixas.map(faixa => {
         return dadosMunicipios.filter(m => {
             const dens = m.densidade_pop_10k;
+            if (faixa.min === undefined) return dens < faixa.max;
+            if (faixa.max === undefined) return dens >= faixa.min;
+            return dens >= faixa.min && dens < faixa.max;
+        }).length;
+    });
+    
+    const contagensTotal = faixas.map(faixa => {
+        return dadosMunicipiosTotal.filter(m => {
+            const dens = m.densidade_total_pop_10k;
             if (faixa.min === undefined) return dens < faixa.max;
             if (faixa.max === undefined) return dens >= faixa.min;
             return dens >= faixa.min && dens < faixa.max;
@@ -745,31 +1372,70 @@ function criarGraficoDensidadePop() {
         type: 'bar',
         data: {
             labels: faixas.map(f => f.label),
-            datasets: [{
-                label: 'Número de Municípios',
-                data: contagens,
-                backgroundColor: 'rgba(155, 89, 182, 0.7)'
-            }]
+            datasets: [
+                {
+                    label: 'Malha Vicinal (OSM)',
+                    data: contagensOSM,
+                    backgroundColor: 'rgba(155, 89, 182, 0.7)'
+                },
+                {
+                    label: 'Malha Total (OSM+DER)',
+                    data: contagensTotal,
+                    backgroundColor: 'rgba(46, 204, 113, 0.7)'
+                }
+            ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            plugins: { 
+                legend: { 
+                    display: true,
+                    position: 'top'
+                } 
+            },
             scales: {
-                y: { beginAtZero: true, title: { display: true, text: 'Municípios' } }
+                x: {
+                    title: { 
+                        display: true, 
+                        text: 'Faixa de Densidade Populacional (km/10.000 hab)',
+                        font: { size: 10, weight: 'bold' }
+                    },
+                    ticks: { font: { size: 9 } }
+                },
+                y: { 
+                    beginAtZero: true, 
+                    title: { 
+                        display: true, 
+                        text: 'Quantidade de Municípios',
+                        font: { size: 10, weight: 'bold' }
+                    },
+                    ticks: { font: { size: 9 } }
+                }
             }
         }
     });
 }
 
 /**
- * Cria gráficos de disparidades (Seção 2.3)
+ * Cria gráficos de disparidades (Seção 2.3) - COM SUPORTE PARA TOGGLE
  */
 function criarGraficosDisparidades() {
+    // Usar dados baseados na seleção do toggle
+    const usarMalhaTotal = visualizacaoAtual === 'total';
+    const dados = usarMalhaTotal ? dadosMunicipiosTotal : dadosMunicipios;
+    const campoArea = usarMalhaTotal ? 'classe_total_disp_area' : 'classe_disp_area';
+    const campoPop = usarMalhaTotal ? 'classe_total_disp_pop' : 'classe_disp_pop';
+    
+    criarGraficoDisparidadeArea(dados, campoArea);
+    criarGraficoDisparidadePop(dados, campoPop);
+}
+
+function criarGraficoDisparidadeArea(dados, campo) {
     // Contar por classe - disparidades espaciais
     const classesArea = {};
-    dadosMunicipios.forEach(m => {
-        const classe = m.classe_disp_area;
+    dados.forEach(m => {
+        const classe = m[campo];
         classesArea[classe] = (classesArea[classe] || 0) + 1;
     });
     
@@ -792,15 +1458,24 @@ function criarGraficosDisparidades() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom' } }
+                plugins: { 
+                    legend: { 
+                        position: 'bottom',
+                        labels: {
+                            font: { size: 9 },
+                            padding: 8,
+                            boxWidth: 12
+                        }
+                    } 
+                }
             }
         });
     }
     
-    // Contar por classe - disparidades populacionais
+    // Contar por classe - disparidades populacionais  
     const classesPop = {};
-    dadosMunicipios.forEach(m => {
-        const classe = m.classe_disp_pop;
+    dados.forEach(m => {
+        const classe = m[campo.replace('area', 'pop')];
         classesPop[classe] = (classesPop[classe] || 0) + 1;
     });
     
@@ -823,10 +1498,23 @@ function criarGraficosDisparidades() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom' } }
+                plugins: { 
+                    legend: { 
+                        position: 'bottom',
+                        labels: {
+                            font: { size: 9 },
+                            padding: 8,
+                            boxWidth: 12
+                        }
+                    } 
+                }
             }
         });
     }
+}
+
+function criarGraficoDisparidadePop(dados, campo) {
+    // Já implementado acima como parte da função de área
 }
 
 /**
@@ -836,14 +1524,14 @@ async function criarMapasBasicos() {
     console.log('🗺️  Iniciando criação de mapas...');
     
     try {
-        // Carregar GeoJSON dos municípios
-        console.log('Carregando municipios_sp.geojson...');
-        const respMunGeo = await fetch('../data/municipios_sp.geojson');
+        // Carregar GeoJSON completo dos municípios (com todas as métricas integradas)
+        console.log('Carregando municipios_completo.geojson...');
+        const respMunGeo = await fetch('../data/municipios_completo.geojson');
         if (!respMunGeo.ok) {
             throw new Error(`Erro ao carregar GeoJSON: ${respMunGeo.status}`);
         }
         const municipiosGeo = await respMunGeo.json();
-        console.log(`✅ GeoJSON carregado: ${municipiosGeo.features.length} municípios`);
+        console.log(`✅ GeoJSON completo carregado: ${municipiosGeo.features.length} municípios com métricas`);
 
         // Bounds do estado (usado por todos os mapas para enquadrar SP completo)
         let boundsSP = null;
@@ -853,15 +1541,23 @@ async function criarMapasBasicos() {
             console.warn('⚠️ Não foi possível calcular bounds do estado:', e);
         }
 
+        // Mostrar loading nos mapas
+        mostrarCarregamento('mapaMalhaCompleta', 'Inicializando...', 'Preparando visualização');
+        mostrarCarregamento('mapaPavimento', 'Inicializando...', 'Preparando visualização');
+        
         // Carregar malha vicinal estimada (camada principal do estudo)
         let malhaVicinaisGeo = null;
         try {
+            atualizarCarregamento('mapaMalhaCompleta', 'Carregando dados...', 'Malha Vicinal OSM');
+            atualizarCarregamento('mapaPavimento', 'Carregando dados...', 'Malha Vicinal OSM');
             console.log('Carregando malha_vicinais.geojson (malha estimada)...');
             const respVicinais = await fetch('../data/malha_vicinais.geojson');
             if (respVicinais.ok) {
                 malhaVicinaisGeo = await respVicinais.json();
                 const nFeatures = Array.isArray(malhaVicinaisGeo?.features) ? malhaVicinaisGeo.features.length : 0;
                 console.log(`✅ Malha vicinal carregada: ${nFeatures} features`);
+                atualizarCarregamento('mapaMalhaCompleta', 'Carregando dados...', `Malha OSM: ${nFeatures} segmentos`);
+                atualizarCarregamento('mapaPavimento', 'Carregando dados...', `Malha OSM: ${nFeatures} segmentos`);
             } else {
                 console.warn(`⚠️ Não foi possível carregar malha_vicinais.geojson: HTTP ${respVicinais.status}`);
             }
@@ -869,23 +1565,50 @@ async function criarMapasBasicos() {
             console.warn('⚠️ Erro ao carregar malha_vicinais.geojson:', err);
         }
         
+        // Verificar disponibilidade dos tiles vetoriais (malha total)
+        let malhaTotalTilesDisponivel = false;
+        malhaTotalTilesInfo = null;
+        try {
+            atualizarCarregamento('mapaMalhaCompleta', 'Carregando dados...', 'Metadados da Malha Total');
+            atualizarCarregamento('mapaPavimento', 'Carregando dados...', 'Metadados da Malha Total');
+            const respTiles = await fetch('../data/malha_total_tiles/metadata.json');
+            if (respTiles.ok) {
+                const infoTiles = await respTiles.json();
+                malhaTotalTilesInfo = infoTiles;
+                const hasTemplate = Boolean(infoTiles.tileUrlTemplate || (Array.isArray(infoTiles.tiles) && infoTiles.tiles.length));
+                malhaTotalTilesDisponivel = hasTemplate;
+                if (hasTemplate) {
+                    console.log(`✅ Tiles da malha total disponíveis: ${infoTiles.tileCount || 'N/A'} segmentos em ${infoTiles.maxzoom || 'N/A'} zooms`);
+                    atualizarCarregamento('mapaMalhaCompleta', 'Carregando dados...', `Malha Total disponível (${infoTiles.tileCount || '??'} segmentos)`);
+                    atualizarCarregamento('mapaPavimento', 'Carregando dados...', `Malha Total disponível (${infoTiles.tileCount || '??'} segmentos)`);
+                } else {
+                    console.warn('⚠️ Metadata da malha total carregado, mas sem template de tiles.');
+                    atualizarCarregamento('mapaMalhaCompleta', 'Aguardando dados...', 'Template de tiles ausente');
+                    atualizarCarregamento('mapaPavimento', 'Aguardando dados...', 'Template de tiles ausente');
+                }
+            } else {
+                console.warn(`⚠️ Tiles da malha total indisponíveis: HTTP ${respTiles.status}`);
+                atualizarCarregamento('mapaMalhaCompleta', 'Aguardando dados...', 'Tiles não encontrados');
+                atualizarCarregamento('mapaPavimento', 'Aguardando dados...', 'Tiles não encontrados');
+            }
+        } catch (err) {
+            console.warn('⚠️ Erro ao verificar malha_total_tiles:', err);
+        }
+        
         // 1. Mapa Malha Completa
-        criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP);
+        criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP, malhaTotalTilesDisponivel);
         
         // 2. Mapa Pavimento: malha vicinal estimada classificada por tipo
-        criarMapaVicinaisPorTipo('mapaPavimento', municipiosGeo, malhaVicinaisGeo, boundsSP);
-        
-        // 3. Mapa Faixas de Extensão
-        criarMapaTematico('mapaFaixasExtensao', municipiosGeo, 'extensao_km', 'Extensão (km)', boundsSP);
+        criarMapaVicinaisPorTipo('mapaPavimento', municipiosGeo, malhaVicinaisGeo, boundsSP, malhaTotalTilesDisponivel);
         
         // 4. Mapa ranking contínuo (gradiente)
         criarMapaRankingExtensao('mapaRankingExtensao', municipiosGeo, boundsSP);
         
-        // 6. Mapa Densidade Área
-        criarMapaTematico('mapaDensidadeArea', municipiosGeo, 'densidade_area_10k', 'Densidade (km/10.000km²)', boundsSP);
+        // 6. Mapa Densidade Área (gradiente azul-roxo-rosa)
+        criarMapaDensidadeArea('mapaDensidadeArea', municipiosGeo, boundsSP);
         
-        // 7. Mapa Densidade População
-        criarMapaTematico('mapaDensidadePop', municipiosGeo, 'densidade_pop_10k', 'Densidade (km/10.000 hab)', boundsSP);
+        // 7. Mapa Densidade População (gradiente laranja-vermelho-marrom)
+        criarMapaDensidadePop('mapaDensidadePop', municipiosGeo, boundsSP);
         
         // 8 e 9. Mapas de Disparidades
         criarMapaDisparidades('mapaDisparidadesArea', municipiosGeo, 'classe_disp_area', boundsSP);
@@ -898,28 +1621,39 @@ async function criarMapasBasicos() {
     }
 }
 
-function criarMapaVicinaisPorTipo(mapId, municipiosGeo, malhaVicinaisGeo, boundsSP) {
+function criarMapaVicinaisPorTipo(mapId, municipiosGeo, malhaVicinaisGeo, boundsSP, malhaTotalTilesDisponivel) {
     const element = document.getElementById(mapId);
     if (!element) {
         console.warn(`Elemento ${mapId} não encontrado!`);
         return;
     }
 
-    if (element._leaflet_id) {
-        element._leaflet_id = null;
-        element.innerHTML = '';
-    }
-
+    atualizarCarregamento(mapId, 'Processando dados...', 'Criando camadas de municípios');
     console.log(`Criando mapa vicinais por tipo: ${mapId}...`);
 
-    const map = L.map(mapId, { preferCanvas: true, zoomControl: false });
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { preferCanvas: true, zoomControl: false });
+        mapasLeaflet[mapId] = map;
+    }
+    
     const { baseLayers, defaultLayer } = criarBasemaps();
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
     defaultLayer.addTo(map);
 
     map.createPane('paneMunicipios');
     map.getPane('paneMunicipios').style.zIndex = 350;
     map.createPane('paneVicinais');
     map.getPane('paneVicinais').style.zIndex = 450;
+    map.createPane('paneTotal');
+    map.getPane('paneTotal').style.zIndex = 460;
 
     // Municípios referência (com join robusto)
     const municipiosComDados = anexarIndicadoresAoGeoJSON(municipiosGeo);
@@ -935,6 +1669,7 @@ function criarMapaVicinaisPorTipo(mapId, municipiosGeo, malhaVicinaisGeo, bounds
     }).addTo(map);
 
     // Vicinais por tipo
+    atualizarCarregamento(mapId, 'Processando dados...', 'Criando camada Malha Vicinal OSM');
     let layerVicinais = null;
     if (malhaVicinaisGeo && Array.isArray(malhaVicinaisGeo.features)) {
         const renderer = L.canvas({ padding: 0.5 });
@@ -953,6 +1688,14 @@ function criarMapaVicinaisPorTipo(mapId, municipiosGeo, malhaVicinaisGeo, bounds
     } else {
         console.warn('⚠️ malhaVicinaisGeo indisponível no mapa por tipo.');
     }
+    
+    // Adicionar camada da malha total com tiles GeoJSON
+    atualizarCarregamento(mapId, 'Processando dados...', 'Criando camada Malha Total (OSM + DER)');
+    let layerMalhaTotal = null;
+    layerMalhaTotal = criarLayerMalhaTotalGeoJSONTiles(map, { pane: 'paneTotal' });
+    if (layerMalhaTotal) {
+        console.log('layerMalhaTotal (tipo) criado com sucesso');
+    }
 
     // Legenda (somente tipos presentes nos dados agregados)
     const tiposPresentes = Array.isArray(dadosSegmentos?.distribuicao_por_tipo)
@@ -961,53 +1704,71 @@ function criarMapaVicinaisPorTipo(mapId, municipiosGeo, malhaVicinaisGeo, bounds
     const uniqueTipos = Array.from(new Set(tiposPresentes));
     uniqueTipos.sort((a, b) => a.localeCompare(b, 'pt-BR', { numeric: true }));
 
+    if (layerMalhaTotal) {
+        console.log('layerMalhaTotal (tipo) disponível no controle de camadas (vector tiles)');
+    }
+
     // Controle de camadas (basemap + overlays)
     const overlays = { 'Municípios (referência)': layerMunicipios };
-    if (layerVicinais) overlays['Vicinais (por tipo)'] = layerVicinais;
-    L.control.layers(baseLayers, overlays, { collapsed: true, position: 'topright' }).addTo(map);
+    if (layerVicinais) overlays['Malha Vicinal OSM'] = layerVicinais;
+    if (layerMalhaTotal) overlays['Malha Total (OSM + DER)'] = layerMalhaTotal;
+    L.control.layers(baseLayers, overlays, { collapsed: false, position: 'topright' }).addTo(map);
 
     // Enquadrar SP completo e travar por default
     aplicarEnquadramentoSP(map, boundsSP);
     const viewState = boundsSP ? { center: boundsSP.getCenter(), zoom: map.getZoom() } : { center: map.getCenter(), zoom: map.getZoom() };
     adicionarControleTravamento(map, viewState);
 
-    // Legenda externa (somente tipos presentes nos dados agregados)
-    const legendItems = uniqueTipos.map(t => ({
-        tipo: 'line',
-        color: corTipoPavimento(t),
-        label: `${t} (${descricaoTipoPavimento(t)})`
-    }));
-    renderLegendaExterna(mapId, 'Tipo (descrição)', legendItems);
+    // Legenda externa - 3 classes correspondendo ao gráfico
+    const legendItems = [
+        { tipo: 'line', color: '#3498db', label: 'Pavimentado (OSM)' },
+        { tipo: 'line', color: '#e67e22', label: 'Não Pavimentado (OSM)' },
+        { tipo: 'line', color: '#27ae60', label: 'DER Pavimentado' }
+    ];
+    renderLegendaExterna(mapId, 'Tipo de Via', legendItems);
 
+    removerCarregamento(mapId);
     console.log(`✅ Mapa ${mapId} (vicinais por tipo) criado!`);
 }
 
 /**
  * Cria mapa da malha completa
  */
-function criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP) {
-    const element = document.getElementById('mapaMalhaCompleta');
+function criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP, malhaTotalTilesDisponivel) {
+    const mapId = 'mapaMalhaCompleta';
+    const element = document.getElementById(mapId);
     if (!element) {
         console.error('Elemento mapaMalhaCompleta não encontrado!');
         return;
     }
     
+    atualizarCarregamento(mapId, 'Processando dados...', 'Criando camadas de municípios');
     console.log('Criando mapa malha completa...');
     
-    // Evitar erro de "Map container is already initialized" em caso de re-init
-    if (element._leaflet_id) {
-        element._leaflet_id = null;
-        element.innerHTML = '';
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { preferCanvas: true, zoomControl: false });
+        mapasLeaflet[mapId] = map;
     }
-
-    const map = L.map('mapaMalhaCompleta', { preferCanvas: true, zoomControl: false });
+    
     const { baseLayers, defaultLayer } = criarBasemaps();
+    // Remover camadas existentes exceto tiles base
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
     defaultLayer.addTo(map);
 
     map.createPane('paneMunicipios');
     map.getPane('paneMunicipios').style.zIndex = 400;
     map.createPane('paneVicinais');
     map.getPane('paneVicinais').style.zIndex = 450;
+    map.createPane('paneTotal');
+    map.getPane('paneTotal').style.zIndex = 460;
     
     // Mesclar dados de indicadores com geometria
     const municipiosComDados = anexarIndicadoresAoGeoJSON(municipiosGeo);
@@ -1033,7 +1794,8 @@ function criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP) {
         }
     }).addTo(map);
 
-    // Adicionar camada principal: malha vicinal estimada
+    // Adicionar camada principal: malha vicinal estimada (OSM)
+    atualizarCarregamento(mapId, 'Processando dados...', 'Criando camada Malha Vicinal OSM');
     let layerVicinais = null;
     if (malhaVicinaisGeo && Array.isArray(malhaVicinaisGeo.features)) {
         layerVicinais = L.geoJSON(malhaVicinaisGeo, {
@@ -1047,13 +1809,28 @@ function criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP) {
     } else {
         console.warn('⚠️ Malha vicinal não disponível para exibir no mapaMalhaCompleta.');
     }
+    
+    // Adicionar camada da malha total (OSM + DER) via tiles vetoriais
+    atualizarCarregamento(mapId, 'Processando dados...', 'Criando camada Malha Total');
+    let layerMalhaTotal = null;
+    
+    // Usar tiles GeoJSON simples (gerados por gerar_tiles_malha_total.py)
+    layerMalhaTotal = criarLayerMalhaTotalGeoJSONTiles(map, { pane: 'paneTotal' });
+    if (layerMalhaTotal) {
+        console.log('✅ layerMalhaTotal (GeoJSON tiles) criado com sucesso');
+    } else {
+        console.warn('⚠️ Não foi possível criar camada da malha total');
+    }
 
-    // Controle de camadas (basemap + overlays) (deixar a malha estimada ligada por padrão)
+    // Controle de camadas (basemap + overlays)
     const overlays = {
         'Municípios (referência)': layerMunicipios
     };
     if (layerVicinais) {
-        overlays['Malha vicinal estimada (principal)'] = layerVicinais;
+        overlays['Malha Vicinal OSM'] = layerVicinais;
+    }
+    if (layerMalhaTotal) {
+        overlays['Malha Total (OSM + DER)'] = layerMalhaTotal;
     }
     L.control.layers(baseLayers, overlays, { collapsed: false, position: 'topright' }).addTo(map);
 
@@ -1065,11 +1842,183 @@ function criarMapaMalhaCompleta(municipiosGeo, malhaVicinaisGeo, boundsSP) {
     // Legenda externa
     const legendItems = [
         { tipo: 'fill', color: '#3498db', label: 'Municípios (referência)' },
-        { tipo: 'line', color: '#e67e22', label: 'Malha vicinal estimada (principal)' }
+        { tipo: 'line', color: '#e67e22', label: 'Malha Vicinal OSM' },
+        { tipo: 'line', color: '#27ae60', label: 'DER Oficial' }
     ];
     renderLegendaExterna('mapaMalhaCompleta', 'Camadas', legendItems);
     
+    removerCarregamento('mapaMalhaCompleta');
     console.log('✅ Mapa malha completa criado com sucesso!');
+}
+
+function criarLayerMalhaTotalGeoJSONTiles(map, options = {}) {
+    /**
+     * OTIMIZADO: Usa Canvas Renderer para performance massiva
+     * Carrega tiles de forma assíncrona e controlada
+     */
+    const tilesBaseUrl = '../data/tiles/malha_total/10';
+    const tilesCarregados = {};
+    
+    // Usar Canvas Renderer ao invés de SVG (muito mais rápido)
+    const canvasRenderer = L.canvas({ padding: 0.5 });
+    const layerGroup = L.featureGroup({ renderer: canvasRenderer });
+    
+    let loadTimeout = null;
+    let isLoading = false;
+    
+    const getOrigemColor = (origem) => {
+        if (origem === 'DER_Oficial') return '#27ae60';
+        return '#e67e22';
+    };
+    
+    function carregarTilesVisiveis() {
+        if (isLoading) return; // Evita múltiplos carregamentos simultâneos
+        
+        const bounds = map.getBounds();
+        const center = bounds.getCenter();
+        
+        // Limites SP
+        const sp_lat_min = -25.3, sp_lat_max = -19.8;
+        const sp_lon_min = -53.1, sp_lon_max = -44.2;
+        
+        // Índices do tile central
+        const x = Math.max(0, Math.min(3, Math.floor(4 * (center.lng - sp_lon_min) / (sp_lon_max - sp_lon_min))));
+        const y = Math.max(0, Math.min(3, Math.floor(4 * (sp_lat_max - center.lat) / (sp_lat_max - sp_lat_min))));
+        
+        // Carregar SOMENTE 2 tiles: central + mais denso adjacente
+        const tilesToLoad = [
+            [x, y],                     // Tile central
+            [Math.min(3, x + 1), y]     // Tile à direita (onde SP é mais denso)
+        ];
+        
+        isLoading = true;
+        let loadedCount = 0;
+        
+        tilesToLoad.forEach(([tx, ty], index) => {
+            const tileKey = `${tx}_${ty}`;
+            if (tilesCarregados[tileKey] === 'loaded') {
+                loadedCount++;
+                if (loadedCount === tilesToLoad.length) isLoading = false;
+                return;
+            }
+            if (tilesCarregados[tileKey] === 'loading') return;
+            
+            const url = `${tilesBaseUrl}/${tx}/${ty}.geojson`;
+            tilesCarregados[tileKey] = 'loading';
+            
+            // Delay progressivo
+            setTimeout(() => {
+                fetch(url)
+                    .then(r => r.ok ? r.json() : Promise.reject(`HTTP ${r.status}`))
+                    .then(geojson => {
+                        // Filtrar apenas features visíveis no viewport atual
+                        const visibleFeatures = geojson.features.filter(f => {
+                            if (f.geometry.type === 'LineString') {
+                                return f.geometry.coordinates.some(coord => 
+                                    bounds.contains([coord[1], coord[0]])
+                                );
+                            }
+                            return true;
+                        });
+                        
+                        const layer = L.geoJSON({ type: 'FeatureCollection', features: visibleFeatures }, {
+                            pane: options.pane || 'overlayPane',
+                            renderer: canvasRenderer,
+                            style: {
+                                color: '#e67e22',  // Cor única para simplificar
+                                weight: 1,         // Muito fino
+                                opacity: 0.6       // Mais transparente
+                            },
+                            interactive: false
+                        });
+                        
+                        layerGroup.addLayer(layer);
+                        tilesCarregados[tileKey] = 'loaded';
+                        console.log(`✅ Tile [${tx},${ty}]: ${visibleFeatures.length}/${geojson.features.length} features`);
+                        
+                        loadedCount++;
+                        if (loadedCount === tilesToLoad.length) isLoading = false;
+                    })
+                    .catch(err => {
+                        if (!err.includes('404')) {
+                            console.warn(`⚠️ Tile [${tx},${ty}]:`, err);
+                        }
+                        tilesCarregados[tileKey] = 'error';
+                        loadedCount++;
+                        if (loadedCount === tilesToLoad.length) isLoading = false;
+                    });
+            }, index * 100); // 100ms entre tiles
+        });
+    }
+    
+    // Throttle pesado: aguarda 500ms após parar
+    function carregarComDelay() {
+        if (loadTimeout) clearTimeout(loadTimeout);
+        loadTimeout = setTimeout(carregarTilesVisiveis, 500);
+    }
+    
+    map.on('moveend', carregarComDelay);
+    
+    // Carregar inicial com delay maior
+    setTimeout(carregarTilesVisiveis, 500);
+    
+    return layerGroup;
+}
+
+function criarLayerMalhaTotalVector(mapId, options = {}) {
+    if (!malhaTotalTilesInfo) {
+        console.warn('Metadata da malha total não carregado; não é possível criar a camada de tiles vetoriais');
+        return null;
+    }
+
+    const template = malhaTotalTilesInfo.tileUrlTemplate || (Array.isArray(malhaTotalTilesInfo.tiles) ? malhaTotalTilesInfo.tiles[0] : null);
+    if (!template) {
+        console.warn('Template de tiles não encontrado na metadata da malha total');
+        return null;
+    }
+
+    const getOrigemColor = (props) => {
+        const origem = String(props?.origem || props?.source || props?.origem_id || '').toLowerCase();
+        if (origem.includes('der') || origem.includes('oficial')) return '#27ae60';
+        return '#e67e22';
+    };
+
+    const lineWeight = malhaTotalTilesInfo.lineWeight ?? 2;
+    const lineOpacity = malhaTotalTilesInfo.lineOpacity ?? 0.85;
+
+    const layerOptions = {
+        pane: options.pane || 'overlayPane',
+        vectorTileLayerStyles: {
+            default: (properties) => ({
+                color: getOrigemColor(properties),
+                weight: lineWeight,
+                opacity: lineOpacity
+            })
+        },
+        interactive: options.interactive ?? false,
+        maxNativeZoom: malhaTotalTilesInfo.maxzoom ?? malhaTotalTilesInfo.maxZoom ?? 15,
+        minZoom: malhaTotalTilesInfo.minzoom ?? malhaTotalTilesInfo.minZoom ?? 0,
+        keepBuffer: options.keepBuffer ?? 3,
+        subdomains: malhaTotalTilesInfo.subdomains || malhaTotalTilesInfo.tilesSubdomains || [],
+        getFeatureId: (properties) => properties?.segment_id || properties?.osm_id || properties?.id || null
+    };
+
+    if (options.rendererFactory) {
+        layerOptions.rendererFactory = options.rendererFactory;
+    }
+
+    const vectorLayer = L.vectorGrid.protobuf(template, layerOptions);
+    vectorLayer.on('loading', () => {
+        atualizarCarregamento(mapId, 'Carregando tiles...', 'Malha Total (vector tiles)');
+    });
+    vectorLayer.on('load', () => {
+        atualizarCarregamento(mapId, 'Tiles carregados', 'Malha Total pronta');
+    });
+    vectorLayer.on('tileerror', (err) => {
+        console.warn('Erro ao carregar tile da malha total:', err);
+    });
+
+    return vectorLayer;
 }
 
 /**
@@ -1084,61 +2033,69 @@ function criarMapaTematico(mapId, municipiosGeo, propriedade, label, boundsSP) {
     
     console.log(`Criando mapa temático: ${mapId}...`);
 
-    // Evitar erro de "Map container is already initialized" em reinit
-    if (element._leaflet_id) {
-        element._leaflet_id = null;
-        element.innerHTML = '';
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { zoomControl: false });
+        mapasLeaflet[mapId] = map;
     }
     
-    const map = L.map(mapId, { zoomControl: false });
     const { baseLayers, defaultLayer } = criarBasemaps();
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
     defaultLayer.addTo(map);
-    L.control.layers(baseLayers, null, { collapsed: true, position: 'topright' }).addTo(map);
     
-    // Mesclar dados de indicadores com geometria
-    const municipiosComDados = anexarIndicadoresAoGeoJSON(municipiosGeo);
+    // Mesclar dados de indicadores OSM com geometria
+    const municipiosComDadosOSM = anexarIndicadoresAoGeoJSON(municipiosGeo);
     
-    // Calcular valores para escala de cores
-    const valores = municipiosComDados
+    // Mesclar dados de indicadores TOTAL com geometria
+    const municipiosComDadosTotal = anexarIndicadoresTotalAoGeoJSON(municipiosGeo);
+    
+    // Determinar propriedade para malha total (mapeamento)
+    const propriedadeTotal = propriedade === 'extensao_km' ? 'extensao_total_km' :
+                             propriedade === 'densidade_area_10k' ? 'densidade_total_area_10k' :
+                             propriedade === 'densidade_pop_10k' ? 'densidade_total_pop_10k' :
+                             propriedade; // fallback
+    
+    // Calcular valores para escala de cores (OSM)
+    const valoresOSM = municipiosComDadosOSM
         .map(f => f?.properties?.[propriedade])
         .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
     
-    if (valores.length === 0) {
+    if (valoresOSM.length === 0) {
         console.warn(`Nenhum valor válido para ${propriedade}`);
         return;
     }
     
-    const minVal = Math.min(...valores);
-    const maxVal = Math.max(...valores);
+    const minValOSM = Math.min(...valoresOSM);
+    const maxValOSM = Math.max(...valoresOSM);
     
-    // Quebras (5 classes) e função de cor
-    const range = (maxVal - minVal) || 1;
-    const breaks = [
-        minVal,
-        minVal + range * 0.2,
-        minVal + range * 0.4,
-        minVal + range * 0.6,
-        minVal + range * 0.8,
-        maxVal
-    ];
+    // Quebras por QUANTIS (5 classes) para melhor contraste - distribui municípios igualmente entre classes
+    const breaksOSM = calcularQuantis(valoresOSM, 5);
     const colors = ['#ffffcc', '#a1dab4', '#41b6c4', '#2c7fb8', '#253494'];
 
-    const getColor = (valor) => {
+    const getColorOSM = (valor) => {
         if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
-        if (valor <= breaks[1]) return colors[0];
-        if (valor <= breaks[2]) return colors[1];
-        if (valor <= breaks[3]) return colors[2];
-        if (valor <= breaks[4]) return colors[3];
+        if (valor <= breaksOSM[1]) return colors[0];
+        if (valor <= breaksOSM[2]) return colors[1];
+        if (valor <= breaksOSM[3]) return colors[2];
+        if (valor <= breaksOSM[4]) return colors[3];
         return colors[4];
     };
     
-    L.geoJSON({type: 'FeatureCollection', features: municipiosComDados}, {
+    // Criar layer OSM
+    const layerOSM = L.geoJSON({type: 'FeatureCollection', features: municipiosComDadosOSM}, {
         style: (feature) => ({
-            fillColor: getColor(feature.properties[propriedade]),
+            fillColor: getColorOSM(feature.properties[propriedade]),
             weight: 1,
             opacity: 1,
             color: 'white',
-            fillOpacity: 0.7
+            fillOpacity: 1.0
         }),
         onEachFeature: (feature, layer) => {
             const props = feature.properties;
@@ -1148,29 +2105,266 @@ function criarMapaTematico(mapId, municipiosGeo, propriedade, label, boundsSP) {
                 ${label}: ${typeof valor === 'number' ? valor.toLocaleString('pt-BR', {minimumFractionDigits: 2}) : 'N/A'}
             `);
         }
-    }).addTo(map);
+    });
+    
+    // Calcular valores para escala de cores (Total)
+    const valoresTotal = municipiosComDadosTotal
+        .map(f => f?.properties?.[propriedadeTotal])
+        .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+    
+    const minValTotal = Math.min(...valoresTotal);
+    const maxValTotal = Math.max(...valoresTotal);
+    
+    // Quebras por QUANTIS (5 classes) para melhor contraste
+    const breaksTotal = calcularQuantis(valoresTotal, 5);
+
+    const getColorTotal = (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
+        if (valor <= breaksTotal[1]) return colors[0];
+        if (valor <= breaksTotal[2]) return colors[1];
+        if (valor <= breaksTotal[3]) return colors[2];
+        if (valor <= breaksTotal[4]) return colors[3];
+        return colors[4];
+    };
+    
+    // Criar layer Total
+    const layerTotal = L.geoJSON({type: 'FeatureCollection', features: municipiosComDadosTotal}, {
+        style: (feature) => ({
+            fillColor: getColorTotal(feature.properties[propriedadeTotal]),
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 1.0
+        }),
+        onEachFeature: (feature, layer) => {
+            const props = feature.properties;
+            const valor = props[propriedadeTotal];
+            layer.bindPopup(`
+                <b>${props.Municipio || props.NM_MUN}</b><br>
+                ${label}: ${typeof valor === 'number' ? valor.toLocaleString('pt-BR', {minimumFractionDigits: 2}) : 'N/A'}
+            `);
+        }
+    });
+    
+    // Adicionar layer OSM por padrão
+    layerOSM.addTo(map);
+    
+    // Criar controle de camadas com duas opções
+    const overlays = {
+        'Malha Vicinal OSM': layerOSM,
+        'Malha Total (OSM + DER)': layerTotal
+    };
+    
+    L.control.layers(baseLayers, overlays, { collapsed: false, position: 'topright' }).addTo(map);
 
     // Enquadrar SP completo e travar por default
     aplicarEnquadramentoSP(map, boundsSP);
     const viewState = boundsSP ? { center: boundsSP.getCenter(), zoom: map.getZoom() } : { center: map.getCenter(), zoom: map.getZoom() };
     adicionarControleTravamento(map, viewState);
 
-    // Legenda externa (classes)
+    // Legenda externa (classes) - usando OSM por padrão
     const fmt = (v) => v.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
     const legendItems = [
-        { tipo: 'fill', color: colors[0], label: `${fmt(breaks[0])} – ${fmt(breaks[1])}` },
-        { tipo: 'fill', color: colors[1], label: `${fmt(breaks[1])} – ${fmt(breaks[2])}` },
-        { tipo: 'fill', color: colors[2], label: `${fmt(breaks[2])} – ${fmt(breaks[3])}` },
-        { tipo: 'fill', color: colors[3], label: `${fmt(breaks[3])} – ${fmt(breaks[4])}` },
-        { tipo: 'fill', color: colors[4], label: `${fmt(breaks[4])} – ${fmt(breaks[5])}` }
+        { tipo: 'fill', color: colors[0], label: `${fmt(breaksOSM[0])} – ${fmt(breaksOSM[1])}` },
+        { tipo: 'fill', color: colors[1], label: `${fmt(breaksOSM[1])} – ${fmt(breaksOSM[2])}` },
+        { tipo: 'fill', color: colors[2], label: `${fmt(breaksOSM[2])} – ${fmt(breaksOSM[3])}` },
+        { tipo: 'fill', color: colors[3], label: `${fmt(breaksOSM[3])} – ${fmt(breaksOSM[4])}` },
+        { tipo: 'fill', color: colors[4], label: `${fmt(breaksOSM[4])} – ${fmt(breaksOSM[5])}` }
     ];
-    renderLegendaExterna(mapId, label, legendItems);
+    renderLegendaExterna(mapId, label + ' (Malha Vicinal OSM)', legendItems);
     
+    // Atualizar legenda ao trocar de camada
+    map.on('overlayadd', function(e) {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            const legendItemsTotal = [
+                { tipo: 'fill', color: colors[0], label: `${fmt(breaksTotal[0])} – ${fmt(breaksTotal[1])}` },
+                { tipo: 'fill', color: colors[1], label: `${fmt(breaksTotal[1])} – ${fmt(breaksTotal[2])}` },
+                { tipo: 'fill', color: colors[2], label: `${fmt(breaksTotal[2])} – ${fmt(breaksTotal[3])}` },
+                { tipo: 'fill', color: colors[3], label: `${fmt(breaksTotal[3])} – ${fmt(breaksTotal[4])}` },
+                { tipo: 'fill', color: colors[4], label: `${fmt(breaksTotal[4])} – ${fmt(breaksTotal[5])}` }
+            ];
+            renderLegendaExterna(mapId, label + ' (Malha Total)', legendItemsTotal);
+        }
+    });
+    
+    map.on('overlayremove', function(e) {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaExterna(mapId, label + ' (Malha Vicinal OSM)', legendItems);
+        }
+    });
+    
+    removerCarregamento(mapId);
     console.log(`✅ Mapa ${mapId} criado!`);
 }
 
 /**
- * Cria mapa contínuo (gradiente) para extensão municipal (Seção 1.5)
+ * Cria mapa com gradiente contínuo para qualquer métrica
+ * @param {string} mapId - ID do elemento do mapa
+ * @param {Object} municipiosGeo - GeoJSON dos municípios
+ * @param {string} propriedadeOSM - Nome da propriedade OSM (ex: 'extensao_km')
+ * @param {string} propriedadeTotal - Nome da propriedade Total (ex: 'extensao_km_total')
+ * @param {string} label - Rótulo para legenda (ex: 'Extensão (km)')
+ * @param {Object} boundsSP - Limites geográficos de SP
+ */
+function criarMapaRanking(mapId, municipiosGeo, propriedadeOSM, propriedadeTotal, label, boundsSP) {
+    const element = document.getElementById(mapId);
+    if (!element) {
+        console.warn(`Elemento ${mapId} não encontrado!`);
+        return;
+    }
+
+    console.log(`Criando mapa ranking (gradiente contínuo): ${mapId}...`);
+
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { zoomControl: false });
+        mapasLeaflet[mapId] = map;
+    }
+    
+    const { baseLayers, defaultLayer } = criarBasemaps();
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
+    defaultLayer.addTo(map);
+
+    const municipiosComDadosOSM = anexarIndicadoresAoGeoJSON(municipiosGeo);
+    const municipiosComDadosTotal = anexarIndicadoresTotalAoGeoJSON(municipiosGeo);
+    
+    const valoresOSM = municipiosComDadosOSM
+        .map(f => f?.properties?.[propriedadeOSM])
+        .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+    
+    const valoresTotal = municipiosComDadosTotal
+        .map(f => f?.properties?.[propriedadeTotal])
+        .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+
+    if (!valoresOSM.length && !valoresTotal.length) {
+        console.warn(`Nenhum valor válido para ${propriedadeOSM}/${propriedadeTotal}`);
+        return;
+    }
+
+    const minValOSM = Math.min(...valoresOSM);
+    const maxValOSM = Math.max(...valoresOSM);
+    
+    const minValTotal = Math.min(...valoresTotal);
+    const maxValTotal = Math.max(...valoresTotal);
+
+    // Gradiente verde-amarelo-vermelho para extensão
+    const fromColor = '#00ff00';  // Verde
+    const toColor = '#ff0000';    // Vermelho
+    
+    // Usar mapeador percentil para melhor contraste
+    const mapeadorOSM = criarMapeadorPercentil(valoresOSM);
+    const mapeadorTotal = criarMapeadorPercentil(valoresTotal);
+    
+    const getColorOSM = (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
+        const t = mapeadorOSM(valor);
+        return interpolarHex(fromColor, toColor, t);
+    };
+    
+    const getColorTotal = (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
+        const t = mapeadorTotal(valor);
+        return interpolarHex(fromColor, toColor, t);
+    };
+
+    const layerOSM = L.geoJSON({ type: 'FeatureCollection', features: municipiosComDadosOSM }, {
+        style: (feature) => ({
+            fillColor: getColorOSM(feature?.properties?.[propriedadeOSM]),
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 1.0
+        }),
+        onEachFeature: (feature, layer) => {
+            const props = feature?.properties || {};
+            const valor = props?.[propriedadeOSM];
+            const nome = props.Municipio || props.NM_MUN || 'Município';
+            layer.bindPopup(`
+                <b>${nome}</b><br>
+                ${label}: ${typeof valor === 'number' ? valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A'}
+            `);
+        }
+    });
+    
+    const layerTotal = L.geoJSON({ type: 'FeatureCollection', features: municipiosComDadosTotal }, {
+        style: (feature) => ({
+            fillColor: getColorTotal(feature?.properties?.[propriedadeTotal]),
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 1.0
+        }),
+        onEachFeature: (feature, layer) => {
+            const props = feature?.properties || {};
+            const valorTotal = props?.[propriedadeTotal];
+            const nome = props.Municipio || props.NM_MUN || 'Município';
+            layer.bindPopup(`
+                <b>${nome}</b><br>
+                ${label}: ${typeof valorTotal === 'number' ? valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A'}
+            `);
+        }
+    });
+
+    // Adicionar layer OSM por padrão
+    layerOSM.addTo(map);
+    
+    // Criar controle de camadas com duas opções
+    const overlays = {
+        'Malha Vicinal OSM': layerOSM,
+        'Malha Total (OSM + DER)': layerTotal
+    };
+    
+    L.control.layers(baseLayers, overlays, { collapsed: false, position: 'topright' }).addTo(map);
+
+    // Enquadrar SP completo e travar por default
+    aplicarEnquadramentoSP(map, boundsSP);
+    const viewState = boundsSP ? { center: boundsSP.getCenter(), zoom: map.getZoom() } : { center: map.getCenter(), zoom: map.getZoom() };
+    adicionarControleTravamento(map, viewState);
+
+    // Legenda externa (gradiente vertical) - usando OSM por padrão
+    renderLegendaGradienteExterna(mapId, label + ' (Malha Vicinal OSM)', minValOSM, maxValOSM, {
+        fromColor: fromColor,
+        toColor: toColor,
+        unidade: '',
+        orientation: 'vertical'
+    });
+    
+    // Atualizar legenda ao trocar de camada
+    map.on('overlayadd', function(e) {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaGradienteExterna(mapId, label + ' (Malha Total)', minValTotal, maxValTotal, {
+                fromColor: fromColor,
+                toColor: toColor,
+                unidade: '',
+                orientation: 'vertical'
+            });
+        }
+    });
+    
+    map.on('overlayremove', function(e) {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaGradienteExterna(mapId, label + ' (Malha Vicinal OSM)', minValOSM, maxValOSM, {
+                fromColor: fromColor,
+                toColor: toColor,
+                unidade: '',
+                orientation: 'vertical'
+            });
+        }
+    });
+    
+    removerCarregamento(mapId);
+    console.log(`✅ Mapa ${mapId} (gradiente contínuo) criado!`);
+}
+
+/**
+ * Cria mapa contínuo (gradiente verde-amarelo-vermelho) para extensão municipal
  */
 function criarMapaRankingExtensao(mapId, municipiosGeo, boundsSP) {
     const element = document.getElementById(mapId);
@@ -1179,46 +2373,74 @@ function criarMapaRankingExtensao(mapId, municipiosGeo, boundsSP) {
         return;
     }
 
-    if (element._leaflet_id) {
-        element._leaflet_id = null;
-        element.innerHTML = '';
-    }
-
     console.log(`Criando mapa ranking (gradiente contínuo): ${mapId}...`);
 
-    const map = L.map(mapId, { zoomControl: false });
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { zoomControl: false });
+        mapasLeaflet[mapId] = map;
+    }
+    
     const { baseLayers, defaultLayer } = criarBasemaps();
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
     defaultLayer.addTo(map);
-    L.control.layers(baseLayers, null, { collapsed: true, position: 'topright' }).addTo(map);
 
-    const propriedade = 'extensao_km';
-    const label = 'Extensão (km)';
+    const propriedadeOSM = 'extensao_km';
+    const propriedadeTotal = 'extensao_total_km';
+    const label = 'km';
 
-    const municipiosComDados = anexarIndicadoresAoGeoJSON(municipiosGeo);
-    const valores = municipiosComDados
-        .map(f => f?.properties?.[propriedade])
+    const municipiosComDadosOSM = anexarIndicadoresAoGeoJSON(municipiosGeo);
+    const municipiosComDadosTotal = anexarIndicadoresTotalAoGeoJSON(municipiosGeo);
+    
+    const valoresOSM = municipiosComDadosOSM
+        .map(f => f?.properties?.extensao_km)
+        .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+    
+    const valoresTotal = municipiosComDadosTotal
+        .map(f => f?.properties?.extensao_total_km)
         .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
 
-    if (!valores.length) {
-        console.warn(`Nenhum valor válido para ${propriedade}`);
+    if (!valoresOSM.length && !valoresTotal.length) {
+        console.warn(`Nenhum valor válido para extensão`);
         return;
     }
 
-    const minVal = Math.min(...valores);
-    const maxVal = Math.max(...valores);
-    const denom = (maxVal - minVal) || 1;
+    const minValOSM = Math.min(...valoresOSM);
+    const maxValOSM = Math.max(...valoresOSM);
+    
+    const minValTotal = Math.min(...valoresTotal);
+    const maxValTotal = Math.max(...valoresTotal);
 
-    const fromColor = '#ffffcc';
-    const toColor = '#253494';
-    const getColor = (valor) => {
+    // Gradiente verde-amarelo-vermelho para extensão
+    const fromColor = '#00ff00';  // Verde
+    const toColor = '#ff0000';    // Vermelho
+    
+    // Usar mapeador percentil para melhor contraste
+    const mapeadorOSM = criarMapeadorPercentil(valoresOSM);
+    const mapeadorTotal = criarMapeadorPercentil(valoresTotal);
+    
+    const getColorOSM = (valor) => {
         if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
-        const t = (valor - minVal) / denom;
+        const t = mapeadorOSM(valor);
+        return interpolarHex(fromColor, toColor, t);
+    };
+    
+    const getColorTotal = (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
+        const t = mapeadorTotal(valor);
         return interpolarHex(fromColor, toColor, t);
     };
 
-    L.geoJSON({ type: 'FeatureCollection', features: municipiosComDados }, {
+    const layerOSM = L.geoJSON({ type: 'FeatureCollection', features: municipiosComDadosOSM }, {
         style: (feature) => ({
-            fillColor: getColor(feature?.properties?.[propriedade]),
+            fillColor: getColorOSM(feature?.properties?.extensao_km),
             weight: 1,
             opacity: 1,
             color: 'white',
@@ -1226,20 +2448,349 @@ function criarMapaRankingExtensao(mapId, municipiosGeo, boundsSP) {
         }),
         onEachFeature: (feature, layer) => {
             const props = feature?.properties || {};
-            const valor = props?.[propriedade];
+            const valor = props?.extensao_km;
             const nome = props.Municipio || props.NM_MUN || 'Município';
             layer.bindPopup(`
                 <b>${nome}</b><br>
                 ${label}: ${typeof valor === 'number' ? valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' km' : 'N/A'}
             `);
         }
-    }).addTo(map);
+    });
+    
+    const layerTotal = L.geoJSON({ type: 'FeatureCollection', features: municipiosComDadosTotal }, {
+        style: (feature) => ({
+            fillColor: getColorTotal(feature?.properties?.extensao_total_km),
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 0.82
+        }),
+        onEachFeature: (feature, layer) => {
+            const props = feature?.properties || {};
+            const valorTotal = props?.extensao_total_km;
+            const nome = props.Municipio || props.NM_MUN || 'Município';
+            layer.bindPopup(`
+                <b>${nome}</b><br>
+                ${label} Total: ${typeof valorTotal === 'number' ? valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' km' : 'N/A'}
+            `);
+        }
+    });
+
+    layerOSM.addTo(map);
+
+    const overlays = {
+        'Malha Vicinal OSM': layerOSM,
+        'Malha Total (OSM + DER)': layerTotal
+    };
+    L.control.layers(baseLayers, overlays, { collapsed: false, position: 'topright' }).addTo(map);
 
     aplicarEnquadramentoSP(map, boundsSP);
     const viewState = boundsSP ? { center: boundsSP.getCenter(), zoom: map.getZoom() } : { center: map.getCenter(), zoom: map.getZoom() };
     adicionarControleTravamento(map, viewState);
 
-    renderLegendaGradienteExterna(mapId, label, minVal, maxVal, { fromColor, toColor, unidade: 'km' });
+    renderLegendaGradienteExterna(mapId, label, minValOSM, maxValOSM, { fromColor, toColor, unidade: 'km', orientation: 'vertical' });
+    
+    map.on('overlayadd', (e) => {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaGradienteExterna(mapId, label + ' Total', minValTotal, maxValTotal, { fromColor, toColor, unidade: 'km', orientation: 'vertical' });
+        }
+    });
+    
+    map.on('overlayremove', (e) => {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaGradienteExterna(mapId, label, minValOSM, maxValOSM, { fromColor, toColor, unidade: 'km', orientation: 'vertical' });
+        }
+    });
+    
+    removerCarregamento(mapId);
+    console.log(`✅ Mapa ${mapId} criado!`);
+}
+
+/**
+ * Cria mapa contínuo (gradiente azul-roxo-rosa) para densidade por área
+ */
+function criarMapaDensidadeArea(mapId, municipiosGeo, boundsSP) {
+    const element = document.getElementById(mapId);
+    if (!element) {
+        console.warn(`Elemento ${mapId} não encontrado!`);
+        return;
+    }
+
+    console.log(`Criando mapa densidade por área (gradiente contínuo): ${mapId}...`);
+
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { zoomControl: false });
+        mapasLeaflet[mapId] = map;
+    }
+    
+    const { baseLayers, defaultLayer } = criarBasemaps();
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
+    defaultLayer.addTo(map);
+
+    const propriedadeOSM = 'densidade_area_10k';
+    const propriedadeTotal = 'densidade_total_area_10k';
+    const label = 'km/10.000 km²';
+
+    const municipiosComDadosOSM = anexarIndicadoresAoGeoJSON(municipiosGeo);
+    const municipiosComDadosTotal = anexarIndicadoresTotalAoGeoJSON(municipiosGeo);
+    
+    const valoresOSM = municipiosComDadosOSM
+        .map(f => f?.properties?.[propriedadeOSM])
+        .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+    
+    const valoresTotal = municipiosComDadosTotal
+        .map(f => f?.properties?.[propriedadeTotal])
+        .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+
+    if (!valoresOSM.length && !valoresTotal.length) {
+        console.warn(`Nenhum valor válido para densidade por área`);
+        return;
+    }
+
+    const minValOSM = Math.min(...valoresOSM);
+    const maxValOSM = Math.max(...valoresOSM);
+    
+    const minValTotal = Math.min(...valoresTotal);
+    const maxValTotal = Math.max(...valoresTotal);
+
+    // Gradiente azul-roxo-rosa para densidade por área
+    const fromColor = '#0000ff';  // Azul
+    const toColor = '#ff1493';    // Rosa escuro
+    
+    // Usar mapeador percentil para melhor contraste
+    const mapeadorOSM = criarMapeadorPercentil(valoresOSM);
+    const mapeadorTotal = criarMapeadorPercentil(valoresTotal);
+    
+    const getColorOSM = (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
+        const t = mapeadorOSM(valor);
+        return interpolarHex(fromColor, toColor, t);
+    };
+    
+    const getColorTotal = (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
+        const t = mapeadorTotal(valor);
+        return interpolarHex(fromColor, toColor, t);
+    };
+
+    const layerOSM = L.geoJSON({ type: 'FeatureCollection', features: municipiosComDadosOSM }, {
+        style: (feature) => ({
+            fillColor: getColorOSM(feature?.properties?.[propriedadeOSM]),
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 1.0
+        }),
+        onEachFeature: (feature, layer) => {
+            const props = feature?.properties || {};
+            const valor = props?.[propriedadeOSM];
+            const nome = props.Municipio || props.NM_MUN || 'Município';
+            layer.bindPopup(`
+                <b>${nome}</b><br>
+                ${label}: ${typeof valor === 'number' ? valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A'}
+            `);
+        }
+    });
+    
+    const layerTotal = L.geoJSON({ type: 'FeatureCollection', features: municipiosComDadosTotal }, {
+        style: (feature) => ({
+            fillColor: getColorTotal(feature?.properties?.[propriedadeTotal]),
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 1.0
+        }),
+        onEachFeature: (feature, layer) => {
+            const props = feature?.properties || {};
+            const valorTotal = props?.[propriedadeTotal];
+            const nome = props.Municipio || props.NM_MUN || 'Município';
+            layer.bindPopup(`
+                <b>${nome}</b><br>
+                ${label}: ${typeof valorTotal === 'number' ? valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A'}
+            `);
+        }
+    });
+
+    layerOSM.addTo(map);
+    
+    const overlays = {
+        'Malha Vicinal OSM': layerOSM,
+        'Malha Total (OSM + DER)': layerTotal
+    };
+    
+    L.control.layers(baseLayers, overlays, { collapsed: false, position: 'topright' }).addTo(map);
+
+    aplicarEnquadramentoSP(map, boundsSP);
+    const viewState = boundsSP ? { center: boundsSP.getCenter(), zoom: map.getZoom() } : { center: map.getCenter(), zoom: map.getZoom() };
+    adicionarControleTravamento(map, viewState);
+
+    renderLegendaGradienteExterna(mapId, label, minValOSM, maxValOSM, { fromColor, toColor, unidade: '', orientation: 'vertical' });
+    
+    map.on('overlayadd', (e) => {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaGradienteExterna(mapId, label + ' Total', minValTotal, maxValTotal, { fromColor, toColor, unidade: '', orientation: 'vertical' });
+        }
+    });
+    
+    map.on('overlayremove', (e) => {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaGradienteExterna(mapId, label, minValOSM, maxValOSM, { fromColor, toColor, unidade: '', orientation: 'vertical' });
+        }
+    });
+    
+    removerCarregamento(mapId);
+    console.log(`✅ Mapa ${mapId} criado!`);
+}
+
+/**
+ * Cria mapa contínuo (gradiente laranja-vermelho-marrom) para densidade por população
+ */
+function criarMapaDensidadePop(mapId, municipiosGeo, boundsSP) {
+    const element = document.getElementById(mapId);
+    if (!element) {
+        console.warn(`Elemento ${mapId} não encontrado!`);
+        return;
+    }
+
+    console.log(`Criando mapa densidade por população (gradiente contínuo): ${mapId}...`);
+
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { zoomControl: false });
+        mapasLeaflet[mapId] = map;
+    }
+    
+    const { baseLayers, defaultLayer } = criarBasemaps();
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
+    defaultLayer.addTo(map);
+
+    const propriedadeOSM = 'densidade_pop_10k';
+    const propriedadeTotal = 'densidade_total_pop_10k';
+    const label = 'km/10.000 hab';
+
+    const municipiosComDadosOSM = anexarIndicadoresAoGeoJSON(municipiosGeo);
+    const municipiosComDadosTotal = anexarIndicadoresTotalAoGeoJSON(municipiosGeo);
+    
+    const valoresOSM = municipiosComDadosOSM
+        .map(f => f?.properties?.[propriedadeOSM])
+        .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+    
+    const valoresTotal = municipiosComDadosTotal
+        .map(f => f?.properties?.[propriedadeTotal])
+        .filter(v => typeof v === 'number' && Number.isFinite(v) && v >= 0);
+
+    if (!valoresOSM.length && !valoresTotal.length) {
+        console.warn(`Nenhum valor válido para densidade por população`);
+        return;
+    }
+
+    const minValOSM = Math.min(...valoresOSM);
+    const maxValOSM = Math.max(...valoresOSM);
+    
+    const minValTotal = Math.min(...valoresTotal);
+    const maxValTotal = Math.max(...valoresTotal);
+
+    // Gradiente laranja-vermelho-marrom para densidade por população
+    const fromColor = '#ffa500';  // Laranja
+    const toColor = '#8b4513';    // Marrom
+    
+    // Usar mapeador percentil para melhor contraste
+    const mapeadorOSM = criarMapeadorPercentil(valoresOSM);
+    const mapeadorTotal = criarMapeadorPercentil(valoresTotal);
+    
+    const getColorOSM = (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
+        const t = mapeadorOSM(valor);
+        return interpolarHex(fromColor, toColor, t);
+    };
+    
+    const getColorTotal = (valor) => {
+        if (typeof valor !== 'number' || !Number.isFinite(valor)) return '#e0e0e0';
+        const t = mapeadorTotal(valor);
+        return interpolarHex(fromColor, toColor, t);
+    };
+
+    const layerOSM = L.geoJSON({ type: 'FeatureCollection', features: municipiosComDadosOSM }, {
+        style: (feature) => ({
+            fillColor: getColorOSM(feature?.properties?.[propriedadeOSM]),
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 1.0
+        }),
+        onEachFeature: (feature, layer) => {
+            const props = feature?.properties || {};
+            const valor = props?.[propriedadeOSM];
+            const nome = props.Municipio || props.NM_MUN || 'Município';
+            layer.bindPopup(`
+                <b>${nome}</b><br>
+                ${label}: ${typeof valor === 'number' ? valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A'}
+            `);
+        }
+    });
+    
+    const layerTotal = L.geoJSON({ type: 'FeatureCollection', features: municipiosComDadosTotal }, {
+        style: (feature) => ({
+            fillColor: getColorTotal(feature?.properties?.[propriedadeTotal]),
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 1.0
+        }),
+        onEachFeature: (feature, layer) => {
+            const props = feature?.properties || {};
+            const valorTotal = props?.[propriedadeTotal];
+            const nome = props.Municipio || props.NM_MUN || 'Município';
+            layer.bindPopup(`
+                <b>${nome}</b><br>
+                ${label}: ${typeof valorTotal === 'number' ? valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A'}
+            `);
+        }
+    });
+
+    layerOSM.addTo(map);
+    
+    const overlays = {
+        'Malha Vicinal OSM': layerOSM,
+        'Malha Total (OSM + DER)': layerTotal
+    };
+    
+    L.control.layers(baseLayers, overlays, { collapsed: false, position: 'topright' }).addTo(map);
+
+    aplicarEnquadramentoSP(map, boundsSP);
+    const viewState = boundsSP ? { center: boundsSP.getCenter(), zoom: map.getZoom() } : { center: map.getCenter(), zoom: map.getZoom() };
+    adicionarControleTravamento(map, viewState);
+
+    renderLegendaGradienteExterna(mapId, label, minValOSM, maxValOSM, { fromColor, toColor, unidade: '', orientation: 'vertical' });
+    
+    map.on('overlayadd', (e) => {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaGradienteExterna(mapId, label + ' Total', minValTotal, maxValTotal, { fromColor, toColor, unidade: '', orientation: 'vertical' });
+        }
+    });
+    
+    map.on('overlayremove', (e) => {
+        if (e.name === 'Malha Total (OSM + DER)') {
+            renderLegendaGradienteExterna(mapId, label, minValOSM, maxValOSM, { fromColor, toColor, unidade: '', orientation: 'vertical' });
+        }
+    });
+    
+    removerCarregamento(mapId);
     console.log(`✅ Mapa ${mapId} criado!`);
 }
 
@@ -1255,13 +2806,23 @@ function criarMapaTop10(mapId, municipiosGeo, isMaior, boundsSP) {
     
     console.log(`Criando mapa Top 10 ${isMaior ? 'Maior' : 'Menor'}: ${mapId}...`);
 
-    if (element._leaflet_id) {
-        element._leaflet_id = null;
-        element.innerHTML = '';
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { zoomControl: false });
+        mapasLeaflet[mapId] = map;
     }
     
-    const map = L.map(mapId, { zoomControl: false });
     const { baseLayers, defaultLayer } = criarBasemaps();
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
+    // Remover controles existentes
+    map.eachLayer(() => {});
     defaultLayer.addTo(map);
     L.control.layers(baseLayers, null, { collapsed: true, position: 'topright' }).addTo(map);
     
@@ -1306,6 +2867,7 @@ function criarMapaTop10(mapId, municipiosGeo, isMaior, boundsSP) {
         { tipo: 'fill', color: '#ecf0f1', label: 'Demais municípios' }
     ]);
     
+    removerCarregamento(mapId);
     console.log(`✅ Mapa ${mapId} criado!`);
 }
 
@@ -1321,15 +2883,22 @@ function criarMapaDisparidades(mapId, municipiosGeo, propriedadeClasse, boundsSP
     
     console.log(`Criando mapa de disparidades: ${mapId}...`);
 
-    if (element._leaflet_id) {
-        element._leaflet_id = null;
-        element.innerHTML = '';
+    // Usar mapa do cache ou criar novo
+    let map = mapasLeaflet[mapId];
+    if (!map) {
+        if (element._leaflet_id) {
+            element._leaflet_id = null;
+            element.innerHTML = '';
+        }
+        map = L.map(mapId, { zoomControl: false });
+        mapasLeaflet[mapId] = map;
     }
     
-    const map = L.map(mapId, { zoomControl: false });
     const { baseLayers, defaultLayer } = criarBasemaps();
+    map.eachLayer(layer => {
+        if (!(layer instanceof L.TileLayer)) map.removeLayer(layer);
+    });
     defaultLayer.addTo(map);
-    L.control.layers(baseLayers, null, { collapsed: true, position: 'topright' }).addTo(map);
     
     const coresClasse = {
         'Muito Abaixo': '#d73027',
@@ -1339,10 +2908,12 @@ function criarMapaDisparidades(mapId, municipiosGeo, propriedadeClasse, boundsSP
         'Muito Acima': '#1a9850'
     };
     
-    // Mesclar dados
-    const municipiosComDados = anexarIndicadoresAoGeoJSON(municipiosGeo);
+    const municipiosComDadosOSM = anexarIndicadoresAoGeoJSON(municipiosGeo);
+    const municipiosComDadosTotal = anexarIndicadoresTotalAoGeoJSON(municipiosGeo);
     
-    L.geoJSON({type: 'FeatureCollection', features: municipiosComDados}, {
+    const propriedadeTotal = propriedadeClasse.replace('classe_disp_', 'classe_total_disp_');
+    
+    const layerOSM = L.geoJSON({type: 'FeatureCollection', features: municipiosComDadosOSM}, {
         style: (feature) => {
             const classe = feature.properties[propriedadeClasse];
             return {
@@ -1350,7 +2921,7 @@ function criarMapaDisparidades(mapId, municipiosGeo, propriedadeClasse, boundsSP
                 weight: 1,
                 opacity: 1,
                 color: 'white',
-                fillOpacity: 0.7
+                fillOpacity: 1.0
             };
         },
         onEachFeature: (feature, layer) => {
@@ -1361,20 +2932,50 @@ function criarMapaDisparidades(mapId, municipiosGeo, propriedadeClasse, boundsSP
                 Extensão: ${(props.extensao_km || 0).toLocaleString('pt-BR', {minimumFractionDigits: 2})} km
             `);
         }
-    }).addTo(map);
+    });
+    
+    const layerTotal = L.geoJSON({type: 'FeatureCollection', features: municipiosComDadosTotal}, {
+        style: (feature) => {
+            const classe = feature.properties[propriedadeTotal];
+            return {
+                fillColor: coresClasse[classe] || '#cccccc',
+                weight: 1,
+                opacity: 1,
+                color: 'white',
+                fillOpacity: 1.0
+            };
+        },
+        onEachFeature: (feature, layer) => {
+            const props = feature.properties;
+            layer.bindPopup(`
+                <b>${props.Municipio || props.NM_MUN}</b><br>
+                Classe: ${props[propriedadeTotal] || 'N/A'}<br>
+                Extensão Total: ${(props.extensao_total_km || 0).toLocaleString('pt-BR', {minimumFractionDigits: 2})} km
+            `);
+        }
+    });
+    
+    layerOSM.addTo(map);
+
+    const overlays = {
+        'Malha Vicinal OSM': layerOSM,
+        'Malha Total (OSM + DER)': layerTotal
+    };
+    L.control.layers(baseLayers, overlays, { collapsed: false, position: 'topright' }).addTo(map);
 
     aplicarEnquadramentoSP(map, boundsSP);
     const viewState = boundsSP ? { center: boundsSP.getCenter(), zoom: map.getZoom() } : { center: map.getCenter(), zoom: map.getZoom() };
     adicionarControleTravamento(map, viewState);
 
     renderLegendaExterna(mapId, 'Classes', [
-        { tipo: 'fill', color: coresClasse['Muito Abaixo'], label: 'Muito Abaixo' },
-        { tipo: 'fill', color: coresClasse['Abaixo'], label: 'Abaixo' },
-        { tipo: 'fill', color: coresClasse['Média'], label: 'Média' },
+        { tipo: 'fill', color: coresClasse['Muito Acima'], label: 'Muito Acima' },
         { tipo: 'fill', color: coresClasse['Acima'], label: 'Acima' },
-        { tipo: 'fill', color: coresClasse['Muito Acima'], label: 'Muito Acima' }
+        { tipo: 'fill', color: coresClasse['Média'], label: 'Média' },
+        { tipo: 'fill', color: coresClasse['Abaixo'], label: 'Abaixo' },
+        { tipo: 'fill', color: coresClasse['Muito Abaixo'], label: 'Muito Abaixo' }
     ]);
     
+    removerCarregamento(mapId);
     console.log(`✅ Mapa ${mapId} criado!`);
 }
 
@@ -1382,9 +2983,18 @@ function criarMapaDisparidades(mapId, municipiosGeo, propriedadeClasse, boundsSP
  * Inicialização principal
  */
 document.addEventListener('DOMContentLoaded', async function() {
+    if (document.body.dataset.page !== 'resultados') {
+        console.log('🛈 Página diferente de resultados detectada; inicialização principal ignorada.');
+        return;
+    }
     console.log('🚀 INICIANDO PÁGINA DE RESULTADOS MUNICIPAIS...');
     
-    // Carregar dados
+    // INICIALIZAR MAPAS IMEDIATAMENTE (mostrar basemap enquanto dados carregam)
+    console.log('🗺️ Inicializando mapas instantaneamente...');
+    inicializarMapasInstantaneo();
+    console.log('✅ Mapas inicializados com basemap!');
+    
+    // Carregar dados (em paralelo com mapas já visíveis)
     const sucesso = await carregarDados();
     if (!sucesso) {
         console.error('❌ Falha ao carregar dados');
@@ -1395,10 +3005,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     // Preencher cards
     preencherCardsGerais();
+    preencherCardsMalhaTotal();
     preencherCardsSegmentos();
+    preencherCardsSegmentosTotal();
     preencherCardsMunicipais();
+    preencherCardsMunicipaisTotal();
     preencherCardsDensidadeArea();
+    preencherCardsDensidadeAreaTotal();
     preencherCardsDensidadePop();
+    preencherCardsDensidadePopTotal();
     
     console.log('✅ Cards preenchidos, criando gráficos...');
     
@@ -1430,4 +3045,32 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('❌❌❌ ERRO CRÍTICO AO CRIAR MAPAS:', err);
         console.error('Stack trace:', err.stack);
     }
+    
+    // Event listeners para o toggle de disparidades
+    const radioOSM = document.getElementById('disparidadeOSM');
+    const radioTotal = document.getElementById('disparidadeTotal');
+    
+    if (radioOSM && radioTotal) {
+        radioOSM.addEventListener('change', function() {
+            if (this.checked) {
+                console.log('Alternando para visualização: Malha Vicinal (OSM)');
+                visualizacaoAtual = 'osm';
+                criarGraficosDisparidades();
+            }
+        });
+        
+        radioTotal.addEventListener('change', function() {
+            if (this.checked) {
+                console.log('Alternando para visualização: Malha Total (OSM+DER)');
+                visualizacaoAtual = 'total';
+                criarGraficosDisparidades();
+            }
+        });
+        
+        console.log('✅ Event listeners do toggle de disparidades configurados');
+    } else {
+        console.warn('⚠️ Elementos do toggle não encontrados no DOM');
+    }
+    
+    console.log('✅ PÁGINA CARREGADA COM SUCESSO!');
 });

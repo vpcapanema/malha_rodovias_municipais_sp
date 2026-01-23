@@ -2,35 +2,23 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Servidor Docs: iniciar (8003)",
+      "type": "shell",
+      "command": "Write-Host '=== INICIANDO SERVIDOR HTTP (MODO SIMPLES) ===' -ForegroundColor Cyan; Write-Host ''; Write-Host 'Configuração:' -ForegroundColor Yellow; Write-Host '  → Python: D:/ESTUDO_VICINAIS_V2/.venv/Scripts/python.exe' -ForegroundColor Gray; Write-Host '  → Porta: 8003' -ForegroundColor Gray; Write-Host '  → Diretório: ${workspaceFolder}/docs' -ForegroundColor Gray; Write-Host ''; Write-Host 'Iniciando servidor...' -ForegroundColor Yellow; D:/ESTUDO_VICINAIS_V2/.venv/Scripts/python.exe -m http.server 8003",
+      "options": {
+        "cwd": "${workspaceFolder}/docs"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
       "label": "Docs: (re)iniciar servidor + abrir index (8003)",
       "type": "shell",
-      "command": "powershell",
-      "args": [
-        "-NoProfile",
-        "-ExecutionPolicy",
-        "Bypass",
-        "-Command",
-        "Get-NetTCPConnection -LocalPort 8003 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Milliseconds 200; Start-Process -FilePath 'D:/ESTUDO_VICINAIS_V2/.venv/Scripts/python.exe' -ArgumentList @('-m','http.server','8003') -WorkingDirectory '${workspaceFolder}/docs' -WindowStyle Hidden; Start-Sleep -Milliseconds 250; Start-Process 'http://localhost:8003/index.html'"
-      ],
+      "windows": {
+        "command": "Write-Host '=== INICIANDO SERVIDOR HTTP ===' -ForegroundColor Cyan; Write-Host ''; Write-Host '[1/5] Verificando processos na porta 8003...' -ForegroundColor Yellow; $processo = Get-NetTCPConnection -LocalPort 8003 -State Listen -ErrorAction SilentlyContinue; if ($processo) { Write-Host '      → Processo encontrado (PID: ' -NoNewline -ForegroundColor Gray; Write-Host $processo.OwningProcess -NoNewline -ForegroundColor White; Write-Host ')' -ForegroundColor Gray; Write-Host '      → Encerrando processo...' -ForegroundColor Gray; Stop-Process -Id $processo.OwningProcess -Force -ErrorAction SilentlyContinue; Write-Host '      ✓ Processo encerrado' -ForegroundColor Green; } else { Write-Host '      ✓ Porta 8003 livre' -ForegroundColor Green; }; Write-Host ''; Write-Host '[2/5] Aguardando liberação da porta...' -ForegroundColor Yellow; Start-Sleep -Milliseconds 200; Write-Host '      ✓ Porta pronta' -ForegroundColor Green; Write-Host ''; Write-Host '[3/5] Iniciando servidor HTTP Python...' -ForegroundColor Yellow; Write-Host '      → Executável: D:/ESTUDO_VICINAIS_V2/.venv/Scripts/python.exe' -ForegroundColor Gray; Write-Host '      → Diretório: ${workspaceFolder}/docs' -ForegroundColor Gray; Write-Host '      → Porta: 8003' -ForegroundColor Gray; Start-Process -FilePath 'D:/ESTUDO_VICINAIS_V2/.venv/Scripts/python.exe' -ArgumentList @('-m','http.server','8003') -WorkingDirectory '${workspaceFolder}/docs' -WindowStyle Hidden; Write-Host '      ✓ Servidor iniciado' -ForegroundColor Green; Write-Host ''; Write-Host '[4/5] Aguardando servidor ficar disponível...' -ForegroundColor Yellow; Start-Sleep -Milliseconds 250; Write-Host '      ✓ Servidor pronto' -ForegroundColor Green; Write-Host ''; Write-Host '[5/5] Abrindo navegador...' -ForegroundColor Yellow; Write-Host '      → URL: http://localhost:8003/index.html' -ForegroundColor Gray; Start-Process 'http://localhost:8003/index.html'; Write-Host '      ✓ Navegador aberto' -ForegroundColor Green; Write-Host ''; Write-Host '=== SERVIDOR RODANDO ===' -ForegroundColor Green; Write-Host 'Acesse: ' -NoNewline; Write-Host 'http://localhost:8003/index.html' -ForegroundColor Cyan; Write-Host ''"
+      },
       "problemMatcher": []
     }
   ]
-}
-{
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Servidor Docs: iniciar (8003)",
-			"type": "shell",
-			"command": "D:/ESTUDO_VICINAIS_V2/.venv/Scripts/python.exe",
-			"args": [
-				"-m",
-				"http.server",
-				"8003"
-			],
-			"isBackground": true,
-			"problemMatcher": [],
-			"group": "build"
-		}
-	]
 }

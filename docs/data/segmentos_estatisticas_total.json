@@ -1,0 +1,50 @@
+{
+  "estatisticas_segmentos": {
+    "extensao_total_km": 47665.99935433216,
+    "total_segmentos": 12199,
+    "comprimento_medio_km": 3.907369403584897,
+    "comprimento_mediano_km": 2.371168889769761,
+    "desvio_padrao_km": 4.584964189193444,
+    "minimo_km": 2.320997175961248e-06,
+    "maximo_km": 54.0666824797212
+  },
+  "distribuicao_por_faixas": [
+    {
+      "faixa": "<1 km",
+      "quantidade": 3641,
+      "extensao_km": 1441.8190061046948
+    },
+    {
+      "faixa": "1-2 km",
+      "quantidade": 1887,
+      "extensao_km": 2753.78034864666
+    },
+    {
+      "faixa": "2-4 km",
+      "quantidade": 2464,
+      "extensao_km": 7161.725208410003
+    },
+    {
+      "faixa": "4-6 km",
+      "quantidade": 1484,
+      "extensao_km": 7306.36737702132
+    },
+    {
+      "faixa": "6-10 km",
+      "quantidade": 1629,
+      "extensao_km": 12491.878807358022
+    },
+    {
+      "faixa": ">10 km",
+      "quantidade": 1094,
+      "extensao_km": 16510.42860679146
+    }
+  ],
+  "distribuicao_por_tipo": [
+    {
+      "tipo": "Pavimentado",
+      "extensao_km": 21702.264857962607,
+      "percentual": 100.0
+    }
+  ]
+}

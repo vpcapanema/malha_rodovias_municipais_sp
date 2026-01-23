@@ -3,6 +3,57 @@
    Paleta de cores SIGMA PLI
    ============================================================ */
 
+/* ============================================
+   INDICADORES DE CARREGAMENTO DE MAPAS
+   ============================================ */
+
+.map-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.map-loading-content {
+    text-align: center;
+    padding: 30px;
+}
+
+.map-loading-spinner {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px;
+    border: 4px solid #e0e0e0;
+    border-top: 4px solid #0066cc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.map-loading-message {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.map-loading-details {
+    font-size: 13px;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
 :root {
     /* Paleta SIGMA PLI */
     --primary-blue: #0066cc;
@@ -885,7 +936,7 @@ th:hover .sort-indicator {
 /* Additional utilities for inline style removal */
 .text-inherit { color: inherit; font-weight: 600; }
 .text-sm { font-size: 0.85rem; }
-.mt-1 { margin-top: 0.5rem; }
+/* Utilitário removido - duplicata eliminada */
 .bold { font-weight: 600; }
 .bg-light-gray { background-color: #ecf0f1; }
 
