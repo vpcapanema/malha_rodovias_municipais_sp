@@ -2061,7 +2061,8 @@ function criarLayerMalhaTotalGeoJSONTiles(map, options = {}) {
                         if (loadedCount === tilesToLoad.length) isLoading = false;
                     })
                     .catch(err => {
-                        if (!err.includes('404')) {
+                        const errMsg = err?.message || String(err) || '';
+                        if (!errMsg.includes('404')) {
                             console.warn(`⚠️ Tile [${tx},${ty}]:`, err);
                         }
                         tilesCarregados[tileKey] = 'error';
