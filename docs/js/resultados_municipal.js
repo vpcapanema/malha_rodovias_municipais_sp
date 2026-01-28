@@ -1972,7 +1972,7 @@ function criarMapaMalhaCompleta(mapIdParam, municipiosGeo, malhaVicinaisGeo, bou
     console.log('✅ Mapa malha completa criado com sucesso!');
 }
 
-function criarLayerMalhaTotalGeoJSONTiles(map, options = {}) {
+let tilesGlobaisCarregados = false; function criarLayerMalhaTotalGeoJSONTiles(map, options = {}) {
     /**
      * OTIMIZADO: Usa Canvas Renderer para performance massiva
      * Carrega tiles de forma assíncrona e controlada
